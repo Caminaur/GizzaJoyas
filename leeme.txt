@@ -1,0 +1,20 @@
+EXTRAS:
+- Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
+- Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
+- Trabajar en las notificaciones, que aparezcan por unos segundos con JS
+- Iconito del google maps de IL NATO
+- cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=9&t=0s
+- Recuperar password https://www.youtube.com/watch?v=rw48FfNvGz4&list=WL&index=4&t=0s
+- Verificar email al crear cuenta https://www.youtube.com/watch?v=o_KhH2dZCKQ&list=WL&index=1
+- Confirm al eliminar productos (probar modals confirm https://getuikit.com/docs/modal)
+- Que la social bar se pueda volver a mostrar luego de ocultarla
+- Manejar cookies con laravel (Lograr que la barra de promociones no se muestre al cerrarla y recargar la pagina) setcookie()
+- MercadoEnvios
+- Cuotas sin interes?
+- Agregarle variables a la plantilla (variables globales?)
+- Agregar Contacts a la base de datos
+
+
+Objetivo de la semana
+- Migraciones con los seeders
+- Hacer las factories para 50 productos genericos, distintas categorias talles etc (con al menos 1 imagen)
