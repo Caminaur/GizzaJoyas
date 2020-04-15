@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
           $table->boolean('onSale')->default(false);
           $table->integer('discount')->nullable();
 
-          $table->bigInteger('genre_id')->unsigned()->nullable();
-          $table->foreign('genre_id')->references('id')->on('genders')->onDelete('set null')->onUpdate('cascade');
+          $table->bigInteger('gender_id')->unsigned()->nullable();
+          $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null')->onUpdate('cascade');
 
           $table->bigInteger('category_id')->unsigned()->nullable();
           $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null')->onUpdate('cascade');

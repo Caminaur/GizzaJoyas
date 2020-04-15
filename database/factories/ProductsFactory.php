@@ -5,36 +5,66 @@ use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use App\Product;
-use App\Genre;
+use App\Gender;
 use App\Category;
 use App\Stock;
 use App\Color;
+use App\Age;
+use App\Image;
+
 $factory->define(Product::class, function (Faker $faker) {
 
-    $stock = new Stock();
-    $stock->quantity = $faker->randomDigit();
-    $colors = Color::all();
-    $stock->color_id = $colors->random();
-    $sizes = Size::all();
-    $stock->size_id = $sizes->random();
-    $stock->product_id = $faker->randomDigit();
-    $stock->save();
+  $genders = Gender::all();
+  $random = $faker->randomDigit();
 
-    $genres = Genre::all();
-    $random = $faker->randomDigit();
-    $categories = Category::all();
-    $onSale = $faker->boolean(40);
-    if ($onSale) {
-      $discount = $faker->randomDigit()*5;
-      if ($discount==0) {
-        $discount = 15;
+  $onSale = $faker->boolean(40);
+  if ($onSale) {
+    $discount = $faker->randomDigit()*5;
+    if ($discount==0) {
+      $discount = 15;
+    }
+  }
+  else {
+    $discount = 0;
+  }
+  if ($random==0) {
+    $random = 4;
+  }
+  $category = Category::all()->random();
+  $age = Age::all()->random();
+
+    $product = New Product;
+    $product->name = $faker->name;
+    $product->price = $random*$faker->numberBetween(2,7)*100;
+    $product->onSale = $onSale;
+    $product->discount = $discount;
+    $product->gender_id = $genders->random()->id;
+    $product->category_id = $category->id;
+    $product->age_id = $age->id;
+    $product->save();
+
+    $imagesRoutes = ['images/foto1.jpg','images/foto2.jpg','images/foto3.jpg','images/foto4.jpg'];
+    $index = array_rand($imagesRoutes);
+    $image = New Image;
+    $image->path = $imagesRoutes[$index];
+    $image->product_id = $product->id;
+    $image->save();
+    // los talles de la categoria que toco
+    $sizes = $category->sizes;
+
+    foreach ($sizes as $key => $size) {
+      $stock = new Stock();
+      $stock->quantity = $faker->randomDigit();
+      $colors = Color::all();
+      $stock->color_id = $colors->random()->id;
+      $stock->size_id = $size->id;
+      if (isset(Product::all()->last()->id)) {
+        $stock->product_id = Product::all()->last()->id;
       }
-    }
-    else {
-      $discount = 0;
-    }
-    if ($random==0) {
-      $random = 4;
+      else {
+        $stock->product_id = 1;
+      }
+      $stock->save();
     }
 
     return [
@@ -42,8 +72,7 @@ $factory->define(Product::class, function (Faker $faker) {
       'price' => $random*$faker->numberBetween(2,7)*100,
       'onSale' => $onSale,
       'discount' => $discount,
-      'genre_id' => $genres->random(),
-      'category_id' => $categories->random(),
-      'stock_id' => $stock->id,
+      'gender_id' => $gender->random(),
+      'category_id' => $category->id,
     ];
 });
