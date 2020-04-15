@@ -32,6 +32,9 @@ class CreateProductsTable extends Migration
           $table->bigInteger('material_id')->unsigned()->nullable();
           $table->foreign('material_id')->references('id')->on('materials')->onDelete('set null')->onUpdate('cascade');
 
+          $table->bigInteger('age_id')->unsigned()->nullable();
+          $table->foreign('age_id')->references('id')->on('ages')->onDelete('set null')->onUpdate('cascade');
+
           $table->timestamps();
         });
     }

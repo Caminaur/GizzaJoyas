@@ -1,5 +1,6 @@
 <?php
-
+use App\Size;
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test', function () {
+    $size = Size::all();
+    $category = Category::all()[2];
+    dd($category->sizes);
 });
