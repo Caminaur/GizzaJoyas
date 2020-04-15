@@ -1,3 +1,68 @@
+Gizza
+Desde el menu desplazara varios items uno va a ser productos
+
+-- Productos
+Cuando se clickee en el boton productos
+que se desplieguen las categorias plata, plata con oro, acero y relojes
+
+- plata & plata y oro & acero
+cadenas y pulseras se busca por talle en cm y stock disponible
+hay 4 medidas distintas de pulsera (largo 18,19,20,21 cm)
+y 5 medidas distintas de cadena (largo 40,45,50,55,60 o mas en cm)
+Anillos 12-23 talles de anillos
+Aros, no tienen un talle especifico
+
+-- Anillos de plata van a tener caracteristicas especiales
+	Electroformatura
+	Micropave
+	Media Falange
+
+
+Todo va a tener una descripcion
+- Agregar todo para tus joyas, serian paños(Preguntar a la adri) para guardar joyas,
+liquido para limpiar, estuches. (Accesorios?)
+
+
+-- del menu
+otra opcion va a ser tabla de medidas (Junto con una explicacion de como la gente
+tiene que medirse #UnTexto)
+
+
+-- Relojes (buscar por marca y stock, acero?, sumerjible?)
+Cada marca va a venir con una foto
+editar o agregar marca
+descripcion
+
+
+-- que la vista del producto solo muestre los talles disponibles o con mensaje
+en los no disponibles
+
+-- Calcular el envìo o retirar de forma presencial sin cargo en 7 dias habiles luego de la compra
+-- Envios via oca o correo argentino
+
+-- Api redes facebook e instagram
+
+-- Con timestamps crear cartelito de nuevo para productos de menos de 20 dias
+
+-- Precio mayorista si las compras superan x plata descuento, por pago en efectivo y envio gratis?
+
+
+Todo esto va a ser muy similar a la pagina www.elmercaditodeaccesorios.com.ar
+
+Preguntas para Eli
+	¿Como le gustaria que sea el email de contacto? (info@gizzaJoyas.com)
+	¿Preguntarle si le parece estetico que aparescan relojes al lado de plata con oro?
+	¿Preguntarle si quiere un newsletter?(Guardar emails para despues spamear a incautos)
+	¿Quiere poner accesorios como categorias para estuches panios fundas mallas de relojes accesorios de limpieza?
+
+NAVBAR
+-- Productos
+-- Preguntas Frecuentes
+-- Contacto
+-- Nosotros/sucursal/puntos de venta ()
+-- Algun otro?
+
+
 EXTRAS:
 - Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
 - Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
