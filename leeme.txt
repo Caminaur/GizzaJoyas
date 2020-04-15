@@ -83,3 +83,4 @@ EXTRAS:
 Objetivo de la semana
 - Migraciones con los seeders
 - Hacer las factories para 50 productos genericos, distintas categorias talles etc (con al menos 1 imagen)
+- Arreglar la factory. Cuando la categoria del producto creado no tiene size, este no se crea

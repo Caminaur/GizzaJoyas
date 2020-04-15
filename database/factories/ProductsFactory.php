@@ -14,7 +14,7 @@ use App\Image;
 
 $factory->define(Product::class, function (Faker $faker) {
 
-  $genders = Gender::all();
+  $gender = Gender::all();
   $random = $faker->randomDigit();
 
   $onSale = $faker->boolean(40);
@@ -38,7 +38,7 @@ $factory->define(Product::class, function (Faker $faker) {
     $product->price = $random*$faker->numberBetween(2,7)*100;
     $product->onSale = $onSale;
     $product->discount = $discount;
-    $product->gender_id = $genders->random()->id;
+    $product->gender_id = $gender->random()->id;
     $product->category_id = $category->id;
     $product->age_id = $age->id;
     $product->save();
@@ -51,20 +51,35 @@ $factory->define(Product::class, function (Faker $faker) {
     $image->save();
     // los talles de la categoria que toco
     $sizes = $category->sizes;
-
-    foreach ($sizes as $key => $size) {
-      $stock = new Stock();
-      $stock->quantity = $faker->randomDigit();
-      $colors = Color::all();
-      $stock->color_id = $colors->random()->id;
-      $stock->size_id = $size->id;
-      if (isset(Product::all()->last()->id)) {
-        $stock->product_id = Product::all()->last()->id;
+    if (empty($sizes[0])) {
+        $stock = new Stock();
+        $stock->quantity = $faker->randomDigit();
+        $colors = Color::all();
+        $stock->color_id = $colors->random()->id;
+        $stock->size_id = null;
+        if (isset(Product::all()->last()->id)) {
+          $stock->product_id = Product::all()->last()->id;
+        }
+        else {
+          $stock->product_id = 1;
+        }
+        $stock->save();
+    }
+    else {
+      foreach ($sizes as $key => $size) {
+        $stock = new Stock();
+        $stock->quantity = $faker->randomDigit();
+        $colors = Color::all();
+        $stock->color_id = $colors->random()->id;
+        $stock->size_id = $size->id;
+        if (isset(Product::all()->last()->id)) {
+          $stock->product_id = Product::all()->last()->id;
+        }
+        else {
+          $stock->product_id = 1;
+        }
+        $stock->save();
       }
-      else {
-        $stock->product_id = 1;
-      }
-      $stock->save();
     }
 
     return [

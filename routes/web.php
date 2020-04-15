@@ -18,6 +18,6 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
     $size = Size::all();
-    $category = Category::all()[0];
-    dd($size, $category->sizes);
+    $category = Category::all()[3];
+    dd(empty($category->sizes[0]));
 });
