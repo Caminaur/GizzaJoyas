@@ -1,0 +1,87 @@
+@media (max-width: 530px) {
+
+// Se ocultan cuando en resoluciones iguales o menores a 530
+  .hiddenXS {
+    display: none;
+  }
+
+}
+
+@media (min-width: 530px) {
+
+
+  .visibleSoloXS {
+    display: none;
+  }
+
+}
+
+// XS Extra small devices (portrait phones, less than 576px)
+// @media (min-width: 576px) {}
+
+// S Small devices (landscape phones, less than 768px)
+@media (max-width: 768px) {
+
+  .btn {
+    width: $buttonWidth - 20px;
+  }
+
+}
+
+// M Medium devices (tablets, less than 992px)
+@media (max-width: 992px) {
+
+  .intro {
+    text-align: center;
+  }
+
+  .hero-btn {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  h1 {
+    font-size: $h1FontSize - 6;
+  }
+
+  h2 {
+    font-size: $h2FontSize - 5;
+  }
+
+  h3 {
+    font-size: $h2FontSize - 4;
+  }
+
+  h4 {
+    font-size: $h2FontSize - 3;
+  }
+
+  h5 {
+    font-size: $h2FontSize - 3;
+  }
+
+  h6 {
+    font-size: $h2FontSize - 3;
+  }
+
+  p {
+    font-size: $pFontSize - 2;
+  }
+
+}
+
+// L Large devices (desktops, less than 1200px)
+@media (min-width: 1200px) {
+
+  .brightness {
+    filter: brightness(50%);
+  }
+
+  .brightness:hover {
+    filter: brightness(80%);
+  }
+
+}
+
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width

@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'ondine';
+  src: url(../fonts/OndineRegular.ttf);
+}
+
+.light {
+  font-weight: $light;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.medium {
+  font-weight: $medium;
+}
+
+.regular {
+  font-weight: $regular;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.ashBlue {
+  color: $ashBlue;
+}
+
+.doveGrey {
+  color: $doveGrey;
+}
+
+.dandelion {
+  color: $dandelion;
+}
+
+.blueSlate {
+  color: $blueSlate;
+}
+
+h1 {
+  font-family: $primary;
+  font-size: $h1FontSize;
+}
+
+h2 {
+  font-family: $primary;
+  font-size: $h2FontSize;
+}
+
+h3 {
+  font-family: $primary;
+  font-size: $h3FontSize;
+}
+
+h4 {
+  font-family: $secondary;
+  font-size: $h4FontSize;
+}
+
+h5 {
+  font-family: $secondary;
+  font-size: $h5FontSize;
+}
+
+h6 {
+  font-family: $secondary;
+  font-size: $h6FontSize;
+}
+
+p {
+  font-family: $secondary;
+  font-size: $pFontSize;
+  color: $doveGrey;
+  margin: 0;
+  line-height: $pLineHeight;
+}

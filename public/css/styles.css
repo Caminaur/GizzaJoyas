@@ -1,0 +1,244 @@
+@font-face {
+  font-family: "ondine";
+  src: url(../fonts/OndineRegular.ttf);
+}
+.light {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.ashBlue {
+  color: #A6C2CE;
+}
+
+.doveGrey {
+  color: #9C8F96;
+}
+
+.dandelion {
+  color: #EBC57C;
+}
+
+.blueSlate {
+  color: #6B799E;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+}
+
+h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+h5 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+}
+
+h6 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+}
+
+p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  color: #9C8F96;
+  margin: 0;
+  line-height: 25px;
+}
+
+@media (max-width: 530px) {
+  .hiddenXS {
+    display: none;
+  }
+}
+@media (min-width: 530px) {
+  .visibleSoloXS {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .btn {
+    width: 200px;
+  }
+}
+@media (max-width: 992px) {
+  .intro {
+    text-align: center;
+  }
+
+  .hero-btn {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 21px;
+  }
+
+  h5 {
+    font-size: 21px;
+  }
+
+  h6 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1200px) {
+  .brightness {
+    filter: brightness(50%);
+  }
+
+  .brightness:hover {
+    filter: brightness(80%);
+  }
+}
+span.gizza {
+  font-family: "ondine";
+  font-size: 36px;
+  color: #6b6663;
+  display: block;
+  line-height: 15px;
+}
+
+span.joyas {
+  font-family: "serif";
+  font-size: 18px;
+  color: #6b6663;
+  display: block;
+}
+
+@media (min-width: 959px) {
+  nav {
+    height: 160px;
+  }
+
+  span.gizza {
+    font-family: "ondine";
+    font-size: 50px;
+    color: #6b6663;
+    display: block;
+    line-height: 15px;
+  }
+
+  span.joyas {
+    font-family: "serif";
+    font-size: 35px;
+    color: #6b6663;
+    display: block;
+  }
+
+  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #ffffff00;
+  }
+
+  /* Transitions and class for reduced height */
+  .cbp-af-header {
+    transition: all 0.8s;
+  }
+
+  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent).cbp-af-header-shrink {
+    height: 90px;
+    background-color: #f6f6f6;
+  }
+
+  .cbp-af-header.cbp-af-header-shrink li a {
+    color: blue;
+  }
+
+  .cbp-af-header.cbp-af-header-shrink .gizza {
+    font-size: 36px;
+  }
+
+  .cbp-af-header.cbp-af-header-shrink .joyas {
+    font-size: 18px;
+  }
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+a, button {
+  transition: color 1s ease !important;
+  -webkit-transition: color 1s ease !important;
+  -o-transition: color 1s ease !important;
+  -moz-transition: color 1s ease !important;
+}
+a:hover, button:hover {
+  text-decoration: none;
+}
+
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.wow {
+  visibility: hidden;
+}
+
+::selection {
+  background-color: #A6C2CE !important;
+  color: white;
+}
+
+/* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */

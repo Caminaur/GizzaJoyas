@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'fonts';
+@import 'queries';
+@import 'buttons';
+@import 'navbar';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+a, button {
+  transition: color 1s ease!important;
+	-webkit-transition: color 1s ease!important;
+  -o-transition: color 1s ease!important;
+  -moz-transition: color 1s ease!important;
+  // color: $white;
+  &:hover {
+    // color: $hoverRed;
+    text-decoration: none;
+  }
+}
+
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.wow {
+  visibility: hidden;
+}
+::selection {
+  background-color:$ashBlue!important;
+  color:white;
+}
+/* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */
+
+// ::-webkit-scrollbar {
+//   width: 15px;
+// }
+//
+// ::-webkit-scrollbar-thumb {
+//   background-color: #bf883575;
+//   /* border-radius: 10px; */
+// }
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: rgb(214,177,122);
+// }

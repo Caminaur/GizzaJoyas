@@ -55,6 +55,12 @@ Preguntas para Eli
 	¿Preguntarle si quiere un newsletter?(Guardar emails para despues spamear a incautos)
 	¿Quiere poner accesorios como categorias para estuches panios fundas mallas de relojes accesorios de limpieza?
 
+INFO 
+
+Pagina en que nos basamos https://gecko4.myshopify.com/?_ab=0&_fd=0&_sc=1
+
+
+
 NAVBAR
 -- Productos
 -- Preguntas Frecuentes
