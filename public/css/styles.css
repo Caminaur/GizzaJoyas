@@ -41,16 +41,19 @@
 h1 {
   font-family: "Playfair Display", serif;
   font-size: 32px;
+  letter-spacing: 2px;
 }
 
 h2 {
   font-family: "Playfair Display", serif;
   font-size: 24px;
+  letter-spacing: 2px;
 }
 
 h3 {
   font-family: "Playfair Display", serif;
   font-size: 18px;
+  letter-spacing: 2px;
 }
 
 h4 {
@@ -71,7 +74,6 @@ h6 {
 p {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
-  color: #9C8F96;
   margin: 0;
   line-height: 25px;
 }
@@ -84,11 +86,6 @@ p {
 @media (min-width: 530px) {
   .visibleSoloXS {
     display: none;
-  }
-}
-@media (max-width: 768px) {
-  .btn {
-    width: 200px;
   }
 }
 @media (max-width: 992px) {
@@ -138,9 +135,120 @@ p {
     filter: brightness(80%);
   }
 }
+.btn {
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  border: 3px solid;
+  border-radius: 2px;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 20px;
+  width: 180px;
+  height: 40px;
+}
+.btn:focus, .btn .btn.focus {
+  box-shadow: none;
+}
+.btn:hover {
+  color: white;
+}
+
+.border {
+  border: 1px solid;
+}
+
+.border-doveGrey {
+  border-color: #9C8F96;
+  color: #9C8F96;
+}
+.border-doveGrey:hover {
+  border-color: #9c8f9694;
+  color: #9C8F96;
+}
+
+.border-ashBlue {
+  border-color: #A6C2CE;
+  color: #A6C2CE;
+}
+.border-ashBlue:hover {
+  border-color: #a6c2cec9;
+  color: #A6C2CE;
+}
+
+.border-dandelion {
+  border-color: #EBC57C;
+  color: #EBC57C;
+}
+.border-dandelion:hover {
+  border-color: #ebc57cc4;
+  color: #EBC57C;
+}
+
+.border-blueSlate {
+  border-color: #6B799E;
+  color: #6B799E;
+}
+.border-blueSlate:hover {
+  border-color: #6b799ee8;
+  color: #6B799E;
+}
+
+.bg-doveGrey {
+  background-color: #9C8F96;
+  border-color: transparent;
+  color: white;
+}
+.bg-doveGrey:hover {
+  background-color: #9c8f9694;
+  border-color: transparent;
+}
+
+.bg-ashBlue {
+  background-color: #A6C2CE;
+  border-color: transparent;
+  color: white;
+}
+.bg-ashBlue:hover {
+  background-color: #a6c2cec9;
+  border-color: transparent;
+}
+
+.bg-dandelion {
+  background-color: #EBC57C;
+  border-color: transparent;
+  color: white;
+}
+.bg-dandelion:hover {
+  background-color: #ebc57cc4;
+  border-color: transparent;
+}
+
+.bg-blueSlate {
+  background-color: #6B799E;
+  border-color: transparent;
+  color: white;
+}
+.bg-blueSlate:hover {
+  background-color: #6b799ee8;
+  border-color: transparent;
+}
+
+nav {
+  min-height: 66px;
+  background-color: transparent;
+  position: relative;
+}
+
+.nav-categories {
+  border-top: 1px solid grey;
+  padding-top: 10px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+}
+
 span.gizza {
   font-family: "ondine";
-  font-size: 36px;
+  font-size: 40px;
   color: #6b6663;
   display: block;
   line-height: 15px;
@@ -154,10 +262,6 @@ span.joyas {
 }
 
 @media (min-width: 959px) {
-  nav {
-    height: 160px;
-  }
-
   span.gizza {
     font-family: "ondine";
     font-size: 50px;
@@ -168,36 +272,12 @@ span.joyas {
 
   span.joyas {
     font-family: "serif";
-    font-size: 35px;
+    font-size: 20px;
     color: #6b6663;
     display: block;
   }
 
-  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent) {
-    background: #ffffff00;
-  }
-
   /* Transitions and class for reduced height */
-  .cbp-af-header {
-    transition: all 0.8s;
-  }
-
-  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent).cbp-af-header-shrink {
-    height: 90px;
-    background-color: #f6f6f6;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink li a {
-    color: blue;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink .gizza {
-    font-size: 36px;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink .joyas {
-    font-size: 18px;
-  }
 }
 * {
   box-sizing: border-box;
@@ -209,10 +289,10 @@ span.joyas {
 }
 
 a, button {
-  transition: color 1s ease !important;
-  -webkit-transition: color 1s ease !important;
-  -o-transition: color 1s ease !important;
-  -moz-transition: color 1s ease !important;
+  transition: background-color 0.8s ease !important;
+  -webkit-transition: background-color 0.8s ease !important;
+  -o-transition: background-color 0.8s ease !important;
+  -moz-transition: background-color 0.8s ease !important;
 }
 a:hover, button:hover {
   text-decoration: none;

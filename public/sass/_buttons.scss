@@ -1,0 +1,30 @@
+.btn {
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  border: 3px solid;
+  border-radius: 2px;
+  font-family: $primary;
+  font-weight: $bold;
+  line-height: $buttonLineHeight;
+  width: $buttonWidth;
+  height: $buttonHeight;
+
+  &:focus, .btn.focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    color: white;
+  }
+
+}
+  .border {border: 1px solid;}
+  .border-doveGrey {border-color:$doveGrey; color: $doveGrey; &:hover {border-color: $doveGreyHover; color: $doveGrey;}}
+  .border-ashBlue {border-color:$ashBlue; color: $ashBlue; &:hover {border-color: $ashBlueHover; color: $ashBlue;}}
+  .border-dandelion {border-color:$dandelion; color: $dandelion; &:hover {border-color: $dandelionHover; color: $dandelion;}}
+  .border-blueSlate {border-color:$blueSlate; color: $blueSlate; &:hover {border-color: $blueSlateHover; color: $blueSlate;}}
+
+  .bg-doveGrey {background-color: $doveGrey; border-color:transparent;; color: white; &:hover {background-color: $doveGreyHover; border-color:transparent;}}
+  .bg-ashBlue {background-color: $ashBlue; border-color:transparent;; color: white; &:hover {background-color: $ashBlueHover; border-color:transparent;}}
+  .bg-dandelion {background-color: $dandelion; border-color:transparent;; color: white; &:hover {background-color: $dandelionHover; border-color:transparent;}}
+  .bg-blueSlate {background-color: $blueSlate; border-color:transparent;; color: white; &:hover {background-color: $blueSlateHover; border-color:transparent;}}

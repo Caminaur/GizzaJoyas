@@ -3,76 +3,34 @@
   src: url(../fonts/OndineRegular.ttf);
 }
 
-.light {
-  font-weight: $light;
-}
+.light {font-weight: $light;}
 
-.bold {
-  font-weight: $bold;
-}
+.bold {font-weight: $bold;}
 
-.medium {
-  font-weight: $medium;
-}
+.medium {font-weight: $medium;}
 
-.regular {
-  font-weight: $regular;
-}
+.regular {font-weight: $regular;}
 
-.italic {
-  font-style: italic;
-}
+.italic {font-style: italic;}
 
-.ashBlue {
-  color: $ashBlue;
-}
+.ashBlue {color: $ashBlue;}
 
-.doveGrey {
-  color: $doveGrey;
-}
+.doveGrey {color: $doveGrey;}
 
-.dandelion {
-  color: $dandelion;
-}
+.dandelion {color: $dandelion;}
 
-.blueSlate {
-  color: $blueSlate;
-}
+.blueSlate {color: $blueSlate;}
 
-h1 {
-  font-family: $primary;
-  font-size: $h1FontSize;
-}
+h1 {font-family: $primary;font-size: $h1FontSize; letter-spacing: $primarySpacing;}
 
-h2 {
-  font-family: $primary;
-  font-size: $h2FontSize;
-}
+h2 {font-family: $primary;font-size: $h2FontSize; letter-spacing: $primarySpacing;}
 
-h3 {
-  font-family: $primary;
-  font-size: $h3FontSize;
-}
+h3 {font-family: $primary;font-size: $h3FontSize; letter-spacing: $primarySpacing;}
 
-h4 {
-  font-family: $secondary;
-  font-size: $h4FontSize;
-}
+h4 {font-family: $secondary;font-size: $h4FontSize;}
 
-h5 {
-  font-family: $secondary;
-  font-size: $h5FontSize;
-}
+h5 {font-family: $secondary;font-size: $h5FontSize;}
 
-h6 {
-  font-family: $secondary;
-  font-size: $h6FontSize;
-}
+h6 {font-family: $secondary;font-size: $h6FontSize;}
 
-p {
-  font-family: $secondary;
-  font-size: $pFontSize;
-  color: $doveGrey;
-  margin: 0;
-  line-height: $pLineHeight;
-}
+p {font-family: $secondary;font-size: $pFontSize;margin: 0;line-height: $pLineHeight;}

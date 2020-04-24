@@ -9,7 +9,7 @@
 
 @media (min-width: 530px) {
 
-
+// Se muestran scuando en resoluciones iguales o mayores a 530
   .visibleSoloXS {
     display: none;
   }
@@ -23,7 +23,7 @@
 @media (max-width: 768px) {
 
   .btn {
-    width: $buttonWidth - 20px;
+    // width: $buttonWidth - 20px;
   }
 
 }
@@ -40,33 +40,19 @@
     margin-bottom: 100px;
   }
 
-  h1 {
-    font-size: $h1FontSize - 6;
-  }
+  h1 {font-size: $h1FontSize - 6;}
 
-  h2 {
-    font-size: $h2FontSize - 5;
-  }
+  h2 {font-size: $h2FontSize - 5;}
 
-  h3 {
-    font-size: $h2FontSize - 4;
-  }
+  h3 {font-size: $h2FontSize - 4;}
 
-  h4 {
-    font-size: $h2FontSize - 3;
-  }
+  h4 {font-size: $h2FontSize - 3;}
 
-  h5 {
-    font-size: $h2FontSize - 3;
-  }
+  h5 {font-size: $h2FontSize - 3;}
 
-  h6 {
-    font-size: $h2FontSize - 3;
-  }
+  h6 {font-size: $h2FontSize - 3;}
 
-  p {
-    font-size: $pFontSize - 2;
-  }
+  p {font-size: $pFontSize - 2;}
 
 }
 

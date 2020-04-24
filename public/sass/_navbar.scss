@@ -1,12 +1,21 @@
 // Logo
 
 nav {
-  // height: 100px;
+  min-height: 66px;
+  background-color: transparent;
+  position: relative;
+}
+
+.nav-categories {
+  border-top: 1px solid grey;
+  padding-top: 10px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
 }
 
 span.gizza {
   font-family: 'ondine';
-  font-size: 36px;
+  font-size: 40px;
   color: rgba(107, 102, 99);
   display: block;
   line-height: 15px;
@@ -22,9 +31,6 @@ span.joyas {
 
 @media (min-width: 959px) {
 
-  nav {
-    height: 160px;
-  }
 
   span.gizza {
     font-family: 'ondine';
@@ -36,46 +42,39 @@ span.joyas {
 
   span.joyas {
     font-family: 'serif';
-    font-size: 35px;
+    font-size: 20px;
     color: rgba(107, 102, 99);
     display: block;
   }
 
   // Color de fondo de la Navbar
-  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent) {
-    background: #ffffff00;
-  }
+  // .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent) {
+  //   background: #ffffff00;
+  // }
 
   /* Transitions and class for reduced height */
 
-  .cbp-af-header {
-  	-webkit-transition: all 0.8s;
-  	-moz-transition: all 0.8s;
-  	transition: all 0.8s;
-  }
-
-  .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent).cbp-af-header-shrink {
-  	height: 90px;
-  	background-color: #f6f6f6;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink li a {
-    color: blue;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink .gizza {
-    // display: none;
-    font-size: 36px;
-  }
-
-  .cbp-af-header.cbp-af-header-shrink .joyas{
-    // display: none;
-    font-size: 18px;
-  }
-
-  // .cbp-af-header.cbp-af-header-shrink .hidden{
-  //   display: block;
+  // .cbp-af-header {
+  // 	-webkit-transition: all 0.8s;
+  // 	-moz-transition: all 0.8s;
+  // 	transition: all 0.8s;
+  // }
+  //
+  // .cbp-af-header.uk-navbar-container:not(.uk-navbar-transparent).cbp-af-header-shrink {
+  // 	height: 90px;
+  // 	background-color: #f6f6f6;
+  // }
+  //
+  // .cbp-af-header.cbp-af-header-shrink li a {
+  //   color: blue;
+  // }
+  //
+  // .cbp-af-header.cbp-af-header-shrink .gizza {
   //   font-size: 36px;
-// }
+  // }
+  //
+  // .cbp-af-header.cbp-af-header-shrink .joyas{
+  //   font-size: 18px;
+  // }
 
 }

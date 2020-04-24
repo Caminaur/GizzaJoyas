@@ -14,13 +14,11 @@
 }
 
 a, button {
-  transition: color 1s ease!important;
-	-webkit-transition: color 1s ease!important;
-  -o-transition: color 1s ease!important;
-  -moz-transition: color 1s ease!important;
-  // color: $white;
+  transition: background-color 0.8s ease!important;
+	-webkit-transition: background-color 0.8s ease!important;
+  -o-transition: background-color 0.8s ease!important;
+  -moz-transition: background-color 0.8s ease!important;
   &:hover {
-    // color: $hoverRed;
     text-decoration: none;
   }
 }

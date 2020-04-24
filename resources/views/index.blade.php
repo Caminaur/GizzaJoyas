@@ -4,72 +4,78 @@ Gizza Joyas Home
 @endsection
 @section('main')
 
-	<section id="hero">
+	<section id="hero" class="container-fluid">
 
-		<div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="img/extras/4.jpg" uk-img>
-			<h1 class="bold">Background Image</h1><br>
+
+		<div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-background-cover uk-light" uk-height-viewport ="offset-top: true" data-src="img/extras/4.jpg" uk-img>
+			<h1 class="bold mb-3">Background Image</h1>
+			<h3 class="medium mb-5">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
+				<div class="">
+					<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
+					<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+				</div>
+
+			<a class="btn bg-blueSlate mt-1" href="#">Blue Slate</a>
 		</div>
 
 	</section>
 
-	<section id="categories" class="container">
+	<section id="categories" class="uk-container-extend uk-background-muted px-4 pt-3">
 
-		<h1 class="bold">Probando letras</h1>
-		<h1 class="medium">Probando letras</h1>
-		<h1 class="regular">Probando letras</h1>
+		<h2 class="medium text-center">Categorías</h2>
 
-			<div class="uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m uk-flex-center uk-margin-top" uk-grid>
+			<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/aros.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/aros.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Aros</h4></div>
+	              <div class="uk-light"><h3 class="medium uk-margin-remove">Aros</h3></div>
 	          </div>
 	        </div>
 	      </div>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/pulseras.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/pulseras.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Pulseras</h4></div>
+	              <div class="uk-light"><h3 class="uk-margin-remove">Pulseras</h3></div>
 	          </div>
 	        </div>
 	      </div>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/collares.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/collares.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Collares</h4></div>
+	              <div class="uk-light"><h3 class="uk-margin-remove">Collares</h3></div>
 	          </div>
 	        </div>
 	      </div>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/anillos.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/anillos.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Anillos</h4></div>
+	              <div class="uk-light"><h3 class="uk-margin-remove">Anillos</h3></div>
 	          </div>
 	        </div>
 	      </div>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/relojes.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/relojes.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Relojes</h4></div>
+	              <div class="uk-light"><h3 class="uk-margin-remove">Relojes</h3></div>
 	          </div>
 	        </div>
 	      </div>
 
-				<div class="uk-text-center">
+				<div>
 	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="asd3 uk-transition-scale-up uk-transition-opaque" src="img/accesorios.jpg" alt="">
+	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/accesorios.jpg" alt="">
 	          <div class="uk-position-center">
-	              <div class="uk-light"><h4 class="uk-margin-remove">Accesorios</h4></div>
+	              <div class="uk-light"><h3 class="uk-margin-remove">Accesorios</h3></div>
 	          </div>
 	        </div>
 	      </div>

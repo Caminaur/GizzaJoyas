@@ -32,15 +32,26 @@ $regular : 400;
 $medium : 500;
 $bold : 700;
 
+// letter-spacing
+
+$primarySpacing : 2px;
+
 // Line-height
 
 $h1LineHeight : 115px;
 $h2LineHeight : 60px;
 $pLineHeight : 25px;
-$buttonLineHeight : 25px;
+$buttonLineHeight : 20px;
 
 // Button
 
-$buttonWidth : 220px;
+$buttonWidth : 180px;
+$buttonHeight : 40px;
 
 // Hover
+
+$ashBlueHover : #a6c2cec9;
+$doveGreyHover : #9c8f9694;
+$dandelionHover : #ebc57cc4;
+$blueSlateHover : #6b799ee8;
+$placeholderColor : #C6C6C6;
