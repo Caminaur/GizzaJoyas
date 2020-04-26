@@ -669,11 +669,11 @@ a.uk-link-reset,
   /* 1 */
   border: none;
   /* 2 */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 /* Add margin if adjacent element */
 * + [class*='uk-divider'] {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 /* Icon
  ========================================================================== */
@@ -4108,7 +4108,8 @@ ul.uk-nav-sub {
   /* 2 */
   box-sizing: border-box;
   /* min-height: 80px; */
-  padding: 0 15px;
+  /* padding: 0 15px; */
+  margin: 0 15px;
   /* 3 */
   font-size: 0.875rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

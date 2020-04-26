@@ -1,0 +1,27 @@
+footer {
+  background-color: $muted;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-div {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+a.footlink, span.footlink {
+  color: $blueSlate;
+  font: {
+    size: $navLinkSmall;
+    // family: $primary;
+    // weight: $regular;
+  }
+}
+
+a.footlink {
+  &:hover {
+    color: #333;
+  }
+}

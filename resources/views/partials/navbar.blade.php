@@ -12,7 +12,7 @@
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
               <form class="uk-visible@m uk-search uk-search-default uk-margin-left">
                 <span uk-search-icon></span>
-                <input class="uk-search-input" type="search" placeholder="Search...">
+                <input class="uk-search-input" type="search" placeholder="Buscar...">
               </form>
 
 
@@ -61,14 +61,21 @@
 
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
-                <li><a href="#asd" offset="80" uk-scroll>Registrarse</a></li>
-                <li><a href="#asd" offset="80" uk-scroll>Ingresar</a></li>
-                <li><a href="#asd2" offset="80" uk-scroll><span uk-icon="cart"></span></a></li>
+
+              @if (Auth::user())
+                @if (Auth::user()->isAdmin == true)
+                  <li><a class="navlink hvr-underline-from-center {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel">Panel de Control</a></li>
+                @endif
+              @else
+                <li><a class="navlink hvr-underline-from-center" href="#asd" offset="80" uk-scroll>Registrarse</a></li>
+                <li><a class="navlink hvr-underline-from-center" href="#asd" offset="80" uk-scroll>Ingresar</a></li>
+              @endif
+                <li><a class="navlink" href="#asd2" offset="80" uk-scroll><span class="material-icons">local_mall</span></a></li>
               </ul>
 
               {{-- Menu hamburguesa, se muestra al bajar de 959px (M)--}}
               <ul class="uk-hidden@m uk-navbar-nav uk-nav-parent-icon">
-                <li class="uk-visible-small"><a href="#navbarMobile"  uk-navbar-toggle-icon uk-toggle uk-toggle="target: #offcanvas-push"></a></li>
+                <li class="uk-visible-small"><a href="#navbarMobile"  class="burger" uk-navbar-toggle-icon uk-toggle uk-toggle="target: #offcanvas-push"></a></li>
               </ul>
 
 
@@ -82,10 +89,49 @@
 
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
-                <li><a href="#asd" offset="80" uk-scroll>Productos</a></li>
-                <li><a href="#asd1" offset="80" uk-scroll>Como comprar</a></li>
-                <li><a href="#asd2" offset="80" uk-scroll>Nosotros</a></li>
-                <li><a href="#asd2" offset="80" uk-scroll>Contactanos</a></li>
+                <li>
+                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="#asd" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
+                      <div class="uk-navbar-dropdown-grid uk-child-width-1-3" uk-grid>
+                          <div>
+                              <ul class="uk-nav uk-navbar-dropdown-nav">
+                                  <li class="uk-active"><a href="#">Active</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-header">Header</li>
+                                  <li><a href="#">Item</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-divider"></li>
+                                  <li><a href="#">Item</a></li>
+                              </ul>
+                          </div>
+                          <div>
+                              <ul class="uk-nav uk-navbar-dropdown-nav">
+                                  <li class="uk-active"><a href="#">Active</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-header">Header</li>
+                                  <li><a href="#">Item</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-divider"></li>
+                                  <li><a href="#">Item</a></li>
+                              </ul>
+                          </div>
+                          <div>
+                              <ul class="uk-nav uk-navbar-dropdown-nav">
+                                  <li class="uk-active"><a href="#">Active</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-header">Header</li>
+                                  <li><a href="#">Item</a></li>
+                                  <li><a href="#">Item</a></li>
+                                  <li class="uk-nav-divider"></li>
+                                  <li><a href="#">Item</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                </li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('faqs') ? 'active' : '' }}" href="#asd1" offset="80" uk-scroll>Como comprar</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="#asd2" offset="80" uk-scroll>Nosotros</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="#asd2" offset="80" uk-scroll>Contactanos</a></li>
               </ul>
 
 

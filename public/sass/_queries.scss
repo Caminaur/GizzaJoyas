@@ -44,28 +44,36 @@
 
   h2 {font-size: $h2FontSize - 5;}
 
-  h3 {font-size: $h2FontSize - 4;}
+  h3 {font-size: $h3FontSize - 4;}
 
-  h4 {font-size: $h2FontSize - 3;}
+  h4 {font-size: $h4FontSize - 3;}
 
-  h5 {font-size: $h2FontSize - 3;}
+  h5 {font-size: $h5FontSize - 3;}
 
-  h6 {font-size: $h2FontSize - 3;}
+  h6 {font-size: $h6FontSize - 3;}
 
   p {font-size: $pFontSize - 2;}
+
+
+  footer section {
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .footer-ul {
+    display: flex;
+  }
+
+  .footer-div {
+    margin-bottom: 20px;
+    align-self: center;
+    align-items: center;
+  }
 
 }
 
 // L Large devices (desktops, less than 1200px)
 @media (min-width: 1200px) {
-
-  .brightness {
-    filter: brightness(50%);
-  }
-
-  .brightness:hover {
-    filter: brightness(80%);
-  }
 
 }
 

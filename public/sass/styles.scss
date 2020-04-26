@@ -1,8 +1,10 @@
 @import 'variables';
 @import 'fonts';
-@import 'queries';
 @import 'buttons';
 @import 'navbar';
+@import 'footer';
+@import 'icons';
+@import 'queries';
 
 * {
   box-sizing: border-box;
@@ -44,6 +46,21 @@ a, button {
   background-color:$ashBlue!important;
   color:white;
 }
+
+.brightness {
+  filter: brightness(50%);
+}
+
+.brightness:hover {
+  filter: brightness(100%);
+}
+
+.active {
+  border-bottom: 2px solid $blueSlate;
+  padding-bottom: 4px;
+}
+
+
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */
 
 // ::-webkit-scrollbar {
