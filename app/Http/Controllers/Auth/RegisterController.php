@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,15 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ],
+        [
+          "required" => "El campo :attribute no puede estar vacio",
+          "password.confirmed" => "Las contraseñas no coinciden",
+          'string' => "El campo :attribute debe ser un texto",
+          "password.min" => "Tu contraseña debe tener como mínimo 6 caracteres",
+          "unique" => "El email que ingresaste ya esta en uso",
+          "email" => "Por favor ingrese un email",
         ]);
     }
 
@@ -67,6 +75,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'isAdmin' => 0,
         ]);
     }
 }

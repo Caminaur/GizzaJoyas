@@ -28,7 +28,7 @@ span.joyas {
   display: block;
 }
 
-li a.navlink {
+li a.navlink, button.navlink{
   color: $blueSlate;
   letter-spacing: 1px;
   font: {
@@ -37,10 +37,18 @@ li a.navlink {
     weight: $medium;
   }
   &:hover {
-    // color: $hoverRed;
+    color: $blueSlateHover;
   }
 }
 
 li a.burger, .uk-search .uk-search-icon, .uk-search-input {
   color: $blueSlate;
+}
+
+button.navlink {
+  background-color: white;
+  outline: none !important;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0.5px;
 }

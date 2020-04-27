@@ -6,6 +6,8 @@
 
     @include('partials.links')
 
+    @yield('links') {{-- Para agregar CSS a una vista en particular --}}
+
     <title>@yield('titulo')</title>
     {{-- <link rel="stylesheet" href="/css/@yield('css').css">  Para agregar un css a una vista en particular --}}
     @yield('scripts') {{-- Para agregar JS a una vista en particular --}}

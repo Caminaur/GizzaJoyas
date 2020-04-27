@@ -4,6 +4,7 @@
 @import 'navbar';
 @import 'footer';
 @import 'icons';
+@import 'forms';
 @import 'queries';
 
 * {
@@ -56,10 +57,9 @@ a, button {
 }
 
 .active {
-  border-bottom: 2px solid $blueSlate;
+  border-bottom: 2px solid $ashBlue;
   padding-bottom: 4px;
 }
-
 
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */
 

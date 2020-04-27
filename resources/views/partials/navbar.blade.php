@@ -52,7 +52,7 @@
             <div>
 
 
-              <a class="uk-navbar-item uk-logo uk-flex-column" uk-scroll href="/"><span class="cbp-af-header gizza text-center">Gizza</span>{{--<span class="cbp-af-header joyas text-center mt-3">Joyas</span>--}}</a><!--<span class="cbp-af-header hidden">Escondido</span>-->
+              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">Gizza</span></a>
 
             </div>
 
@@ -66,10 +66,22 @@
                 @if (Auth::user()->isAdmin == true)
                   <li><a class="navlink hvr-underline-from-center {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel">Panel de Control</a></li>
                 @endif
+
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user"></i> {{auth::user()->name}} </a></li>
+                <li class="nav-item">
+                  <form class="" action="/logout" method="post">
+                    @csrf
+                    <button class="navlink hvr-underline-from-center" type="submit" name="button"><span> Cerrar Sesion</span></button>
+                  </form>
+                </li>
+
               @else
-                <li><a class="navlink hvr-underline-from-center" href="#asd" offset="80" uk-scroll>Registrarse</a></li>
-                <li><a class="navlink hvr-underline-from-center" href="#asd" offset="80" uk-scroll>Ingresar</a></li>
+
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
+
               @endif
+
                 <li><a class="navlink" href="#asd2" offset="80" uk-scroll><span class="material-icons">local_mall</span></a></li>
               </ul>
 
@@ -129,9 +141,9 @@
                       </div>
                   </div>
                 </li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('faqs') ? 'active' : '' }}" href="#asd1" offset="80" uk-scroll>Como comprar</a></li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="#asd2" offset="80" uk-scroll>Nosotros</a></li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="#asd2" offset="80" uk-scroll>Contactanos</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('faqs') ? 'active' : '' }}" href="#asd1">Como comprar</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="#asd2">Nosotros</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="#asd2">Contactanos</a></li>
               </ul>
 
 
