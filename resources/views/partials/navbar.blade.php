@@ -1,10 +1,10 @@
 {{-- Aqui comienza la navbar sticky --}}
 
         {{-- navbar principal --}}
-        <nav class="cbp-af-header uk-navbar-container uk-navbar-transparent uk-flex uk-flex-column" uk-navbar>
+        <nav class="cbp-af-header uk-flex uk-flex-column" uk-navbar>
 
           {{-- 1er piso de la nav - between --}}
-          <div class="uk-flex uk-flex-between uk-flex-middle pt-4">
+          <div class="uk-flex uk-flex-middle uk-flex-between my-3">
 
             {{-- Searchs --}}
             <div>
@@ -49,7 +49,7 @@
             </div>
 
             {{-- logo --}}
-            <div>
+            <div class="pt-3">
 
               <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
 
@@ -95,7 +95,7 @@
           </div>
 
           {{-- 2do piso de la nav - flex-center --}}
-          <div class=" nav-categories uk-visible@m uk-flex uk-flex-center uk-flex-middle mt-3">
+          <div class=" nav-categories uk-visible@m uk-flex uk-flex-center uk-flex-middle">
 
 
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
