@@ -1,11 +1,4 @@
 @extends('layouts.plantilla')
-@section('links')
-<!-- MATERIAL DESIGN ICONIC FONT -->
-<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-
-<!-- STYLE CSS -->
-<link rel="stylesheet" href="css/forms.css">
-@endsection
 @section('titulo')
 Inicio de Sesion
 @endsection
@@ -41,6 +34,9 @@ Inicio de Sesion
             <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
             <label class="recordarme align-middle" for="remember-me"><small class="ashBlue">Recordarme</small></label>
           </div>
+
+          <h5 class="blueSlate">No recuerdas la clave?<a class="link ashBlue" href="/password/reset"> Olvidé mi clave</a></h5>
+          <h5 class="blueSlate">Eres nuevo?<a class="link ashBlue" href="/register"> Registrarme</a></h5>
 
 
 					<button class="btn bg-blueSlate">Ingresar

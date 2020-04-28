@@ -28,3 +28,21 @@
   .bg-ashBlue {background-color: $ashBlue; border-color:transparent;; color: white; &:hover {background-color: $ashBlueHover; border-color:transparent;}}
   .bg-dandelion {background-color: $dandelion; border-color:transparent;; color: white; &:hover {background-color: $dandelionHover; border-color:transparent;}}
   .bg-blueSlate {background-color: $blueSlate; border-color:transparent;; color: white; &:hover {background-color: $blueSlateHover; border-color:transparent;}}
+
+  // Social
+
+  .social.fab, .social.fas {
+    padding: 12px;
+    font-size: 13px;
+    width: 36px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+    background: $ashBlue;
+    color: white;
+}
+
+.fab:hover, .fas:hover {
+    opacity: 0.7;
+}

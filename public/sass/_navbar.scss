@@ -13,7 +13,8 @@ nav {
 }
 
 span.gizza {
-  font-family: 'ondine';
+  letter-spacing: 2px;
+  font-family: $primary;
   font-size: 40px;
   // color: rgba(107, 102, 99);
   color: $blueSlate;
@@ -22,9 +23,9 @@ span.gizza {
 }
 
 span.joyas {
-  font-family: 'serif';
-  font-size: 18px;
-  color: rgba(107, 102, 99);
+  color: $blueSlate;
+  font-family: $secondary;
+  font-size: 14px;
   display: block;
 }
 
@@ -36,8 +37,8 @@ li a.navlink, button.navlink{
     // family: $primary;
     weight: $medium;
   }
-  &:hover {
-    color: $blueSlateHover;
+  &:hover, &:active, &:focus {
+    color: $ashBlue;
   }
 }
 

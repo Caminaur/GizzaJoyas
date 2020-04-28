@@ -31,6 +31,19 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/contacto', function() {
+  return view('contacto');
+});
+
+Route::get('/nosotros', function() {
+  return view('nosotros');
+});
+
+Route::post('/contacto', function(Request $request){
+  Mail::send(new ContactMail($request));
+  return redirect ('/');
+});
+
 Route::get('/test', function () {
     $size = Size::all();
     $category = Category::all()[3];

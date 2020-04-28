@@ -16,13 +16,17 @@
   scroll-behavior: smooth;
 }
 
-a, button {
-  transition: background-color 0.8s ease!important;
-	-webkit-transition: background-color 0.8s ease!important;
-  -o-transition: background-color 0.8s ease!important;
-  -moz-transition: background-color 0.8s ease!important;
-  &:hover {
-    text-decoration: none;
+:hover {
+  transition: 0.5s ease!important;
+	-webkit-transition: 0.5s ease!important;
+  -o-transition: 0.5s ease!important;
+  -moz-transition: 0.5s ease!important;
+  text-decoration: none;
+}
+
+.link {
+  &:hover, &:active, &:focus {
+    color: $ashBlue;
   }
 }
 
@@ -57,6 +61,7 @@ a, button {
 }
 
 .active {
+  color: $ashBlue!important;
   border-bottom: 2px solid $ashBlue;
   padding-bottom: 4px;
 }

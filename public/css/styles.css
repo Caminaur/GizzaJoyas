@@ -176,6 +176,22 @@ p {
   border-color: transparent;
 }
 
+.social.fab, .social.fas {
+  padding: 12px;
+  font-size: 13px;
+  width: 36px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+  background: #A6C2CE;
+  color: white;
+}
+
+.fab:hover, .fas:hover {
+  opacity: 0.7;
+}
+
 nav {
   min-height: 66px;
   background-color: transparent;
@@ -189,7 +205,8 @@ nav {
 }
 
 span.gizza {
-  font-family: "ondine";
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
   font-size: 40px;
   color: #6B799E;
   display: block;
@@ -197,9 +214,9 @@ span.gizza {
 }
 
 span.joyas {
-  font-family: "serif";
-  font-size: 18px;
-  color: #6b6663;
+  color: #6B799E;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
   display: block;
 }
 
@@ -209,8 +226,8 @@ li a.navlink, button.navlink {
   font-size: 15px;
   font-weight: 500;
 }
-li a.navlink:hover, button.navlink:hover {
-  color: #6b799ee8;
+li a.navlink:hover, li a.navlink:active, li a.navlink:focus, button.navlink:hover, button.navlink:active, button.navlink:focus {
+  color: #A6C2CE;
 }
 
 li a.burger, .uk-search .uk-search-icon, .uk-search-input {
@@ -243,8 +260,8 @@ a.footlink, span.footlink {
   font-size: 14px;
 }
 
-a.footlink:hover {
-  color: #333;
+a.footlink:hover, a.footlink:active, a.footlink:focus {
+  color: #A6C2CE;
 }
 
 .material-icons.md-dark {
@@ -470,6 +487,12 @@ input, textarea, select, button {
   font-size: 13px;
 }
 
+textarea {
+  border-top: 1px solid #6B799E;
+  border-bottom: 1px solid #6B799E;
+  width: 100%;
+}
+
 p, h1, h2, h3, h4, h5, h6, ul {
   /* margin: 0;  */
 }
@@ -594,7 +617,7 @@ select option[value=""][disabled] {
 
 button {
   margin: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -732,14 +755,16 @@ button:hover i, button:focus i, button:active i {
   scroll-behavior: smooth;
 }
 
-a, button {
-  transition: background-color 0.8s ease !important;
-  -webkit-transition: background-color 0.8s ease !important;
-  -o-transition: background-color 0.8s ease !important;
-  -moz-transition: background-color 0.8s ease !important;
-}
-a:hover, button:hover {
+:hover {
+  transition: 0.5s ease !important;
+  -webkit-transition: 0.5s ease !important;
+  -o-transition: 0.5s ease !important;
+  -moz-transition: 0.5s ease !important;
   text-decoration: none;
+}
+
+.link:hover, .link:active, .link:focus {
+  color: #A6C2CE;
 }
 
 .container-fluid {
@@ -774,6 +799,7 @@ a:hover, button:hover {
 }
 
 .active {
+  color: #A6C2CE !important;
   border-bottom: 2px solid #A6C2CE;
   padding-bottom: 4px;
 }

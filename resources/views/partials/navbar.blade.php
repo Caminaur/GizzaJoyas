@@ -51,8 +51,7 @@
             {{-- logo --}}
             <div>
 
-
-              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">Gizza</span></a>
+              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
 
             </div>
 
@@ -67,7 +66,7 @@
                   <li><a class="navlink hvr-underline-from-center {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel">Panel de Control</a></li>
                 @endif
 
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user"></i> {{auth::user()->name}} </a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user"></i> {{auth::user()->name}}</a></li>
                 <li class="nav-item">
                   <form class="" action="/logout" method="post">
                     @csrf
@@ -95,7 +94,7 @@
 
           </div>
 
-          {{-- 2do piso de la nav - space-between --}}
+          {{-- 2do piso de la nav - flex-center --}}
           <div class=" nav-categories uk-visible@m uk-flex uk-flex-center uk-flex-middle mt-3">
 
 
@@ -142,8 +141,8 @@
                   </div>
                 </li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('faqs') ? 'active' : '' }}" href="#asd1">Como comprar</a></li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="#asd2">Nosotros</a></li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="#asd2">Contactanos</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="/nosotros">Nosotros</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="/contacto">Contactanos</a></li>
               </ul>
 
 

@@ -15,13 +15,11 @@ a.footlink, span.footlink {
   color: $blueSlate;
   font: {
     size: $navLinkSmall;
-    // family: $primary;
-    // weight: $regular;
   }
 }
 
 a.footlink {
-  &:hover {
-    color: #333;
+  &:hover, &:active, &:focus {
+    color: $ashBlue;
   }
 }

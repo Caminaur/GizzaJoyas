@@ -1,11 +1,4 @@
 @extends('layouts.plantilla')
-@section('links')
-<!-- MATERIAL DESIGN ICONIC FONT -->
-<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-
-<!-- STYLE CSS -->
-<link rel="stylesheet" href="css/forms.css">
-@endsection
 @section('titulo')
 Registro
 @endsection
@@ -54,7 +47,15 @@ Registro
 					<button type="submit" class="btn bg-blueSlate">Registrarse
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+
+          {{-- <div class="text-left mt-3">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-facebook-f"></i>
+          </div> --}}
+
 				</form>
+
 			</div>
 		</div>
 
