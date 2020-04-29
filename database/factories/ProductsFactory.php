@@ -38,6 +38,7 @@ $factory->define(Product::class, function (Faker $faker) {
     $product->price = $random*$faker->numberBetween(2,7)*100;
     $product->onSale = $onSale;
     $product->discount = $discount;
+    $product->description = $faker->realText(200,2);
     $product->gender_id = $gender->random()->id;
     $product->category_id = $category->id;
     $product->age_id = $age->id;

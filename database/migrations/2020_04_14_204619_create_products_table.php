@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
           $table->integer('price');
           $table->boolean('onSale')->default(false);
           $table->integer('discount')->nullable();
-
+          $table->longText('description')->nullable();
           $table->bigInteger('gender_id')->unsigned()->nullable();
           $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null')->onUpdate('cascade');
 

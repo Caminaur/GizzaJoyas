@@ -10,7 +10,7 @@ class Product extends Model
 
   public function carts()
   {
-    return $this->hasMany("App\Cart", "product_id"); 
+    return $this->hasMany("App\Cart", "product_id");
   }
 
   public function images()
@@ -41,4 +41,8 @@ class Product extends Model
   {
     return $this->belongsTo("App\Material", "material_id");
   }
+  public function tags()
+    {
+        return $this->belongsToMany(Category::class, 'product_tags');
+    }
 }
