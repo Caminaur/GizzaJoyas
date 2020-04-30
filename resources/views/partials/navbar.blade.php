@@ -4,10 +4,10 @@
         <nav class="cbp-af-header uk-flex uk-flex-column" uk-navbar>
 
           {{-- 1er piso de la nav - between --}}
-          <div class="uk-flex uk-flex-middle uk-flex-between my-3">
+          <div class="uk-flex uk-flex-middle my-3" uk-grid >
 
             {{-- Searchs --}}
-            <div>
+            <div class="uk-width-2-5 uk-flex justify-content-start">
 
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
               <form class="uk-visible@m uk-search uk-search-default uk-margin-left">
@@ -49,14 +49,14 @@
             </div>
 
             {{-- logo --}}
-            <div class="pt-3">
+            <div class="uk-width-1-5 pt-3">
 
               <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
 
             </div>
 
             {{-- Lado derecho --}}
-            <div>
+            <div class="uk-width-2-5 uk-flex justify-content-end">
 
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
