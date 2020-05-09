@@ -74,8 +74,7 @@ EXTRAS:
 - Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
 - Trabajar en las notificaciones, que aparezcan por unos segundos con JS
 - Iconito del google maps de IL NATO
-- cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=9&t=0s
-- Recuperar password https://www.youtube.com/watch?v=rw48FfNvGz4&list=WL&index=4&t=0s
+- cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=2
 - Verificar email al crear cuenta https://www.youtube.com/watch?v=o_KhH2dZCKQ&list=WL&index=1
 - Confirm al eliminar productos (probar modals confirm https://getuikit.com/docs/modal)
 - Que la social bar se pueda volver a mostrar luego de ocultarla
@@ -92,10 +91,8 @@ Objetivo de la semana/s
 - Migraciones con los seeders
 - Hacer las factories para 50 productos genericos, distintas categorias talles etc (con al menos 1 imagen)
 - Arreglar la factory. Cuando la categoria del producto creado no tiene size, este no se crea
-- Auth
 - Add product
 - Navbar
-- Diseño de registro y inicio de sesion
 - slider relacionado *misma categoria (productos nuevos | productos relacionados | ofertas) 12 (4xslide)
 - Slider main productos nuevos & productos en oferta
 - Descripcion de producto individual

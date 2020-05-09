@@ -194,7 +194,7 @@ p {
 
 nav {
   min-height: 66px;
-  background-color: transparent;
+  background-color: white;
   position: relative;
 }
 
@@ -206,7 +206,7 @@ nav {
 
 span.gizza {
   letter-spacing: 2px;
-  font-family: "Playfair Display", serif;
+  font-family: "ondine";
   font-size: 40px;
   color: #6B799E;
   display: block;
@@ -216,7 +216,7 @@ span.gizza {
 span.joyas {
   color: #6B799E;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
 }
 
@@ -226,7 +226,7 @@ li a.navlink, button.navlink {
   font-size: 15px;
   font-weight: 500;
 }
-li a.navlink:hover, li a.navlink:active, li a.navlink:focus, button.navlink:hover, button.navlink:active, button.navlink:focus {
+li a.navlink:hover, li a.navlink:active, li a.navlink:focus, li a.navlink li:hover > a, button.navlink:hover, button.navlink:active, button.navlink:focus, button.navlink li:hover > a {
   color: #A6C2CE;
 }
 
@@ -240,6 +240,11 @@ button.navlink {
   border: none;
   margin-top: 0;
   margin-bottom: 0.5px;
+}
+
+/* La animacion de cambio */
+.cbp-af-header {
+  transition: all 0.4s;
 }
 
 footer {

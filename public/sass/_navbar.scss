@@ -2,7 +2,7 @@
 
 nav {
   min-height: 66px;
-  background-color: transparent;
+  background-color: white;
   position: relative;
 }
 
@@ -14,7 +14,7 @@ nav {
 
 span.gizza {
   letter-spacing: 2px;
-  font-family: $primary;
+  font-family: 'ondine';
   font-size: 40px;
   // color: rgba(107, 102, 99);
   color: $blueSlate;
@@ -25,7 +25,7 @@ span.gizza {
 span.joyas {
   color: $blueSlate;
   font-family: $secondary;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
 }
 
@@ -37,7 +37,7 @@ li a.navlink, button.navlink{
     // family: $primary;
     weight: $medium;
   }
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, li:hover > a {
     color: $ashBlue;
   }
 }
@@ -52,4 +52,13 @@ button.navlink {
   border: none;
   margin-top: 0;
   margin-bottom: 0.5px;
+}
+
+// Al achicharse la navbar van a presentarste estos valores
+
+/* La animacion de cambio */
+.cbp-af-header {
+  -webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }

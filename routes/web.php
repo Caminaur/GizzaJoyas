@@ -37,7 +37,7 @@ Route::get('/contacto', function() {
 
 Route::get('/nosotros', function() {
   return view('nosotros');
-});
+})->middleware('verified');
 
 Route::post('/contacto', function(Request $request){
   Mail::send(new ContactMail($request));
@@ -50,7 +50,7 @@ Route::get('/test', function () {
     dd(empty($category->sizes[0]));
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
