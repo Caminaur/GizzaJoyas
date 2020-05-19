@@ -53,7 +53,6 @@ h2 {
 h3 {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
-  letter-spacing: 2px;
 }
 
 h4 {
@@ -692,6 +691,10 @@ button:hover i, button:focus i, button:active i {
   .hiddenXS {
     display: none;
   }
+
+  .btn {
+    width: 120px;
+  }
 }
 @media (min-width: 530px) {
   .visibleSoloXS {
@@ -805,8 +808,71 @@ button:hover i, button:focus i, button:active i {
 
 .active {
   color: #A6C2CE !important;
-  border-bottom: 2px solid #A6C2CE;
+  border-bottom: 1px solid #A6C2CE;
   padding-bottom: 4px;
+}
+
+.sinOferta {
+  text-decoration: line-through;
+}
+
+.product {
+  border-bottom: 1px solid #A6C2CE;
+}
+.product:hover {
+  border-color: #6B799E;
+}
+
+.product-desc {
+  text-overflow: ellipsis;
+}
+
+.inside {
+  position: relative;
+  cursor: pointer;
+}
+
+.icons-product {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ico {
+  width: 34px;
+  height: 34px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.onSale-label {
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 96%;
+  height: 95%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sale {
+  background-color: #EBC57C;
+  padding: 0 7px;
+  border-radius: 11px;
+}
+
+.uk-iconnav > * > a.rounded-icon {
+  display: block;
+  color: #212529;
+  background-color: #ffffffb8;
+  padding: 7px;
+  border-radius: 20px;
 }
 
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */

@@ -5,6 +5,9 @@
     display: none;
   }
 
+  .btn {
+    width: $buttonWidth - 60px;
+  }
 }
 
 @media (min-width: 530px) {
@@ -20,13 +23,7 @@
 // @media (min-width: 576px) {}
 
 // S Small devices (landscape phones, less than 768px)
-@media (max-width: 768px) {
-
-  .btn {
-    // width: $buttonWidth - 20px;
-  }
-
-}
+// @media (max-width: 768px) {}
 
 // M Medium devices (tablets, less than 992px)
 @media (max-width: 992px) {

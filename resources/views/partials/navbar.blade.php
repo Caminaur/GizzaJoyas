@@ -63,14 +63,14 @@
 
               @if (Auth::user())
                 @if (Auth::user()->isAdmin == true)
-                  <li class="align-self-center"><a class="navlink hvr-underline-from-center {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel"><i class="fas fa-cog"></i></a></li>
+                  <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
                 @endif
 
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li>
+                <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li>
                 <li class="nav-item">
                   <form class="" action="/logout" method="post">
                     @csrf
-                    <button class="navlink hvr-underline-from-center" type="submit" name="button"><i class="fas fa-sign-out-alt"></i><span> Salir</span></button>
+                    <button class="navlink" type="submit" name="button">Salir</button>
                   </form>
                 </li>
 
@@ -101,7 +101,7 @@
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
                 <li>
-                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="#asd" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
+                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
                   <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
                       <div class="uk-navbar-dropdown-grid uk-child-width-1-3" uk-grid>
                           <div>

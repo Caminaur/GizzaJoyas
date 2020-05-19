@@ -3432,7 +3432,7 @@ select.uk-form-width-xsmall {
    Component: Overlay
  ========================================================================== */
 .uk-overlay {
-  padding: 30px 30px;
+  padding: 5px 30px;
 }
 /*
  * Remove margin from the last-child
@@ -3448,7 +3448,9 @@ select.uk-form-width-xsmall {
  * Default
  */
 .uk-overlay-default {
-  background: rgba(255, 255, 255, 0.8);
+  /* background: rgba(255, 255, 255, 0.8); */
+  /* background: #a6c2ceb5; */
+  background: #ebc57cbf;
 }
 /*
  * Primary
@@ -4132,7 +4134,7 @@ ul.uk-nav-sub {
 .uk-navbar-nav > li:hover > a,
 .uk-navbar-nav > li > a:focus,
 .uk-navbar-nav > li > a.uk-open {
-  color: #666;
+  color: #A6C2CE;
   outline: none;
 }
 /* OnClick */
@@ -5929,7 +5931,7 @@ ul.uk-nav-sub {
   /* 1 */
   display: block;
   /* 2 */
-  color: #999;
+  color: white;
 }
 /* Hover + Focus */
 .uk-iconnav > * > a:hover,

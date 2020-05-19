@@ -177,8 +177,8 @@
         		<h1 class="medium">Playfair Display H1 medium 32px</h1>
         		<h1 class="regular">Playfair Display H1 regular 32px</h1>
 
-            <h2 class="regular">Playfair Display H2 regular 24px</h2>
-            <h3 class="regular">Playfair Display H3 regular 18px</h3>
+            <h2 class="regular">Source Sans Pro H2 regular 24px</h2>
+            <h3 class="regular">Source Sans Pro H3 regular 18px</h3>
 
             <h4 class="bold">Source Sans Pro H4 bold 16px</h4>
         		<h4 class="regular">Source Sans Pro H4 regular 16px</h4>

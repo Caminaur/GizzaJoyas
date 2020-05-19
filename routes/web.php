@@ -39,6 +39,14 @@ Route::get('/nosotros', function() {
   return view('nosotros');
 })->middleware('verified');
 
+Route::get('/productos', function() {
+  return view('productos');
+});
+
+Route::get('/asd', function() {
+  return view('asd');
+});
+
 Route::post('/contacto', function(Request $request){
   Mail::send(new ContactMail($request));
   return redirect ('/');

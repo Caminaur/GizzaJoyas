@@ -10,9 +10,10 @@ Contactanos
 				<div class="image-holder align-self-center">
 					<img src="/img/necklaces/contact.jpg" alt="">
           <div class="text-center mt-3">
-            <i class="social fab fa-instagram"></i>
-            <i class="social fab fa-whatsapp"></i>
-            <i class="social fab fa-facebook-f"></i>
+            <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>
+            <a href="#"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+            <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
           </div>
 				</div>
 
