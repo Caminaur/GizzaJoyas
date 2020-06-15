@@ -37,6 +37,14 @@ Route::get('/contacto', function() {
 
 Route::get('/nosotros', function() {
   return view('nosotros');
+})->middleware('verified');
+
+Route::get('/productos', function() {
+  return view('productos');
+});
+
+Route::get('/asd', function() {
+  return view('asd');
 });
 
 Route::post('/contacto', function(Request $request){
@@ -50,7 +58,7 @@ Route::get('/test', function () {
     dd($category->sizes);
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Product
 Route::get('/addproduct', 'ProductController@index');

@@ -6,7 +6,9 @@ Gizza Joyas Home
 
 	<section id="hero" class="container-fluid">
 
-		<div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-background-cover uk-light uk-background-blend-darken" uk-height-viewport ="offset-top: true" data-src="img/extras/4.jpg" uk-img>
+		{{-- Imagen fija de fondo con 3 botones, un h1 y un h3 --}}
+
+		{{-- <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-background-cover uk-light uk-background-blend-darken" uk-height-viewport ="offset-top: true" data-src="img/extras/4.jpg" uk-img>
 			<h1 class="bold mb-3">Background Image</h1>
 			<h3 class="medium mb-5">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
 				<div class="">
@@ -15,7 +17,52 @@ Gizza Joyas Home
 				</div>
 
 			<a class="btn bg-blueSlate mt-1" href="#">Blue Slate</a>
-		</div>
+		</div> --}}
+
+		{{-- Slider Hero con 4 imagenes de fondo y cada una con su texto y boton --}}
+
+		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider autoplay="true">
+
+    <ul class="uk-slider-items uk-grid uk-height-max-large uk-flex-middle uk-background-cover">
+        <li class="uk-width-1-1">
+            <div class="uk-panel">
+                <img src="/img/extras/4.jpg" alt="">
+                <div class="uk-position-center uk-text-center px-2">
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
+									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
+									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+                </div>
+            </div>
+        </li>
+        <li class="uk-width-1-1">
+            <div class="uk-panel">
+                <img src="/img/extras/hero2.jpg" alt="">
+                <div class="uk-position-center uk-text-center px-2">
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
+									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
+									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+                </div>
+            </div>
+        </li>
+        <li class="uk-width-1-1">
+            <div class="uk-panel">
+                <img src="/img/extras/hero3.jpg" alt="">
+                <div class="uk-position-center uk-text-center px-2">
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
+									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
+									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+</div>
 
 	</section>
 

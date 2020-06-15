@@ -23,16 +23,24 @@ Recuperar Clave
       <h2 class="blueSlate bold text-center mb-4">RECUPERAR CLAVE</h2>
 
       <div class="form-wrapper">
-        <input id="email" value="{{ old('name') }}" type="email"  name="email" placeholder="Dirección de correo" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus required>
-        <i class="zmdi zmdi-email"></i>
-
-        @error('email')
-          <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-        @enderror
+        <input id="email" value="{{ old('name') }}" type="email"  name="email" placeholder="Dirección de correo" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus required>
+          @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+          @else
+            <i class="zmdi zmdi-email"></i>
+          @enderror
 
       </div>
+
+      @if (session('status'))
+        <h5 class="blueSlate" role="alert">
+          {{ session('status') }}
+        </h5>
+      @endif
+
+
 
       <h5 class="blueSlate">Enviaremos un enlace a tu correo para recuperar tu clave </h5>
 

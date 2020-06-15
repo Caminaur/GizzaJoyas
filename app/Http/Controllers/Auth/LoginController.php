@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Redirect; // Para poder redirigir a la pagina anterior al desloguear https://laracasts.com/discuss/channels/general-discussion/class-apphttpcontrollersredirect-not-found-1
 
 class LoginController extends Controller
 {
@@ -38,4 +40,22 @@ class LoginController extends Controller
       $this->redirectTo = session()->get('url.intended');
       $this->middleware('guest')->except('logout');
     }
+
+    // Para que nos redirija a la pagina anterior dsp de loguearnos tuve que pisar este metodo https://stackoverflow.com/questions/42326430/how-to-redirect-to-previous-page-after-successful-register-in-laravel
+    protected function redirectTo()
+    {
+    return url()->previous();
+    }
+
+    // Para poder redirigir a la pagina anterior al desloguear https://stackoverflow.com/questions/43585416/how-to-logout-and-redirect-to-login-page-using-laravel-5-4/43586975
+    public function logout(Request $request)
+    {
+    $this->guard()->logout();
+
+    $request->session()->invalidate();
+
+    return $this->loggedOut($request) ?: \Redirect::back();
+    }
+
+
 }

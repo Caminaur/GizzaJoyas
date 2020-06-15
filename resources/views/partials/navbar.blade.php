@@ -1,13 +1,13 @@
 {{-- Aqui comienza la navbar sticky --}}
 
         {{-- navbar principal --}}
-        <nav class="cbp-af-header uk-flex uk-flex-column" uk-navbar>
+        <nav class="uk-flex uk-flex-column" uk-navbar uk-sticky>
 
           {{-- 1er piso de la nav - between --}}
-          <div class="uk-flex uk-flex-middle uk-flex-between my-3">
+          <div id="firstrownav" class="uk-flex uk-flex-middle my-3" uk-grid >
 
             {{-- Searchs --}}
-            <div>
+            <div class="uk-width-1-3 uk-flex justify-content-start">
 
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
               <form class="uk-visible@m uk-search uk-search-default uk-margin-left">
@@ -49,28 +49,28 @@
             </div>
 
             {{-- logo --}}
-            <div class="pt-3">
+            <div class="uk-width-1-3 pt-3">
 
-              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="cbp-af-header gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
+              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
 
             </div>
 
             {{-- Lado derecho --}}
-            <div>
+            <div class="uk-width-1-3 uk-flex justify-content-end">
 
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
 
               @if (Auth::user())
                 @if (Auth::user()->isAdmin == true)
-                  <li><a class="navlink hvr-underline-from-center {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel">Panel de Control</a></li>
+                  <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
                 @endif
 
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user"></i> {{auth::user()->name}}</a></li>
+                <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li>
                 <li class="nav-item">
                   <form class="" action="/logout" method="post">
                     @csrf
-                    <button class="navlink hvr-underline-from-center" type="submit" name="button"><span> Cerrar Sesion</span></button>
+                    <button class="navlink" type="submit" name="button">Salir</button>
                   </form>
                 </li>
 
@@ -103,7 +103,7 @@
                 <li><a class="navlink blueSlate hvr-underline-from-center" href="/addproduct">Agregar producto</a></li>
                 <li><a class="navlink blueSlate hvr-underline-from-center" href="/editproduct/21">Editar producto</a></li>
                 <li>
-                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="#asd" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
+                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
                   <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
                       <div class="uk-navbar-dropdown-grid uk-child-width-1-3" uk-grid>
                           <div>

@@ -1,4 +1,4 @@
-<section class="m-5 uk-flex uk-flex-between uk-flex-middle">
+<section class="mx-5 mt-5 mb-2 uk-flex uk-flex-between uk-flex-middle">
 
   <div class="footer-div">
     <a class="uk-flex-column logo-footer" uk-scroll href="/"><span class="gizza">Gizza</span></a>
@@ -43,10 +43,10 @@
     <span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span>
 
     <div class="mt-3">
-      <i class="social fab fa-whatsapp"></i>
-      <i class="social fas fa-phone-alt"></i>
-      <i class="social fab fa-instagram"></i>
-      <i class="social fab fa-facebook-f"></i>
+      <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>
+      <a href="#"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+      <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
     </div>
   </div>
 
@@ -56,5 +56,5 @@
 
 <div class="uk-flex uk-flex-around pb-3">
   <span style="font-size: 10px;">Copyright ® Gizza Joyas-Relojes © <?php echo date("Y");?>.</span>
-  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="#" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="#" style="font-size: 10px;">Taten</a></span>
+  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="#" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="www.dakotadevelopers.com" style="font-size: 10px;">Taten</a></span>
 </div>
