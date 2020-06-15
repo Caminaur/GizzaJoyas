@@ -46,15 +46,58 @@ Route::post('/contacto', function(Request $request){
 
 Route::get('/test', function () {
     $size = Size::all();
-    $category = Category::all()[3];
-    dd(empty($category->sizes[0]));
+    $category = Category::all()->first();
+    dd($category->sizes);
 });
 
 Auth::routes();
 
+// Product
+Route::get('/addproduct', 'ProductController@index');
+Route::post('/addproduct', 'ProductController@store');
+Route::get('/deleteimage/{id}','ProductController@deleteImage');
+Route::post('/deleteproduct/{id}', 'ProductController@delete');
+Route::get('/editproduct/{id}', 'ProductController@editView');
+Route::put('/editproduct', 'ProductController@update');
+
+// Cateogry
+Route::get('/editcategory/{id}','CategoryController@editview');
+Route::put('/changeCategoryImage','CategoryController@imageUpdate');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/editcategory', 'CategoryController@categoryselection')->name('home');
 
+// Size
+Route::put('/editSize','SizeController@edit');
+Route::post('/deleteSize','SizeController@delete');
+Route::post('/addsize', 'SizeController@add');
 
+// Brand
+Route::get('/editbrands','BrandController@index');
+Route::put('/editbrand','BrandController@edit');
+Route::post('/addbrand','BrandController@store');
+Route::post('/deletebrand','BrandController@delete');
+
+// Colors
+Route::get('/editcolors','ColorController@index');
+Route::put('/editcolor','ColorController@edit');
+Route::post('/addcolor','ColorController@store');
+Route::post('/deletecolor','ColorController@delete');
+
+// Colors
+Route::get('/editgenders','GenderController@index');
+Route::put('/editgender','GenderController@edit');
+Route::post('/addgender','GenderController@store');
+Route::post('/deletegender','GenderController@delete');
+
+// Materials
+Route::get('/editmaterials','MaterialController@index');
+Route::put('/editmaterial','MaterialController@edit');
+Route::post('/addmaterial','MaterialController@store');
+Route::post('/deletematerial','MaterialController@delete');
+
+// Admin
+Route::get('/controlpanel','UserController@cpanel');
+Route::get('/searchproduct','ProductController@showallproducts');
 Route::get('/nav', function () {
     return view('probandoNav');
 });

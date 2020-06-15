@@ -17,10 +17,10 @@ class CreateCategorySizesTable extends Migration
             $table->bigIncrements('id');
 
             $table->bigInteger('size_id')->unsigned()->nullable();
-            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
 
             $table->bigInteger('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

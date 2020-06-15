@@ -100,6 +100,8 @@
 
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
+                <li><a class="navlink blueSlate hvr-underline-from-center" href="/addproduct">Agregar producto</a></li>
+                <li><a class="navlink blueSlate hvr-underline-from-center" href="/editproduct/21">Editar producto</a></li>
                 <li>
                   <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="#asd" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
                   <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
