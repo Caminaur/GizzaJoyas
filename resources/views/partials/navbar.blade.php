@@ -102,6 +102,7 @@
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
                 <li><a class="navlink blueSlate hvr-underline-from-center" href="/addproduct">Agregar producto</a></li>
                 <li><a class="navlink blueSlate hvr-underline-from-center" href="/editproduct/21">Editar producto</a></li>
+                <li><a class="navlink blueSlate hvr-underline-from-center" href="/controlpanel">Panel de control</a></li>
                 <li>
                   <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
                   <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">

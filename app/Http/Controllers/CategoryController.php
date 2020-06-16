@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\Size;
+use App\Tag;
 use Illuminate\Http\Request;
-
+use App\Category_tag;
 class CategoryController extends Controller
 {
   public function index(){
@@ -23,7 +24,8 @@ class CategoryController extends Controller
   public function editview($id){
     $category = Category::find($id);
     $sizes = $category->sizes->sortBy('name');
-    $vac = compact('category','sizes');
+    $tags = Tag::all();
+    $vac = compact('tags','category','sizes');
     return view('editcategoryform',$vac);
   }
   public function imageUpdate(Request $request){
@@ -61,5 +63,76 @@ class CategoryController extends Controller
   public function categoryselection(){
     $categories = Category::all();
     return view('selectcategory',compact('categories'));
+  }
+  public function deleteCategoryTag(Request $req){
+    $catag = Category_tag::where('category_id','=',$req->categoryId)
+                          ->where('tag_id','=',$req->tagId)
+                          ->get()[0];
+    $catag->delete();
+
+    return back();
+  }
+  public function createTag(Request $req){
+    $reglas = [
+      "name" => "required|string|min:2|max:30",
+      ];
+
+    $mensajes = [
+      "name.required" => "Debes ingresar un nombre para tu nuevo tag",
+      "name.string" => "Solo se aceptan letras y numeros para el nombre",
+      "name.min" => 'El nombre es muy corto',
+      "name.max" => "El nombre es muy largo",
+    ];
+    $this->validate($req, $reglas, $mensajes);
+
+    $tag = New Tag;
+    $tag->name = $req->name;
+    $tag->save();
+
+    $category_tags = New Category_tag;
+    $category_tags->tag_id = $tag->id;
+    $category_tags->category_id = $req->category_id;
+    $category_tags->save();
+
+    return back();
+  }
+  public function addTag(Request $req){
+    $reglas = [
+      "tagId" => "required",
+      "category_id" => "required",
+      ];
+
+    $mensajes = [
+      "tagId.required" => "No seleccionaste ningun tag",
+      "category_id.required" => "La categoria es obligatoria"
+    ];
+    $this->validate($req, $reglas, $mensajes);
+
+    $category_tags = New Category_tag;
+    $category_tags->category_id = $req->category_id;
+    $category_tags->tag_id = $req->tagId;
+    $category_tags->save();
+    return back();
+  }
+  public function changeName(Request $req){
+    $reglas = [
+      "category_name" => "required|string|min:2|max:30",
+      "category_id" => "required",
+      ];
+
+    $mensajes = [
+      "category_name.required" => "Debes ingresar un nombre para la categoria",
+      "category_name.string" => "Solo se aceptan letras y numeros para el nombre",
+      "category_name.min" => 'El nombre es muy corto',
+      "category_name.max" => "El nombre es muy largo",
+      "category_id.required" => "La categoria es obligatoria",
+    ];
+    $this->validate($req, $reglas, $mensajes);
+
+    $category = Category::find($req->category_id);
+    $category->name = $req->category_name;
+    $category->save();
+
+    return back();
   }
 }

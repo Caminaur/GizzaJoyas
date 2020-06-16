@@ -40,7 +40,6 @@ class ProductController extends Controller
     return view('addProductForm',$vac);
   }
   public function store(Request $request){
-        // dd($request->all());
         $reglas = [
           'title' => 'required|string|min:1|max:50',
           'price' => 'required|integer|min:50|max:150000',
@@ -400,7 +399,43 @@ class ProductController extends Controller
     $products = Product::paginate(16);
     $sizes = Size::all();
     $brands = Brand::all();
-    $vac = compact('products','brands','sizes');
+    $categories = Category::all();
+    $vac = compact('products','brands','sizes','categories');
     return view('/searchproduct',$vac);
   }
+  public function searchProductByName(Request $request)
+      {
+        $reglas = ['name' => 'required|min:1|max:50',];
+        $mensajes = ["name.required" => "Ingrese el nombre del producto",];
+        $this->validate($request, $reglas, $mensajes);
+
+        $products = Product::where('name', 'like', '%'. $request->name . '%')->orderBy('price','desc')->paginate(16);
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('/searchproduct', compact('products', 'request','brands','categories'));
+      }
+
+      public function searchProductByCategory(Request $request)
+      {
+        $reglas = ['category_id' => 'required|numeric',];
+        $mensajes = ["category_id.required" => "No enviaste ningun id de categoria","category_id.numeric" => "No enviaste un numero",];
+        $this->validate($request, $reglas, $mensajes);
+
+        $products = Product::where('category_id', 'like', '%'. $request->category_id . '%')->orderBy('price','desc')->paginate(16);
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('/searchproduct', compact('products', 'request','brands','categories'));
+      }
+
+      public function searchProductByBrand(Request $req)
+      {
+        $reglas = ['brand' => 'required|numeric',];
+        $mensajes = ["brand.required" => "No enviaste ningun id de marca","brand.numeric" => "No enviaste un numero",];
+        $this->validate($req, $reglas, $mensajes);
+
+        $products = Product::where('brand_id', 'like', '%'. $_GET['brand'] . '%')->orderBy('price','desc')->paginate(16);
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('/searchproduct', compact('products','brands','categories'));
+      }
 }

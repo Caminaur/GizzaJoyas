@@ -73,11 +73,21 @@ Route::get('/editcategory/{id}','CategoryController@editview');
 Route::put('/changeCategoryImage','CategoryController@imageUpdate');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/editcategory', 'CategoryController@categoryselection')->name('home');
+Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag');
+Route::post('/createtag','CategoryController@createTag');
+Route::post('/selecttag','CategoryController@addTag');
+Route::post('/changeName','CategoryController@changeName');
 
 // Size
 Route::put('/editSize','SizeController@edit');
 Route::post('/deleteSize','SizeController@delete');
 Route::post('/addsize', 'SizeController@add');
+
+// Tags
+Route::get('/edittags','TagController@index');
+Route::put('/edittag','TagController@edit');
+Route::post('/addTag', 'TagController@store');
+Route::post('/deletetag','TagController@delete');
 
 // Brand
 Route::get('/editbrands','BrandController@index');
@@ -91,12 +101,6 @@ Route::put('/editcolor','ColorController@edit');
 Route::post('/addcolor','ColorController@store');
 Route::post('/deletecolor','ColorController@delete');
 
-// Colors
-Route::get('/editgenders','GenderController@index');
-Route::put('/editgender','GenderController@edit');
-Route::post('/addgender','GenderController@store');
-Route::post('/deletegender','GenderController@delete');
-
 // Materials
 Route::get('/editmaterials','MaterialController@index');
 Route::put('/editmaterial','MaterialController@edit');
@@ -105,7 +109,12 @@ Route::post('/deletematerial','MaterialController@delete');
 
 // Admin
 Route::get('/controlpanel','UserController@cpanel');
-Route::get('/searchproduct','ProductController@showallproducts');
+
+Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
+Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');
+Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCategory');//->middleware('admin');
+Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
+
 Route::get('/nav', function () {
     return view('probandoNav');
 });

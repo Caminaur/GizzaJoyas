@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
+@section('titulo')
+Buscar producto
+@endsection
 @section('css')
 productos
 @endsection('css')
@@ -19,10 +22,14 @@ productos
             </div>
           </form>
 
-          <form class="search-bar" action="/searchproduct/searchModel" method="get">
+          <form class="search-bar" action="/searchproduct/searchCategory" method="get">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Buscar por modelo" name="model">
-
+              <select class="form-control" name="category_id">
+                <option value="">Seleccione una categoria</option>
+                @foreach ($categories as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+              </select>
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-ligth"><i class="fas fa-search"></i></button>
               </div>
@@ -60,7 +67,7 @@ productos
                     {{-- Este es el div ACTIVE del carousel, el que va a mostrarse al iniciar. ES OBLIGATORIO QUE EXISTA
                     para que fincione el carousel. Coloco la ruta de la imagen principal del producto, es decir, la de la posicion 0 --}}
                     <div class="carousel-item active">
-                        <a href="/producto/{{$product->id}}"><img src="/storage/{{$product->images->first()->path}}" class="d-block w-100" alt="..."> {{-- ALTERNATIVA{{$product->images[0]->path}} --}}
+                        <a href="/producto/{{$product->id}}"><img src="/{{$product->images->first()->path}}" class="d-block w-100" alt="..."> {{-- ALTERNATIVA{{$product->images[0]->path}} --}}
                     </div>
                     {{-- Luego, debo crear un carousel item por imagen del producto por lo tanto recorro las imagenes del mismo y busco sus rutas --}}
                     @foreach ($product->images as $image)
