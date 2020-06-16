@@ -13,13 +13,13 @@
 
 .italic {font-style: italic;}
 
-.ashBlue {color: $ashBlue;}
+.ashBlue {color: $ashBlue !important;}
 
-.doveGrey {color: $doveGrey;}
+.doveGrey {color: $doveGrey !important;}
 
-.dandelion {color: $dandelion;}
+.dandelion {color: $dandelion !important;}
 
-.blueSlate {color: $blueSlate;}
+.blueSlate {color: $blueSlate !important;}
 
 h1 {font-family: $primary;font-size: $h1FontSize; letter-spacing: $primarySpacing;}
 

@@ -27,24 +27,16 @@ Auth::routes();
 
 */
 
+// Home
+
 Route::get('/', function () {
     return view('index');
 });
 
+// Contacto
+
 Route::get('/contacto', function() {
   return view('contacto');
-});
-
-Route::get('/nosotros', function() {
-  return view('nosotros');
-})->middleware('verified');
-
-Route::get('/productos', function() {
-  return view('productos');
-});
-
-Route::get('/asd', function() {
-  return view('asd');
 });
 
 Route::post('/contacto', function(Request $request){
@@ -52,17 +44,48 @@ Route::post('/contacto', function(Request $request){
   return redirect ('/');
 });
 
-Route::get('/test', function () {
-    $size = Size::all();
-    $category = Category::all()[3];
-    dd(empty($category->sizes[0]));
-});
+
+// Nosotros
+
+Route::get('/nosotros', function() {
+  return view('nosotros');
+})->middleware('verified');
+
+// Auth
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/nav', function () {
     return view('probandoNav');
+});
+
+// Productos
+
+Route::get('/productos', function() {
+  return view('productos');
+});
+
+Route::get('/producto', function() {
+  return view('producto');
+});
+
+// Users
+
+// Categorias
+
+// FAQs
+
+// isAdmin
+
+Route::get('/adminpanel', function() {
+  return view('adminpanel');
+})->middleware('admin');
+
+// carts
+
+Route::get('/cart', function() {
+  return view('cart');
 });

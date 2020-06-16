@@ -81,7 +81,7 @@
 
               @endif
 
-                <li><a class="navlink" href="#asd2" offset="80" uk-scroll><span class="material-icons">local_mall</span></a></li>
+                <li><a class="navlink" href="/cart" offset="80"><span class="material-icons">local_mall</span></a></li>
               </ul>
 
               {{-- Menu hamburguesa, se muestra al bajar de 959px (M)--}}

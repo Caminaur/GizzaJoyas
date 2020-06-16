@@ -714,7 +714,7 @@ a.uk-link-reset,
 .uk-divider-small::after {
   content: "";
   display: inline-block;
-  width: 100px;
+  width: 100%;
   max-width: 100%;
   border-top: 1px solid #e5e5e5;
   vertical-align: top;
@@ -2923,7 +2923,7 @@ select.uk-form-width-xsmall {
 /* Sections
  ========================================================================== */
 .uk-card-body {
-  padding: 30px 30px;
+  padding: 10px 10px;
 }
 .uk-card-header {
   padding: 15px 30px;
@@ -2934,7 +2934,7 @@ select.uk-form-width-xsmall {
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-card-body {
-    padding: 40px 40px;
+    padding: 20px 20px;
   }
   .uk-card-header {
     padding: 20px 40px;
@@ -3014,7 +3014,7 @@ select.uk-form-width-xsmall {
 .uk-card-default .uk-card-title {
   color: #333;
 }
-.uk-card-default.uk-card-hover:hover {
+.uk-card-default.uk-card-hover:hover, .uk-card-default:hover {
   background-color: #fff;
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
 }
@@ -4712,18 +4712,18 @@ ul.uk-nav-sub {
  */
 .uk-slidenav {
   padding: 5px 10px;
-  color: rgba(102, 102, 102, 0.5);
+  color: white;
   transition: color 0.1s ease-in-out;
 }
 /* Hover + Focus */
 .uk-slidenav:hover,
 .uk-slidenav:focus {
-  color: rgba(102, 102, 102, 0.9);
+  color: white;
   outline: none;
 }
 /* OnClick */
 .uk-slidenav:active {
-  color: rgba(102, 102, 102, 0.5);
+  color: white;
 }
 /* Icon modifier
  ========================================================================== */
@@ -4789,7 +4789,7 @@ ul.uk-nav-sub {
   text-indent: 100%;
   overflow: hidden;
   white-space: nowrap;
-  border: 1px solid rgba(102, 102, 102, 0.4);
+  border: 1px solid #EBC57C;
   transition: 0.2s ease-in-out;
   transition-property: background-color, border-color;
 }
@@ -4807,7 +4807,7 @@ ul.uk-nav-sub {
 }
 /* Active */
 .uk-dotnav > .uk-active > * {
-  background-color: rgba(102, 102, 102, 0.6);
+  background-color: #EBC57C;
   border-color: transparent;
 }
 /* Modifier: 'uk-dotnav-vertical'

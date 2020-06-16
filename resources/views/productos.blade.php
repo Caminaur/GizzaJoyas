@@ -4,21 +4,28 @@ Productos
 @endsection
 @section('main')
 
-  <h1 class="medium text-center p-4">Categoria</h1>
+  <ul class="uk-breadcrumb px-4 py-2">
+    <li><a href="">Categorias</a></li>
+    <li><span class="dandelion">Anillos</span></li>
+  </ul>
+
+  <h1 class="medium text-center p-4">Anillos</h1>
 
   <section id="productos" class="container mb-5">
 
     <div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
 
       <div>
+
         <div class="product uk-text-center pb-4">
 
           <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
+            <a href="/producto">
             <img src="img/anillos.jpg" alt="">
             <img class="uk-transition-scale-up uk-position-cover" src="img/aros.jpg" alt="">
-            <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+            {{-- <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
               <p class="uk-h4 uk-margin-remove" style="color:white;">Ver más</p>
-            </div>
+            </div> --}}
 
             <div class="onSale-label">
               <ul class="">
@@ -26,20 +33,18 @@ Productos
               </ul>
             </div>
 
-
-
             {{-- Si sos admin ves iconos de edicion --}}
             <div class="uk-visible-toggle icons-product" tabindex="-1">
               <div class="uk-flex-center pt-3" uk-grid>
                 <div class="uk-width-auto">
-                    <ul class="uk-invisible-hover uk-iconnav">
-                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="#"><i class="hvr-icon far fa-heart"></i></a></li>
-                      <li><a class="rounded-icon ico hvr-icon-rotate" href="#"><span class="hvr-icon" uk-icon="icon: cart"></span></a></li>
+                    <ul class="uk-iconnav">
+                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/favoritos"><i class="hvr-icon far fa-heart"></i></a></li>
+                      <li><a class="rounded-icon ico hvr-icon-rotate" href="/cart"><span class="hvr-icon" uk-icon="icon: cart"></span></a></li>
                       @if (Auth::user())
                         @if (Auth::user()->isAdmin == true)
-                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="#"><span class="hvr-icon" uk-icon="icon: pencil"></span></a></li>
-                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="#"><span class="hvr-icon" uk-icon="icon: copy"></span></a></li>
-                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="#"><span class="hvr-icon" uk-icon="icon: trash"></span></a></li>
+                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/edit"><span class="hvr-icon" uk-icon="icon: pencil"></span></a></li>
+                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/copy"><span class="hvr-icon" uk-icon="icon: copy"></span></a></li>
+                      <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/delete"><span class="hvr-icon" uk-icon="icon: trash"></span></a></li>
                         @endif
                       @endif
                     </ul>
@@ -47,8 +52,7 @@ Productos
               </div>
             </div>
 
-
-
+            </a>
           </div>
 
           <h3 class="product-desc uk-margin-small-top mb-3">Collar Primavera</h3>

@@ -60,6 +60,10 @@
   filter: brightness(100%);
 }
 
+.ncursor {
+  pointer-events: none;
+}
+
 .active {
   color: $ashBlue!important;
   border-bottom: 1px solid $ashBlue;
@@ -92,8 +96,6 @@
   position: absolute;
   top: -10px;
   right: 5px;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: flex-end;
 }
@@ -130,6 +132,155 @@
   background-color: #ffffffb8;
   padding: 7px;
   border-radius: 20px;
+}
+
+// Vista producto
+
+.uk-slideshow [class*=uk-position-bottom] {
+  position: relative!important;
+}
+
+section.producto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+section.informacion {
+  max-width: 600px;
+  margin: 0px 20px;
+}
+
+section.imagenes-producto {
+  max-height: 450px;
+  max-width: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px #8080804f solid;
+}
+
+.tag {
+  color: black;
+  font-size: 10px;
+  border: 1px solid $dandelion;
+  padding: 2px 8px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+// Input Number customizado
+
+.number-input input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.number-input button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+  text-align: center;
+}
+
+.number-input.number-input {
+  border: 1px solid #ced4da;
+  width: 10rem;
+  border-radius: .25rem;
+}
+
+.number-input.number-input button {
+  width: 2.6rem;
+  height: .7rem;
+}
+
+.number-input.number-input button.minus {
+  padding-left: 10px;
+}
+
+.number-input.number-input button:before,
+.number-input.number-input button:after {
+  width: .7rem;
+  background-color: #495057;
+}
+
+.number-input.number-input input[type=number] {
+  max-width: 4rem;
+  padding: .5rem;
+  border: 1px solid #ced4da;
+  border-width: 0 1px;
+  font-size: 1rem;
+  height: 2rem;
+  color: #495057;
+}
+
+.def-number-input button:focus {
+  outline: none;
+}
+
+select {
+  -webkit-appearance: menulist;
+}
+
+select.talle {
+  width: 70px;
+  height: 34px;
+  border-radius: 0.25rem;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+}
+
+// Cart
+
+div.producto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: -webkit-center;
+  padding: 20px 0px;
+  border-top: 1px solid #e5e5e5;
+}
+
+img.cart-img {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+svg[data-svg=trash] {
+  margin-bottom: 3px;
 }
 
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */
