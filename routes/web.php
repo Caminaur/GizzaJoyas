@@ -74,15 +74,68 @@ Route::get('/producto', function() {
 
 // Users
 
-// Categorias
+Route::get('/test', function () {
+    $size = Size::all();
+    $category = Category::all()->first();
+    dd($category->sizes);
+});
 
 // FAQs
 
-// isAdmin
+// Product
+Route::get('/addproduct', 'ProductController@index');
+Route::post('/addproduct', 'ProductController@store');
+Route::get('/deleteimage/{id}','ProductController@deleteImage');
+Route::post('/deleteproduct/{id}', 'ProductController@delete');
+Route::get('/editproduct/{id}', 'ProductController@editView');
+Route::put('/editproduct', 'ProductController@update');
 
-Route::get('/adminpanel', function() {
-  return view('adminpanel');
-})->middleware('admin');
+// Cateogry
+Route::get('/editcategory/{id}','CategoryController@editview');
+Route::put('/changeCategoryImage','CategoryController@imageUpdate');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/editcategory', 'CategoryController@categoryselection')->name('home');
+Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag');
+Route::post('/createtag','CategoryController@createTag');
+Route::post('/selecttag','CategoryController@addTag');
+Route::post('/changeName','CategoryController@changeName');
+
+// Size
+Route::put('/editSize','SizeController@edit');
+Route::post('/deleteSize','SizeController@delete');
+Route::post('/addsize', 'SizeController@add');
+
+// Tags
+Route::get('/edittags','TagController@index');
+Route::put('/edittag','TagController@edit');
+Route::post('/addTag', 'TagController@store');
+Route::post('/deletetag','TagController@delete');
+
+// Brand
+Route::get('/editbrands','BrandController@index');
+Route::put('/editbrand','BrandController@edit');
+Route::post('/addbrand','BrandController@store');
+Route::post('/deletebrand','BrandController@delete');
+
+// Colors
+Route::get('/editcolors','ColorController@index');
+Route::put('/editcolor','ColorController@edit');
+Route::post('/addcolor','ColorController@store');
+Route::post('/deletecolor','ColorController@delete');
+
+// Materials
+Route::get('/editmaterials','MaterialController@index');
+Route::put('/editmaterial','MaterialController@edit');
+Route::post('/addmaterial','MaterialController@store');
+Route::post('/deletematerial','MaterialController@delete');
+
+// Admin
+Route::get('/controlpanel','UserController@cpanel');
+
+Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
+Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');
+Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCategory');//->middleware('admin');
+Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
 
 // carts
 
