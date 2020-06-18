@@ -52,6 +52,9 @@ productos
           </form>
         </div>
 
+        <div class="form-control">
+          <a href="/importexcel">Importar Excel de productos</a>
+        </div>
       </div>
 
     </div>
@@ -59,7 +62,7 @@ productos
         <div class="row">
           @foreach ($products as $product)
             <div class="padding col-6 col-md-4 col-lg-3">
-              <div class="producto">
+              <div class="">
                 {{-- Al id del carousel le concateno el id del producto que va a ser unico e irrepetible para que al cambiar la imagen
                 de un carousel no cambie la de todos. --}}
                 <div id="carouselExampleFade{{$product->id}}" class="carousel slide " data-ride="carousel" data-interval="false">

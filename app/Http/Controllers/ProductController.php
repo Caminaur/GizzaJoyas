@@ -17,6 +17,8 @@ use App\Material;
 use App\Size;
 use App\Gender;
 use App\Image;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 class ProductController extends Controller
 {
@@ -438,4 +440,9 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('/searchproduct', compact('products','brands','categories'));
       }
+  public function importExcel(){
+
+    return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
+
+  }
 }
