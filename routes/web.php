@@ -90,6 +90,7 @@ Route::post('/deleteproduct/{id}', 'ProductController@delete');
 Route::get('/editproduct/{id}', 'ProductController@editView');
 Route::put('/editproduct', 'ProductController@update');
 Route::get('/importexcel', 'ProductController@importExcel');
+Route::post('/updateprices', 'ProductController@updatePrice');
 
 // Cateogry
 Route::get('/editcategory/{id}','CategoryController@editview');

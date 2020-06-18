@@ -401,8 +401,9 @@ class ProductController extends Controller
     $products = Product::paginate(16);
     $sizes = Size::all();
     $brands = Brand::all();
+    $materials = Material::all();
     $categories = Category::all();
-    $vac = compact('products','brands','sizes','categories');
+    $vac = compact('products','brands','sizes','categories','materials');
     return view('/searchproduct',$vac);
   }
   public function searchProductByName(Request $request)
@@ -441,8 +442,50 @@ class ProductController extends Controller
         return view('/searchproduct', compact('products','brands','categories'));
       }
   public function importExcel(){
-
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
+  }
+  public function updatePrice(Request $req){
 
+    $reglas = [
+      'material_id' => 'min:0|max:20',
+      'category_id' => 'min:0|max:20',
+      'brand_id' => 'min:0|max:20',
+      'operacion' => 'required|string|max:10',
+      'percentage' => 'required',
+      ];
+
+    $mensajes = [
+      "material_id.integer" => "El material seleccionado es invalido",
+      "category_id.integer" => "La categoria seleccionada es invalida",
+      "brand_id.integer" => "La marca seleccionada es invalida",
+      "operacion.required" => "La operacion seleccionada es invalida",
+      "operacion.string" => "La operacion debe ser tipo texto",
+      "operacion.max" => "El nombre de la operacion es muy largo",
+      "percentage.required" => "El porcentaje es necesario",
+    ];
+
+    $this->validate($req, $reglas, $mensajes);
+
+    $products = Product::where($req->criterioDeBusqueda,'=',$req[$req->criterioDeBusqueda])->get();
+
+    if (empty($products)) {
+      return back()->with(['message','No hay ningun producto con las caracteristicas seleccionadas']);
+    }
+
+    $percentage = 1 + $req->percentage/100;
+
+    if ($req->operacion=='sum') {
+      foreach ($products as $product) {
+        $product->price = $product->price * $percentage;
+        $product->save();
+      }
+    }
+    if ($req->operacion=='rest') {
+      foreach ($products as $product) {
+        $product->price = $product->price / $percentage;
+        $product->save();
+      }
+    }
+    return back();
   }
 }
