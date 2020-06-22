@@ -143,7 +143,7 @@
                       </div>
                   </div>
                 </li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('faqs') ? 'active' : '' }}" href="#asd1">Como comprar</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('preguntas') ? 'active' : '' }}" href="/preguntas">Preguntas</a></li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="/nosotros">Nosotros</a></li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="/contacto">Contactanos</a></li>
               </ul>
