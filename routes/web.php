@@ -71,8 +71,17 @@ Route::get('/test', function () {
 });
 
 // FAQs
+Route::get('/preguntas', function() {
+  return view('preguntas');
+});
 
 // Product
+Route::get('/productos', function() {
+  return view('productos');
+});
+Route::get('/producto', function() {
+  return view('producto');
+});
 Route::get('/addproduct', 'ProductController@index');
 Route::post('/addproduct', 'ProductController@store');
 Route::get('/deleteimage/{id}','ProductController@deleteImage');
@@ -122,6 +131,12 @@ Route::get('/editmaterials','MaterialController@index');
 Route::put('/editmaterial','MaterialController@edit');
 Route::post('/addmaterial','MaterialController@store');
 Route::post('/deletematerial','MaterialController@delete');
+
+// Genders
+Route::get('/editgenders','GenderController@index');
+Route::put('/editgender','GenderController@edit');
+Route::post('/addgender','GenderController@store');
+Route::post('/deletegender','GenderController@delete');
 
 // Admin
 Route::get('/controlpanel','UserController@cpanel');
