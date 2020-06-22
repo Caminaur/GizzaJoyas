@@ -52,6 +52,69 @@ productos
           </form>
         </div>
 
+        <div class="form-control">
+          <a href="/importexcel">Importar Excel de productos</a>
+        </div>
+
+        <div class="">
+          <form class="" action="/updateprices" method="post">
+            @csrf
+            @if (Session::has('message'))
+              <p>{{$message->first()}}</p>
+            @endif
+            <div class="">
+              <label for="">Selecione el criterio de busqueda</label>
+              <div class="">
+                <label for="">Categoria</label>
+                <input id="radioCategory" type="radio" name="criterioDeBusqueda" value="category_id">
+              </div>
+              <div class="">
+                <label for="">Material</label>
+                <input id="radioMaterial" type="radio" name="criterioDeBusqueda" value="material_id">
+              </div>
+              <div class="">
+                <label for="">Marca</label>
+                <input id="radioBrand" type="radio" name="criterioDeBusqueda" value="brand_id">
+              </div>
+            </div>
+            <div id="categoryDiv" class="" hidden>
+              <label for="">Seleccione la categoria de los productos a modificar</label>
+              <select class="" name="category_id">
+                <option value="">Todas las categorias</option>
+                @foreach ($categories as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div id="materialDiv" class="" hidden>
+              <label for="">Seleccione el material de los productos a modificar</label>
+              <select class="" name="material_id">
+                <option value="">Todos las materiales</option>
+                @foreach ($materials as $material)
+                  <option value="{{$material->id}}">{{$material->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div id="brandDiv" class="" hidden>
+              <label for="">Seleccione la marca de los productos a modificar</label>
+              <select class="" name="brand_id">
+                <option value="">Todas las marcas</option>
+                @foreach ($brands as $brand)
+                  <option value="{{$brand->id}}">{{$brand->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="">
+              <label for="">Aumento</label>
+              <input type="radio" name="operacion" value="sum">
+              <label for="">Descuento</label>
+              <input type="radio" name="operacion" value="rest">
+            </div>
+            <label for="">Porcentaje</label>
+            <input type="number" min="0" name="percentage" value="">
+            <button class="btn-secondary btn"type="submit" name="">Enviar</button>
+          </form>
+        </div>
       </div>
 
     </div>
@@ -59,7 +122,7 @@ productos
         <div class="row">
           @foreach ($products as $product)
             <div class="padding col-6 col-md-4 col-lg-3">
-              <div class="producto">
+              <div class="">
                 {{-- Al id del carousel le concateno el id del producto que va a ser unico e irrepetible para que al cambiar la imagen
                 de un carousel no cambie la de todos. --}}
                 <div id="carouselExampleFade{{$product->id}}" class="carousel slide " data-ride="carousel" data-interval="false">
@@ -119,5 +182,32 @@ productos
         {{$products->links()}}
       </section>
   </div>
+  <script type="text/javascript">
+    window.addEventListener('load',function(){
 
+      categoryDiv = document.getElementById('categoryDiv');
+      materialDiv = document.getElementById('materialDiv');
+      brandDiv = document.getElementById('brandDiv');
+
+      radioCategory = document.getElementById('radioCategory');
+      radioMaterial = document.getElementById('radioMaterial');
+      radioBrand = document.getElementById('radioBrand');
+
+      radioCategory.addEventListener('click',function(){
+        materialDiv.setAttribute('hidden','true');
+        brandDiv.setAttribute('hidden','true');
+        categoryDiv.removeAttribute('hidden');
+      });
+      radioMaterial.addEventListener('click',function(){
+        categoryDiv.setAttribute('hidden','true');
+        brandDiv.setAttribute('hidden','true');
+        materialDiv.removeAttribute('hidden');
+      })
+      radioBrand.addEventListener('click',function(){
+        categoryDiv.setAttribute('hidden','true');
+        materialDiv.setAttribute('hidden','true');
+        brandDiv.removeAttribute('hidden');
+      })
+    })
+  </script>
 @endsection
