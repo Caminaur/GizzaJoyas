@@ -82,78 +82,29 @@ Productos
 
         </div>
       </div>
+      @foreach($products as $product)
+        <div class="uk-text-center">
+          <div class="product">
 
-      <div class="uk-text-center">
-        <div class="product">
+            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+              <a href="/producto/{{$product->id}}">
+                <img src="/storage/{{$product->images->first()->path}}" alt="">
+                @if(count($product->images)>1)
+                  <img class="uk-transition-scale-up uk-position-cover" src="/storage/{{$product->images[1]->path}}" alt="">
+                @endif
+                <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                    <p class="uk-h4 uk-margin-remove">Bottom</p>
+                </div>
+            </div>
+            <h3 class="uk-margin-small-top mb-3">{{$product->name}}</h3>
+            <div class="uk-flex uk-flex-center mb-3">
+              <h3 class="dandelion mx-1 sinOferta">{{$product->price}}</h3><h3 class="doveGrey mx-1">{{$product->price - ($product->price*$product->discount/100)}}</h3>
+              </a>
+            </div>
 
-          <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-              <img src="img/anillos.jpg" alt="">
-              <img class="uk-transition-scale-up uk-position-cover" src="img/aros.jpg" alt="">
-              <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                  <p class="uk-h4 uk-margin-remove">Bottom</p>
-              </div>
           </div>
-          <h3 class="uk-margin-small-top mb-3">Collar Primavera</h3>
-          <div class="uk-flex uk-flex-center mb-3">
-            <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
-          </div>
-
         </div>
-      </div>
-
-      <div class="uk-text-center">
-        <div class="product">
-
-          <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-              <img src="img/anillos.jpg" alt="">
-              <img class="uk-transition-scale-up uk-position-cover" src="img/aros.jpg" alt="">
-              <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                  <p class="uk-h4 uk-margin-remove">Bottom</p>
-              </div>
-          </div>
-          <h3 class="uk-margin-small-top mb-3">Collar Primavera</h3>
-          <div class="uk-flex uk-flex-center mb-3">
-            <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="uk-text-center">
-        <div class="product">
-
-          <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-              <img src="img/anillos.jpg" alt="">
-              <img class="uk-transition-scale-up uk-position-cover" src="img/aros.jpg" alt="">
-              <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                  <p class="uk-h4 uk-margin-remove">Bottom</p>
-              </div>
-          </div>
-          <h3 class="uk-margin-small-top mb-3">Collar Primavera</h3>
-          <div class="uk-flex uk-flex-center mb-3">
-            <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="uk-text-center">
-        <div class="product">
-
-          <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-              <img src="img/anillos.jpg" alt="">
-              <img class="uk-transition-scale-up uk-position-cover" src="img/aros.jpg" alt="">
-              <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                  <p class="uk-h4 uk-margin-remove">Bottom</p>
-              </div>
-          </div>
-          <h3 class="uk-margin-small-top mb-3">Collar Primavera</h3>
-          <div class="uk-flex uk-flex-center mb-3">
-            <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
-          </div>
-
-        </div>
-      </div>
+      @endforeach
 
     </div>
 
