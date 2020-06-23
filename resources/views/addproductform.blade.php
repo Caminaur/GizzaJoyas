@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
+@extends('layouts.plantilla')
+@section('titulo')
+Agregar Producto
+@endsection
+@section('main')
     <div class="container">
       <h2 class="col-md-4 offset-md-2 form-group">Agregar producto</h2>
       <form class="" action="/addproduct" method="post" enctype="multipart/form-data">
@@ -162,8 +159,6 @@
           @endforeach
         @endforeach
     </div>
-  </body>
-</html>
 <script type="text/javascript">
   window.addEventListener('load',function(){
 
@@ -291,3 +286,4 @@ onSale();
 
 })
 </script>
+@endsection
