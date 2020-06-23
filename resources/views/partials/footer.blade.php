@@ -6,28 +6,34 @@
     <span class="footlink text-center">Joyas y Relojes</span>
   </div>
 
-  <ul class="footer-ul">
-    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Link</a></li>
+  <ul class="footer-ul text-center">
+    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Productos</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Nosotros</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Aros</a></li>
+    <br>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Relojes</a></li>
   </ul>
 
-  <ul class="footer-ul">
-    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Link</a></li>
+  <ul class="footer-ul text-center">
+    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Ofertas</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Preguntas Frecuentes</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Pulseras</a></li>
+    <br>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Anillos</a></li>
   </ul>
 
-  <ul class="footer-ul">
-    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Link</a></li>
+  <ul class="footer-ul text-center">
+    <li class="px-2"><a class="footlink" href="#ourjob" offset="66" uk-scroll>Lo Nuevo</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#meetus" offset="66" uk-scroll>Contactanos</a></li>
     <br>
-    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Link</a></li>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Collares</a></li>
+    <br>
+    <li class="px-2"><a class="footlink" href="#ourprojects" offset="66" uk-scroll>Accesorios</a></li>
   </ul>
 
   {{-- <div class="footer-div">

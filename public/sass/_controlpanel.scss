@@ -1,0 +1,23 @@
+// Control Admin Panel
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+a.control {
+  padding: 14px;
+  margin: 10px;
+  background-color: $ashBlue;
+  border-radius: 11px;
+  color: white;
+}
+
+a.control:hover {
+  background: #404b46;
+}

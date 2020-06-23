@@ -4,13 +4,14 @@ Producto
 @endsection
 @section('main')
 
+  <ul class="uk-breadcrumb  px-4 py-2">
+    <li><a href="">Inicio</a></li>
+    <li><a href="">Anillos</a></li>
+    <li><span class="dandelion">Rainbow Blue Necklace</span></li>
+  </ul>
+
   <div class="uk-background-muted p-4">
 
-    <ul class="uk-breadcrumb  py-2">
-      <li><a href="">Inicio</a></li>
-      <li><a href="">Anillos</a></li>
-      <li><span class="dandelion">Rainbow Blue Necklace</span></li>
-    </ul>
 
     <section class="producto pb-4">
 

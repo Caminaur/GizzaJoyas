@@ -1,0 +1,20 @@
+// Cart
+
+div.producto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: -webkit-center;
+  padding: 20px 0px;
+  border-top: 1px solid #e5e5e5;
+}
+
+img.cart-img {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+svg[data-svg=trash] {
+  margin-bottom: 3px;
+}

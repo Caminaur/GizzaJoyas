@@ -28,7 +28,7 @@ Productos
             </div> --}}
 
             <div class="onSale-label">
-              <ul class="">
+              <ul>
                 <li class="sale"><h4>25% off</h4></li>
               </ul>
             </div>
@@ -56,6 +56,11 @@ Productos
           </div>
 
           <h3 class="product-desc uk-margin-small-top mb-3">Collar Primavera</h3>
+          <div class="new-label">
+            <ul>
+              <li class="new"><h4>Nuevo</h4></li>
+            </ul>
+          </div>
           <div class="uk-flex uk-flex-center mb-3">
             <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
           </div>

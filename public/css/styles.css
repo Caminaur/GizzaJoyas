@@ -688,6 +688,140 @@ button:hover i, button:focus i, button:active i {
     padding: 40px 0 30px;
   }
 }
+.uk-slideshow [class*=uk-position-bottom] {
+  position: relative !important;
+}
+
+section.producto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+section.informacion {
+  max-width: 600px;
+  margin: 0px 20px;
+}
+
+section.imagenes-producto {
+  max-height: 450px;
+  max-width: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px #8080804f solid;
+}
+
+.tag {
+  color: black;
+  font-size: 10px;
+  border: 1px solid #EBC57C;
+  padding: 2px 8px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.product {
+  border-bottom: 1px solid #A6C2CE;
+}
+.product:hover {
+  border-color: #6B799E;
+}
+
+.product-desc {
+  text-overflow: ellipsis;
+}
+
+.inside {
+  position: relative;
+  cursor: pointer;
+}
+
+.icons-product {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.onSale-label {
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 96%;
+  height: 95%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sale {
+  background-color: #EBC57C;
+  padding: 0 7px;
+  border-radius: 11px;
+}
+
+.new-label {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.new {
+  background-color: #6B799E;
+  padding: 0 7px;
+  border-radius: 11px;
+}
+
+.uk-iconnav > * > a.rounded-icon {
+  display: block;
+  color: #212529;
+  background-color: #ffffffb8;
+  padding: 7px;
+  border-radius: 20px;
+}
+
+div.producto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: -webkit-center;
+  padding: 20px 0px;
+  border-top: 1px solid #e5e5e5;
+}
+
+img.cart-img {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+svg[data-svg=trash] {
+  margin-bottom: 3px;
+}
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+a.control {
+  padding: 14px;
+  margin: 10px;
+  background-color: #A6C2CE;
+  border-radius: 11px;
+  color: white;
+}
+
+a.control:hover {
+  background: #404b46;
+}
+
 @media (max-width: 530px) {
   .hiddenXS {
     display: none;
@@ -821,93 +955,12 @@ button:hover i, button:focus i, button:active i {
   text-decoration: line-through;
 }
 
-.product {
-  border-bottom: 1px solid #A6C2CE;
-}
-.product:hover {
-  border-color: #6B799E;
-}
-
-.product-desc {
-  text-overflow: ellipsis;
-}
-
-.inside {
-  position: relative;
-  cursor: pointer;
-}
-
-.icons-product {
-  position: absolute;
-  top: -10px;
-  right: 5px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .ico {
   width: 34px;
   height: 34px;
   display: flex !important;
   justify-content: center;
   align-items: center;
-}
-
-.onSale-label {
-  color: white;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 96%;
-  height: 95%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.sale {
-  background-color: #EBC57C;
-  padding: 0 7px;
-  border-radius: 11px;
-}
-
-.uk-iconnav > * > a.rounded-icon {
-  display: block;
-  color: #212529;
-  background-color: #ffffffb8;
-  padding: 7px;
-  border-radius: 20px;
-}
-
-.uk-slideshow [class*=uk-position-bottom] {
-  position: relative !important;
-}
-
-section.producto {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-section.informacion {
-  max-width: 600px;
-  margin: 0px 20px;
-}
-
-section.imagenes-producto {
-  max-height: 450px;
-  max-width: 500px;
-  width: 100%;
-  object-fit: cover;
-  border-bottom: 1px #8080804f solid;
-}
-
-.tag {
-  color: black;
-  font-size: 10px;
-  border: 1px solid #EBC57C;
-  padding: 2px 8px;
-  margin: 2px;
-  border-radius: 10px;
 }
 
 .number-input input[type=number] {
@@ -1000,25 +1053,6 @@ select.talle {
   border-radius: 0.25rem;
   font-size: 14px;
   border: 1px solid #ced4da;
-}
-
-div.producto {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: -webkit-center;
-  padding: 20px 0px;
-  border-top: 1px solid #e5e5e5;
-}
-
-img.cart-img {
-  display: flex;
-  align-items: center;
-  width: 200px;
-}
-
-svg[data-svg=trash] {
-  margin-bottom: 3px;
 }
 
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */

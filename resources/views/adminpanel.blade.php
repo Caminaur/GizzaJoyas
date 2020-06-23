@@ -7,19 +7,17 @@ control
 @endsection('css')
 @section('main')
 
-  <div class="d-flex">
+  <div class="container text-center">
 
     <div class="controles">
-      <div class="">
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/addproduct">Agregar Producto</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/searchproduct">Editar Producto</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/editbrands">Agregar / Editar Marcas</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/editcategory">Buscar categoria</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/editcolors">Agregar / Editar Colores</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/editmaterials">Agregar / Editar Materiales</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/editgenders">Agregar / Editar Genero</a>
-        <a class="flex-row m-3 px-5 py-4 btn justify-content-center" style="width:80%;" href="/edittags">Agregar / Editar Tags</a>
-      </div>
+        <a class="control" href="/addproduct">Agregar Producto</a>
+        <a class="control" href="/searchproduct">Editar Producto</a>
+        <a class="control" href="/editbrands">Agregar / Editar Marcas</a>
+        <a class="control" href="/editcategory">Buscar categoria</a>
+        <a class="control" href="/editcolors">Agregar / Editar Colores</a>
+        <a class="control" href="/editmaterials">Agregar / Editar Materiales</a>
+        <a class="control" href="/editgenders">Agregar / Editar Genero</a>
+        <a class="control" href="/edittags">Agregar / Editar Tags</a>
     </div>
 
   </div>

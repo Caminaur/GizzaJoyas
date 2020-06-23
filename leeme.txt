@@ -99,4 +99,11 @@ Objetivo de la semana/s
 
 
 front-end
-- Alentizar con transition tanto background color como color
+- Terminar navbar / footer
+- Terminar vista Nosotros
+- Hacer vista adminpanel
+- Hacer vista Favoritos
+- Hacer vista Checkout
+- Hacer vista Perfil
+- Hacer vistas - edit/add
+- Hacer Email Templates

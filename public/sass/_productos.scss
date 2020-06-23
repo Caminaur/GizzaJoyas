@@ -1,0 +1,61 @@
+// Vista Productos
+
+.product {
+  border-bottom: 1px solid $ashBlue;
+    &:hover {
+      border-color: $blueSlate;
+    }
+}
+
+.product-desc {
+  text-overflow: ellipsis;
+}
+
+.inside {
+  position: relative;
+  cursor: pointer;
+}
+
+.icons-product {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+.onSale-label {
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 96%;
+  height: 95%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sale {
+  background-color: $dandelion;
+  padding: 0 7px;
+  border-radius: 11px;
+}
+
+.new-label {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.new {
+  background-color: $blueSlate;
+  padding: 0 7px;
+  border-radius: 11px;
+}
+
+.uk-iconnav > * > a.rounded-icon {
+  display: block;
+  color: #212529;
+  background-color: #ffffffb8;
+  padding: 7px;
+  border-radius: 20px;
+}

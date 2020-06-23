@@ -1,0 +1,33 @@
+// Vista producto
+
+.uk-slideshow [class*=uk-position-bottom] {
+  position: relative!important;
+}
+
+section.producto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+section.informacion {
+  max-width: 600px;
+  margin: 0px 20px;
+}
+
+section.imagenes-producto {
+  max-height: 450px;
+  max-width: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px #8080804f solid;
+}
+
+.tag {
+  color: black;
+  font-size: 10px;
+  border: 1px solid $dandelion;
+  padding: 2px 8px;
+  margin: 2px;
+  border-radius: 10px;
+}

@@ -63,7 +63,7 @@
 
               @if (Auth::user())
                 @if (Auth::user()->isAdmin == true)
-                  <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('adminpanel') ? 'active' : '' }}" href="/adminpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
+                  <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
                 @endif
 
                 <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li>
@@ -100,9 +100,6 @@
 
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
-                <li><a class="navlink blueSlate hvr-underline-from-center" href="/addproduct">Agregar producto</a></li>
-                <li><a class="navlink blueSlate hvr-underline-from-center" href="/editproduct/21">Editar producto</a></li>
-                <li><a class="navlink blueSlate hvr-underline-from-center" href="/controlpanel">Panel de control</a></li>
                 <li>
                   <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
                   <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
@@ -143,7 +140,7 @@
                       </div>
                   </div>
                 </li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('preguntas') ? 'active' : '' }}" href="/preguntas">Preguntas</a></li>
+                <li><a class="navlink hvr-underline-from-center {{ request()->is('preguntas') ? 'active' : '' }}" href="/preguntas">Preguntas Frecuentes</a></li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('nosotros') ? 'active' : '' }}" href="/nosotros">Nosotros</a></li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('contacto') ? 'active' : '' }}" href="/contacto">Contactanos</a></li>
               </ul>
