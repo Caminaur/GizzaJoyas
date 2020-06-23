@@ -12,14 +12,11 @@ Producto
 
   <div class="uk-background-muted p-4">
 
-<<<<<<< HEAD
-=======
     <ul class="uk-breadcrumb  py-2">
       <li><a href="">Inicio</a></li>
       <li><a href="">{{$product->category->name}}</a></li>
       <li><span class="dandelion">Rainbow Blue Necklace</span></li>
     </ul>
->>>>>>> c8819c47021e06e83f6af83c65e17017cbe306c2
 
     <section class="producto pb-4">
 
