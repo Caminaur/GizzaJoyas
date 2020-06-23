@@ -442,25 +442,18 @@ class ProductController extends Controller
         return view('/searchproduct', compact('products','brands','categories'));
       }
   public function importExcel(){
+    // https://docs.laravel-excel.com/3.1/getting-started/
+    // https://phpspreadsheet.readthedocs.io/
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
   }
   public function updatePrice(Request $req){
-
     $reglas = [
-      'material_id' => 'min:0|max:20',
-      'category_id' => 'min:0|max:20',
-      'brand_id' => 'min:0|max:20',
-      'operacion' => 'required|string|max:10',
+      'operacion' => 'required',
       'percentage' => 'required',
       ];
 
     $mensajes = [
-      "material_id.integer" => "El material seleccionado es invalido",
-      "category_id.integer" => "La categoria seleccionada es invalida",
-      "brand_id.integer" => "La marca seleccionada es invalida",
       "operacion.required" => "La operacion seleccionada es invalida",
-      "operacion.string" => "La operacion debe ser tipo texto",
-      "operacion.max" => "El nombre de la operacion es muy largo",
       "percentage.required" => "El porcentaje es necesario",
     ];
 

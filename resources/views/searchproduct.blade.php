@@ -59,9 +59,6 @@ productos
         <div class="">
           <form class="" action="/updateprices" method="post">
             @csrf
-            @if (Session::has('message'))
-              <p>{{$message->first()}}</p>
-            @endif
             <div class="">
               <label for="">Selecione el criterio de busqueda</label>
               <div class="">
