@@ -85,11 +85,13 @@ Route::get('/producto', function() {
 Route::get('/addproduct', 'ProductController@index');
 Route::post('/addproduct', 'ProductController@store');
 Route::get('/deleteimage/{id}','ProductController@deleteImage');
-Route::post('/deleteproduct/{id}', 'ProductController@delete');
+Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
 Route::get('/editproduct/{id}', 'ProductController@editView');
 Route::put('/editproduct', 'ProductController@update');
 Route::get('/importexcel', 'ProductController@importExcel');
 Route::post('/updateprices', 'ProductController@updatePrice');
+Route::get('/productos', 'ProductController@products');
+Route::get('/producto/{id}', 'ProductController@product');
 
 // Cateogry
 Route::get('/editcategory/{id}','CategoryController@editview');

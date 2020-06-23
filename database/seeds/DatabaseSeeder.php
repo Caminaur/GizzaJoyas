@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MaterialsSeeder::class);
         $this->call(Payment_platformsSeeder::class);
         $this->call(TagsSeeder::class);
-        $this->call(ProductsSeeder::class);
+        // $this->call(ProductsSeeder::class);
         $this->call(AdminSeeder::class);
     }
 }

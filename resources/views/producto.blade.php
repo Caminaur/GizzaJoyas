@@ -12,6 +12,14 @@ Producto
 
   <div class="uk-background-muted p-4">
 
+<<<<<<< HEAD
+=======
+    <ul class="uk-breadcrumb  py-2">
+      <li><a href="">Inicio</a></li>
+      <li><a href="">{{$product->category->name}}</a></li>
+      <li><span class="dandelion">Rainbow Blue Necklace</span></li>
+    </ul>
+>>>>>>> c8819c47021e06e83f6af83c65e17017cbe306c2
 
     <section class="producto pb-4">
 
@@ -22,42 +30,24 @@ Producto
           	{{-- <div class="uk-card uk-card-body uk-card-default"> --}}
           		<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 350; max-height: 350">
                 <ul class="uk-slideshow-items" uk-lightbox>
-                  <li>
-                    <a href="/img/anillos.jpg" data-caption="0">
-                      <img src="img/anillos.jpg" alt="" uk-cover>
-						        </a>
-          				</li>
-                	<li>
-                    <a href="/img/pulseras.jpg" data-caption="1">
-          						<img src="/img/pulseras.jpg" alt="" uk-cover>
-          					</a>
-          				</li>
-                  <li>
-                    <a href="/img/aros.jpg" data-caption="2">
-          						<img src="/img/aros.jpg" alt="" uk-cover>
-          					</a>
-          				</li>
+                  @for ($i = 0; $i < count($product->images); $i++)
+                    <li>
+                      <a href="/storage/{{$product->images[$i]->path}}" data-caption="{{$i}}">
+                        <img src="/storage/{{$product->images[$i]->path}}" alt="" uk-cover>
+                      </a>
+                    </li>
+                  @endfor
           			</ul>
 
           			<div class="uk-position-bottom-center uk-position-small">
                 	<ul class="uk-thumbnav">
-                    <li uk-slideshow-item="0">
-          						<a href="#">
-          							<img src="/img/anillos.jpg" width="60">
-          						</a>
-          					</li>
-
-          					<li uk-slideshow-item="1">
-          						<a href="#">
-          							<img src="/img/pulseras.jpg" width="60">
-          						</a>
-          					</li>
-
-          					<li uk-slideshow-item="2">
-          						<a href="#">
-          							<img src="/img/aros.jpg" width="60">
-          						</a>
-          					</li>
+                    @for ($i = 0; $i < count($product->images); $i++)
+                      <li uk-slideshow-item="{{ $i }}">
+            						<a href="/storage/{{$product->images[$i]->path}}">
+            							<img src="/storage/{{$product->images[$i]->path}}" width="60">
+            						</a>
+            					</li>
+                    @endfor
           				</ul>
               	</div>
           		</div>
@@ -71,11 +61,14 @@ Producto
       <section class="informacion">
 
         <div class="detalles-producto">
-          <h1 class="bold">Rainbow Blue Necklace</h1>
-          <h2 class="blueSlate">$1.500</h2>
-          <h3 style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
-          <h3>Estas viendo <a href="/anillos" class="blueSlate">Anillos</span></h3>
-          <a href="#" class="tag">Inoxidable</a><a href="" class="tag">Acero</a><a href="" class="tag">Garantia</a>
+          <h1 class="bold">{{ $product->name }}</h1>
+          <h2 class="blueSlate">{{$product->price - ($product->price*$product->discount/100)}}</h2>
+          <h3 style="text-align:justify;">{{ $product->description }}</h3>
+          <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>
+          @foreach ($product->tags as $tag)
+            <a href="#" class="tag">{{ $tag->name }}</a>
+          @endforeach
+          <a href="" class="tag">Garantia</a>
         </div>
 
         <div class="detalles-compra pt-3">
@@ -85,9 +78,9 @@ Producto
             <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
           </div>
           <select class="talle" name="">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
+            @foreach ($product->category->sizes as $size)
+              <option value="{{ $size->name }}">{{ $size->name }}</option>
+            @endforeach
           </select>
           <br>
           <button class="btn bg-dandelion" type="submit" name="button">Comprar</button>

@@ -488,4 +488,18 @@ class ProductController extends Controller
     }
     return back();
   }
+  public function products(){
+    $products = Product::all();
+    $vac = compact('products');
+    return view('productos',$vac);
+  }
+  public function product($id){
+    $product = Product::find($id);
+    return view('producto',compact('product'));
+  }
+  public function deleteproduct($id){
+    $product = Product::find($id);
+    $product->delete();
+    return back();
+  }
 }
