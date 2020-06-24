@@ -147,7 +147,7 @@ Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCa
 Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
 
 // carts
-
-Route::get('/cart', function() {
-  return view('cart');
-});
+Route::get('/cart','CartController@index');
+Route::post('/cart','CartController@addToCart');
+Route::get('/deletecart/{id}','CartController@deleteOneCart');
+Route::get('/deletecarts','CartController@deleteAllCarts');
