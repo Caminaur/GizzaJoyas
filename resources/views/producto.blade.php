@@ -12,12 +12,6 @@ Producto
 
   <div class="uk-background-muted p-4">
 
-    <ul class="uk-breadcrumb  py-2">
-      <li><a href="">Inicio</a></li>
-      <li><a href="">{{$product->category->name}}</a></li>
-      <li><span class="dandelion">Rainbow Blue Necklace</span></li>
-    </ul>
-
     <section class="producto pb-4">
 
       <section class="imagenes-producto mb-4">

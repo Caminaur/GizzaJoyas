@@ -107,3 +107,10 @@ front-end
 - Hacer vista Perfil
 - Hacer vistas - edit/add
 - Hacer Email Templates
+- Crear Paginador
+
+Back-end
+- Reusable Functions (get real price, hasStock).
+- Logica carrito/favoritos.
+- Contador carrito y favoritos.
+

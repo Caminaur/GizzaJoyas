@@ -906,6 +906,20 @@ a.control:hover {
   text-decoration: none;
 }
 
+.sticky-notification {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+  background-color: #A6C2CE;
+  color: white;
+  border: none;
+}
+
+.notification-error {
+  background-color: red;
+}
+
 .link:hover, .link:active, .link:focus {
   color: #A6C2CE;
 }

@@ -30,6 +30,19 @@
 
     <main id="main">
 
+      {{-- Notificaciones --}}
+      @if (session('status'))
+        <div class="wow animated fadeInDown alert alert-success sticky-notification">
+          {{session('status')}}
+        </div>
+      @endif
+
+      @if (session('error'))
+        <div class="wow animated fadeInDown alert alert-success sticky-notification notification-error">
+          {{session('error')}}
+        </div>
+      @endif
+
 
       @yield('main')
 

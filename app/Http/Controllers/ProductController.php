@@ -461,8 +461,8 @@ class ProductController extends Controller
 
     $products = Product::where($req->criterioDeBusqueda,'=',$req[$req->criterioDeBusqueda])->get();
 
-    if (empty($products)) {
-      return back()->with(['message','No hay ningun producto con las caracteristicas seleccionadas']);
+    if ($products->first()===null) {
+      return back()->with('error', 'Modificación Fallida');
     }
 
     $percentage = 1 + $req->percentage/100;
@@ -479,7 +479,7 @@ class ProductController extends Controller
         $product->save();
       }
     }
-    return back();
+    return back()->with('status', 'Modificación exitosa');
   }
   public function products(){
     $products = Product::all();
