@@ -103,7 +103,7 @@ Edit product
                 @if ($product->onSale==0)
                   <div hidden id="discount" @if (old('onSale') == 1) class="col-md-4 form-group" @else class="col-md-4 form-group" @endif>
                     <label>Descuento</label>
-                    <input id="inputDiscount" class="form-control" type="number" name="discount" max="80" step="5" @if (old('discount') !== null) value="{{ old('discount') }}" @else value="" @endif >
+                    <input id="inputDiscount" class="form-control" type="number" name="discount" max="80" step="5" @if (old('discount') !== null) value="{{ $product->discount }}" @else value="" @endif >
                       @error('discount')
                         <p class="errorForm">{{ $message }}</p>
                       @enderror

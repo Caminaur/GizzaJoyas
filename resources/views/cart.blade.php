@@ -15,59 +15,35 @@ Carrito de compras
     <h2 class="text-center">Carrito de compras</h2>
     <br>
     <div class="productos">
-
-      <div class="producto row">
-        <div class="img col-12 col-lg-4">
-          {{-- Como imagen del producto en el carrito utilizo la primera --}}
-          <img class="cart-img" src="/img/anillos.jpg" alt="Imagen de producto">
-        </div>
-
-        <div class="py-2 col-12 col-lg-2">
-          <span>Collar Primavera</span>
-        </div>
-
-        <div class="product-info col-12 col-lg-6">
-          <span class="p-2">$1.500 c/u</span>
-          <div class="def-number-input number-input safari_only d-inline-flex">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-            <input class="quantity" min="0" name="quantity" value="2" type="number">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+      @foreach ($carts as $cart)
+        <div class="producto row">
+          <div class="img col-12 col-lg-4">
+            {{-- Como imagen del producto en el carrito utilizo la primera --}}
+            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
           </div>
-          <span class="p-2">$3.000</span>
-          <span class="hvr-icon" uk-icon="icon: trash"></span>
-        </div>
 
-      </div> {{-- producto --}}
-
-      <div class="producto row">
-        <div class="img col-12 col-lg-4">
-          {{-- Como imagen del producto en el carrito utilizo la primera --}}
-          <img class="cart-img" src="/img/anillos.jpg" alt="Imagen de producto">
-        </div>
-
-        <div class="py-2 col-12 col-lg-2">
-          <span>Collar</span>
-        </div>
-
-        <div class="product-info col-12 col-lg-6">
-          <span class="p-2">$1.000 c/u</span>
-          <div class="def-number-input number-input safari_only d-inline-flex">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-            <input class="quantity" min="0" name="quantity" value="4" type="number">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+          <div class="py-2 col-12 col-lg-2">
+            <span>{{$cart->product->name}}</span>
           </div>
-          <span class="p-2">$4.000</span>
-          <span class="hvr-icon" uk-icon="icon: trash"></span>
-        </div>
 
-      </div> {{-- producto --}}
-
-      </div> {{-- producto --}}
-
+          <div class="product-info col-12 col-lg-6">
+            <span class="p-2">${{$cart->product->price}} c/u</span>
+            <div class="def-number-input number-input safari_only d-inline-flex">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
+              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            </div>
+            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
+            <a href="/deletecart/{{$cart->id}}">
+              <span class="hvr-icon" uk-icon="icon: trash"></span>
+            </a>
+          </div>
+        </div> {{-- producto --}}
+      @endforeach
     </div> {{-- productos --}}
 
     <hr class="uk-divider-small">
-    <a class="m-3" href="#">Vaciar carrito</a>
+    <a class="m-3" href="/deletecarts">Vaciar carrito</a>
 
     <br>
     <h2 class="text-center">Subtotal: $7.000</h2>
@@ -78,5 +54,13 @@ Carrito de compras
 
 
   </div>
-
+<script type="text/javascript">
+  window.addEventListener('load',function(){
+    var sumas = document.querySelector('.sumar')
+    var restas = document.querySelector('.restar')
+    sumas.addEventListener('click',function(){
+      this.parentNode.querySelector
+    })
+  })
+</script>
 @endsection

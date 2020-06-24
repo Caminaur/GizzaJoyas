@@ -19,10 +19,11 @@ use App\Gender;
 use App\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
+use App\Traits\ReusableFunctions;
 
 class ProductController extends Controller
 {
-
+  use ReusableFunctions;
   public function index(){
     $colors = Color::all();
     $brands = Brand::all();
@@ -223,13 +224,10 @@ class ProductController extends Controller
     return view('/editproduct', $vac);
   }
   public function update(Request $request){
-    // dd($request->all());
     $reglas = [
       'title' => 'required|string|min:1|max:50',
       'price' => 'required|integer|min:50|max:150000',
       'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
-      'gender_id' => 'required',
-      'brand_id' => 'required',
       'description' => 'string|max:200',
       "images" => "array|min:1",
       "images.*" => 'image|mimes:jpg,jpeg,png|max:2048',
@@ -483,7 +481,8 @@ class ProductController extends Controller
   }
   public function products(){
     $products = Product::all();
-    $vac = compact('products');
+    $categories = Category::all();
+    $vac = compact('products','categories');
     return view('productos',$vac);
   }
   public function product($id){

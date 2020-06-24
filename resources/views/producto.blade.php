@@ -50,32 +50,37 @@ Producto
       </section>
 
       <section class="informacion">
-
         <div class="detalles-producto">
-          <h1 class="bold">{{ $product->name }}</h1>
-          <h2 class="blueSlate">{{$product->price - ($product->price*$product->discount/100)}}</h2>
-          <h3 style="text-align:justify;">{{ $product->description }}</h3>
-          <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>
-          @foreach ($product->tags as $tag)
-            <a href="#" class="tag">{{ $tag->name }}</a>
-          @endforeach
-          <a href="" class="tag">Garantia</a>
-        </div>
+          <form class="" action="/cart" method="post">
+              @csrf
+              <input type="hidden" name="product_id" value="{{ $product->id }}">
+              <input type="hidden" name="" value="">
+              <input type="hidden" name="" value="">
+              <h1 class="bold">{{ $product->name }}</h1>
+              <h2 class="blueSlate">{{$product->price - ($product->price*$product->discount/100)}}</h2>
+              <h3 style="text-align:justify;">{{ $product->description }}</h3>
+              <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>
+                @foreach ($product->tags as $tag)
+                  <a href="#" class="tag">{{ $tag->name }}</a>
+                @endforeach
+                <a href="" class="tag">Garantia</a>
+              </div>
 
-        <div class="detalles-compra pt-3">
-          <div class="def-number-input number-input safari_only d-inline-flex">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-            <input class="quantity" min="0" name="quantity" value="1" type="number">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-          </div>
-          <select class="talle" name="">
-            @foreach ($product->category->sizes as $size)
-              <option value="{{ $size->name }}">{{ $size->name }}</option>
-            @endforeach
-          </select>
-          <br>
-          <button class="btn bg-dandelion" type="submit" name="button">Comprar</button>
-        </div>
+              <div class="detalles-compra pt-3">
+                <div class="def-number-input number-input safari_only d-inline-flex">
+                  <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                  <input id="quantity" class="quantity" min="0" name="quantity" value="1" type="number">
+                  <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+                <select class="size" name="size_id">
+                  @foreach ($product->category->sizes as $size)
+                    <option value="{{ $size->id }}">{{ $size->name }}</option>
+                  @endforeach
+                </select>
+                <br>
+                <button class="btn bg-dandelion" type="submit">Comprar</button>
+              </div>
+          </form>
 
         <div class="share py-4">
           <h5>Te gusta el producto? compartilo con tus amigos en las redes</h5>
