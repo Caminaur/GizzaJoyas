@@ -10,10 +10,13 @@ use App\Cart;
 
 class CartController extends Controller
 {
-  public function index(){
+  // Mostramos los carritos que pertenezcan al mismo usuario
+  public function show(){
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
     return view('cart',compact('carts'));
   }
+
+    // Agregamos al carrito el producto elegido
   public function addToCart(Request $req){
 
     $product = Product::find($req->product_id);
@@ -63,11 +66,15 @@ class CartController extends Controller
       return redirect('/cart');
     }
   }
+
+  // Borramos el producto elegido
   public function deleteOneCart($id){
     $cart = Cart::find($id);
     $cart->delete();
     return back();
   }
+  
+  // Borramos todos los productos del usuario
   public function deleteAllCarts(){
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
     foreach ($carts as $cart) {

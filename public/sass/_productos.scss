@@ -34,6 +34,12 @@
   justify-content: flex-start;
 }
 
+img.producto {
+  height: 230px;
+  width: 100%!important;
+  object-fit: contain;
+}
+
 .sale {
   background-color: $dandelion;
   padding: 0 7px;

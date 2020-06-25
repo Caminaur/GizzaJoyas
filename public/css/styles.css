@@ -755,6 +755,12 @@ section.imagenes-producto {
   justify-content: flex-start;
 }
 
+img.producto {
+  height: 230px;
+  width: 100% !important;
+  object-fit: contain;
+}
+
 .sale {
   background-color: #EBC57C;
   padding: 0 7px;

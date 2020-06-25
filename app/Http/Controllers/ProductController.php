@@ -24,7 +24,9 @@ use App\Traits\ReusableFunctions;
 class ProductController extends Controller
 {
   use ReusableFunctions;
-  public function index(){
+
+  // Se muestra un form con los campos vacios para agregar un producto
+  public function new(){
     $colors = Color::all();
     $brands = Brand::all();
     $ages = Age::all();
@@ -42,7 +44,17 @@ class ProductController extends Controller
 
     return view('addProductForm',$vac);
   }
+  // Traemos todos los productos con sus categorias
+  public function products(){
+    $products = Product::all();
+    $categories = Category::all();
+    $vac = compact('products','categories');
+    return view('productos',$vac);
+  }
+
+  // agrega un producto y te redirige a la lista de productos
   public function store(Request $request){
+    dd($request->all());
         $reglas = [
           'title' => 'required|string|min:1|max:50',
           'price' => 'required|integer|min:50|max:150000',
@@ -203,7 +215,15 @@ class ProductController extends Controller
           ->with('status', 'Producto creado exitosamente!!!')
           ->with('operation', 'success');
       }
-  public function editView($id){
+
+  // se muestran los datos del producto elegido
+  public function product($id){
+        $product = Product::find($id);
+        return view('producto',compact('product'));
+      }
+
+  // se muestran los datos del producto elegido listo para editar
+  public function edit($id){
     $colors = Color::all();
     $brands = Brand::all();
     $ages = Age::all();
@@ -223,6 +243,8 @@ class ProductController extends Controller
 
     return view('/editproduct', $vac);
   }
+
+  // JULI fijarse la funcion update() de ilnato, le ponemos como parametro tambien el $id. Que forma es mas optimizada?
   public function update(Request $request){
     $reglas = [
       'title' => 'required|string|min:1|max:50',
@@ -381,6 +403,16 @@ class ProductController extends Controller
       ->with('status', 'Producto creado exitosamente!!!')
       ->with('operation', 'success');
   }
+
+  // Elimina el producto seleccionado
+  public function deleteproduct($id){
+    // llamamos al producto a eliminar mediante su id
+    $product = Product::find($id);
+    $product->delete();
+    return back();
+  }
+
+  // Para borrar la imagen seleccionada
   public function deleteImage($id){
     // traigo la imagen del request imagenid (name del file)
     $image = Image::find($id);
@@ -395,6 +427,8 @@ class ProductController extends Controller
     // nos retorna a la ruta anterior
     return back();
   }
+
+  // JULI revisar esta funcion
   public function showallproducts(Product $product){
     $products = Product::paginate(16);
     $sizes = Size::all();
@@ -404,6 +438,8 @@ class ProductController extends Controller
     $vac = compact('products','brands','sizes','categories','materials');
     return view('/searchproduct',$vac);
   }
+
+  // Buscar producto por nombre
   public function searchProductByName(Request $request)
       {
         $reglas = ['name' => 'required|min:1|max:50',];
@@ -439,11 +475,15 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('/searchproduct', compact('products','brands','categories'));
       }
+
+  // Para importar un excel del catalogo de productos actual
   public function importExcel(){
     // https://docs.laravel-excel.com/3.1/getting-started/
     // https://phpspreadsheet.readthedocs.io/
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
   }
+
+  // Funcion utilizada para aumentar o disminuir con un % el precio de determinada categoria o material.
   public function updatePrice(Request $req){
     $reglas = [
       'operacion' => 'required',
@@ -457,41 +497,37 @@ class ProductController extends Controller
 
     $this->validate($req, $reglas, $mensajes);
 
+    // El calculo se hara a la categoria o al material seleccionado
     $products = Product::where($req->criterioDeBusqueda,'=',$req[$req->criterioDeBusqueda])->get();
 
+    // Si la categoria/material seleccionado no tiene productos, lanzara un error
     if ($products->first()===null) {
       return back()->with('error', 'Modificación Fallida');
     }
 
+    // Creamos la variable porcentaje con el numero elejido para luego trabajar con ella
     $percentage = 1 + $req->percentage/100;
 
+    // Si elegimos sumar
     if ($req->operacion=='sum') {
+      // A cada producto le sumamos el porcentaje elejido
       foreach ($products as $product) {
         $product->price = $product->price * $percentage;
         $product->save();
       }
     }
+
+    // si elegimos restar
     if ($req->operacion=='rest') {
+      // A cada producto le restamos el porcentaje elejido
       foreach ($products as $product) {
         $product->price = $product->price / $percentage;
         $product->save();
       }
     }
+    // Nos retorna a la misma vista con un mensaje emergente
     return back()->with('status', 'Modificación exitosa');
   }
-  public function products(){
-    $products = Product::all();
-    $categories = Category::all();
-    $vac = compact('products','categories');
-    return view('productos',$vac);
-  }
-  public function product($id){
-    $product = Product::find($id);
-    return view('producto',compact('product'));
-  }
-  public function deleteproduct($id){
-    $product = Product::find($id);
-    $product->delete();
-    return back();
-  }
+
+
 }

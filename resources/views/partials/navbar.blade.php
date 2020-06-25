@@ -61,25 +61,25 @@
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
 
-              @if (Auth::user())
-                @if (Auth::user()->isAdmin == true)
+              {{-- @if (Auth::user())
+                @if (Auth::user()->isAdmin == true) --}}
                   <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
-                @endif
+                {{-- @endif --}}
 
-                <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li>
+                {{-- <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li> --}}
                 <li class="nav-item">
                   <form class="" action="/logout" method="post">
                     @csrf
-                    <button class="navlink" type="submit" name="button">Salir</button>
+                    {{-- <button class="navlink" type="submit" name="button">Salir</button> --}}
                   </form>
                 </li>
 
-              @else
+              {{-- @else --}}
 
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
                 <li><a class="navlink hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
 
-              @endif
+              {{-- @endif --}}
 
                 <li><a class="navlink" href="/cart" offset="80"><span class="material-icons">local_mall</span></a></li>
               </ul>

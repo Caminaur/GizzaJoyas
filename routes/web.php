@@ -44,12 +44,12 @@ Route::post('/contacto', function(Request $request){
   return redirect ('/');
 });
 
-
 // Nosotros
 
 Route::get('/nosotros', function() {
   return view('nosotros');
-})->middleware('verified');
+});
+// ->middleware('verified');
 
 // Auth
 
@@ -82,16 +82,16 @@ Route::get('/productos', function() {
 Route::get('/producto', function() {
   return view('producto');
 });
-Route::get('/addproduct', 'ProductController@index');
+Route::get('/productos', 'ProductController@products');
+Route::get('/addproduct', 'ProductController@new');
 Route::post('/addproduct', 'ProductController@store');
-Route::get('/deleteimage/{id}','ProductController@deleteImage');
-Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
-Route::get('/editproduct/{id}', 'ProductController@editView');
+Route::get('/producto/{id}', 'ProductController@product');
+Route::get('/editproduct/{id}', 'ProductController@edit');
 Route::put('/editproduct', 'ProductController@update');
+Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
+Route::get('/deleteimage/{id}','ProductController@deleteImage');
 Route::get('/importexcel', 'ProductController@importExcel');
 Route::post('/updateprices', 'ProductController@updatePrice');
-Route::get('/productos', 'ProductController@products');
-Route::get('/producto/{id}', 'ProductController@product');
 
 // Cateogry
 Route::get('/editcategory/{id}','CategoryController@editview');
@@ -147,7 +147,7 @@ Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCa
 Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
 
 // carts
-Route::get('/cart','CartController@index');
+Route::get('/cart','CartController@show');
 Route::post('/cart','CartController@addToCart');
 Route::get('/deletecart/{id}','CartController@deleteOneCart');
 Route::get('/deletecarts','CartController@deleteAllCarts');

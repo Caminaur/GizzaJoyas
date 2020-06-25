@@ -108,6 +108,7 @@ front-end
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Crear Paginador
+- Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 
 Back-end
 - Reusable Functions (get real price, hasStock).

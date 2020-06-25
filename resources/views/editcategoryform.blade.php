@@ -89,7 +89,7 @@ editcategory
         </form>
       </div>
       <div id="createTagDiv" hidden class="col-4 form-group">
-        <form class="" action="/createTag" method="post">
+        <form class="" action="/createtag" method="post">
           @csrf
           <label for="">Nombre</label>
           <input type="text" name="name" value="">
