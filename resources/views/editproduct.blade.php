@@ -5,7 +5,7 @@ Edit product
 @section('main')
       <div class="container">
         <h2 class="col-md-4 offset-md-2 form-group">Editar producto</h2>
-        <form class="" action="/editproduct" method="post" enctype="multipart/form-data">
+        <form class="" action='/editproduct/{{$product['id']}}' method="post" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="_method" value="PUT">
           <input type="hidden" name="productId" value="{{$product->id}}">
@@ -25,7 +25,17 @@ Edit product
               <p class="errorForm">{{ $message }}</p>
             @enderror
           </div>
+
+          <div class="col-md-4 form-group">
+            <label for="">Modelo: *</label>
+            <input type="text" class="form-control" name="model" value="{{ old('model',$product->model)}}">
+            @error('model')
+              <p class="errorForm">{{ $message }}</p>
+            @enderror
+          </div>
+
         </div>
+
         <div class="row">
           <div class="col-md-4 offset-md-2 form-group">
             <label for="category_id">Categoria: *</label>

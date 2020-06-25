@@ -114,4 +114,7 @@ Back-end
 - Reusable Functions (get real price, hasStock).
 - Logica carrito/favoritos.
 - Contador carrito y favoritos.
+- Crear logica de timestamps para productos nuevos
+- Crear Reusable Function CantidadStock
+- Hacer el Add category
 

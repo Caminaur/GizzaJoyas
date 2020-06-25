@@ -4270,7 +4270,7 @@ ul.uk-nav-sub {
  * Items
  */
 .uk-navbar-dropdown-nav > li > a {
-  color: #999;
+  color: #6B799E;
 }
 /* Hover + Focus */
 .uk-navbar-dropdown-nav > li > a:hover,
@@ -4291,7 +4291,7 @@ ul.uk-nav-sub {
  * Divider
  */
 .uk-navbar-dropdown-nav .uk-nav-divider {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #6B799E;
 }
 /*
  * Sublists
@@ -5027,9 +5027,9 @@ ul.uk-nav-sub {
   z-index: 1020;
   /* 3 */
   box-sizing: border-box;
-  min-width: 200px;
+  min-width: 100px;
   /* 4 */
-  padding: 25px;
+  padding: 10px;
   background: #fff;
   color: #666;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);

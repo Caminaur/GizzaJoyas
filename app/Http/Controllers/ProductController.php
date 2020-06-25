@@ -44,6 +44,8 @@ class ProductController extends Controller
 
     return view('addProductForm',$vac);
   }
+
+
   // Traemos todos los productos con sus categorias
   public function products(){
     $products = Product::all();
@@ -54,10 +56,11 @@ class ProductController extends Controller
 
   // agrega un producto y te redirige a la lista de productos
   public function store(Request $request){
-    dd($request->all());
+
         $reglas = [
           'title' => 'required|string|min:1|max:50',
           'price' => 'required|integer|min:50|max:150000',
+          'model' => "max:255|required|unique:products,model",
           'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
           'gender_id' => 'required',
           'brand_id' => 'required',
@@ -70,6 +73,8 @@ class ProductController extends Controller
           $mensajes = [
             "title.required" => "Ingrese el nombre del producto",
             "price.required" => "Ingrese el precio del producto",
+            "model.max" => "El nombre del modelo es muy largo",
+            "model.unique" => "El nombre del modelo ya existe",
             "brand_id.required" => "Debe seleccionar la marca",
             "discount.max" => "El maximo descuento es del 80%, sino es un regalo.. :)",
             "discount.min" => "El minimo descuento es del 10%, si no queres descuento desactiva el campo 'En oferta'",
@@ -90,28 +95,20 @@ class ProductController extends Controller
           $this->validate($request, $reglas, $mensajes);
 
           $product = new Product();
-          // Name
           $product->name = $request->title; // alternativa $producto->name = $request->name;
-          // Price
           $product->price = $request->price;
-          // OnSale
+          $product->model = $request->model;
           $product->onSale = $request->onSale;
-          // Discount
           if ($request->onSale==1) {
             $product->discount = $request->discount;
           }
           else {
             $product->discount = null;
           }
-          // Description
           $product->description = $request->description;
-          // Gender
           $product->gender_id = $request->gender_id;
-          // Age
           $product->age_id = $request->age_id;
-          // Material
           $product->material_id = $request->material_id;
-          // Marca
           $product->brand_id = $request->brand_id;
 
           // Buscamos la categoria seleccionada
@@ -245,10 +242,11 @@ class ProductController extends Controller
   }
 
   // JULI fijarse la funcion update() de ilnato, le ponemos como parametro tambien el $id. Que forma es mas optimizada?
-  public function update(Request $request){
+  public function update(Request $request, int $id){
     $reglas = [
       'title' => 'required|string|min:1|max:50',
       'price' => 'required|integer|min:50|max:150000',
+      'model' => 'max:255|required|unique:products,model,' . $id,  // En el caso de los unique hay que pasarle el $id del producto que tiene que tener unico ese campo (modelo) . https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
       'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
       'description' => 'string|max:200',
       "images" => "array|min:1",
@@ -258,6 +256,8 @@ class ProductController extends Controller
       $mensajes = [
         "title.required" => "Ingrese el nombre del producto",
         "price.required" => "Ingrese el precio del producto",
+        "model.max" => "El nombre del modelo es muy largo",
+        "model.unique" => "El nombre del modelo ya existe",
         "brand_id.required" => "Debe seleccionar la marca",
         "discount.max" => "El maximo descuento es del 80%, sino es un regalo.. :)",
         "discount.min" => "El minimo descuento es del 10%, si no queres descuento desactiva el campo 'En oferta'",
@@ -278,28 +278,21 @@ class ProductController extends Controller
       $this->validate($request, $reglas, $mensajes);
 
       $product = Product::find($request->productId);
-      // Name
+
       $product->name = $request->title; // alternativa $producto->name = $request->name;
-      // Price
       $product->price = $request->price;
-      // OnSale
+      $product->model = $request->model;
       $product->onSale = $request->onSale;
-      // Discount
       if ($request->onSale==1) {
         $product->discount = $request->discount;
       }
       else {
         $product->discount = null;
       }
-      // Description
       $product->description = $request->description;
-      // Gender
       $product->gender_id = $request->gender_id;
-      // Age
       $product->age_id = $request->age_id;
-      // Material
       $product->material_id = $request->material_id;
-      // Marca
       $product->brand_id = $request->brand_id;
 
       // Buscamos la categoria seleccionada
@@ -369,9 +362,9 @@ class ProductController extends Controller
     foreach ($tags as $tag) {
 
       // Creamos la relacion con el producto
-      $product_tag = Product_tag::find($tag->id);
-      $product_tag->product_id = $product->id;
-      $product_tag->tag_id = $tag->id;
+      // $product_tag = Product_tag::find($tag->id);
+      // $product_tag->product_id = $product->id;
+      // $product_tag->tag_id = $tag->id;
 
       // Necesitamos acomodar el nombre del tag a la referencia en la base de datos
       // comprobar la precencia del _ en el tag
@@ -399,8 +392,8 @@ class ProductController extends Controller
         }
       }
     }
-      return back()
-      ->with('status', 'Producto creado exitosamente!!!')
+      return redirect('/editproduct/'.$product->id)
+      ->with('status', 'Producto Editado exitosamente!!!')
       ->with('operation', 'success');
   }
 

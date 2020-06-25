@@ -61,27 +61,28 @@
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
 
-              {{-- @if (Auth::user())
-                @if (Auth::user()->isAdmin == true) --}}
-                  <li class="align-self-center"><a class="navlink hvr-icon-spin {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="hvr-icon fas fa-cog"></i></a></li>
-                {{-- @endif --}}
+               @if (Auth::user())
+                @if (Auth::user()->isAdmin == true)
+                  <li><a class="navlink blueSlate {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="pe-7s-config pe-spin pe-2x"></i></a></li>
+                @endif
+                <li><a class="navlink blueSlate {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="hvr-shrink pe-7s-user-female pe-2x blueSlate"></i></a></li>
+                  <div uk-dropdown>
+                    <li class="nav-item">
+                      <form class="" action="/logout" method="post">
+                        @csrf
+                        <button class="navlink blueSlate" type="submit" name="button">Salir</button>
+                      </form>
+                    </li>
+                  </div>
 
-                {{-- <li><a class="navlink {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="fas fa-user pr-2"></i> {{auth::user()->name}}</a></li> --}}
-                <li class="nav-item">
-                  <form class="" action="/logout" method="post">
-                    @csrf
-                    {{-- <button class="navlink" type="submit" name="button">Salir</button> --}}
-                  </form>
-                </li>
+              @else
 
-              {{-- @else --}}
+                <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
+                <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
 
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
-                <li><a class="navlink hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
-
-              {{-- @endif --}}
-
-                <li><a class="navlink" href="/cart" offset="80"><span class="material-icons">local_mall</span></a></li>
+              @endif
+                <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">1</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
+                <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">3</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
               </ul>
 
               {{-- Menu hamburguesa, se muestra al bajar de 959px (M)--}}
@@ -101,41 +102,37 @@
               {{-- Items del centro de la nav solo son visibles en resoluciones mayores o iguales a M (959px) --}}
               <ul class="cbp-af-header uk-visible@m uk-navbar-nav uk-nav-parent-icon">
                 <li>
-                  <a class="navlink blueSlate hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
-                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
-                      <div class="uk-navbar-dropdown-grid uk-child-width-1-3" uk-grid>
+                  <a class="navlink hvr-underline-from-center {{ request()->is('productos') ? 'active' : '' }}" href="/productos" offset="80" uk-scroll>Productos<span uk-icon="icon: triangle-down"></span></a>
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                      <div class="text-center uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
                           <div>
                               <ul class="uk-nav uk-navbar-dropdown-nav">
-                                  <li class="uk-active"><a href="#">Active</a></li>
-                                  <li><a href="#">Item</a></li>
-                                  <li class="uk-nav-header">Header</li>
-                                  <li><a href="#">Item</a></li>
-                                  <li><a href="#">Item</a></li>
+                                <li class="uk-nav-header">Categorías</li>
+                                  <li><a href="#">Aros</a></li>
+                                  <li><a href="#">Anillos</a></li>
+                                  <li><a href="#">Cadenas</a></li>
+                                  <li><a href="#">Pulseras</a></li>
+                                  <li><a href="#">Relojes</a></li>
+                                  <li><a href="#">Accesorios</a></li>
+                                  <li><a href="#">Todos los productos</a></li>
                                   <li class="uk-nav-divider"></li>
-                                  <li><a href="#">Item</a></li>
+                                  <li><a class="dandelion" href="#">Ofertas</a></li>
+                                  <li><a href="#">Lo nuevo</a></li>
                               </ul>
                           </div>
+
                           <div>
-                              <ul class="uk-nav uk-navbar-dropdown-nav">
-                                  <li class="uk-active"><a href="#">Active</a></li>
-                                  <li><a href="#">Item</a></li>
-                                  <li class="uk-nav-header">Header</li>
-                                  <li><a href="#">Item</a></li>
-                                  <li><a href="#">Item</a></li>
-                                  <li class="uk-nav-divider"></li>
-                                  <li><a href="#">Item</a></li>
-                              </ul>
-                          </div>
-                          <div>
-                              <ul class="uk-nav uk-navbar-dropdown-nav">
-                                  <li class="uk-active"><a href="#">Active</a></li>
-                                  <li><a href="#">Item</a></li>
-                                  <li class="uk-nav-header">Header</li>
-                                  <li><a href="#">Item</a></li>
-                                  <li><a href="#">Item</a></li>
-                                  <li class="uk-nav-divider"></li>
-                                  <li><a href="#">Item</a></li>
-                              </ul>
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                              <li class="uk-nav-header">Materiales</li>
+                                <li><a href="#">Oro</a></li>
+                                <li><a href="#">Plata</a></li>
+                                <li><a href="#">Oro y Plata</a></li>
+                                <li><a href="#">Acero</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#">Hombre</a></li>
+                                <li><a href="#">Mujer</a></li>
+                                <li><a href="#">Niños</a></li>
+                            </ul>
                           </div>
                       </div>
                   </div>

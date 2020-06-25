@@ -55,7 +55,7 @@ Route::get('/nosotros', function() {
 
 Auth::routes(['verify' => true]);
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/nav', function () {
@@ -87,7 +87,7 @@ Route::get('/addproduct', 'ProductController@new');
 Route::post('/addproduct', 'ProductController@store');
 Route::get('/producto/{id}', 'ProductController@product');
 Route::get('/editproduct/{id}', 'ProductController@edit');
-Route::put('/editproduct', 'ProductController@update');
+Route::put('/editproduct/{id}', 'ProductController@update');
 Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
 Route::get('/deleteimage/{id}','ProductController@deleteImage');
 Route::get('/importexcel', 'ProductController@importExcel');
@@ -96,8 +96,7 @@ Route::post('/updateprices', 'ProductController@updatePrice');
 // Cateogry
 Route::get('/editcategory/{id}','CategoryController@editview');
 Route::put('/changeCategoryImage','CategoryController@imageUpdate');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/editcategory', 'CategoryController@categoryselection')->name('home');
+Route::get('/editcategory', 'CategoryController@categoryselection');
 Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag');
 Route::post('/createtag','CategoryController@createTag');
 Route::post('/selecttag','CategoryController@addTag');

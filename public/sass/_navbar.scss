@@ -5,9 +5,10 @@ nav {
 }
 
 .nav-categories {
-  border-top: 0.5px solid $blueSlate;
+  // border-top: 1.5px solid #e5e5e5;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: $blueSlate;
 }
 
 span.gizza {
@@ -28,7 +29,7 @@ span.joyas {
 }
 
 li a.navlink, button.navlink{
-  color: $blueSlate;
+  color: white;
   letter-spacing: 1px;
   font: {
     size: $navLinkBig;
@@ -50,6 +51,22 @@ button.navlink {
   border: none;
   margin-top: 0;
   margin-bottom: 0.5px;
+}
+
+.items-in-cart {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  top: 9px;
+  left: 35px;
+  background-color: $dandelion;
+  font-size: 7px;
+  border-radius: 10px;
+  color: white;
+  z-index: 1000;
 }
 
 // Al achicharse la navbar van a presentarste estos valores
