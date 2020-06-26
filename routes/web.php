@@ -71,9 +71,7 @@ Route::get('/test', function () {
 });
 
 // FAQs
-Route::get('/preguntas', function() {
-  return view('preguntas');
-});
+Route::get('/preguntas', 'FaqController@view');
 
 // Product
 Route::get('/productos', function() {

@@ -37,16 +37,19 @@ class Product extends Model
   {
     return $this->belongsTo("App\Brand", "brand_id");
   }
+
   public function material()
   {
     return $this->belongsTo("App\Material", "material_id");
   }
+
   public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'product_tags');
-    }
-    public function esFavoritoDe()
-      {
-          return $this->belongsToMany("App\Users", "favourites", "product_id", "user_id");
-      }
+  {
+    return $this->belongsToMany(Tag::class, 'product_tags');
+  }
+
+  public function esFavoritoDe()
+  {
+    return $this->belongsToMany("App\Users", "favourites", "product_id", "user_id");
+  }
 }

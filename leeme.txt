@@ -101,7 +101,7 @@ Objetivo de la semana/s
 front-end
 - Terminar navbar / footer
 - Terminar vista Nosotros
-- Hacer vista adminpanel
+- sumar faqs a adminpanel
 - Terminar vista Favoritos
 - Hacer vista Checkout
 - Hacer vista Perfil
@@ -113,9 +113,11 @@ front-end
 Back-end
 - Reusable Functions (get real price, hasStock).
 - Logica carrito/favoritos.
+- Logica add y edit Faqs (ver il nato)
+- Logica perfil de usuario
 - Contador carrito y favoritos.
-- Crear logica de timestamps para productos nuevos
+- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
 - Crear Reusable Function CantidadStock
 - Hacer el Add category
-- Ver vista productos y buscar Carbon:: ... tratar de hacer esa funcion en Reusable Functions
+- 
 
