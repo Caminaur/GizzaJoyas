@@ -55,4 +55,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new Notifications\VerifyEmail);
     }
 
+    public function productosFavoritos()
+      {
+          return $this->belongsToMany("App\Products", "favourites", "user_id", "product_id");
+      }
 }

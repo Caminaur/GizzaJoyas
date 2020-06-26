@@ -137,8 +137,9 @@ Route::put('/editgender','GenderController@edit');
 Route::post('/addgender','GenderController@store');
 Route::post('/deletegender','GenderController@delete');
 
-// Admin
+// Admin & User
 Route::get('/controlpanel','UserController@cpanel');
+Route::get('/favoritos','UserController@favoritos');
 
 Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
 Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');

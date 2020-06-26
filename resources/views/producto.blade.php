@@ -5,9 +5,9 @@ Producto
 @section('main')
 
   <ul class="uk-breadcrumb  px-4 py-2">
-    <li><a href="">Inicio</a></li>
-    <li><a href="">Anillos</a></li>
-    <li><span class="dandelion">Rainbow Blue Necklace</span></li>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/{{$product->category->name}}">{{$product->category->name}}</a></li>
+    <li><span class="dandelion">{{$product->name}}</span></li>
   </ul>
 
   <div class="uk-background-muted p-4">
@@ -24,16 +24,16 @@ Producto
                   @for ($i = 0; $i < count($product->images); $i++)
                     <li>
                       <a href="/storage/{{$product->images[$i]->path}}" data-caption="{{$i}}">
-                        <img src="/storage/{{$product->images[$i]->path}}" alt="" uk-cover>
+                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="/storage/{{$product->images[$i]->path}}" alt="" uk-cover>
                       </a>
                     </li>
                   @endfor
           			</ul>
 
           			<div class="uk-position-bottom-center uk-position-small">
-                	<ul class="uk-thumbnav">
+                	<ul class="uk-thumbnav align-items-center">
                     @for ($i = 0; $i < count($product->images); $i++)
-                      <li uk-slideshow-item="{{ $i }}">
+                      <li class="" uk-slideshow-item="{{ $i }}">
             						<a href="/storage/{{$product->images[$i]->path}}">
             							<img src="/storage/{{$product->images[$i]->path}}" width="60">
             						</a>
@@ -57,7 +57,7 @@ Producto
               <input type="hidden" name="" value="">
               <input type="hidden" name="" value="">
               <h1 class="bold">{{ $product->name }}</h1>
-              <h2 class="blueSlate">{{$product->price - ($product->price*$product->discount/100)}}</h2>
+              <h2 class="blueSlate">${{$product->price - ($product->price*$product->discount/100)}}</h2>
               <h3 style="text-align:justify;">{{ $product->description }}</h3>
               <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>
                 @foreach ($product->tags as $tag)
@@ -78,7 +78,11 @@ Producto
                   @endforeach
                 </select>
                 <br>
+                {{-- Si hay stock que aparezca el boton comprar --}}
                 <button class="btn bg-dandelion" type="submit">Comprar</button>
+                {{-- Si no hay stock muestro este mensaje --}}
+                {{-- <a class="btn border-ashBlue mt-4" href="#">Solicitar stock</a> --}}
+
               </div>
           </form>
 
@@ -112,7 +116,7 @@ Producto
             <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="img/anillos.jpg" alt="">
+                        <img src="/img/anillos.jpg" alt="">
                     </div>
                     <div class="uk-card-body">
                           <h3 class="product-desc text-center">Collar Primavera</h3>
@@ -125,7 +129,7 @@ Producto
             <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="img/anillos.jpg" alt="">
+                        <img src="/img/anillos.jpg" alt="">
                     </div>
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">Headline</h3>
@@ -136,7 +140,7 @@ Producto
             <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="img/anillos.jpg" alt="">
+                        <img src="/img/anillos.jpg" alt="">
                     </div>
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">Headline</h3>
@@ -147,7 +151,7 @@ Producto
             <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="img/anillos.jpg" alt="">
+                        <img src="/img/anillos.jpg" alt="">
                     </div>
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">Headline</h3>
@@ -158,7 +162,7 @@ Producto
             <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="img/anillos.jpg" alt="">
+                        <img src="/img/anillos.jpg" alt="">
                     </div>
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">Headline</h3>

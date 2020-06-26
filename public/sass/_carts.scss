@@ -18,3 +18,19 @@ img.cart-img {
 svg[data-svg=trash] {
   margin-bottom: 3px;
 }
+
+.new-label-cart {
+  position: absolute;
+  top: 2px;
+  right: 65px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.onSale-label-cart {
+  color: white;
+  position: absolute;
+  top: 2px;
+  left: 65px;
+}

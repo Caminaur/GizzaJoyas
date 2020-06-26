@@ -86,7 +86,6 @@ p {
   font-weight: 700;
   line-height: 20px;
   width: 180px;
-  height: 40px;
 }
 .btn:focus, .btn .btn.focus {
   box-shadow: none;
@@ -753,11 +752,8 @@ section.imagenes-producto {
 }
 
 .icons-product {
-  position: absolute;
-  top: -10px;
-  right: 5px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .onSale-label {
@@ -797,10 +793,25 @@ img.producto {
 
 .uk-iconnav > * > a.rounded-icon {
   display: block;
-  color: #212529;
-  background-color: #ffffffb8;
+  color: white;
+  background-color: #6B799E;
   padding: 7px;
   border-radius: 20px;
+}
+
+[uk-icon="icon: heart; ratio: 2"] svg {
+  width: 30px;
+  height: 30px;
+}
+
+[uk-icon="icon: cart; ratio: 2"] svg {
+  width: 30px;
+  height: 30px;
+}
+
+.isFavourite[uk-icon="icon: heart; ratio: 2"] svg path, .isFavourite[uk-icon="icon: heart;"] svg path {
+  fill: #ae1d1d;
+  color: #ae1d1d;
 }
 
 div.producto {
@@ -820,6 +831,22 @@ img.cart-img {
 
 svg[data-svg=trash] {
   margin-bottom: 3px;
+}
+
+.new-label-cart {
+  position: absolute;
+  top: 2px;
+  right: 65px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.onSale-label-cart {
+  color: white;
+  position: absolute;
+  top: 2px;
+  left: 65px;
 }
 
 .controles {
@@ -940,6 +967,10 @@ a.control:hover {
 
 .notification-error {
   background-color: red;
+}
+
+.opacity {
+  opacity: 0.6;
 }
 
 .link:hover, .link:active, .link:focus {
@@ -1083,7 +1114,7 @@ select {
   -webkit-appearance: menulist;
 }
 
-select.talle {
+select.size {
   width: 70px;
   height: 34px;
   border-radius: 0.25rem;

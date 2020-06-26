@@ -7,7 +7,7 @@
   font-weight: $bold;
   line-height: $buttonLineHeight;
   width: $buttonWidth;
-  height: $buttonHeight;
+  // height: $buttonHeight;
 
   &:focus, .btn.focus {
     box-shadow: none;

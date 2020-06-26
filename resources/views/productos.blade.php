@@ -1,3 +1,7 @@
+@php
+  use Carbon\Carbon;
+@endphp
+
 @extends('layouts.plantilla')
 @section('titulo')
 Productos
@@ -5,13 +9,12 @@ Productos
 @section('main')
 
   <ul class="uk-breadcrumb px-4 py-2">
-    <li><a href="">Categorias</a></li>
-    @foreach ($categories as $category)
-      <li><span class="dandelion">{{$category->name}}</span></li>
-    @endforeach
+    <li><a href="">Inicio</a></li>
+      <li><span class="dandelion">Anillos</span></li>
   </ul>
 
-  <h1 class="medium text-center p-4">Nuestros Productos</h1>
+  {{-- <h1 class="medium text-center p-4">Nuestros Productos</h1> --}}
+  <h2 class="regular text-center pb-3">Nuestros <span class="bold blueSlate">Productos</span></h2>
 
   <section id="productos" class="container mb-5">
 
@@ -39,20 +42,21 @@ Productos
                     </ul>
                   </div>
                 @endif
+              </a>
 
                 {{-- iconos de favoritos/carrito sobre cada producto --}}
                 <div class="uk-visible-toggle icons-product" tabindex="-1">
                   <div class="uk-flex-center pt-3" uk-grid>
                     <div class="uk-width-auto">
-                      <ul class="uk-iconnav">
-                        <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/favoritos"><i class="hvr-icon far fa-heart"></i></a></li>
-                        <li><a class="rounded-icon ico hvr-icon-rotate" href="/cart"><span class="hvr-icon" uk-icon="icon: cart"></span></a></li>
+                      <ul class="uk-iconnav justify-content-center">
+                        <li><a class="rounded-icon ico" href="/favoritos"><span class="hvr-pulse-shrink {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span></a></li>
+                        <li><a class="rounded-icon ico" href="/cart"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
                         @if (Auth::user())
                           {{-- Si sos admin ves iconos de edicion/eliminacion --}}
                           @if (Auth::user()->isAdmin == true)
-                            <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/editproduct/{{$product->id}}"><span class="hvr-icon" uk-icon="icon: pencil"></span></a></li>
-                            <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/copy"><span class="hvr-icon" uk-icon="icon: copy"></span></a></li>
-                            <li><a class="rounded-icon ico hvr-icon-pulse-shrink" href="/deleteproduct/{{$product->id}}"><span class="hvr-icon" uk-icon="icon: trash"></span></a></li>
+                            <li><a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span></a></li>
+                            <li><a class="rounded-icon ico" href="/copy"><span class="hvr-pulse-shrink" uk-icon="icon: copy"></span></a></li>
+                            <li><a class="rounded-icon ico" href="/deleteproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: trash"></span></a></li>
                           @endif
                         @endif
                       </ul>
@@ -60,18 +64,14 @@ Productos
                   </div>
                 </div>
 
-              </a>
+
             </div>
+
+            {{-- Catergoria del producto --}}
+            <h3 class="product-desc uk-margin-small-top mb-3">{{$product->category->name}}</h3>
 
             {{-- Nombre del producto --}}
             <h3 class="product-desc uk-margin-small-top mb-3">{{$product->name}}</h3>
-
-            {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
-            <div class="new-label">
-              <ul>
-                <li class="new"><h4>Nuevo</h4></li>
-              </ul>
-            </div>
 
             {{-- Precio del producto --}}
             <div class="uk-flex uk-flex-center mb-3">
@@ -84,6 +84,15 @@ Productos
                 <h3 class="doveGrey mx-1">${{$product->price}}</h3>
               @endif
             </div>
+
+            {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
+              @if ($product->created_at->diffInDays(Carbon::now()) <= 20)
+                <div class="new-label">
+                  <ul>
+                    <li class="new"><h4>Nuevo</h4></li>
+                  </ul>
+                </div>
+              @endif
 
             {{-- Si no hay stock muestro este mensaje --}}
             <a class="btn border-ashBlue" href="#">Solicitar stock</a>

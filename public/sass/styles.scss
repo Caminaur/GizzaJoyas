@@ -43,6 +43,10 @@
   background-color: red;
 }
 
+.opacity {
+  opacity: 0.6;
+}
+
 .link {
   &:hover, &:active, &:focus {
     color: $ashBlue;
@@ -191,7 +195,7 @@ select {
   -webkit-appearance: menulist;
 }
 
-select.talle {
+select.size {
   width: 70px;
   height: 34px;
   border-radius: 0.25rem;

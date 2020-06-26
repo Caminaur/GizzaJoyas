@@ -17,12 +17,14 @@
 }
 
 .icons-product {
-  position: absolute;
-  top: -10px;
-  right: 5px;
+  // position: absolute;
+  // top: -10px;
+  // right: 5px;
+  // justify-content: flex-end;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
+
 .onSale-label {
   color: white;
   position: absolute;
@@ -60,8 +62,23 @@ img.producto {
 
 .uk-iconnav > * > a.rounded-icon {
   display: block;
-  color: #212529;
-  background-color: #ffffffb8;
+  color: white;
+  background-color: $blueSlate;
   padding: 7px;
   border-radius: 20px;
+}
+
+[uk-icon="icon: heart; ratio: 2"] svg {
+  width: 30px;
+  height: 30px;
+}
+
+[uk-icon="icon: cart; ratio: 2"] svg {
+  width: 30px;
+  height: 30px;
+}
+
+.isFavourite[uk-icon="icon: heart; ratio: 2"] svg path, .isFavourite[uk-icon="icon: heart;"] svg path {
+fill: #ae1d1d;
+color: #ae1d1d;
 }

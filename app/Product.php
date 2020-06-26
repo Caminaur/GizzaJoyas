@@ -45,4 +45,8 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class, 'product_tags');
     }
+    public function esFavoritoDe()
+      {
+          return $this->belongsToMany("App\Users", "favourites", "product_id", "user_id");
+      }
 }
