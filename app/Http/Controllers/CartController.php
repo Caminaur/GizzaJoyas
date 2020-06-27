@@ -29,7 +29,7 @@ class CartController extends Controller
 
     $cart = Cart::where('user_id','=',Auth::user()->id)
                 ->where('product_id','=',$product->id)
-                ->where('size','=',$req->size_id)
+                ->where('size_id','=',$req->size_id)
                 ->get();
 
     if (isset($cart->first()->product_id)) {
@@ -49,12 +49,12 @@ class CartController extends Controller
       $cart->product_id = $product->id;
       $cart->user_id = Auth::user()->id;
       // Instanciamos sus valores
-      $cart->size = $req->size_id;
+      $cart->size_id = $req->size_id;
       $cart->quantity = $req->quantity;
       // Si el mismo usuario pide 2 veces el mismo producto (mismo id de producto y mismo talle)
       $repeat = Cart::where('user_id', '=', Auth::user()->id)
       ->where('product_id', '=', $product->id)
-      ->where('size' , '=',$req->size_id)
+      ->where('size_id' , '=',$req->size_id)
       ->get();
       if (isset($repeat[0])) {
         $repeat[0]->quantity = $repeat[0]->quantity + $cart->quantity;
@@ -73,7 +73,7 @@ class CartController extends Controller
     $cart->delete();
     return back();
   }
-  
+
   // Borramos todos los productos del usuario
   public function deleteAllCarts(){
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();

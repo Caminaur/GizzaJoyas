@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\Size;
+use App\Product;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Category_tag;
+use App\Product_tag;
 class CategoryController extends Controller
 {
   public function index(){
@@ -108,10 +110,25 @@ class CategoryController extends Controller
     ];
     $this->validate($req, $reglas, $mensajes);
 
+
+    // Relacionamos un tag con una categoria
     $category_tags = New Category_tag;
     $category_tags->category_id = $req->category_id;
     $category_tags->tag_id = $req->tagId;
     $category_tags->save();
+
+    // Cada vez que se modifica un tag en una categoria modificamos todos los productos
+    // que sean de esa categoria
+    $products = Product::where('category_id','=',$req->category_id)->get();
+
+    foreach ($products as $product) {
+      $product_tag = New Product_tag;
+      $product_tag->tag_id = $req->tagId;
+      $product_tag->product_id = $product->id;
+      $product_tag->hasTag = 0; // Como predetermida le decimos que no tiene tag
+      $product_tag->save();
+    }
+
     return back();
   }
   public function changeName(Request $req){

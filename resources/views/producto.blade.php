@@ -54,8 +54,6 @@ Producto
           <form class="" action="/cart" method="post">
               @csrf
               <input type="hidden" name="product_id" value="{{ $product->id }}">
-              <input type="hidden" name="" value="">
-              <input type="hidden" name="" value="">
               <h1 class="bold">{{ $product->name }}</h1>
               <h2 class="blueSlate">${{$product->price - ($product->price*$product->discount/100)}}</h2>
               <h3 style="text-align:justify;">{{ $product->description }}</h3>

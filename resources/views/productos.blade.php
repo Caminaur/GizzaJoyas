@@ -86,7 +86,7 @@ Productos
             </div>
 
             {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
-              @if ($product->created_at->diffInDays(Carbon::now()) <= 20)
+              @if ($product->created_at->diffInDays( Carbon::now() ) <= 20)
                 <div class="new-label">
                   <ul>
                     <li class="new"><h4>Nuevo</h4></li>
