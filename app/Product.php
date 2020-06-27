@@ -50,6 +50,12 @@ class Product extends Model
 
   public function esFavoritoDe()
   {
-    return $this->belongsToMany("App\Users", "favourites", "product_id", "user_id");
+    return $this->belongsToMany("App\User", "favourites", "product_id", "user_id");
   }
+
+  public function estaEnElCarritoDe()
+  {
+    return $this->belongsToMany("App\User", "cart", "product_id", "user_id");
+  }
+
 }
