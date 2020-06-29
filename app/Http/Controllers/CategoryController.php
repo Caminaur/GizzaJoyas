@@ -96,6 +96,18 @@ class CategoryController extends Controller
     $category_tags->category_id = $req->category_id;
     $category_tags->save();
 
+    // Cada vez que creamos un tag en una categoria modificamos todos los productos
+    // que sean de esa categoria
+    $products = Product::where('category_id','=',$req->category_id)->get();
+
+    foreach ($products as $product) {
+      $product_tag = New Product_tag;
+      $product_tag->tag_id = $tag->id;
+      $product_tag->product_id = $product->id;
+      $product_tag->hasTag = 0; // Como predetermida le decimos que no tiene tag
+      $product_tag->save();
+    }
+
     return back();
   }
   public function addTag(Request $req){
