@@ -15,17 +15,17 @@ class TagController extends Controller
     $tag = Tag::find($req->tag_id);
     $tag->name = $req->name;
     $tag->save();
-    return back();
+    return back()->with('status', 'Tag editado exitosamente!');;
   }
   public function store(Request $req){
     $tag = New Tag;
     $tag->name = $req->name;
     $tag->save();
-    return back();
+    return back()->with('status', 'Tag guardado exitosamente!');;
   }
   public function delete(Request $req){
     $tag = Tag::find($req->tag_id);
     $tag->delete();
-    return back();
+    return back()->with('status', 'Tag borrado exitosamente!');;
   }
 }

@@ -15,17 +15,17 @@ class ColorController extends Controller
     $color = Color::find($req->color_id);
     $color->name = $req->name;
     $color->save();
-    return back();
+    return back()->with('status', 'Color editado exitosamente!');
   }
   public function store(Request $req){
     $color = New Color;
     $color->name = $req->name;
     $color->save();
-    return back();
+    return back()->with('status', 'Color guardado exitosamente!');
   }
   public function delete(Request $req){
     $color = Color::find($req->color_id);
     $color->delete();
-    return back();
+    return back()->with('status', 'Color borrado exitosamente!');
   }
 }

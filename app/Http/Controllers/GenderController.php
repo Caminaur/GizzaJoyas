@@ -15,17 +15,17 @@ class GenderController extends Controller
     $gender = Gender::find($req->gender_id);
     $gender->name = $req->name;
     $gender->save();
-    return back();
+    return back()->with('status', 'Genero editado exitosamente!');;
   }
   public function store(Request $req){
     $gender = New Gender;
     $gender->name = $req->name;
     $gender->save();
-    return back();
+    return back()->with('status', 'Genero guardado exitosamente!');;
   }
   public function delete(Request $req){
     $gender = Gender::find($req->gender_id);
     $gender->delete();
-    return back();
+    return back()->with('status', 'Genero borrado exitosamente!');;
   }
 }

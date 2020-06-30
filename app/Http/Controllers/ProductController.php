@@ -44,8 +44,6 @@ class ProductController extends Controller
 
     return view('addProductForm',$vac);
   }
-
-
   // Traemos todos los productos con sus categorias
   public function products(){
     $products = Product::all();
@@ -53,7 +51,6 @@ class ProductController extends Controller
     $vac = compact('products','categories');
     return view('productos',$vac);
   }
-
   // agrega un producto y te redirige a la lista de productos
   public function store(Request $request){
 
@@ -63,9 +60,8 @@ class ProductController extends Controller
           'model' => "max:255|required|unique:products,model",
           'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
           'gender_id' => 'required',
-          'brand_id' => 'required',
           'category_id' => 'required',
-          'description' => 'string|max:200',
+          'description' => 'max:400',
           "images" => "required|array|min:1",
           "images.*" => 'image|mimes:jpg,jpeg,png|max:2048',
           ];
@@ -75,7 +71,6 @@ class ProductController extends Controller
             "price.required" => "Ingrese el precio del producto",
             "model.max" => "El nombre del modelo es muy largo",
             "model.unique" => "El nombre del modelo ya existe",
-            "brand_id.required" => "Debe seleccionar la marca",
             "discount.max" => "El maximo descuento es del 80%, sino es un regalo.. :)",
             "discount.min" => "El minimo descuento es del 10%, si no queres descuento desactiva el campo 'En oferta'",
             "discount.integer" => "El numero debe ser entero",
@@ -93,7 +88,7 @@ class ProductController extends Controller
           ];
 
           $this->validate($request, $reglas, $mensajes);
-
+          // dd($request->all());
           $product = new Product();
           $product->name = $request->title;
           $product->price = $request->price;
@@ -112,7 +107,7 @@ class ProductController extends Controller
           $product->brand_id = $request->brand_id;
 
           // Buscamos la categoria seleccionada
-          $category = Category::all()->where('name', '=' , $request->category_id)->first()->id;
+          $category = Category::where('id', '=' , $request->category_id)->first()->id;
 
           // Seteamos la categoria del producto
           $product->category_id = $category;
@@ -238,15 +233,15 @@ class ProductController extends Controller
 
     $vac = compact('colors','product_tags','brands','ages','category_sizes','category_tags','tags','stocks','materials','sizes','genders','images','categories','product');
 
-    return view('/editproduct', $vac);
+    return view('/editproduct', $vac)->with('status', 'Producto editado exitosamente!');;
   }
 
-  // JULI fijarse la funcion update() de ilnato, le ponemos como parametro tambien el $id. Que forma es mas optimizada?
-  public function update(Request $request, int $id){
+  public function update(Request $request){
+
     $reglas = [
       'title' => 'required|string|min:1|max:50',
       'price' => 'required|integer|min:50|max:150000',
-      'model' => 'max:255|required|unique:products,model,' . $id,  // En el caso de los unique hay que pasarle el $id del producto que tiene que tener unico ese campo (modelo) . https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
+      'model' => 'max:255|required|unique:products,model,' . $request->productId, // https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
       'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
       'description' => 'string|max:200',
       "images" => "array|min:1",
@@ -362,9 +357,9 @@ class ProductController extends Controller
     foreach ($tags as $tag) {
 
       // Creamos la relacion con el producto
-      // $product_tag = Product_tag::find($tag->id);
-      // $product_tag->product_id = $product->id;
-      // $product_tag->tag_id = $tag->id;
+      $product_tag = Product_tag::where('tag_id','=',$tag->id)->first();
+      $product_tag->product_id = $product->id;
+      $product_tag->tag_id = $tag->id;
 
       // Necesitamos acomodar el nombre del tag a la referencia en la base de datos
       // comprobar la precencia del _ en el tag
@@ -402,7 +397,7 @@ class ProductController extends Controller
     // llamamos al producto a eliminar mediante su id
     $product = Product::find($id);
     $product->delete();
-    return back();
+    return back()->with('status', 'Producto eliminado correctamente');;
   }
 
   // Para borrar la imagen seleccionada
@@ -411,14 +406,14 @@ class ProductController extends Controller
     $image = Image::find($id);
     $product = Product::find($image->product_id);
     if (count($product->images)==1) {
-      return back();
+      return back()->with('error', 'El producto debe tener al menos una imagen! Agrega una antes de borrar la actual.');;
     }
     // elimina las imagenes de storage
     unlink(storage_path('app/public/').$image->path);
     // borramos las imagenes de la bd
     $image->delete();
     // nos retorna a la ruta anterior
-    return back();
+    return back()->with('status', 'Imagen eliminada!');;
   }
 
   // JULI revisar esta funcion

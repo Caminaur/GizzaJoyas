@@ -12,7 +12,27 @@ class CartController extends Controller
 {
   // Mostramos los carritos que pertenezcan al mismo usuario
   public function show(){
+    // Buscamos los carritos del usuario
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
+
+    foreach ($carts as $cart) {
+      // traemos los stocks de cada producto de cada carrito
+      $stock = Stock::where('product_id','=',$cart->product->id)
+                      ->where('size_id','=',$cart->size_id)
+                      ->get()
+                      ->first();
+      // En caso de que el stock se haya reducido por compras de otros usuario
+      // Reducimos la quantity del carrito a la disponible
+      if ($cart->quantity>$stock->quantity) {
+        $cart->quantity = $stock->quantity;
+        $cart->save();
+      }
+      // En caso de que no haya ni un solo producto disponible en ese talle
+      if($stock->quantity===0){
+        // Eliminamos el carrito
+        $cart->delete();
+      }
+    }
     return view('cart',compact('carts'));
   }
 
@@ -29,7 +49,7 @@ class CartController extends Controller
 
     $cart = Cart::where('user_id','=',Auth::user()->id)
                 ->where('product_id','=',$product->id)
-                ->where('size','=',$req->size_id)
+                ->where('size_id','=',$req->size_id)
                 ->get();
 
     if (isset($cart->first()->product_id)) {
@@ -39,7 +59,7 @@ class CartController extends Controller
     }
 
     if ($req->quantity>$cantidad_de_stock) {
-      return back();
+      return back()->with('error','Alcanzaste la cantidad maxima del producto disponible');
     }
     else {
       // agregamos al cart el producto
@@ -49,12 +69,12 @@ class CartController extends Controller
       $cart->product_id = $product->id;
       $cart->user_id = Auth::user()->id;
       // Instanciamos sus valores
-      $cart->size = $req->size_id;
+      $cart->size_id = $req->size_id;
       $cart->quantity = $req->quantity;
       // Si el mismo usuario pide 2 veces el mismo producto (mismo id de producto y mismo talle)
       $repeat = Cart::where('user_id', '=', Auth::user()->id)
       ->where('product_id', '=', $product->id)
-      ->where('size' , '=',$req->size_id)
+      ->where('size_id' , '=',$req->size_id)
       ->get();
       if (isset($repeat[0])) {
         $repeat[0]->quantity = $repeat[0]->quantity + $cart->quantity;
@@ -71,15 +91,15 @@ class CartController extends Controller
   public function deleteOneCart($id){
     $cart = Cart::find($id);
     $cart->delete();
-    return back();
+    return back()->with('status', 'Producto eliminado del carrito exitosamente!');;
   }
-  
+
   // Borramos todos los productos del usuario
   public function deleteAllCarts(){
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
     foreach ($carts as $cart) {
       $cart->delete();
     }
-    return back();
+    return back()->with('status', 'El carrito fue vaciado exitosamente!');;
   }
 }

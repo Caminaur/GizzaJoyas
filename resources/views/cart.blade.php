@@ -3,7 +3,6 @@
 Carrito de compras
 @endsection
 @section('main')
-
   <div>
 
     <ul class="uk-breadcrumb  p-3">
@@ -46,7 +45,8 @@ Carrito de compras
     <a class="m-3" href="/deletecarts">Vaciar carrito</a>
 
     <br>
-    <h2 class="text-center">Subtotal: $7.000</h2>
+
+    <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
     <br>
 
     <button class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
@@ -56,11 +56,50 @@ Carrito de compras
   </div>
 <script type="text/javascript">
   window.addEventListener('load',function(){
-    var sumas = document.querySelector('.sumar')
-    var restas = document.querySelector('.restar')
-    sumas.addEventListener('click',function(){
-      this.parentNode.querySelector
-    })
+
+    // Buscamos los botones de suma y de resta
+    var botones = document.querySelectorAll('button[name="cantidad"]');
+    // var restas = document.querySelectorAll('button[name="restas"]');
+
+    // Organizamos las funciones de los botones de suma y resta
+    for (var boton of botones) {
+      boton.addEventListener('click',function(){
+        // buscamos donde se encuentra el precio total del producto en particular
+        var precioProducto = this.parentNode.parentNode.querySelector('span[name=price]');
+        var precioProductoHidden = this.parentNode.parentNode.querySelector('input[name=priceHidden]');
+
+        // buscamos el valor del precio individual
+        var valorIndividual = this.parentNode.querySelector('input[name="precios"]').value; // ej 3600
+        // Busamos la cantidad pedida de este producto
+        var productoCantidad = this.parentNode.querySelector("input[name=cantidad]").value;
+        // Modificamos el span de acuerdo a los cambios realizados
+        precioProducto.innerHTML = valorIndividual * productoCantidad;
+        precioProductoHidden.value = valorIndividual * productoCantidad;
+
+        // Modificamos el subtotal
+        var subtotal = document.getElementById('subtotal')
+
+        // buscamos los precios de cada producto agregado al carrito
+        var preciosProductos = document.querySelectorAll('input[name=priceHidden]');
+        console.log(preciosProductos);
+        // Cada uno lo sumamos a la variable precio final
+        var precioFinal = 0;
+
+        for (var precio of preciosProductos) {
+          var precioFinal = parseInt(precioFinal) + parseInt(precio.value);
+        }
+        // Modificamos el subtotal para que refleje los cambios realizados
+        subtotal.innerHTML = 'Subtotal: $' + precioFinal;
+      })
+    }
+
+    // Estoy probando otra forma de manejar los datos en js
+    // Proveyendo el nombre de los inputs nos da acceso a cada uno
+
+    // var prices = document.querySelectorAll('input[name="precios"]')
+    // for (var price of prices) {
+    //   console.log(price);
+    // }
   })
 </script>
 @endsection

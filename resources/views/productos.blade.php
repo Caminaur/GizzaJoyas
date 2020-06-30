@@ -21,7 +21,6 @@ Productos
     <div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
       @foreach ($products as $product)
           <div>
-
             <div class="product uk-text-center pb-4">
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
@@ -86,7 +85,7 @@ Productos
             </div>
 
             {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
-              @if ($product->created_at->diffInDays(Carbon::now()) <= 20)
+              @if ($product->created_at->diffInDays( Carbon::now() ) <= 20)
                 <div class="new-label">
                   <ul>
                     <li class="new"><h4>Nuevo</h4></li>
@@ -95,7 +94,9 @@ Productos
               @endif
 
             {{-- Si no hay stock muestro este mensaje --}}
-            <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+            @if (!hasStock($product))
+              <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+            @endif
 
           </div>
         </div>

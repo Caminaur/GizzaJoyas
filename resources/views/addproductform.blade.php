@@ -24,7 +24,7 @@ Agregar Producto
             @enderror
           </div>
 
-          <div class="col-md-4 form-group">
+          <div class="col-md-4 offset-md-2 form-group">
             <label>Modelo: *</label>
             <input class="form-control" type="text" name="model" @if (old('model') !== null) value="{{ old('model') }}" @else value="" @endif placeholder="Ingrese el modelo">
               @error('model')
@@ -38,7 +38,7 @@ Agregar Producto
             <select id="category" class="form-control" name="category_id">
               <option value="">Seleccione una categoria</option>
               @foreach ($categories as $category)
-                <option value="{{$category->name}}" {{($category->id == old('category_id'))?'selected': '' }}>{{$category->name}}</option>
+                <option value="{{$category->id}}" {{($category->id == old('category_id'))?'selected': '' }}>{{$category->name}}</option>
               @endforeach
             </select>
             @error('category_id')
@@ -47,8 +47,8 @@ Agregar Producto
           </div>
 
           <div class="col-md-4 form-group">
-            <label for="material_id">Material:</label>
-            <select class="form-control" name="material_id">
+            <label for="material_id">Material:*</label>
+            <select class="form-control" name="material_id" required>
               <option value="">Seleccione una opcion</option>
               @foreach ($materials as $material)
                 <option value="{{$material->id}}" {{($material->id == old('material_id'))?'selected': '' }}>{{$material->name}}</option>
@@ -63,9 +63,13 @@ Agregar Producto
           <div class="col-md-4 offset-md-2 form-group">
             <label for="gender_id">Genero: *</label>
             <select id="gender" class="form-control" name="gender_id">
-              <option value="">Seleccione un genero</option>
+              <option value="3" {{(3 == old('gender_id'))?'selected': '' }}>Unisex</option>
               @foreach ($genders as $gender)
-                <option value="{{$gender->id}}" {{($gender->id == old('brand_id'))?'selected': '' }}>{{$gender->name}}</option>
+                @if ($gender->id==3)
+                  {{-- que onda este else POR QUE FUNCIONA??????--}}
+                @else
+                  <option value="{{$gender->id}}" {{($gender->id == old('gender_id'))?'selected': '' }}>{{$gender->name}}</option>
+                @endif
               @endforeach
             </select>
             @error('gender_id')
@@ -157,7 +161,7 @@ Agregar Producto
         {{-- Creamos los inputs hidden para los talles relacionados a cada categoria --}}
         @foreach ($categories as $category)
           @foreach ($category->sizes as $size)
-            <input class="{{$category->name}}" type="text" hidden name="" value="{{$size->name}}">
+            <input class="categoria{{$category->id}}" type="text" hidden name="" value="{{$size->name}}">
           @endforeach
         @endforeach
         {{-- Creamos los inputs hidden para los tags relacionados a cada categoria --}}
@@ -179,7 +183,8 @@ Agregar Producto
       // Al cambiar de categoria se vacia el div, para luego llenarlo con los nuevos valores
       divCentral.innerHTML = ""
 
-      var inputsTalles = document.querySelectorAll('.' + category.value)
+      // traemos los inputs de ese talle en particular
+      var inputsTalles = document.querySelectorAll('.categoria' + category.value)
 
       for (var talle of inputsTalles) {
 

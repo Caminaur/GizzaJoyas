@@ -54,8 +54,6 @@ Producto
           <form class="" action="/cart" method="post">
               @csrf
               <input type="hidden" name="product_id" value="{{ $product->id }}">
-              <input type="hidden" name="" value="">
-              <input type="hidden" name="" value="">
               <h1 class="bold">{{ $product->name }}</h1>
               <h2 class="blueSlate">${{$product->price - ($product->price*$product->discount/100)}}</h2>
               <h3 style="text-align:justify;">{{ $product->description }}</h3>
@@ -73,15 +71,32 @@ Producto
                   <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
                 <select class="size" name="size_id">
-                  @foreach ($product->category->sizes as $size)
-                    <option value="{{ $size->id }}">{{ $size->name }}</option>
+                  {{-- En caso de que no haya stock de ningun talle, le agregamos esta opcion
+                  ya que se ve afectada la estetica, por esto esta opcion va a ser la unica
+                  habilitada en este caso --}}
+                  @if (!hasStock($product))
+                    <option value="">--</option>
+                  @endif
+                  {{-- Recorremos todos los stocks del producto --}}
+                  @foreach ($product->stocks as $stock)
+                    {{-- En caso de que no haya stock de este talle en particular lo deshabilitamos y le cambiamos
+                    un poco el estilo --}}
+                    @if (!sizeHasStock($stock))
+                      <option style="color:red;" value="{{ $stock->size->id }}" disabled>{{ $stock->size->name }} Sin stock!</option>
+                    @else
+                      <option value="{{ $stock->size->id }}">{{ $stock->size->name }}</option>
+                    @endif
                   @endforeach
                 </select>
                 <br>
-                {{-- Si hay stock que aparezca el boton comprar --}}
-                <button class="btn bg-dandelion" type="submit">Comprar</button>
-                {{-- Si no hay stock muestro este mensaje --}}
-                {{-- <a class="btn border-ashBlue mt-4" href="#">Solicitar stock</a> --}}
+
+                @if (hasStock($product))
+                  {{-- Si hay stock que aparezca el boton comprar --}}
+                  <button class="btn bg-dandelion" type="submit">Comprar</button>
+                @else
+                  {{-- Si no hay stock muestro este mensaje --}}
+                  <a class="btn border-ashBlue mt-4" href="#">Solicitar stock</a>
+                @endif
 
               </div>
           </form>
