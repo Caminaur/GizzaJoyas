@@ -95,7 +95,7 @@ class ProductController extends Controller
           $this->validate($request, $reglas, $mensajes);
 
           $product = new Product();
-          $product->name = $request->title; // alternativa $producto->name = $request->name;
+          $product->name = $request->title;
           $product->price = $request->price;
           $product->model = $request->model;
           $product->onSale = $request->onSale;

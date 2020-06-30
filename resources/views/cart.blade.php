@@ -12,29 +12,29 @@ Carrito de compras
       <li><span class="dandelion">Carrito</span></li>
     </ul>
 
-    <h2 class="text-center">Carrito de compras</h2>
+    <h2 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h2>
     <br>
     <div class="productos">
       @foreach ($carts as $cart)
         <div class="producto row">
           <div class="img col-12 col-lg-4">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <img class="cart-img" src="/img/anillos.jpg{{--/storage/{{$cart->product->images->first()->path}}--}}" alt="Imagen de producto">
           </div>
 
           <div class="py-2 col-12 col-lg-2">
-            <span>{{$cart->product->name}}</span>
+            <span>Rufian{{--{{$cart->product->name}}--}}</span>
           </div>
 
           <div class="product-info col-12 col-lg-6">
-            <span class="p-2">${{$cart->product->price}} c/u</span>
+            <span class="p-2">$1.200{{--{{$cart->product->price}}--}} c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
               <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
+              <input class="quantity" min="0" name="quantity" value="1{{--{{$cart->quantity}}--}}" type="number">
               <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
             </div>
-            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
-            <a href="/deletecart/{{$cart->id}}">
+            <span class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</span>
+            <a href="{{--/deletecart/{{$cart->id}}--}}">
               <span class="hvr-icon" uk-icon="icon: trash"></span>
             </a>
           </div>
@@ -42,7 +42,7 @@ Carrito de compras
       @endforeach
     </div> {{-- productos --}}
 
-    <hr class="uk-divider-small">
+    {{-- <hr class="uk-divider-small"> --}}
     <a class="m-3" href="/deletecarts">Vaciar carrito</a>
 
     <br>

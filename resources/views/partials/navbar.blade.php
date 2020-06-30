@@ -114,7 +114,7 @@
                                   <li><a href="#">Pulseras</a></li>
                                   <li><a href="#">Relojes</a></li>
                                   <li><a href="#">Accesorios</a></li>
-                                  <li><a href="#">Todos los productos</a></li>
+                                  <li><a href="/productos">Todos los productos</a></li>
                                   <li class="uk-nav-divider"></li>
                                   <li><a class="dandelion" href="#">Ofertas</a></li>
                                   <li><a href="#">Lo nuevo</a></li>

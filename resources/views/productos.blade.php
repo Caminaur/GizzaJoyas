@@ -77,11 +77,11 @@ Productos
             <div class="uk-flex uk-flex-center mb-3">
               {{-- Con descuento--}}
               @if ($product->onSale)
-              <h3 class="dandelion mx-1 sinOferta">${{$product->price}}</h3>
-              <h3 class="doveGrey mx-1">${{$product->price - $product->price* $product->discount/100}}</h3>
+              <h3 class="dandelion mx-1 sinOferta">${{number_format($product->price, 0, '.', '.')}}</h3>
+              <h3 class="doveGrey mx-1">${{number_format(($product->price - $product->price* $product->discount/100), 0, '.', '.')}}</h3>
               @else
                 {{-- Sin descuento (precio de lista) --}}
-                <h3 class="doveGrey mx-1">${{$product->price}}</h3>
+                <h3 class="doveGrey mx-1">${{number_format($product->price, 0, '.', '.')}}</h3>
               @endif
             </div>
 

@@ -821,6 +821,7 @@ div.producto {
   text-align: -webkit-center;
   padding: 20px 0px;
   border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 img.cart-img {

@@ -74,12 +74,7 @@ Route::get('/test', function () {
 Route::get('/preguntas', 'FaqController@view');
 
 // Product
-Route::get('/productos', function() {
-  return view('productos');
-});
-Route::get('/producto', function() {
-  return view('producto');
-});
+
 Route::get('/productos', 'ProductController@products');
 Route::get('/addproduct', 'ProductController@new');
 Route::post('/addproduct', 'ProductController@store');
@@ -90,6 +85,12 @@ Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
 Route::get('/deleteimage/{id}','ProductController@deleteImage');
 Route::get('/importexcel', 'ProductController@importExcel');
 Route::post('/updateprices', 'ProductController@updatePrice');
+
+// Pagos
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
 
 // Cateogry
 Route::get('/editcategory/{id}','CategoryController@editview');
