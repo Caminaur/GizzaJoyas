@@ -8,6 +8,7 @@ use App\Product;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Category_tag;
+use App\Category_size;
 use App\Product_tag;
 class CategoryController extends Controller
 {
@@ -59,7 +60,7 @@ class CategoryController extends Controller
       // guardo los cambios en la base de datos
       $category->save();
 
-      return back()->with('status', 'Imagen modificada!');;
+      return back()->with('status', 'Imagen modificada!');
     }
   }
   public function categoryselection(){
@@ -80,7 +81,7 @@ class CategoryController extends Controller
       $product_tag->delete();
     }
 
-    return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');;
+    return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');
   }
   public function createTag(Request $req){
     $reglas = [
@@ -156,7 +157,7 @@ class CategoryController extends Controller
     // Buscamos un par de variables para personalizar el mensaje
     $category = Category::find($req->category_id);
     $tag = Tag::find($req->tagId);
-    return back()->with('status', 'El tag ' .$tag->name .' fue relacionado con '.$category->name .'!');;
+    return back()->with('status', 'El tag ' .$tag->name .' fue relacionado con '.$category->name .'!');
   }
   public function changeName(Request $req){
     $reglas = [
@@ -177,6 +178,92 @@ class CategoryController extends Controller
     $category->name = $req->category_name;
     $category->save();
 
-    return back()->with('status', 'El nombre de la categoria fue modificado exitosamente!');;
+    return back()->with('status', 'El nombre de la categoria fue modificado exitosamente!');
+  }
+  public function createCategoryForm(){
+    return view('/addcategoryform');
+  }
+  public function createCategory(Request $req){
+    $reglas = [
+      "image" => "required|image|mimes:jpg,jpeg,png|max:2048",
+      "category_name" => 'required|string|min:1|max:50',
+      "sizes" => "required|array|min:1",
+      "sizes.*" => 'min:1|max:80',
+      ];
+
+    $mensajes = [
+      "image" => "Debe ser un formato de imagen",
+      "category_name.required" => "El nombre de la categoria es requerido",
+      "category_name.string" => "El nombre de la categoria deben ser letras",
+      "category_name.min" => "El nombre de la categoria es muy corto",
+      "category_name.max" => "El nombre de la categoria es muy largo",
+      "mimes" => "Formato de imagen invalido",
+      "image.max" => 'La imagen es muy pesada',
+      "images.required" => "Sube una imagen del producto",
+      "required" => "Agrege un talle para poder crear la categoria",
+      "sizes.min" => 'No has cargado ningun talle',
+    ];
+    $this->validate($req, $reglas, $mensajes);
+
+    if (!empty($req['image'])) { // si sube una foto, entonces comenzamos el proceso de guardado
+      // creamos la categoria
+      $category = New Category;
+      // le asignamos el nombre
+      $category->name = $req->category_name;
+
+      $image = $req->file('image');
+      // guardo la imagen en storage/public (no en la base de datos)
+      $file = $image->store('public');
+      // obtengo sus nombres
+      $path = basename($file);
+
+      // guardamos la imagen
+      $category->image = $path;
+
+      // guardo los cambios en la base de datos
+      $category->save();
+
+      // Empezamos con los talles relacionado a esa categoria
+      $arraySizes = [];
+      // Guardamos los talles relacionados con una categoria en un array
+      foreach ($category->sizes as $size) {
+        $arraySizes[] = $size->name;
+      }
+      // Creamos todos los talles enviados mediante un foreach
+      foreach ($req->sizes as $newSize) {
+        $size = New Size;
+        $size->name = $newSize;
+        $size->save();
+
+        // Por cada nuevo talle creado, creamos tambien una relacion entre la categoria y ese nuevo talle
+        $category_size = New Category_size;
+        $category_size->category_id = $category->id;
+        $category_size->size_id = $size->id;
+        $category_size->save();
+      }
+
+      return back()->with('status', 'Categoria creada exitosamente!');;
+    }
+  }
+  public function delete(Request $req){
+
+    // Buscamos la categoria
+    $category = Category::find($req->category_id);
+
+    // Buscamos los talles relacionados
+    $talles = $category->sizes;
+
+    // Eliminamos los talles relacionados
+    foreach ($talles as $talle) {
+      $talle->delete();
+    }
+
+    // Borramos la categoria
+    $category->delete();
+
+    // Redirigimos a la vista de selectcategory
+    $categories = Category::all();
+
+    return view('selectcategory',compact('categories'))->with('status', 'Categoria eliminada exitosamente!');
   }
 }

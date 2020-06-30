@@ -125,6 +125,13 @@ editcategory
         <button id="addSize" class="offset-md-2 form-group" type="button" name="">Agregar talle</button>
         <button type="submit" name="">Actualizar talles</button>
       </form>
+      <div class="">
+        <form class="" action="/deletecategory" method="post">
+          @csrf
+          <input type="hidden" name="category_id" value="{{$category->id}}">
+          <button class="btn btn-danger" type="submit" >Eliminar categoria y relaciones de esta</button>
+        </form>
+      </div>
   </div>
 <script type="text/javascript">
   window.addEventListener('load',function(){
@@ -141,9 +148,6 @@ editcategory
       input.setAttribute('class','ml-3');
       // creamos un div para organizarlos
       var div = document.createElement('div');
-      // <button type="button" class="close" aria-label="Close">
-      //   <span aria-hidden="true">&times;</span>
-      // </button>
       // boton de borrado
       var button = document.createElement('button');
       button.setAttribute('type','button');

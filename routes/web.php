@@ -99,6 +99,9 @@ Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag');
 Route::post('/createtag','CategoryController@createTag');
 Route::post('/selecttag','CategoryController@addTag');
 Route::post('/changeName','CategoryController@changeName');
+Route::get('/addcategory','CategoryController@createCategoryForm');
+Route::post('/addcategory','CategoryController@createCategory');
+Route::post('/deletecategory','CategoryController@delete');
 
 // Size
 Route::put('/editSize','SizeController@edit');
