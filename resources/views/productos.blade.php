@@ -21,7 +21,6 @@ Productos
     <div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
       @foreach ($products as $product)
           <div>
-
             <div class="product uk-text-center pb-4">
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
@@ -78,10 +77,10 @@ Productos
               {{-- Con descuento--}}
               @if ($product->onSale)
               <h3 class="dandelion mx-1 sinOferta">${{$product->price}}</h3>
-              <h3 class="doveGrey mx-1">${{$product->price - $product->price* $product->discount/100}}</h3>
+              <h3 class="doveGrey mx-1">${{getRealPrice($product)}}</h3>
               @else
                 {{-- Sin descuento (precio de lista) --}}
-                <h3 class="doveGrey mx-1">${{$product->price}}</h3>
+                <h3 class="doveGrey mx-1">${{getRealPrice($product)}}</h3>
               @endif
             </div>
 
@@ -95,7 +94,9 @@ Productos
               @endif
 
             {{-- Si no hay stock muestro este mensaje --}}
-            <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+            @if (!hasStock($product))
+              <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+            @endif
 
           </div>
         </div>

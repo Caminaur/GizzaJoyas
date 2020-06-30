@@ -111,15 +111,17 @@ front-end
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 - Botones de confirmacion (Para eliminar)
 
+Alan si vas a probar las reusable functions te recomiendo que corras el comando composer dump-autoload
+
 Back-end
-- Reusable Functions (get real price, hasStock).
+- Reusable Functions (hasStock).
+- Crear Reusable Function CantidadStock
+- Al cargar la vista del carrito deberiamos pasar al usuario por un filtro, si este tiene en el carrito un producto que ahora no tiene stock, le retiramos el producto del carrito para evitar errores.
+- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
 - Logica carrito/favoritos.
 - Logica add y edit Faqs (ver il nato)
 - Logica perfil de usuario
 - Contador carrito y favoritos.
-- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
-- Crear Reusable Function CantidadStock
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
-- Agregar with status a las funciones que lo precisen
 
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
