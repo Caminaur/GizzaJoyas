@@ -119,8 +119,8 @@ Back-end
 - Contador carrito y favoritos.
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
 - Crear Reusable Function CantidadStock
-- Hacer el Add category
+- Hacer el Add category y un delete category - que borre la relacion de la categoria con sus tags, los productos de esa categoria y la relacion de los productos de esa categoria con los tags
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
-- Agregar with status a las funciones que lo precisen 
+- Agregar with status a las funciones que lo precisen
 
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio

@@ -44,8 +44,6 @@ class ProductController extends Controller
 
     return view('addProductForm',$vac);
   }
-
-
   // Traemos todos los productos con sus categorias
   public function products(){
     $products = Product::all();
@@ -53,7 +51,6 @@ class ProductController extends Controller
     $vac = compact('products','categories');
     return view('productos',$vac);
   }
-
   // agrega un producto y te redirige a la lista de productos
   public function store(Request $request){
 
@@ -91,7 +88,7 @@ class ProductController extends Controller
           ];
 
           $this->validate($request, $reglas, $mensajes);
-
+          // dd($request->all());
           $product = new Product();
           $product->name = $request->title; // alternativa $producto->name = $request->name;
           $product->price = $request->price;
@@ -110,7 +107,7 @@ class ProductController extends Controller
           $product->brand_id = $request->brand_id;
 
           // Buscamos la categoria seleccionada
-          $category = Category::all()->where('name', '=' , $request->category_id)->first()->id;
+          $category = Category::where('id', '=' , $request->category_id)->first()->id;
 
           // Seteamos la categoria del producto
           $product->category_id = $category;
@@ -239,7 +236,6 @@ class ProductController extends Controller
     return view('/editproduct', $vac);
   }
 
-
   public function update(Request $request){
 
     $reglas = [
@@ -361,7 +357,7 @@ class ProductController extends Controller
     foreach ($tags as $tag) {
 
       // Creamos la relacion con el producto
-      $product_tag = Product_tag::find($tag->id);
+      $product_tag = Product_tag::where('tag_id','=',$tag->id)->first();
       $product_tag->product_id = $product->id;
       $product_tag->tag_id = $tag->id;
 
