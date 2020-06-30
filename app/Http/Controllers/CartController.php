@@ -71,7 +71,7 @@ class CartController extends Controller
   public function deleteOneCart($id){
     $cart = Cart::find($id);
     $cart->delete();
-    return back();
+    return back()->with('status', 'Producto eliminado del carrito exitosamente!');;
   }
 
   // Borramos todos los productos del usuario
@@ -80,6 +80,6 @@ class CartController extends Controller
     foreach ($carts as $cart) {
       $cart->delete();
     }
-    return back();
+    return back()->with('status', 'El carrito fue vaciado exitosamente!');;
   }
 }

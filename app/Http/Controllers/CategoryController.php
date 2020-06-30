@@ -59,7 +59,7 @@ class CategoryController extends Controller
       // guardo los cambios en la base de datos
       $category->save();
 
-      return back();
+      return back()->with('status', 'Imagen modificada!');;
     }
   }
   public function categoryselection(){
@@ -72,7 +72,7 @@ class CategoryController extends Controller
                           ->get()[0];
     $catag->delete();
 
-    return back();
+    return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');;
   }
   public function createTag(Request $req){
     $reglas = [
@@ -96,7 +96,10 @@ class CategoryController extends Controller
     $category_tags->category_id = $req->category_id;
     $category_tags->save();
 
-    return back();
+    // Buscamos la categoria para personalizar el mensaje
+    $category = Category::find($req->category_id)->get();
+
+    return back()->with('status', 'Nuevo tag creado y relacionado con la categoria "'.$category->name.'"');;
   }
   public function addTag(Request $req){
     $reglas = [
