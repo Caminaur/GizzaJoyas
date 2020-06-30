@@ -3,7 +3,6 @@
 Carrito de compras
 @endsection
 @section('main')
-
   <div>
 
     <ul class="uk-breadcrumb  p-3">
@@ -16,36 +15,41 @@ Carrito de compras
     <br>
     <div class="productos">
       @foreach ($carts as $cart)
-        <div class="producto row">
-          <div class="img col-12 col-lg-4">
-            {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
-          </div>
-
-
-
-
-          <div class="py-2 col-12 col-lg-2">
-            <span>{{$cart->product->name}}</span>
-          </div>
-          <div class="product-info col-12 col-lg-6">
-            <span class="p-2">${{$cart->product->price}} c/u</span>
-            <div class="def-number-input number-input safari_only d-inline-flex">
-
-              {{-- Guardamos el valor individual de cada producto --}}
-              <input name="precios" class="cart_value" type="hidden" value="{{ $cart->product->price }}">
-
-              <button name='cantidad' onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input name="cantidad" class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
-              <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+        {{-- Este if tuvo que ser agregado porque a pesar de ser borrado el carrito de la DB seguia apareciendo
+        pero con precio de 0 --}}
+        @if (getRealPrice($cart->product)*$cart->quantity==0)
+        @else
+          <div class="producto row">
+            <div class="img col-12 col-lg-4">
+              {{-- Como imagen del producto en el carrito utilizo la primera --}}
+              <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
             </div>
-            <input name='priceHidden' type="hidden" name="" value="{{$cart->product->price*$cart->quantity}}">
-            <span name='price' class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
-            <a href="/deletecart/{{$cart->id}}">
-              <span class="hvr-icon" uk-icon="icon: trash"></span>
-            </a>
-          </div>
-        </div> {{-- producto --}}
+
+
+
+
+            <div class="py-2 col-12 col-lg-2">
+              <span>{{$cart->product->name}}</span>
+            </div>
+            <div class="product-info col-12 col-lg-6">
+              <span class="p-2">${{getRealPrice($cart->product)}} c/u</span>
+              <div class="def-number-input number-input safari_only d-inline-flex">
+
+                {{-- Guardamos el valor individual de cada producto --}}
+                <input name="precios" class="cart_value" type="hidden" value="{{ getRealPrice($cart->product) }}">
+
+                <button name='cantidad' onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                <input name="cantidad" class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
+                <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+              </div>
+              <input name='priceHidden' type="hidden" name="" value="{{getRealPrice($cart->product)*$cart->quantity}}">
+              <span name='price' class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</span>
+              <a href="/deletecart/{{$cart->id}}">
+                <span class="hvr-icon" uk-icon="icon: trash"></span>
+              </a>
+            </div>
+          </div> {{-- producto --}}
+        @endif
       @endforeach
     </div> {{-- productos --}}
 
@@ -53,8 +57,8 @@ Carrito de compras
     <a class="m-3" href="/deletecarts">Vaciar carrito</a>
 
     <br>
-
-    <h2 id="subtotal" class="text-center">Subtotal: $7.000</h2>
+    
+    <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
     <br>
 
     <button class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>

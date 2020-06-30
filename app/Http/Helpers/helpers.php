@@ -32,4 +32,11 @@
       return false;
     }
   }
+  function getTotalPrice($carts){
+    $totalPrice = 0;
+    foreach ($carts as $cart) {
+      $totalPrice = $totalPrice + (getRealPrice($cart->product)*$cart->quantity);
+    }
+    return $totalPrice;
+  }
 ?>
