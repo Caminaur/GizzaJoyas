@@ -17,11 +17,11 @@ class ProductTagTable extends Migration
           $table->bigIncrements('id');
 
           $table->bigInteger('tag_id')->unsigned()->nullable();
-          $table->foreign('tag_id')->references('id')->on('tags')->onDelete('set null')->onUpdate('cascade');
+          $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade')->onUpdate('cascade');
 
           $table->bigInteger('product_id')->unsigned()->nullable();
-          $table->foreign('product_id')->references('id')->on('products')->onDelete('set null')->onUpdate('cascade');
-          
+          $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+
           $table->boolean('hasTag');
 
           $table->timestamps();

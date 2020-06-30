@@ -15,17 +15,17 @@ class MaterialController extends Controller
     $material = Material::find($req->material_id);
     $material->name = $req->name;
     $material->save();
-    return back();
+    return back()->with('status', 'Material editado exitosamente!');;
   }
   public function store(Request $req){
     $material = New Material;
     $material->name = $req->name;
     $material->save();
-    return back();
+    return back()->with('status', 'Material guardado exitosamente!');;
   }
   public function delete(Request $req){
     $material = Material::find($req->material_id);
     $material->delete();
-    return back();
+    return back()->with('status', 'Material borrado exitosamente!');;
   }
 }

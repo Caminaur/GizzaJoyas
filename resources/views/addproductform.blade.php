@@ -161,7 +161,7 @@ Agregar Producto
         {{-- Creamos los inputs hidden para los talles relacionados a cada categoria --}}
         @foreach ($categories as $category)
           @foreach ($category->sizes as $size)
-            <input class="{{$category->name}}" type="text" hidden name="" value="{{$size->name}}">
+            <input class="categoria{{$category->id}}" type="text" hidden name="" value="{{$size->name}}">
           @endforeach
         @endforeach
         {{-- Creamos los inputs hidden para los tags relacionados a cada categoria --}}
@@ -183,7 +183,8 @@ Agregar Producto
       // Al cambiar de categoria se vacia el div, para luego llenarlo con los nuevos valores
       divCentral.innerHTML = ""
 
-      var inputsTalles = document.querySelectorAll('.' + category.value)
+      // traemos los inputs de ese talle en particular
+      var inputsTalles = document.querySelectorAll('.categoria' + category.value)
 
       for (var talle of inputsTalles) {
 

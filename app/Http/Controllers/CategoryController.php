@@ -67,10 +67,18 @@ class CategoryController extends Controller
     return view('selectcategory',compact('categories'));
   }
   public function deleteCategoryTag(Request $req){
+
     $catag = Category_tag::where('category_id','=',$req->categoryId)
                           ->where('tag_id','=',$req->tagId)
                           ->get()[0];
     $catag->delete();
+
+    // Debemos eliminar tambien la relacion que tenia ese tag con los productos de esa categoria
+    $product_tags = Product_tag::where('tag_id','=',$req->tagId)->get();
+
+    foreach ($product_tags as $product_tag) {
+      $product_tag->delete();
+    }
 
     return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');;
   }
@@ -85,6 +93,7 @@ class CategoryController extends Controller
       "name.min" => 'El nombre es muy corto',
       "name.max" => "El nombre es muy largo",
     ];
+
     $this->validate($req, $reglas, $mensajes);
 
     $tag = New Tag;
@@ -107,9 +116,9 @@ class CategoryController extends Controller
       $product_tag->hasTag = 0; // Como predetermida le decimos que no tiene tag
       $product_tag->save();
     }
-    
+
     // Buscamos la categoria para personalizar el mensaje
-    $category = Category::find($req->category_id)->get();
+    $category = Category::find($req->category_id);
 
     return back()->with('status', 'Nuevo tag creado y relacionado con la categoria "'.$category->name.'"');
   }
@@ -144,7 +153,10 @@ class CategoryController extends Controller
       $product_tag->save();
     }
 
-    return back();
+    // Buscamos un par de variables para personalizar el mensaje
+    $category = Category::find($req->category_id);
+    $tag = Tag::find($req->tagId);
+    return back()->with('status', 'El tag ' .$tag->name .' fue relacionado con '.$category->name .'!');;
   }
   public function changeName(Request $req){
     $reglas = [
@@ -165,6 +177,6 @@ class CategoryController extends Controller
     $category->name = $req->category_name;
     $category->save();
 
-    return back();
+    return back()->with('status', 'El nombre de la categoria fue modificado exitosamente!');;
   }
 }

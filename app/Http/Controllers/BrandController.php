@@ -15,17 +15,17 @@ class BrandController extends Controller
     $brand = Brand::find($req->brand_id);
     $brand->name = $req->name;
     $brand->save();
-    return back()->with('status', 'Marca editada exitosamente!');;
+    return back()->with('status', 'Marca editada exitosamente!');
   }
   public function store(Request $req){
     $brand = New Brand;
     $brand->name = $req->name;
     $brand->save();
-    return back()->with('status', 'Marca guardada exitosamente!!!');;
+    return back()->with('status', 'Marca guardada exitosamente!!!');
   }
   public function delete(Request $req){
     $brand = Brand::find($req->brand_id);
     $brand->delete();
-    return back()->with('status', 'Marca borrada exitosamente!!!');;
+    return back()->with('status', 'Marca borrada exitosamente!!!');
   }
 }

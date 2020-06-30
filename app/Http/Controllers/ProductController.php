@@ -233,7 +233,7 @@ class ProductController extends Controller
 
     $vac = compact('colors','product_tags','brands','ages','category_sizes','category_tags','tags','stocks','materials','sizes','genders','images','categories','product');
 
-    return view('/editproduct', $vac);
+    return view('/editproduct', $vac)->with('status', 'Producto editado exitosamente!');;
   }
 
   public function update(Request $request){
@@ -406,14 +406,14 @@ class ProductController extends Controller
     $image = Image::find($id);
     $product = Product::find($image->product_id);
     if (count($product->images)==1) {
-      return back();
+      return back()->with('error', 'El producto debe tener al menos una imagen! Agrega una antes de borrar la actual.');;
     }
     // elimina las imagenes de storage
     unlink(storage_path('app/public/').$image->path);
     // borramos las imagenes de la bd
     $image->delete();
     // nos retorna a la ruta anterior
-    return back();
+    return back()->with('status', 'Imagen eliminada!');;
   }
 
   // JULI revisar esta funcion
