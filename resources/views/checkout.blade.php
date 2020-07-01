@@ -11,6 +11,13 @@ Checkout
   <div class="row">
 
     <section id="formulario" class="col-lg-7 p-5">
+
+      <ul class="uk-breadcrumb pb-5 py-2">
+        <li><a href="/">Seguir comprando</a></li>
+        <li><a href="/">Volver al carrito</a></li>
+        <li><span class="dandelion">Checkout</span></li>
+      </ul>
+
       <h3 class="regular text-center pb-3">Elige una forma de <span class="bold blueSlate">pago</span></h3>
 
       <div class="text-center">
