@@ -149,7 +149,10 @@ Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCa
 Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
 
 // carts
-Route::get('/cart','CartController@show');
+// Route::get('/cart','CartController@show');
+Route::get('/cart', function () {
+    return view('cart');
+});
 Route::post('/cart','CartController@addToCart');
 Route::get('/deletecart/{id}','CartController@deleteOneCart');
 Route::get('/deletecarts','CartController@deleteAllCarts');

@@ -17,25 +17,19 @@ Favoritos
     <div class="productos">
       {{-- @foreach ($favourites as $favourite) --}}
         <div class="producto row">
-          <div class="position-relative img col-12 col-lg-3">
+          <div class="img col-12 col-lg-3">
+
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/img/anillos.jpg" alt="Imagen de producto">
+            <img class="cart-img " src="/img/anillos.jpg" alt="Imagen de producto">
 
             {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
-            <div class="new-label-cart">
-              <ul>
-                <li class="new"><h5>Nuevo</h5></li>
-              </ul>
-            </div>
+                <span class="new">Nuevo</span>
 
             {{-- Si el producto tiene descuento creo un cartelito --}}
             {{-- @if ($product->discount) --}}
-              <div class="onSale-label-cart">
-                <ul>
-                  <li class="sale"><h5>25% off</h5></li>
-                </ul>
-              </div>
+                  <span class="sale">25% off</span>
             {{-- @endif --}}
+
           </div>
 
           <div class="img col-12 col-lg-3">

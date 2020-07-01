@@ -1,0 +1,54 @@
+section#carrito {
+  height: 1000px;
+  border-left: 1px solid #e5e5e5;
+}
+
+#carrito div.producto {
+  justify-content: space-between;
+}
+
+#carrito div.producto div {
+  display: contents;
+}
+
+#carrito article {
+  display: block;
+}
+
+img.checkout-cart-img {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.calculos {
+  border-top: 1px solid #e5e5e5;
+}
+
+section#formulario {
+  height: 1000px;
+}
+
+.form-control-checkout {
+  border: 1px solid #6B799E;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+}
+
+.custom-select {
+  border: 1px solid #6B799E;
+  height: 30px;
+}
+
+.whatsapp-payment-button {
+  border: 1px solid $doveGrey;
+  border-radius: 13px;
+}
+
+.mercadopago-payment-button {
+  border: 1px solid $doveGrey;
+  border-radius: 13px;
+}

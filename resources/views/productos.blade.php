@@ -94,9 +94,9 @@ Productos
               @endif
 
             {{-- Si no hay stock muestro este mensaje --}}
-            @if (!hasStock($product))
+            {{-- @if (!hasStock($product)) --}}
               <a class="btn border-ashBlue" href="#">Solicitar stock</a>
-            @endif
+            {{-- @endif --}}
 
           </div>
         </div>

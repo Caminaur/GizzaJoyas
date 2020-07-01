@@ -62,5 +62,5 @@
 
 <div class="uk-flex uk-flex-around pb-3">
   <span style="font-size: 10px;">Copyright ® Gizza Joyas-Relojes © <?php echo date("Y");?>.</span>
-  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="https://www.linkedin.com/in/juliancaminaur/" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="www.dakotadevelopers.com" style="font-size: 10px;">Taten</a></span>
+  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="https://www.linkedin.com/in/juliancaminaur/" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="https://www.dakotadevelopers.com" style="font-size: 10px;">Taten</a></span>
 </div>

@@ -99,19 +99,14 @@ Objetivo de la semana/s
 
 
 front-end
-- Terminar navbar / footer
+- Terminar navbar responsive
 - Terminar vista Nosotros
-- sumar faqs a adminpanel
-- Terminar vista Favoritos
-- Hacer vista Checkout
 - Hacer vista Perfil
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Crear Paginador
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 - Botones de confirmacion (Para eliminar)
-
-Alan si vas a probar las reusable functions te recomiendo que corras el comando composer dump-autoload
 
 Back-end
 - Reusable Functions (hasStock).

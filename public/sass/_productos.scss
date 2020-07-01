@@ -26,7 +26,6 @@
 }
 
 .onSale-label {
-  color: white;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -43,18 +42,19 @@ img.producto {
 }
 
 .sale {
+  color: white;
   background-color: $dandelion;
   padding: 0 7px;
   border-radius: 11px;
 }
 
 .new-label {
-  color: white;
   display: flex;
   justify-content: center;
 }
 
 .new {
+  color: white;
   background-color: $blueSlate;
   padding: 0 7px;
   border-radius: 11px;
