@@ -1,0 +1,35 @@
+/* Paginador */
+
+.pagination {
+  justify-content: center;
+}
+
+.pages-link {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  padding: 1px 10px;
+  margin-left: 3px;
+  background-color: #fff;
+  border-radius: 25px;
+  color: black;
+}
+
+.pages-item a {
+  line-height: normal;
+  /* font-size: 20px; */
+}
+
+.pages-item.active .pages-link {
+  color: #fff;
+  background-color: $dandelion !important;
+  /* font-size: 20px; */
+}
+
+.pages-item.active {
+  border: none;
+}
+
+.pages-link {
+  /* font-size: 20px; */
+}

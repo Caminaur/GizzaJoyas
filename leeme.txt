@@ -71,19 +71,17 @@ NAVBAR
 
 EXTRAS:
 - Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
-- Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
-- Trabajar en las notificaciones, que aparezcan por unos segundos con JS
-- Iconito del google maps de IL NATO
+- Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se    me deslogueo)
 - cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=2
-- Verificar email al crear cuenta https://www.youtube.com/watch?v=o_KhH2dZCKQ&list=WL&index=1
 - Confirm al eliminar productos (probar modals confirm https://getuikit.com/docs/modal)
 - Que la social bar se pueda volver a mostrar luego de ocultarla
 - Manejar cookies con laravel (Lograr que la barra de promociones no se muestre al cerrarla y recargar la pagina) setcookie()
 - MercadoEnvios
 - Cuotas sin interes?
 - Agregarle variables a la plantilla (variables globales?)
-- Agregar Contacts a la base de datos
-- update de precio de productos de cierta categoria, ej: Anillos 20% de aumento y que se aplique a todos los anillos
+- Agregar Contacts a la base de datos para generar un newsletter
+- Loguearse con redes sociales / google
+- Podemos lograr que el usuario llegue al checkout sin estar registrado, generando un id y un carrito relacionado con el id?
 
 
 Objetivo de la semana/s
@@ -104,14 +102,13 @@ front-end
 - Hacer vista Perfil
 - Hacer vistas - edit/add
 - Hacer Email Templates
-- Crear Paginador
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 - Botones de confirmacion (Para eliminar)
 
 Back-end
 - Reusable Functions (hasStock).
 - Crear Reusable Function CantidadStock
-- Al cargar la vista del carrito deberiamos pasar al usuario por un filtro, si este tiene en el carrito un producto que ahora no tiene stock, le retiramos el producto del carrito para evitar errores.
+- Al cargar la vista del carrito deberiamos pasar al usuario por un filtro, si este tiene en el carrito un producto que ahora no tiene stock, le retiramos   el producto del carrito para evitar errores.
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
 - Logica carrito/favoritos.
 - Logica add y edit Faqs (ver il nato)

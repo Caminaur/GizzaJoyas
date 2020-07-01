@@ -18,7 +18,7 @@ Productos
 
   <section id="productos" class="container mb-5">
 
-    <div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
+    <div class="uk-child-width-1-2 uk-child-width-1-3@m pb-4" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
       @foreach ($products as $product)
           <div>
             <div class="product uk-text-center pb-4">
@@ -104,7 +104,7 @@ Productos
     </div>
 
 
-
+    {{$products->links()}}
   </section>
 
 @endsection
