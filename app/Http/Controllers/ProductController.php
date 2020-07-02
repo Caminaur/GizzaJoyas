@@ -46,7 +46,7 @@ class ProductController extends Controller
   }
   // Traemos todos los productos con sus categorias
   public function products(){
-    $products = Product::paginate(1);
+    $products = Product::paginate(4);
     $categories = Category::all();
     $vac = compact('products','categories');
     return view('productos',$vac);

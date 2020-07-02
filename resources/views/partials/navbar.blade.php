@@ -81,8 +81,8 @@
                 <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
 
               @endif
-                <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">1</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
-                <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">3</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
+                <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
+                <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosEnCarrito)}}</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
               </ul>
 
               {{-- Menu hamburguesa, se muestra al bajar de 959px (M)--}}

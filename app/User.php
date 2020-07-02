@@ -57,11 +57,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function productosFavoritos()
     {
-        return $this->belongsToMany("App\Products", "favourites", "user_id", "product_id");
+        return $this->belongsToMany("App\Product", "favourites", "user_id", "product_id");
     }
 
       public function productosEnCarrito()
       {
-        return $this->belongsToMany("App\Product", "cart", "user_id", "product_id", );
+        return $this->belongsToMany("App\Product", "carts", "user_id", "product_id", );
       }
 }

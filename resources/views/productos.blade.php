@@ -48,7 +48,16 @@ Productos
                   <div class="uk-flex-center pt-3" uk-grid>
                     <div class="uk-width-auto">
                       <ul class="uk-iconnav justify-content-center">
-                        <li><a class="rounded-icon ico" href="/favoritos"><span class="hvr-pulse-shrink {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span></a></li>
+                        <li>
+                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">
+                            @if (isFavourite($product, Auth::user()))
+                              <span class="hvr-pulse-shrink isFavourite {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span>
+                            @else
+                              <span class="hvr-pulse-shrink  {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span>
+                            @endif
+
+                          </a>
+                        </li>
                         <li><a class="rounded-icon ico" href="/cart"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
                         @if (Auth::user())
                           {{-- Si sos admin ves iconos de edicion/eliminacion --}}

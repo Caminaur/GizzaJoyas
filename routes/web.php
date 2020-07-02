@@ -72,6 +72,15 @@ Route::get('/test', function () {
 
 // FAQs
 Route::get('/preguntas', 'FaqController@view');
+Route::get('/editpreguntas', 'FaqController@editView');
+
+Route::put('/editfaq' ,'FaqController@editFaq');
+Route::post('/faq/addimage' ,'FaqController@addImage');
+
+Route::post('/faq/deleteimage' ,'FaqController@deleteImage');
+Route::post('/deletefaq' ,'FaqController@deleteFaq');
+Route::post('/createfaq' ,'FaqController@createFaq');
+
 
 // Product
 
@@ -142,6 +151,7 @@ Route::post('/deletegender','GenderController@delete');
 // Admin & User
 Route::get('/controlpanel','UserController@cpanel');
 Route::get('/favoritos','UserController@favoritos');
+Route::get('/addtofavs/{product_id}','UserController@addFav');
 
 Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
 Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');
