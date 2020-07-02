@@ -793,8 +793,8 @@ img.producto {
 
 .uk-iconnav > * > a.rounded-icon {
   display: block;
-  color: white;
-  background-color: #6B799E;
+  color: #6B799E;
+  border: 1px solid #6B799E;
   padding: 7px;
   border-radius: 20px;
 }
@@ -827,11 +827,6 @@ img.cart-img {
   display: flex;
   align-items: center;
   width: 200px;
-}
-
-svg[data-svg=trash] {
-  margin-bottom: 3px;
-  color: #9C8F96;
 }
 
 span.sale, span.new {

@@ -12,10 +12,12 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
       // creamos la primer categoria id=1
+
+      // Anillos
       DB::table('categories')->insert(
         [
           "name" => "Anillos",
-          "image" => 'agregarPath',
+          "image" => '/img/anillos.jpg',
         ]
       );
       // Creamos los talles de los anillos base
@@ -36,11 +38,36 @@ class CategoriesSeeder extends Seeder
         );
       }
 
+      // Aros
+      DB::table('categories')->insert(
+        [
+          "name" => "Aros",
+          "image" => '/img/aros.jpg',
+        ]
+      );
+      // Creamos los talles de los anillos base
+      $tallesAros = [12,13,14,15,16,17,18,19,20,21,22,23];
+      for ($i=0; $i < count($tallesAros) ; $i++) {
+        // Por cada talle creamos una fila en sizes
+        DB::table('sizes')->insert(
+          [
+            "name" => $tallesAros[$i],
+          ]
+        );
+        // y creamos la relacion de esa fila con la primer categoria
+        DB::table('category_sizes')->insert(
+          [
+            "size_id" => $i + 1,
+            "category_id" => 2,
+          ]
+        );
+      }
+
       // COLLARES
       DB::table('categories')->insert(
         [
-          "name" => "Cadenas",
-          "image" => 'agregarPath',
+          "name" => "Collares",
+          "image" => '/img/collares.jpg',
         ]
       );
       $tallesCadenas = [40,45,50,55,60,65];
@@ -55,16 +82,16 @@ class CategoriesSeeder extends Seeder
         DB::table('category_sizes')->insert(
           [
             "size_id" => $i + 13,
-            "category_id" => 2,
+            "category_id" => 3,
           ]
         );
       }
 
-
+      // Pulseras
       DB::table('categories')->insert(
         [
           "name" => "Pulseras",
-          "image" => 'agregarPath',
+          "image" => '/img/pulseras.jpg',
         ]
       );
       $tallesPulseras = [18,19,20,21];
@@ -79,7 +106,7 @@ class CategoriesSeeder extends Seeder
         DB::table('category_sizes')->insert(
           [
             "size_id" => $i + 19,
-            "category_id" => 3,
+            "category_id" => 4,
           ]
         );
       }
@@ -87,7 +114,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Relojes",
-          "image" => 'agregarPath',
+          "image" => '/img/relojes.jpg',
         ]
       );
       DB::table('sizes')->insert(
@@ -99,15 +126,15 @@ class CategoriesSeeder extends Seeder
       DB::table('category_sizes')->insert(
         [
           "size_id" => 23,
-          "category_id" => 4,
+          "category_id" => 5,
         ]
       );
 
-      // CATEGORIAS
+      // Accesorios
       DB::table('categories')->insert(
         [
           "name" => "Accesorios",
-          "image" => 'agregarPath',
+          "image" => '/img/accesorios.jpg',
         ]
       );
       DB::table('sizes')->insert(
@@ -119,7 +146,7 @@ class CategoriesSeeder extends Seeder
       DB::table('category_sizes')->insert(
         [
           "size_id" => 24,
-          "category_id" => 5,
+          "category_id" => 6,
         ]
       );
     }

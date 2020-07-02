@@ -49,11 +49,12 @@ Productos
                     <div class="uk-width-auto">
                       <ul class="uk-iconnav justify-content-center">
                         <li>
-                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">
-                            @if (isFavourite($product, Auth::user()))
-                              <span class="hvr-pulse-shrink isFavourite {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span>
+                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">                            
+                            {{-- Si el usuario esta logueado y tiene como favorito este producto, mostrar el corazon lleno                 --}}
+                            @if (Auth::user() && isFavourite($product, Auth::user()))
+                              <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
                             @else
-                              <span class="hvr-pulse-shrink  {{-- si es favorito poner esta clase: isFavorite --}}" uk-icon="icon: heart;"></span>
+                              <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
                             @endif
 
                           </a>

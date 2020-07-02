@@ -16,7 +16,7 @@ Panel de Control
       <a class="control" href="/editmaterials">Agregar / Editar Material</a>
       <a class="control" href="/editgenders">Agregar / Editar Genero</a>
       <a class="control" href="/edittags">Agregar / Editar Tag</a>
-      <a class="control" href="/edittags">Agregar / Editar Preguntas Frecuentes</a>
+      <a class="control" href="/editpreguntas">Agregar / Editar Preguntas Frecuentes</a>
 
     </div>
 

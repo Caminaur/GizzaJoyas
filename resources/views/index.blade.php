@@ -70,61 +70,22 @@ Gizza Joyas Home
 
 		<h2 class="regular text-center pb-3">Mirá nuestras <span class="bold blueSlate">Categorías</span></h2>
 
+
 			<div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid>
 
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/aros.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="medium uk-margin-remove">Aros</h3></div>
-	          </div>
-	        </div>
-	      </div>
+				@forelse ($categories as $category)
+					<div>
+						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+							<img class="brightness uk-transition-scale-up uk-transition-opaque" src="{{$category->image}}" alt="">
+							<div class="uk-position-center ncursor">
+									<div class="uk-light"><h3 class="medium uk-margin-remove">{{$category->name}}</h3></div>
+							</div>
+						</div>
+					</div>
 
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/pulseras.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="uk-margin-remove">Pulseras</h3></div>
-	          </div>
-	        </div>
-	      </div>
-
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/collares.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="uk-margin-remove">Collares</h3></div>
-	          </div>
-	        </div>
-	      </div>
-
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/anillos.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="uk-margin-remove">Anillos</h3></div>
-	          </div>
-	        </div>
-	      </div>
-
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/relojes.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="uk-margin-remove">Relojes</h3></div>
-	          </div>
-	        </div>
-	      </div>
-
-				<div>
-	        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-	          <img class="brightness uk-transition-scale-up uk-transition-opaque" src="img/accesorios.jpg" alt="">
-	          <div class="uk-position-center ncursor">
-	              <div class="uk-light"><h3 class="uk-margin-remove">Accesorios</h3></div>
-	          </div>
-	        </div>
-	      </div>
+				@empty
+					<h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Categorías Existentes</span></h3>
+			@endforelse
 
 			</div>
 

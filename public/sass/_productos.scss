@@ -62,8 +62,8 @@ img.producto {
 
 .uk-iconnav > * > a.rounded-icon {
   display: block;
-  color: white;
-  background-color: $blueSlate;
+  color: $blueSlate;
+  border: 1px solid $blueSlate;
   padding: 7px;
   border-radius: 20px;
 }

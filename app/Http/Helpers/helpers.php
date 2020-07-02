@@ -16,6 +16,7 @@
     }
   }
 
+
   // Se encarga de que haya stock de por lo menos un talle del producto
   function hasStock($product){
     $hasStock = false;
@@ -27,6 +28,7 @@
     return $hasStock;
   }
 
+
   // verifica un solo talle
   function sizeHasStock($stock){
     if ($stock->quantity>0) {
@@ -36,6 +38,8 @@
       return false;
     }
   }
+
+
   // Obtiene el valor total de la suma de todos los carritos
   function getTotalPrice($carts){
     $totalPrice = 0;
@@ -44,6 +48,8 @@
     }
     return $totalPrice;
   }
+
+
   // Verifica si un producto es favorito del usuario
   function isFavourite($product, $user){
     $isFavorite = false;

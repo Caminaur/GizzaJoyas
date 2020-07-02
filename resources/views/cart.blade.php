@@ -14,7 +14,7 @@ Carrito de compras
     <h2 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h2>
     <br>
     <div class="productos">
-      {{-- @foreach ($carts as $cart) --}}
+      {{-- @forelse ($carts as $cart) --}}
 
       {{-- Este if tuvo que ser agregado porque a pesar de ser borrado el carrito de la DB seguia apareciendo
         pero con precio de 0 --}}
@@ -63,12 +63,17 @@ Carrito de compras
             </div>
             <span class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</span>
             <a href="{{--/deletecart/{{$cart->id}}--}}">
-              <span class="hvr-icon" uk-icon="icon: trash"></span>
+              <span class="hvr-icon" style="color:white;" uk-icon="icon: trash"></span>
             </a>
           </div>
         </div> {{-- producto --}}
         {{-- @endif --}}
-      {{-- @endforeach --}}
+      {{-- @empty --}}
+
+        {{-- <h2 class="text-center">Tu Carrito está vacío</h2> --}}
+        {{-- <i class="text-center fas fa-shopping-basket"></i> --}}
+
+      {{-- @endforelse --}}
     </div> {{-- productos --}}
 
     <hr class="uk-divider-small">

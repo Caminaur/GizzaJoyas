@@ -61,28 +61,29 @@
               {{-- Items del lado derecho de la nav solo son visibles en resoluciones mayores 959px (M) --}}
               <ul class="uk-visible@m uk-navbar-nav uk-nav-parent-icon uk-margin-right">
 
-               @if (Auth::user())
-                @if (Auth::user()->isAdmin == true)
-                  <li><a class="navlink blueSlate {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="pe-7s-config pe-spin pe-2x"></i></a></li>
+                @if (Auth::user())
+                  @if (Auth::user()->isAdmin == true)
+                    <li><a class="navlink blueSlate {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="pe-7s-config pe-spin pe-2x"></i></a></li>
+                  @endif
+                  <li><a class="navlink blueSlate {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="hvr-shrink pe-7s-user-female pe-2x blueSlate"></i></a></li>
+                    <div uk-dropdown>
+                      <li class="nav-item">
+                        <form class="" action="/logout" method="post">
+                          @csrf
+                          <button class="navlink blueSlate" type="submit" name="button">Salir</button>
+                        </form>
+                      </li>
+                    </div>
+                  <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
+                  <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosEnCarrito)}}</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
+
+                @else
+
+                  <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
+                  <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
+
                 @endif
-                <li><a class="navlink blueSlate {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="hvr-shrink pe-7s-user-female pe-2x blueSlate"></i></a></li>
-                  <div uk-dropdown>
-                    <li class="nav-item">
-                      <form class="" action="/logout" method="post">
-                        @csrf
-                        <button class="navlink blueSlate" type="submit" name="button">Salir</button>
-                      </form>
-                    </li>
-                  </div>
 
-              @else
-
-                <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrarse</a></li>
-                <li><a class="navlink blueSlate hvr-underline-from-center {{ request()->is('login') ? 'active' : '' }}" href="/login">Ingresar</a></li>
-
-              @endif
-                <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
-                <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosEnCarrito)}}</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
               </ul>
 
               {{-- Menu hamburguesa, se muestra al bajar de 959px (M)--}}

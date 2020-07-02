@@ -29,9 +29,7 @@ Auth::routes();
 
 // Home
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 
 // Contacto
 
@@ -55,7 +53,7 @@ Route::get('/nosotros', function() {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/nav', function () {
@@ -71,29 +69,43 @@ Route::get('/test', function () {
 });
 
 // FAQs
+
 Route::get('/preguntas', 'FaqController@view');
-Route::get('/editpreguntas', 'FaqController@editView');
 
-Route::put('/editfaq' ,'FaqController@editFaq');
-Route::post('/faq/addimage' ,'FaqController@addImage');
+Route::get('/editpreguntas', 'FaqController@editView')->middleware('admin');
 
-Route::post('/faq/deleteimage' ,'FaqController@deleteImage');
-Route::post('/deletefaq' ,'FaqController@deleteFaq');
-Route::post('/createfaq' ,'FaqController@createFaq');
+Route::put('/editfaq' ,'FaqController@editFaq')->middleware('admin');
+
+Route::post('/faq/addimage' ,'FaqController@addImage')->middleware('admin');
+
+Route::post('/faq/deleteimage' ,'FaqController@deleteImage')->middleware('admin');
+
+Route::post('/deletefaq' ,'FaqController@deleteFaq')->middleware('admin');
+
+Route::post('/createfaq' ,'FaqController@createFaq')->middleware('admin');
 
 
 // Product
 
 Route::get('/productos', 'ProductController@products');
+
 Route::get('/addproduct', 'ProductController@new');
+
 Route::post('/addproduct', 'ProductController@store');
+
 Route::get('/producto/{id}', 'ProductController@product');
-Route::get('/editproduct/{id}', 'ProductController@edit');
-Route::put('/editproduct/{id}', 'ProductController@update');
-Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
-Route::get('/deleteimage/{id}','ProductController@deleteImage');
-Route::get('/importexcel', 'ProductController@importExcel');
-Route::post('/updateprices', 'ProductController@updatePrice');
+
+Route::get('/editproduct/{id}', 'ProductController@edit')->middleware('admin');
+
+Route::put('/editproduct/{id}', 'ProductController@update')->middleware('admin');
+
+Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
+
+Route::get('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
+
+Route::get('/importexcel', 'ProductController@importExcel')->middleware('admin');
+
+Route::post('/updateprices', 'ProductController@updatePrice')->middleware('admin');
 
 // Pagos
 
@@ -102,67 +114,110 @@ Route::get('/checkout', function () {
 });
 
 // Cateogry
-Route::get('/editcategory/{id}','CategoryController@editview');
-Route::put('/changeCategoryImage','CategoryController@imageUpdate');
-Route::get('/editcategory', 'CategoryController@categoryselection');
-Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag');
-Route::post('/createtag','CategoryController@createTag');
-Route::post('/selecttag','CategoryController@addTag');
-Route::post('/changeName','CategoryController@changeName');
-Route::get('/addcategory','CategoryController@createCategoryForm');
-Route::post('/addcategory','CategoryController@createCategory');
-Route::post('/deletecategory','CategoryController@delete');
+
+Route::get('/editcategory/{id}','CategoryController@editview')->middleware('admin');
+
+Route::put('/changeCategoryImage','CategoryController@imageUpdate')->middleware('admin');
+
+Route::get('/editcategory', 'CategoryController@categoryselection')->middleware('admin');
+
+Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag')->middleware('admin');
+
+Route::post('/createtag','CategoryController@createTag')->middleware('admin');
+
+Route::post('/selecttag','CategoryController@addTag')->middleware('admin');
+
+Route::post('/changeName','CategoryController@changeName')->middleware('admin');
+
+Route::get('/addcategory','CategoryController@createCategoryForm')->middleware('admin');
+
+Route::post('/addcategory','CategoryController@createCategory')->middleware('admin');
+
+Route::post('/deletecategory','CategoryController@delete')->middleware('admin');
 
 // Size
-Route::put('/editSize','SizeController@edit');
-Route::post('/deleteSize','SizeController@delete');
-Route::post('/addsize', 'SizeController@add');
+
+Route::put('/editSize','SizeController@edit')->middleware('admin');
+
+Route::post('/deleteSize','SizeController@delete')->middleware('admin');
+
+Route::post('/addsize', 'SizeController@add')->middleware('admin');
 
 // Tags
-Route::get('/edittags','TagController@index');
-Route::put('/edittag','TagController@edit');
-Route::post('/addTag', 'TagController@store');
-Route::post('/deletetag','TagController@delete');
+
+Route::get('/edittags','TagController@index')->middleware('admin');
+
+Route::put('/edittag','TagController@edit')->middleware('admin');
+
+Route::post('/addTag', 'TagController@store')->middleware('admin');
+
+Route::post('/deletetag','TagController@delete')->middleware('admin');
 
 // Brand
-Route::get('/editbrands','BrandController@index');
-Route::put('/editbrand','BrandController@edit');
-Route::post('/addbrand','BrandController@store');
-Route::post('/deletebrand','BrandController@delete');
+
+Route::get('/editbrands','BrandController@index')->middleware('admin');
+
+Route::put('/editbrand','BrandController@edit')->middleware('admin');
+
+Route::post('/addbrand','BrandController@store')->middleware('admin');
+
+Route::post('/deletebrand','BrandController@delete')->middleware('admin');
 
 // Colors
-Route::get('/editcolors','ColorController@index');
-Route::put('/editcolor','ColorController@edit');
-Route::post('/addcolor','ColorController@store');
-Route::post('/deletecolor','ColorController@delete');
+
+Route::get('/editcolors','ColorController@index')->middleware('admin');
+
+Route::put('/editcolor','ColorController@edit')->middleware('admin');
+
+Route::post('/addcolor','ColorController@store')->middleware('admin');
+
+Route::post('/deletecolor','ColorController@delete')->middleware('admin');
 
 // Materials
-Route::get('/editmaterials','MaterialController@index');
-Route::put('/editmaterial','MaterialController@edit');
-Route::post('/addmaterial','MaterialController@store');
-Route::post('/deletematerial','MaterialController@delete');
+
+Route::get('/editmaterials','MaterialController@index')->middleware('admin');
+
+Route::put('/editmaterial','MaterialController@edit')->middleware('admin');
+
+Route::post('/addmaterial','MaterialController@store')->middleware('admin');
+
+Route::post('/deletematerial','MaterialController@delete')->middleware('admin');
 
 // Genders
-Route::get('/editgenders','GenderController@index');
-Route::put('/editgender','GenderController@edit');
-Route::post('/addgender','GenderController@store');
-Route::post('/deletegender','GenderController@delete');
+
+Route::get('/editgenders','GenderController@index')->middleware('admin');
+
+Route::put('/editgender','GenderController@edit')->middleware('admin');
+
+Route::post('/addgender','GenderController@store')->middleware('admin');
+
+Route::post('/deletegender','GenderController@delete')->middleware('admin');
 
 // Admin & User
-Route::get('/controlpanel','UserController@cpanel');
-Route::get('/favoritos','UserController@favoritos');
-Route::get('/addtofavs/{product_id}','UserController@addFav');
+
+Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
+
+Route::get('/favoritos','UserController@favoritos')->middleware('auth');
+
+Route::get('/addtofavs/{product_id}','UserController@addFav')->middleware('auth');
 
 Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
+
 Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');
+
 Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCategory');//->middleware('admin');
+
 Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
 
 // carts
-// Route::get('/cart','CartController@show');
-Route::get('/cart', function () {
-    return view('cart');
-});
-Route::post('/cart','CartController@addToCart');
-Route::get('/deletecart/{id}','CartController@deleteOneCart');
-Route::get('/deletecarts','CartController@deleteAllCarts');
+
+// Route::get('/cart', function () {
+//   return view('cart');
+// });
+Route::get('/cart','CartController@show')->middleware('auth');
+
+Route::post('/cart','CartController@addToCart')->middleware('auth');
+
+Route::get('/deletecart/{id}','CartController@deleteOneCart')->middleware('auth');
+
+Route::get('/deletecarts','CartController@deleteAllCarts')->middleware('auth');
