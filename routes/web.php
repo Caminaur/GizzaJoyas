@@ -1,6 +1,9 @@
 <?php
 use App\Size;
 use App\Category;
+use App\Age;
+use App\Material;
+use App\Gender;
 
 
 /*
@@ -87,7 +90,20 @@ Route::post('/createfaq' ,'FaqController@createFaq')->middleware('admin');
 
 // Product
 
+
 Route::get('/productos', 'ProductController@products');
+
+Route::get('/productos/categoria/{category_name}', 'ProductController@productsByCategory');
+
+Route::get('/productos/material/{material_name}', 'ProductController@productsByMaterial');
+
+Route::get('/productos/age/{age_name}', 'ProductController@productsByAge');
+
+Route::get('/productos/gender/{gender_name}', 'ProductController@productsByGender');
+
+Route::get('/productos/{parametro_de_busqueda}','ProductController@onSale');
+// Rutas /onsale /new
+
 
 Route::get('/addproduct', 'ProductController@new');
 

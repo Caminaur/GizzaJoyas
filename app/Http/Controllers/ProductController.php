@@ -20,6 +20,7 @@ use App\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
 use App\Traits\ReusableFunctions;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -46,9 +47,65 @@ class ProductController extends Controller
   }
   // Traemos todos los productos con sus categorias
   public function products(){
-    $products = Product::paginate(4);
+    $products = Product::paginate(12);
     $categories = Category::all();
-    $vac = compact('products','categories');
+    $materials = Material::all();
+    $vac = compact('products','categories','materials');
+    return view('productos',$vac);
+  }
+  public function productsByCategory($category_name){
+    // En caso de que haya algun espacio
+    $category_name = str_replace('_', ' ', $category_name);
+    // Buscamos la categoria con ese nombre
+    $category = Category::where('name','=',$category_name)->first();
+    // Buscamos los productos a partir del id de la categoria encontrada
+    $products = Product::where('category_id','=',$category->id)
+                       ->paginate(12);
+    // Preparamos el searchType
+    $searchType = $category->name;
+    $vac = compact('products','category','searchType');
+    return view('productos',$vac);
+  }
+  public function productsByMaterial($material_name){
+    $material_name = str_replace('_', ' ', $material_name);
+    $material = Material::where('name','=',$material_name)->first();
+    $products = Product::where('material_id','=',$material->id)
+                       ->paginate(12);
+    $searchType = $material->name;
+    $vac = compact('products','material','searchType');
+    return view('productos',$vac);
+  }
+  public function productsByAge($age_name){
+    $age_name = str_replace('_', ' ', $age_name);
+    $age = Age::where('name','=',$age_name)->first();
+    $products = Product::where('age_id','=',$age->id)
+                       ->paginate(12);
+    $searchType = $age->name;
+    $vac = compact('products','age','searchType');
+    return view('productos',$vac);
+  }
+  public function productsByGender($gender_name){
+    $gender_name = str_replace('_', ' ', $gender_name);
+    $gender = Gender::where('name','=',$gender_name)->first();
+    $products = Product::where('gender_id','=',$gender->id)
+                       ->paginate(12);
+    $searchType = $gender->name;
+    $vac = compact('products','gender','searchType');
+    return view('productos',$vac);
+  }
+  public function onSale($parametro_de_busqueda){
+    if ($parametro_de_busqueda=="ofertas") {
+      $products = Product::where('onSale','=',1)
+      ->paginate(12);
+      $searchType = 'Ofertas';
+    }
+    if ($parametro_de_busqueda=="nuevos") {
+      // https://www.youtube.com/watch?v=1rgM4JH2vEo
+      $products = Product::whereDate('created_at','>',now()->subDays(20))
+      ->paginate(12);
+      $searchType = 'Lo nuevo';
+    }
+    $vac = compact('products','searchType');
     return view('productos',$vac);
   }
   // agrega un producto y te redirige a la lista de productos

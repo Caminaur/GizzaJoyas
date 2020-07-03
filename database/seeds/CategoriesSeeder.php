@@ -57,7 +57,7 @@ class CategoriesSeeder extends Seeder
         // y creamos la relacion de esa fila con la primer categoria
         DB::table('category_sizes')->insert(
           [
-            "size_id" => $i + 1,
+            "size_id" => $i + 13,
             "category_id" => 2,
           ]
         );
@@ -81,7 +81,7 @@ class CategoriesSeeder extends Seeder
         // y creamos la relacion de esa fila con la primer categoria
         DB::table('category_sizes')->insert(
           [
-            "size_id" => $i + 13,
+            "size_id" => $i + 25,
             "category_id" => 3,
           ]
         );
@@ -105,7 +105,7 @@ class CategoriesSeeder extends Seeder
         // y creamos la relacion de esa fila con la primer categoria
         DB::table('category_sizes')->insert(
           [
-            "size_id" => $i + 19,
+            "size_id" => $i + 31,
             "category_id" => 4,
           ]
         );
@@ -125,7 +125,7 @@ class CategoriesSeeder extends Seeder
       $lastSizeId = Size::all()->last()->id;
       DB::table('category_sizes')->insert(
         [
-          "size_id" => 23,
+          "size_id" => 35,
           "category_id" => 5,
         ]
       );
@@ -145,7 +145,7 @@ class CategoriesSeeder extends Seeder
       $lastSizeId = Size::all()->last()->id;
       DB::table('category_sizes')->insert(
         [
-          "size_id" => 24,
+          "size_id" => 36,
           "category_id" => 6,
         ]
       );

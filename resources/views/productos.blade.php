@@ -9,8 +9,13 @@ Productos
 @section('main')
 
   <ul class="uk-breadcrumb px-4 py-2">
-    <li><a href="">Inicio</a></li>
-      <li><span class="dandelion">Anillos</span></li>
+    <li>
+      <a href="">Inicio</a>
+    </li>
+    <li>
+      {{-- Si encuentra el search type lo imprime, sino imprime todos los productos --}}
+      <span class="dandelion">{{$searchType ?? 'Todos los productos'}}</span>
+    </li>
   </ul>
 
   {{-- <h1 class="medium text-center p-4">Nuestros Productos</h1> --}}
@@ -19,13 +24,13 @@ Productos
   <section id="productos" class="container mb-5">
 
     <div class="uk-child-width-1-2 uk-child-width-1-3@m pb-4" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
-      @foreach ($products as $product)
+      @forelse ($products as $product)
           <div>
             <div class="product uk-text-center pb-4">
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                 <a href="/producto/{{$product->id}}">
-                  <img class="producto" src="/storage/{{$product->images->first()->path}}" alt="">
+                  <img class="producto" src="/{{$product->images->first()->path}}" alt="">
                   @if (count($product->images)>1)
                     <img class="uk-transition-scale-up uk-position-cover" src="/storage/{{$product->images[1]->path}}" alt="">
                   @endif
@@ -37,7 +42,9 @@ Productos
                 @if ($product->discount)
                   <div class="onSale-label">
                     <ul>
-                      <li class="sale"><h4>{{$product->discount}}% off</h4></li>
+                      <li class="sale">
+                        <h4>{{$product->discount}}% off</h4>
+                      </li>
                     </ul>
                   </div>
                 @endif
@@ -49,7 +56,7 @@ Productos
                     <div class="uk-width-auto">
                       <ul class="uk-iconnav justify-content-center">
                         <li>
-                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">                            
+                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">
                             {{-- Si el usuario esta logueado y tiene como favorito este producto, mostrar el corazon lleno                 --}}
                             @if (Auth::user() && isFavourite($product, Auth::user()))
                               <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
@@ -65,7 +72,12 @@ Productos
                           @if (Auth::user()->isAdmin == true)
                             <li><a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span></a></li>
                             <li><a class="rounded-icon ico" href="/copy"><span class="hvr-pulse-shrink" uk-icon="icon: copy"></span></a></li>
-                            <li><a class="rounded-icon ico" href="/deleteproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: trash"></span></a></li>
+                            <li>
+                              <!-- This is a anchor toggling the modal -->
+                              <a class="rounded-icon ico" href="#confirm" uk-toggle><span class="hvr-pulse-shrink" uk-icon="icon: trash"></span></a>
+                            </li>
+                            <!-- This is the modal -->
+                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id])
                           @endif
                         @endif
                       </ul>
@@ -86,8 +98,8 @@ Productos
             <div class="uk-flex uk-flex-center mb-3">
               {{-- Con descuento--}}
               @if ($product->onSale)
-              <h3 class="dandelion mx-1 sinOferta">${{number_format($product->price, 0, '.', '.')}}</h3>
-              <h3 class="doveGrey mx-1">${{number_format(($product->price - $product->price* $product->discount/100), 0, '.', '.')}}</h3>
+                <h3 class="dandelion mx-1 sinOferta">${{number_format($product->price, 0, '.', '.')}}</h3>
+                <h3 class="doveGrey mx-1">${{number_format((getRealPrice($product)), 0, '.', '.')}}</h3>
               @else
                 {{-- Sin descuento (precio de lista) --}}
                 <h3 class="doveGrey mx-1">${{number_format($product->price, 0, '.', '.')}}</h3>
@@ -102,15 +114,16 @@ Productos
                   </ul>
                 </div>
               @endif
-
             {{-- Si no hay stock muestro este mensaje --}}
-            {{-- @if (!hasStock($product)) --}}
+            @if (!hasStock($product))
               <a class="btn border-ashBlue" href="#">Solicitar stock</a>
-            {{-- @endif --}}
+            @endif
 
           </div>
         </div>
-      @endforeach
+      @empty
+        <h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Productos Existentes</span></h3>
+      @endforelse
     </div>
 
 

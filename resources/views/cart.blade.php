@@ -14,66 +14,64 @@ Carrito de compras
     <h2 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h2>
     <br>
     <div class="productos">
-      {{-- @forelse ($carts as $cart) --}}
+      @forelse ($carts as $cart)
 
       {{-- Este if tuvo que ser agregado porque a pesar de ser borrado el carrito de la DB seguia apareciendo
         pero con precio de 0 --}}
-        {{-- @if (getRealPrice($cart->product)*$cart->quantity==0) --}}
-        {{-- @else --}}
+        @if (getRealPrice($cart->product)*$cart->quantity==0)
+        @else
         <div class="producto row">
           <div class="img col-12 col-lg-4">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/img/anillos.jpg{{--/storage/{{$cart->product->images->first()->path}}--}}" alt="Imagen de producto">
+            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
           </div>
 
           <div class="py-2 col-12 col-lg-2">
-            <span>Rufian{{--{{$cart->product->name}}--}}</span>
+            <span>{{$cart->product->name}}</span>
           </div>
 
           <div class="product-info col-12 col-lg-6">
-            <span class="p-2">$1.200{{--{{$cart->product->price}}--}} c/u</span>
+            <span class="p-2">${{$cart->product->price}} c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
               <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input class="quantity" min="0" name="quantity" value="1{{--{{$cart->quantity}}--}}" type="number">
+              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
               <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
             </div>
-            <span class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</span>
-            <a href="{{--/deletecart/{{$cart->id}}--}}">
+            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
+            <a href="/deletecart/{{$cart->id}}">
               <span class="hvr-icon" uk-icon="icon: trash"></span>
             </a>
           </div>
         </div> {{-- producto --}}
-
         <div class="producto row">
           <div class="img col-12 col-lg-4">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/img/anillos.jpg{{--/storage/{{$cart->product->images->first()->path}}--}}" alt="Imagen de producto">
+            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
           </div>
 
           <div class="py-2 col-12 col-lg-2">
-            <span>Rufian{{--{{$cart->product->name}}--}}</span>
+            <span>{{$cart->product->name}}</span>
           </div>
 
           <div class="product-info col-12 col-lg-6">
-            <span class="p-2">$1.200{{--{{$cart->product->price}}--}} c/u</span>
+            <span class="p-2">{{$cart->product->price}} c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input class="quantity" min="0" name="quantity" value="1{{--{{$cart->quantity}}--}}" type="number">
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+              <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
+              <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
             </div>
-            <span class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</span>
-            <a href="{{--/deletecart/{{$cart->id}}--}}">
+            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
+            <a href="/deletecart/{{$cart->id}}">
               <span class="hvr-icon" style="color:white;" uk-icon="icon: trash"></span>
             </a>
           </div>
         </div> {{-- producto --}}
-        {{-- @endif --}}
-      {{-- @empty --}}
+        @endif
+      @empty
+        <h2 class="text-center">Tu Carrito está vacío</h2>
+        <i class="text-center fas fa-shopping-basket"></i>
 
-        {{-- <h2 class="text-center">Tu Carrito está vacío</h2> --}}
-        {{-- <i class="text-center fas fa-shopping-basket"></i> --}}
-
-      {{-- @endforelse --}}
+      @endforelse
     </div> {{-- productos --}}
 
     <hr class="uk-divider-small">
@@ -81,7 +79,7 @@ Carrito de compras
 
     <br>
 
-    <h2 id="subtotal" class="text-center">Subtotal: $2.500{{--{{getTotalPrice($carts)}}--}}</h2>
+    <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
     <br>
 
     <button class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
@@ -94,8 +92,6 @@ Carrito de compras
 
     // Buscamos los botones de suma y de resta
     var botones = document.querySelectorAll('button[name="cantidad"]');
-    // var restas = document.querySelectorAll('button[name="restas"]');
-
     // Organizamos las funciones de los botones de suma y resta
     for (var boton of botones) {
       boton.addEventListener('click',function(){
@@ -128,13 +124,6 @@ Carrito de compras
       })
     }
 
-    // Estoy probando otra forma de manejar los datos en js
-    // Proveyendo el nombre de los inputs nos da acceso a cada uno
-
-    // var prices = document.querySelectorAll('input[name="precios"]')
-    // for (var price of prices) {
-    //   console.log(price);
-    // }
   })
 </script>
 @endsection

@@ -109,30 +109,33 @@
                           <div>
                               <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-nav-header">Categorías</li>
-                                  <li><a href="#">Aros</a></li>
-                                  <li><a href="#">Anillos</a></li>
-                                  <li><a href="#">Cadenas</a></li>
-                                  <li><a href="#">Pulseras</a></li>
-                                  <li><a href="#">Relojes</a></li>
-                                  <li><a href="#">Accesorios</a></li>
+                                  @foreach ($categories as $category)
+                                    <li><a href="/productos/categoria/{{strtolower($category->name)}}">{{$category->name}}</a></li>
+                                  @endforeach
                                   <li><a href="/productos">Todos los productos</a></li>
                                   <li class="uk-nav-divider"></li>
-                                  <li><a class="dandelion" href="#">Ofertas</a></li>
-                                  <li><a href="#">Lo nuevo</a></li>
+                                  <li><a class="dandelion" href="/productos/ofertas">Ofertas</a></li>
+                                  <li><a href="/productos/nuevos">Lo nuevo</a></li>
                               </ul>
                           </div>
 
                           <div>
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                               <li class="uk-nav-header">Materiales</li>
-                                <li><a href="#">Oro</a></li>
-                                <li><a href="#">Plata</a></li>
-                                <li><a href="#">Oro y Plata</a></li>
-                                <li><a href="#">Acero</a></li>
+                              @foreach ($materials as $material)
+                                <li>
+                                  <a href="/productos/material/{{str_replace(' ', '_', $material->name)}}">
+                                    {{$material->name}}
+                                  </a>
+                                </li>
+                              @endforeach
                                 <li class="uk-nav-divider"></li>
-                                <li><a href="#">Hombre</a></li>
-                                <li><a href="#">Mujer</a></li>
-                                <li><a href="#">Niños</a></li>
+                                @foreach ($ages as $age)
+                                  <li><a href="/productos/age/{{str_replace(' ', '_', $age->name)}}">{{$age->name}}</a></li>
+                                @endforeach
+                                @foreach ($genders as $gender)
+                                  <li><a href="/productos/gender/{{$gender->name}}">{{$gender->name}}</a></li>
+                                @endforeach
                             </ul>
                           </div>
                       </div>
