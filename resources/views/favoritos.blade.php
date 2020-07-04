@@ -12,63 +12,71 @@ Favoritos
       <li><span class="dandelion">Favoritos</span></li>
     </ul>
 
-    <h2 class="regular text-center pb-3">Tus <span class="bold blueSlate">Favoritos</span></h2>
+    @if (!empty($favourites[0]))
+      <h2 class="regular text-center pb-3">Tus <span class="bold blueSlate">Favoritos</span></h2>
+    @endif
     <br>
     <div class="productos">
-      {{-- @foreach ($favourites as $favourite) --}}
+      @forelse ($favourites as $favourite )
+        @php
+          $product = $favourite->product;
+        @endphp
         <div class="producto row">
           <div class="img col-12 col-lg-3">
 
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img " src="/img/anillos.jpg" alt="Imagen de producto">
+            <img class="cart-img " src="{{$product->images->first()->path}}" alt="Imagen de producto">
 
             {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
                 <span class="new">Nuevo</span>
 
             {{-- Si el producto tiene descuento creo un cartelito --}}
-            {{-- @if ($product->discount) --}}
-                  <span class="sale">25% off</span>
-            {{-- @endif --}}
+            @if ($product->discount)
+                  <span class="sale">{{$product->discount}}% off</span>
+            @endif
 
           </div>
 
           <div class="img col-12 col-lg-3">
-            <span>nombre del producto</span>
+            <span>{{$product->name}}</span>
           </div>
 
           <div class="py-2 col-12 col-lg-3">
             {{-- Si el producto tiene descuento digo cuanto tiene --}}
-            {{-- @if ($product->discount) --}}
-                  <span class="">25% off</span>
-            {{-- @endif --}}
+            @if ($product->discount)
+                  <span class="">{{$product->discount}}% off</span>
+            @endif
             {{-- Precio del producto --}}
             {{-- <div class="uk-flex uk-flex-center mb-3"> --}}
               {{-- Con descuento--}}
-              {{-- @if ($product->onSale) --}}
-              <span class="dandelion mx-1 sinOferta">$2000</span>
-              <span class="doveGrey mx-1">$3000</span>
-              {{-- @else --}}
+              @if ($product->onSale)
+              <span class="dandelion mx-1 sinOferta">${{getRealPrice($product)}}</span>
+              <span class="doveGrey mx-1">${{$product->price}}</span>
+              @else
                 {{-- Sin descuento (precio de lista) --}}
-                <span class="doveGrey mx-1">$3000</span>
-              {{-- @endif --}}
+                <span class="doveGrey mx-1">${{getRealPrice($product)}}</span>
+              @endif
             </div>
 
           <div class="product-info col-12 col-lg-3">
             {{-- Al clickear aqui se borra el favorito --}}
-            <a class="px-1" href="/deletefavourite">
+            <a class="px-1" href="/addtofavs/{{$product->id}}">
               <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart; ratio: 2"></span>
             </a>
             {{-- Al clickear aqui te lleva al detalle del producto --}}
-            <a class="px-1 blueSlate" href="/cart" offset="80">
-              <span class="hvr-rotate" uk-icon="icon: cart; ratio: 2"></span>
-            </a>
+              <a type="submit" class="px-1 blueSlate" href="" offset="80">
+                <span href="#confirm" uk-toggle class="hvr-rotate" uk-icon="icon: cart; ratio: 2"></span>
+              </a>
+            @include('partials.confirmAddToCart',['url'=>'/addToCart','mensaje'=>'Elija un talle y la cantidad para agregar el producto al carrito'])
           </div>
         </div> {{-- producto --}}
-      {{-- @endforeach --}}
+      @empty
+        <h2 class="regular text-center pb-3">No tienes ningun producto guardado como <span class="bold blueSlate">Favorito</span></h2>
+      @endforelse
     </div> {{-- productos --}}
 
     <hr class="uk-divider-small">
-    {{-- <a class="m-3" href="/deletecarts">Borrar todos</a> --}}
+    <a class="m-3" href="/deletefavorites">Borrar todos</a>
 
     <br>
     {{-- <h2 class="text-center">Subtotal: $7.000</h2> --}}

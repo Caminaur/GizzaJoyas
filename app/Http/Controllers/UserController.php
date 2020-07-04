@@ -13,7 +13,9 @@ class UserController extends Controller
   }
 
   public function favoritos(){
-    return view('/favoritos');
+    $favourites = Favourite::where('user_id','=',Auth::user()->id)
+                           ->get();
+    return view('/favoritos',compact('favourites'));
   }
   public function addFav($product_id){
 
@@ -32,5 +34,13 @@ class UserController extends Controller
       $favourites->first()->delete();
       return back()->with('error','Producto eliminado de favoritos!');
     }
+  }
+  public function delete(){
+    $favourites = Favourite::where('user_id','=',Auth::user()->id)
+                           ->get();
+    foreach ($favourites as $favourite) {
+      $favourite->delete();
+    }
+    return back();
   }
 }

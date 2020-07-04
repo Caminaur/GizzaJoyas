@@ -31,38 +31,19 @@ Carrito de compras
           </div>
 
           <div class="product-info col-12 col-lg-6">
-            <span class="p-2">${{$cart->product->price}} c/u</span>
+
+            <span class="p-2">${{getRealPrice($cart->product)}} c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
-              <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+              {{-- Guardamos el valor individual de cada producto --}}
+              <input name="precios" class="cart_value" type="hidden" value="{{ getRealPrice($cart->product) }}">
+              <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+              <input name="quantity" class="quantity" min="1" value="{{$cart->quantity}}" type="number">
+              <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+              <input name='priceHidden' type="hidden" name="" value="{{getTotalPrice($carts)}}">
             </div>
-            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
+            <span name='price' class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</span>
             <a href="/deletecart/{{$cart->id}}">
               <span class="hvr-icon" uk-icon="icon: trash"></span>
-            </a>
-          </div>
-        </div> {{-- producto --}}
-        <div class="producto row">
-          <div class="img col-12 col-lg-4">
-            {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
-          </div>
-
-          <div class="py-2 col-12 col-lg-2">
-            <span>{{$cart->product->name}}</span>
-          </div>
-
-          <div class="product-info col-12 col-lg-6">
-            <span class="p-2">{{$cart->product->price}} c/u</span>
-            <div class="def-number-input number-input safari_only d-inline-flex">
-              <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input class="quantity" min="0" name="quantity" value="{{$cart->quantity}}" type="number">
-              <button name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-            </div>
-            <span class="p-2 ">${{$cart->product->price*$cart->quantity}}</span>
-            <a href="/deletecart/{{$cart->id}}">
-              <span class="hvr-icon" style="color:white;" uk-icon="icon: trash"></span>
             </a>
           </div>
         </div> {{-- producto --}}
@@ -98,24 +79,23 @@ Carrito de compras
         // buscamos donde se encuentra el precio total del producto en particular
         var precioProducto = this.parentNode.parentNode.querySelector('span[name=price]');
         var precioProductoHidden = this.parentNode.parentNode.querySelector('input[name=priceHidden]');
-
         // buscamos el valor del precio individual
         var valorIndividual = this.parentNode.querySelector('input[name="precios"]').value; // ej 3600
         // Busamos la cantidad pedida de este producto
-        var productoCantidad = this.parentNode.querySelector("input[name=cantidad]").value;
+        var productoCantidad = this.parentNode.querySelector("input[name=quantity]").value;
         // Modificamos el span de acuerdo a los cambios realizados
-        precioProducto.innerHTML = valorIndividual * productoCantidad;
+        precioProducto.innerHTML = '$' + valorIndividual * productoCantidad;
         precioProductoHidden.value = valorIndividual * productoCantidad;
-
         // Modificamos el subtotal
         var subtotal = document.getElementById('subtotal')
 
         // buscamos los precios de cada producto agregado al carrito
         var preciosProductos = document.querySelectorAll('input[name=priceHidden]');
-        console.log(preciosProductos);
+        for (var precio of preciosProductos) {
+          console.log(precio);
+        }
         // Cada uno lo sumamos a la variable precio final
         var precioFinal = 0;
-
         for (var precio of preciosProductos) {
           var precioFinal = parseInt(precioFinal) + parseInt(precio.value);
         }

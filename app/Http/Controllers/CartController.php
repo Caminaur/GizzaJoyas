@@ -14,7 +14,6 @@ class CartController extends Controller
   public function show(){
     // Buscamos los carritos del usuario
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
-
     foreach ($carts as $cart) {
       // traemos los stocks de cada producto de cada carrito
       $stock = Stock::where('product_id','=',$cart->product->id)

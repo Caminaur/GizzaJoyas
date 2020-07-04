@@ -215,6 +215,8 @@ Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
 
 Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 
+Route::get('/deletefavorites','UserController@delete')->middleware('auth');
+
 Route::get('/addtofavs/{product_id}','UserController@addFav')->middleware('auth');
 
 Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
