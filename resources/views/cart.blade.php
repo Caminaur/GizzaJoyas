@@ -39,7 +39,7 @@ Carrito de compras
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
               <input name="quantity" class="quantity" min="1" value="{{$cart->quantity}}" type="number">
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-              <input name='priceHidden' type="hidden" name="" value="{{getTotalPrice($carts)}}">
+              <input name='priceHidden' type="hidden" name="" value="{{getRealPrice($cart->product)*$cart->quantity}}">
             </div>
             <span name='price' class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</span>
             <a href="/deletecart/{{$cart->id}}">
