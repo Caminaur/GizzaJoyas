@@ -8,7 +8,7 @@
         <p class="uk-text-right">
             <form class="" action="/cart" method="post">
               @csrf
-              <select class="size" name="size_id">
+              <select id="size" class="size" name="size_id">
                 @if (!hasStock($product))
                   <option value="">--</option>
                 @endif
@@ -25,8 +25,11 @@
               </select>
               <input type="number" name="quantity" value="">
               <input type="hidden" name="product_id" value="{{$product->id}}">
+              <div class="">
+                <p style="color:red;" id="errorMessage"></p>
+              </div>
               <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-              <button type="submit" class="uk-button uk-button-primary" href="{{$url}}">Agregar al carrito</button>
+              <button id="agregar_carrito" type="submit" class="uk-button uk-button-primary" href="{{$url}}">Agregar al carrito</button>
             </form>
         </p>
     </div>

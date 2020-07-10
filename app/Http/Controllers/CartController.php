@@ -14,12 +14,20 @@ class CartController extends Controller
   public function show(){
     // Buscamos los carritos del usuario
     $carts = Cart::where('user_id','=',Auth::user()->id)->get();
+
+    $maxStock = [];
+
     foreach ($carts as $cart) {
       // traemos los stocks de cada producto de cada carrito
       $stock = Stock::where('product_id','=',$cart->product->id)
                       ->where('size_id','=',$cart->size_id)
                       ->get()
                       ->first();
+
+      // Aca vamos a guardar la cantidad maxima de cada producto en el carrito
+      // le damos el id del carrito para identificarlo facilmente dentro del array
+      $maxStock[$cart->id] = $stock->quantity;
+
       // En caso de que el stock se haya reducido por compras de otros usuario
       // Reducimos la quantity del carrito a la disponible
       if ($cart->quantity>$stock->quantity) {
@@ -32,7 +40,7 @@ class CartController extends Controller
         $cart->delete();
       }
     }
-    return view('cart',compact('carts'));
+    return view('cart',compact('carts','maxStock'));
   }
 
     // Agregamos al carrito el producto elegido

@@ -74,7 +74,20 @@ Favoritos
         <h2 class="regular text-center pb-3">No tienes ningun producto guardado como <span class="bold blueSlate">Favorito</span></h2>
       @endforelse
     </div> {{-- productos --}}
-
+    {{-- Guardamos los stocks de los talles disponibles --}}
+    @foreach ($product->stocks as $stock)
+      @php
+        $cantidad = $stock->quantity;
+      @endphp
+      @foreach (Auth::user()->carts as $cart)
+        @if ($cart->size_id==$stock->size_id)
+          @php
+            $cantidad = $cantidad - $cart->quantity;
+          @endphp
+        @endif
+      @endforeach
+      <input type="hidden" name="{{$stock->size->id}}" value="{{$cantidad}}">
+    @endforeach
     <hr class="uk-divider-small">
     <a class="m-3" href="/deletefavorites">Borrar todos</a>
 
@@ -89,10 +102,33 @@ Favoritos
   </div>
 <script type="text/javascript">
   window.addEventListener('load',function(){
-    var sumas = document.querySelector('.sumar')
-    var restas = document.querySelector('.restar')
-    sumas.addEventListener('click',function(){
-      this.parentNode.querySelector
+    // Cantidad
+    var quantity = document.querySelector('input[name="quantity"]');
+    // Selector que nos provee el size_id
+    var size_selector = document.getElementById('size');
+    quantity.addEventListener('change',function(){
+      // Buscamos el input que guarda la cantidad del talle seleccionado
+      var stock_quantity = document.querySelector('input[name="'+size_selector.value+'"]');
+      // Si la cantidad seleccionada supera al stock
+      var mensajeDeError = document.getElementById('errorMessage')
+      var botonComprar = document.getElementById('agregar_carrito');
+      if (quantity.value>stock_quantity.value) {
+        // mensaje de error
+        mensajeDeError.removeAttribute('hidden');
+        if (stock_quantity.value==0) {
+          mensajeDeError.innerHTML = "Todos los productos disponibles en este talle ya se encuentran en tu carrito"
+        }
+        else {
+          mensajeDeError.innerHTML = "Solamente hay " + stock_quantity.value + " productos disponibles en ese talle!"
+        }
+        // bloqueamos el boton de comprar
+        botonComprar.setAttribute('type','button');
+      }
+      else if (quantity.value<stock_quantity.value){
+        mensajeDeError.setAttribute('hidden','true');
+        mensajeDeError.innerHTML = "";
+        botonComprar.setAttribute('type','submit');
+      }
     })
   })
 </script>

@@ -29,12 +29,17 @@ Carrito de compras
           <div class="py-2 col-12 col-lg-2">
             <span>{{$cart->product->name}}</span>
           </div>
-
-          <div class="product-info col-12 col-lg-6">
+          <div class="product-info col-12 col-lg-1">
+            <span>Talle: {{$cart->size->name}}</span>
+          </div>
+          <div class="product-info col-12 col-lg-4">
 
             <span class="p-2">${{getRealPrice($cart->product)}} c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
+              {{-- Guardamos el stock maximo de el producto de este carrito --}}
+              <input type="hidden" name="cantidad_max" value="{{$maxStock[$cart->id]}}">
               {{-- Guardamos el valor individual de cada producto --}}
+              <input id="size" type="hidden" name="" value="{{$cart->size->id}}">
               <input name="precios" class="cart_value" type="hidden" value="{{ getRealPrice($cart->product) }}">
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
               <input name="quantity" class="quantity" min="1" value="{{$cart->quantity}}" type="number">
@@ -45,6 +50,8 @@ Carrito de compras
             <a href="/deletecart/{{$cart->id}}">
               <span class="hvr-icon" uk-icon="icon: trash"></span>
             </a>
+            <br>
+            <span name='errorMessage'hidden></span>
           </div>
         </div> {{-- producto --}}
         @endif
@@ -63,7 +70,7 @@ Carrito de compras
     <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
     <br>
 
-    <button class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+    <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
     <br>
 
 
@@ -76,31 +83,63 @@ Carrito de compras
     // Organizamos las funciones de los botones de suma y resta
     for (var boton of botones) {
       boton.addEventListener('click',function(){
+
+        // Esta seccion maneja los precios
+
         // buscamos donde se encuentra el precio total del producto en particular
         var precioProducto = this.parentNode.parentNode.querySelector('span[name=price]');
         var precioProductoHidden = this.parentNode.parentNode.querySelector('input[name=priceHidden]');
+
         // buscamos el valor del precio individual
         var valorIndividual = this.parentNode.querySelector('input[name="precios"]').value; // ej 3600
+
         // Busamos la cantidad pedida de este producto
         var productoCantidad = this.parentNode.querySelector("input[name=quantity]").value;
+
         // Modificamos el span de acuerdo a los cambios realizados
         precioProducto.innerHTML = '$' + valorIndividual * productoCantidad;
         precioProductoHidden.value = valorIndividual * productoCantidad;
+
         // Modificamos el subtotal
         var subtotal = document.getElementById('subtotal')
 
         // buscamos los precios de cada producto agregado al carrito
         var preciosProductos = document.querySelectorAll('input[name=priceHidden]');
-        for (var precio of preciosProductos) {
-          console.log(precio);
-        }
+
         // Cada uno lo sumamos a la variable precio final
         var precioFinal = 0;
         for (var precio of preciosProductos) {
           var precioFinal = parseInt(precioFinal) + parseInt(precio.value);
         }
+
         // Modificamos el subtotal para que refleje los cambios realizados
         subtotal.innerHTML = 'Subtotal: $' + precioFinal;
+
+
+
+        // Esta seccion realiza un control de stock
+
+        var quantity = this.parentNode.querySelector('input[name="quantity"]')
+        // traigo el select de talle nos provee el id del talle seleccionado
+        var size = document.getElementById('size');
+        // Buscamos el input que guarda la cantidad del talle seleccionado
+        var stock_quantity =this.parentNode.querySelector('input[name="cantidad_max"]')
+        // Si la cantidad seleccionada supera al stock
+        var mensajeDeError = this.parentNode.parentNode.querySelector('span[name="errorMessage"]')
+        var botonComprar = document.getElementById('comprar_button');
+        if (quantity.value>stock_quantity.value) {
+          // mensaje de error
+          mensajeDeError.removeAttribute('hidden');
+          mensajeDeError.innerHTML = "Solamente hay " + stock_quantity.value + " productos disponibles en ese talle!"
+          // bloqueamos el boton de comprar
+          botonComprar.setAttribute('type','button');
+        }
+        else if (quantity.value<=stock_quantity.value){
+          mensajeDeError.setAttribute('hidden','true');
+          mensajeDeError.innerHTML = "";
+          botonComprar.setAttribute('type','submit');
+        }
+
       })
     }
 
