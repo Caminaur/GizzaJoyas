@@ -125,9 +125,7 @@ Route::post('/updateprices', 'ProductController@updatePrice')->middleware('admin
 
 // Pagos
 
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+Route::post('/checkout', 'PaymentController@index')->name('checkout')->middleware('auth');
 
 // Cateogry
 

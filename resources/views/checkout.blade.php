@@ -167,44 +167,28 @@ Checkout
 
       <h3 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h3>
 
-      <div class="producto row">
-        <div class="img col-12 col-lg-6">
-          {{-- Como imagen del producto en el carrito utilizo la primera --}}
-          <article>
-            <img class="checkout-cart-img" src="/img/anillos.jpg{{--/storage/{{$cart->product->images->first()->path}}--}}" alt="Imagen de producto">
-            <span class="new">Nuevo</span>
-            <span class="sale">25% off</span>
-          </article>
-          <article>
-            <h6>Rufian{{--{{$cart->product->name}}--}}</h6>
-            <h6 class="light">Talle XS / 3 uni.</h6>
-          </article>
-        </div>
+      @foreach ($carts as $cart)
+        <div class="producto row">
+          <div class="img col-12 col-lg-6">
+            {{-- Como imagen del producto en el carrito utilizo la primera --}}
+            <img class="checkout-cart-img" src="/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <article class="">
+              <h6>{{$cart->product->name}}</h6>
+              <h6 class="light">Talle {{$cart->size->name}} / {{$cart->quantity}} uni.</h6>
+            </article>
+          </div>
 
-        <div class="product-info col-12 col-lg-6">
-          <h6 class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</h6>
-        </div>
-      </div> {{-- producto --}}
+          <div class="product-info col-12 col-lg-6">
+            <h6 class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</h6>
+          </div>
+        </div> {{-- producto --}}
+      @endforeach
 
-      <div class="producto row">
-        <div class="img col-12 col-lg-6">
-          {{-- Como imagen del producto en el carrito utilizo la primera --}}
-          <img class="checkout-cart-img" src="/img/pulseras.jpg{{--/storage/{{$cart->product->images->first()->path}}--}}" alt="Imagen de producto">
-          <article class="">
-            <h6>Rufian{{--{{$cart->product->name}}--}}</h6>
-            <h6 class="light">Talle XS / 3 uni.</h6>
-          </article>
-        </div>
-
-        <div class="product-info col-12 col-lg-6">
-          <h6 class="p-2 ">$1.200{{--{{$cart->product->price*$cart->quantity}}--}}</h6>
-        </div>
-      </div> {{-- producto --}}
 
       <div class="calculos pt-4">
         <div class="d-flex justify-content-between">
           <h6>Subtotal</h6>
-          <h6>$1.500</h6>
+          <h6>${{getTotalPrice($carts)}}</h6>
         </div>
         <div class="d-flex justify-content-between">
           <h6>Envío</h6>
@@ -212,7 +196,7 @@ Checkout
         </div>
         <div class="d-flex justify-content-between">
           <h4 class="bold">Total</h4>
-          <h4 class="bold">$2.000</h4>
+          <h4 class="bold">${{getTotalPrice($carts)}}</h4>
         </div>
 
       </div>

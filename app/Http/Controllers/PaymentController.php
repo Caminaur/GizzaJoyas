@@ -7,7 +7,6 @@ use App\Cart;
 use App\PaymentPlatform;
 use App\User;
 use App\Image;
-use App\Shipment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Resolvers\PaymentPlatformResolver;
@@ -29,17 +28,24 @@ class PaymentController extends Controller
 
 
   // Lo que recibimos al entrar por GET a la vista Checkout.blade
-  public function index(Request $request)
+  public function index(Request $req)
     {
 
-        // Se usa para enviar info de compra via whatsapp
-        $carts = Cart::where('user_id','=',Auth::user()->id)->get();
+        // vamos a tener que actualizar los carts antes de continuar con el checkout
+        foreach ($req->producto as $arrayCart) {
+          $cart = Cart::find(intval($arrayCart['cart_id']));
+          // actualizamos la cantidad pedida de cada producto en caso de que esta haya cambiado
+          $cart->quantity = $arrayCart['cart_quantity'];
+          // lo guardamos
+          $cart->save();
+        }
 
-        $shipment = Shipment::first()->value;
+        // Traemos los carritos
+        $carts = Cart::where('user_id','=',Auth::user()->id)->get();
 
         // Esta funcion obtiene el precio del total de los productos que tiene el usuario en el carrito,
         // teniendo en cuenta el descuento (si tiene). La utilizamos por seguridad para que no haya modificaciones del usuario
-        $total = PaymentController::getRealPrice();
+        $total = getTotalPrice($carts);
 
         $paymentPlatforms = PaymentPlatform::all();
 
@@ -47,7 +53,6 @@ class PaymentController extends Controller
           'paymentPlatforms' => $paymentPlatforms,
           'total' => $total,
           'carts' => $carts,
-          'shipment' => $shipment
         ]);
 
     }

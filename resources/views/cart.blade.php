@@ -39,6 +39,7 @@ Carrito de compras
               {{-- Guardamos el stock maximo de el producto de este carrito --}}
               <input type="hidden" name="cantidad_max" value="{{$maxStock[$cart->id]}}">
               {{-- Guardamos el valor individual de cada producto --}}
+              <input type="hidden" name="cart_id" value="{{$cart->id}}">
               <input id="size" type="hidden" name="" value="{{$cart->size->id}}">
               <input name="precios" class="cart_value" type="hidden" value="{{ getRealPrice($cart->product) }}">
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
@@ -69,8 +70,14 @@ Carrito de compras
 
     <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
     <br>
-
-    <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+    <form class="" action="/checkout" method="post">
+      @csrf
+      @foreach ($carts as $cart)
+        <input type="hidden" name="producto[{{$cart->id}}][cart_id]" value="{{$cart->id}}">
+        <input id="cart{{$cart->id}}" type="hidden" name="producto[{{$cart->id}}][cart_quantity]" value="{{$cart->quantity}}">
+      @endforeach
+      <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+    </form>
     <br>
 
 
@@ -126,7 +133,7 @@ Carrito de compras
         var stock_quantity =this.parentNode.querySelector('input[name="cantidad_max"]')
         // Si la cantidad seleccionada supera al stock
         var mensajeDeError = this.parentNode.parentNode.querySelector('span[name="errorMessage"]')
-        var botonComprar = document.getElementById('comprar_button');
+        var botonComprar = document.getElementById('boton_comprar');
         if (quantity.value>stock_quantity.value) {
           // mensaje de error
           mensajeDeError.removeAttribute('hidden');
@@ -138,7 +145,19 @@ Carrito de compras
           mensajeDeError.setAttribute('hidden','true');
           mensajeDeError.innerHTML = "";
           botonComprar.setAttribute('type','submit');
+
+
+          // Organizamos lo que vamos a enviar al backend
+          // Este nos va a proveer el id del cart al que se le sumo la cantidad
+          var cart_id = this.parentNode.querySelector('input[name="cart_id"]').value;
+          // Con este id armamos un string de busqueda
+          var string = 'cart'+ cart_id;
+          // buscamos el input en donde vamos a enviar la cantidad pedida
+          var inputEnvioCantidad = document.getElementById(string);
+          // modificamos el valor con la quantity actual
+          inputEnvioCantidad.value = quantity.value;
         }
+
 
       })
     }
