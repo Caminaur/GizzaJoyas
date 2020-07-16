@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $materials = Material::all();
         $ages = Age::all();
         $genders = Gender::all();
-
+        $potato = 'potato';
         // Especificamos los nombres y valores de las variables a compartir
         $view->with('categories',$categories)
              ->with('materials',$materials)

@@ -134,7 +134,9 @@ Carrito de compras
         // Si la cantidad seleccionada supera al stock
         var mensajeDeError = this.parentNode.parentNode.querySelector('span[name="errorMessage"]')
         var botonComprar = document.getElementById('boton_comprar');
-        if (quantity.value>stock_quantity.value) {
+
+        // El parseInt nos permite asegurar que los datos comparados sean numero enteros
+        if (parseInt(quantity.value)>parseInt(stock_quantity.value)) {
           // mensaje de error
           mensajeDeError.removeAttribute('hidden');
           mensajeDeError.innerHTML = "Solamente hay " + stock_quantity.value + " productos disponibles en ese talle!"

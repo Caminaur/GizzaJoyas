@@ -1,3 +1,6 @@
+@php
+  dd($potato);
+@endphp
 @extends('layouts.plantilla')
 @section('titulo')
 Checkout
@@ -30,8 +33,8 @@ Checkout
       {{-- Despliegue de mercadopago form --}}
       <div id="toggle-animation" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>
 
-        <form class="text-center" action="/{{--{{ route('pay') }}--}}" method="post" id="paymentForm" style="text-align-last: center;">
-
+        <form class="text-center" action="/payments/pay" method="post" id="paymentForm" style="text-align-last: center;">
+        @csrf
                   <label class="mt-3">Detalles de la compra:</label><br>
 
           <div class="form-group-checkout form-row" style="text-align: -webkit-center;">
@@ -123,24 +126,15 @@ Checkout
 
           </div>
 
-
             <div class="col-12">
               <label for="installments">Cuotas:</label>
               <select id="installments" class="form-control-checkout" name="installments"></select>
             </div>
-            <input type="hidden" name="amount" id="total" value={{--{{$total}}--}} />
+            <input type="hidden" name="amount" id="total" value={{getTotalPrice($carts)}} />
             <input type="hidden" name="description"/>
             <input type="hidden" name="paymentMethodId"/>
             <input type="hidden" name="shipment" id="shipment" value="{{--{{$shipment}}--}}">
           </div>
-
-
-          {{-- Indica que la moneda va a ser convertida a pesos argentinos --}}
-          {{-- <div class="form-group-checkout form-row">
-            <div class="col">
-                <small class="form-text text-mute"  role="alert" >Tu pago se hara en pesos argentinos. {{ strtoupper(config('services.mercadopago.base_currency')) }}</small>
-            </div>
-          </div> --}}
 
           {{-- Aqui se muestran los error que puedan existir y va a ser establecido desde el JS --}}
           <div class="form-group-checkout form-row">
@@ -203,42 +197,225 @@ Checkout
     </section>
 
   </div>
+  <input type="hidden" id="cardNetwork" name="card_network">
+  {{-- Input oculto que se usa para el JS --}}
 
-  <script>
+  <input type="hidden" id="cardToken" name="card_token">
+  {{-- Input oculto que se usa para el JS --}}
 
-  // Cuando clickean Con envio o Sin envio  Muestra o esconde los datos del domicilio
-  // en el formulario checkout y a su vez le da value true al input de Con Envio. Si conEnvio value es true
-  // se va a ejecutar la funcion de MP guessingPaymentMethod que se encarga de calcular el total.
-  // Ver linea 232 para seguir entendiendo.
+  <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+  @push('scripts')
 
-  window.addEventListener('load', function() {
-    var conEnvio = document.getElementById("si");
-    var sinEnvio = document.getElementById("no");
-    var deliveryAddress = document.getElementById("deliveryAddress");
-    var inputs = document.getElementById("deliveryAddress").getElementsByTagName('input');
-
-
-    if (conEnvio.hasAttribute('checked')) {
-      deliveryAddress.classList.remove("hidden");
-    }
-
-    conEnvio.addEventListener('click', function(){
-      deliveryAddress.classList.remove("hidden");
-      conEnvio.value = "true";
-      guessingPaymentMethod('blur');
-    })
-
-    sinEnvio.addEventListener('click', function(){
-      deliveryAddress.classList.add("hidden");
-      conEnvio.value = "false";
-      guessingPaymentMethod('blur');
-      for (input of inputs) {
-        input.value="";
+    <script>
+    // Cuando clickean Con envio o Sin envio  Muestra o esconde los datos del domicilio
+    // en el formulario checkout y a su vez le da value true al input de Con Envio. Si conEnvio value es true
+    // se va a ejecutar la funcion de MP guessingPaymentMethod que se encarga de calcular el total.
+    // Ver linea 232 para seguir entendiendo.
+    window.addEventListener('load', function() {
+      var conEnvio = document.getElementById("si");
+      var sinEnvio = document.getElementById("no");
+      var deliveryAddress = document.getElementById("deliveryAddress");
+      var inputs = document.getElementById("deliveryAddress").getElementsByTagName('input');
+      if (conEnvio.hasAttribute('checked')) {
+        deliveryAddress.classList.remove("hidden");
       }
+      conEnvio.addEventListener('click', function(){
+        deliveryAddress.classList.remove("hidden");
+        conEnvio.value = "true";
+        guessingPaymentMethod('blur');
+      })
+      sinEnvio.addEventListener('click', function(){
+        deliveryAddress.classList.add("hidden");
+        conEnvio.value = "false";
+        guessingPaymentMethod('blur');
+        for (input of inputs) {
+          input.value="";
+        }
+      })
     })
+    </script>
+    <script>
+        function setCardNetwork()
+        {
+            const cardNumber = document.getElementById("cardNumber");
+            mercadoPago.getPaymentMethod(
+                { "bin": cardNumber.value.substring(0,6) },
+                function(status, response) {
+                    const cardNetwork = document.getElementById("cardNetwork");
+                    cardNetwork.value = response[0].id;
+                }
+            );
+        }
+    </script>
+    <script hidden>
+        const mercadoPago = window.Mercadopago;
+        // nos validamos con la llave publica
+        mercadoPago.setPublishableKey('TEST-daa146b1-b091-4dda-9826-3f8872b0bb52');
+        // Nos permite obtener los tipos de documentos disponibles
+        mercadoPago.getIdentificationTypes();
+        // agregamos una funcion cuando ingresen un numero para la tarjeta
+        window.addEventListener('load',function(){
+          var card = document.querySelector('#cardNumber');
+          card.addEventListener('blur',function(){
+            guessingPaymentMethod('blur');
+          })
+        })
+    </script>
 
-  })
+    <script type="text/javascript">
+    function addEvent(to, type, fn){
+            if(document.addEventListener){
+                to.addEventListener(type, fn, false);
+            } else if(document.attachEvent){
+                to.attachEvent('on'+type, fn);
+            } else {
+                to['on'+type] = fn;
+            }
+        };
+    addEvent(document.querySelector('#cardNumber'), 'keyup', guessingPaymentMethod);
+    addEvent(document.querySelector('#cardNumber'), 'change', guessingPaymentMethod);
+    function getBin() {
+      const cardnumber = document.getElementById("cardNumber");
+      return cardnumber.value.substring(0,6);
+    };
+    function guessingPaymentMethod(event) {
+        var bin = getBin();
+        if (event.type == "keyup") {
+            if (bin.length >= 6) {
+                window.Mercadopago.getPaymentMethod({
+                    "bin": bin
+                }, setPaymentMethodInfo);
+            }
+        } else {
+            setTimeout(function() {
+                if (bin.length >= 6) {
+                    window.Mercadopago.getPaymentMethod({
+                        "bin": bin
+                    }, setPaymentMethodInfo);
+                }
+            }, 100);
+        }
+    };
+    function setPaymentMethodInfo(status, response) {
+        if (status == 200) {
+            const paymentMethodElement = document.querySelector('input[name=paymentMethodId]');
+            if (paymentMethodElement) {
+                paymentMethodElement.value = response[0].id;
+            } else {
+                var form = document.querySelector('#paymentForm');
+                const input = document.createElement('input');
+                input.setAttribute('name', 'paymentMethodId');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('value', response[0].id);
+                form.appendChild(input);
+            }
+            // Obtenemos el value de conEnvio, si es true le sumamos el valor del envio a las cuotas.
+            var conEnvio = document.getElementById("si").value;
+            if (conEnvio=="true") {
+              var envio = document.getElementById("shipment").value;
+              // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
+              var compra = document.querySelector('#total').value;
+              var total = parseInt(envio) + parseInt(compra);
+              Mercadopago.getInstallments({
+                "bin": getBin(),
+                "amount": parseFloat(total),
+              }, setInstallmentInfo);
+            }
+            else {
+              Mercadopago.getInstallments({
+                "bin": getBin(),
+                "amount": parseFloat(document.querySelector('#total').value),
+              }, setInstallmentInfo);
+            }
+        } else {
+            alert(`payment method info error: ${response}`);
+        }
+    };
+    doSubmit = false;
+    addEvent(document.querySelector('#payButton'), 'click', doPay);
+    function doPay(event){
+        event.preventDefault();
+        if(!doSubmit){
+            var $form = document.querySelector('#paymentForm');
+            window.Mercadopago.createToken($form, sdkResponseHandler);
+            return false;
+        }
+    };
+    function sdkResponseHandler(status, response) {
+        if (status != 200 && status != 201) {
+            alert("verify filled data");
+        }else{
+            var form = document.querySelector('#paymentForm');
+            var card = document.createElement('input');
+            card.setAttribute('name', 'token');
+            card.setAttribute('type', 'hidden');
+            card.setAttribute('value', response.id);
+            form.appendChild(card);
+            doSubmit=true;
+            // Una vez que estamos seguros que no hay error establecemos el token que representa el metodo de pago
+            const cardToken = document.getElementById("cardToken");
+            // antes de establecer el valor del token, tenemos que asegurarnos que el elemento que contenga la red que represento
+            // ese metodo de pago sea establecido, por eso hay que llamar al siguiente metodo para que se establezca esa red a partir de
+            // lo que ya el usuario nos ingreso y que ya no hay errores (el numero es correcto y demas).
+            setCardNetwork();
+            // Le establecemos el valor a ese elemento viniendo directamente de la respuesta, simplemente con el id que representa ese metodo de pago
+            cardToken.value = response.id;
+            form.submit();
+        }
+    };
+    function setInstallmentInfo(status, response) {
+            var selectorInstallments = document.querySelector("#installments"),
+            fragment = document.createDocumentFragment();
+            selectorInstallments.options.length = 0;
+            if (response.length > 0) {
+                var option = new Option("Cuotas", '-1'),
+                payerCosts = response[0].payer_costs;
+                fragment.appendChild(option);
+                for (var i = 0; i < payerCosts.length; i++) {
+                    fragment.appendChild(new Option(payerCosts[i].recommended_message, payerCosts[i].installments));
+                }
+                selectorInstallments.appendChild(fragment);
+                selectorInstallments.removeAttribute('disabled');
+            }
+        };
+    </script>
 
-  </script>
+    <script>
+        // Accedemos al Formulario por el id
+        const mercadoPagoForm = document.getElementById("paymentForm");
+        // Agregamos un evenoto para realizar operaciones una vez que se haya enviado
+        mercadoPagoForm.addEventListener('submit', function(e) {
+            // Solo queremos que esto se ejecute unicamente en el caso de enviar un pago con MercadoPago
+            // Consiste en que si el elemento actual de este formulario llamado mercadoPagoForm , en el caso particular del valor de la plataforma
+            // de pago coincide exactamente con la que tenemos de MP particularmente.
+            if (mercadoPagoForm.elements.payment_platform.value === "1"){ {{-- $paymentPlatform->id --}}
+                // Utilizamos el evento y prevenimos que se envie el formulario para poder realizar las acciones adicionales
+                e.preventDefault();
+                // Ahora si utilizamos la variable mercadoPago y llamamos al metodo createToken
+                // Este metodo recibe el formulario con todos los campos, metodos y elementos relacionados con MP
+                // y tiene una funcion anonima que recibe el estado de la peticion y la respuesta
+                mercadoPago.createToken(mercadoPagoForm, function(status, response) {
+                    // Si el estado es un estado no es de exito (200 o 201)
+                    if (status != 200 && status != 201) {
+                        // Obtenemos el elemento de errores para establecerle un valor
+                        const errors = document.getElementById("paymentErrors");
+                        // Le establecemos el contenido que viene de la respuesta de un elemento llamado cause (puede haber muchas causas de error) y de alli obtenemos la descripcion de la causa
+                        errors.textContent = response.cause[0].description;
+                    } else {
+                        // Una vez que estamos seguros que no hay error establecemos el token que representa el metodo de pago
+                        const cardToken = document.getElementById("cardToken");
+                        // antes de establecer el valor del token, tenemos que asegurarnos que el elemento que contenga la red que represento
+                        // ese metodo de pago sea establecido, por eso hay que llamar al siguiente metodo para que se establezca esa red a partir de
+                        // lo que ya el usuario nos ingreso y que ya no hay errores (el numero es correcto y demas).
+                        setCardNetwork();
+                        // Le establecemos el valor a ese elemento viniendo directamente de la respuesta, simplemente con el id que representa ese metodo de pago
+                        cardToken.value = response.id;
+                        // enviamos el formulario.
+                        mercadoPagoForm.submit();
+                    }
+                });
+            }
+        });
+      </script>
 
 @endsection

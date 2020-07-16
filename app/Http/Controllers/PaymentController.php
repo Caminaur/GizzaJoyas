@@ -26,20 +26,21 @@ class PaymentController extends Controller
       $this->paymentPlatformResolver = $paymentPlatformResolver;
   }
 
-
+  public function cartsUpdate(Request $req){
+    dd($req->all());
+    // vamos a tener que actualizar los carts antes de continuar con el checkout
+    foreach ($req->producto as $arrayCart) {
+      $cart = Cart::find(intval($arrayCart['cart_id']));
+      // actualizamos la cantidad pedida de cada producto en caso de que esta haya cambiado
+      $cart->quantity = $arrayCart['cart_quantity'];
+      // lo guardamos
+      $cart->save();
+    }
+    return redirect('checkout');
+  }
   // Lo que recibimos al entrar por GET a la vista Checkout.blade
   public function index(Request $req)
     {
-
-        // vamos a tener que actualizar los carts antes de continuar con el checkout
-        foreach ($req->producto as $arrayCart) {
-          $cart = Cart::find(intval($arrayCart['cart_id']));
-          // actualizamos la cantidad pedida de cada producto en caso de que esta haya cambiado
-          $cart->quantity = $arrayCart['cart_quantity'];
-          // lo guardamos
-          $cart->save();
-        }
-
         // Traemos los carritos
         $carts = Cart::where('user_id','=',Auth::user()->id)->get();
 
@@ -59,18 +60,18 @@ class PaymentController extends Controller
 
   public function pay(Request $request)
     {
-
+      dd($request->all());
       $rules = [
-          // 'value' => ['required', 'numeric', 'min:5'],
-          'payment_platform' => ['required', 'exists:payment_platforms,id'],
+          // 'payment_platform' => ['required', 'exists:payment_platforms,id'],
           'installments' => ['required', 'numeric', 'min:1']
-          // 'currency' => ['required', 'exists:currencies,iso'],
       ];
 
         $request->validate($rules);
 
         $paymentPlatform = $this->paymentPlatformResolver
             ->resolveService($request->payment_platform);
+
+        dd($paymentPlatform);
 
         session()->put('paymentPlatformId', $request->payment_platform);
 

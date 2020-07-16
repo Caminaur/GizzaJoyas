@@ -102,8 +102,8 @@ Route::get('/productos/age/{age_name}', 'ProductController@productsByAge');
 Route::get('/productos/gender/{gender_name}', 'ProductController@productsByGender');
 
 Route::get('/productos/{parametro_de_busqueda}','ProductController@onSale');
-// Rutas /onsale /new
 
+// Rutas /onsale /new
 
 Route::get('/addproduct', 'ProductController@new');
 
@@ -123,9 +123,16 @@ Route::get('/importexcel', 'ProductController@importExcel')->middleware('admin')
 
 Route::post('/updateprices', 'ProductController@updatePrice')->middleware('admin');
 
+
 // Pagos
 
-Route::post('/checkout', 'PaymentController@index')->name('checkout')->middleware('auth');
+Route::post('/checkout', 'PaymentController@cartsUpdate')->name('checkoutUpdate')->middleware('auth');
+
+Route::get('/checkout', 'PaymentController@index')->name('checkout')->middleware('auth');
+// No se si es necesario mantener la ruta por get o juntarlo todo en una sola funcion
+
+Route::post('/payments/pay', 'PaymentController@pay')->name('pay');
+
 
 // Cateogry
 
