@@ -71,17 +71,15 @@ NAVBAR
 
 EXTRAS:
 - Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
-- Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se    me deslogueo)
+- Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
 - cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=2
-- Confirm al eliminar productos (probar modals confirm https://getuikit.com/docs/modal)
 - Que la social bar se pueda volver a mostrar luego de ocultarla
 - Manejar cookies con laravel (Lograr que la barra de promociones no se muestre al cerrarla y recargar la pagina) setcookie()
+- Podemos lograr que el usuario llegue al checkout sin estar registrado, generando un id y un carrito relacionado con el id?
 - MercadoEnvios
 - Cuotas sin interes?
-- Agregarle variables a la plantilla (variables globales?)
 - Agregar Contacts a la base de datos para generar un newsletter
 - Loguearse con redes sociales / google
-- Podemos lograr que el usuario llegue al checkout sin estar registrado, generando un id y un carrito relacionado con el id?
 - Crear la columna precio de la DB con un formato 1.000 (punto cada 3 numeros) asi evitamos usar el number format en el front
 
 
@@ -90,23 +88,24 @@ Objetivo de la semana/s
 - slider relacionado *misma categoria (productos nuevos | productos relacionados | ofertas) 12 (4xslide)
 - Slider main productos nuevos & productos en oferta
 - Filtros gender|materials|age|etc
-- 
+-
 
 front-end
 - Terminar navbar responsive
-- Terminar vista Nosotros
+- Terminar vista Nosotros -- esperando a que envien la info
 - Hacer vista Perfil
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 - Ponerle number_format a toda la Web ($2.500)
 - Botones de confirmacion (Para eliminar)
+- Agregar foto a crear categoria & boton de elimnar categoria a c/u
+- Al eliminar una categoria que se abra un modal que avise que se eliminaran todos los productos de dicha categoria
 
 Back-end
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
-- Logica carrito/favoritos.
 - Logica perfil de usuario.
-- Contador carrito y favoritos.
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google
+- Revisar el searchProduct. & migrar el administrar precios.

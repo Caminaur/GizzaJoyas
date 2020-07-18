@@ -107,8 +107,14 @@ class MercadoPagoService
             // $originalCurrency = strtoupper($request->currency);
 
               // Enviar los 2 emails
+
+
+
                                       // Mail::send(new PurchaseMail($request,$payment));
                                       // Mail::send(new SoldMail($request,$payment));
+
+
+
               // Restar del stock
               $this->restarStock();
 
