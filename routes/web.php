@@ -234,8 +234,10 @@ Route::get('/searchproduct','ProductController@showallproducts');//->middleware(
 Route::get('/searchproduct/searchName', 'ProductController@searchProductByName');//->middleware('admin');
 
 Route::get('/searchproduct/searchCategory', 'ProductController@searchProductByCategory');//->middleware('admin');
+Route::get('/searchproduct/searchCategoryId', 'ProductController@searchProductByCategoryId');//->middleware('admin');
 
 Route::get('/searchproduct/searchBrand', 'ProductController@searchProductByBrand');//->middleware('admin');
+Route::get('/searchproduct/searchBrandId', 'ProductController@searchProductByBrandId');//->middleware('admin');
 
 // carts
 

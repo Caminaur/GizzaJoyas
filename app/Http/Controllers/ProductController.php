@@ -61,9 +61,21 @@ class ProductController extends Controller
     // Buscamos los productos a partir del id de la categoria encontrada
     $products = Product::where('category_id','=',$category->id)
                        ->paginate(12);
-
-    $vac = compact('products','category');
+    $materials = Material::all();
+    $vac = compact('products','category','materials');
     return view('productos',$vac);
+  }
+  public function searchProductByCategoryId(Request $req){
+
+    $category = Category::find($req->category_id);
+    $categories = Category::All();
+    // Buscamos los productos a partir del id de la categoria encontrada
+    $products = Product::where('category_id','=',$category->id)
+                       ->paginate(12);
+    $materials = Material::all();
+    $brands = Brand::all();
+    $vac = compact('products','category','brands','categories','materials');
+    return view('/searchproduct', $vac);
   }
   public function productsByMaterial($material_name){
     $material_name = str_replace('_', ' ', $material_name);
@@ -74,13 +86,25 @@ class ProductController extends Controller
     $vac = compact('products','material','searchType');
     return view('productos',$vac);
   }
+  public function searchProductByBrandId(Request $req){
+    $brand = Brand::find($req->brand);
+    $products = Product::where('brand_id','=',$brand->id)
+                       ->paginate(12);
+    $searchType = $brand->name;
+    $categories = Category::all();
+    $materials = Material::all();
+    $brands = Brand::all();
+    $vac = compact('products','brand','brands','materials','categories','searchType');
+    return view('/searchproduct', $vac);
+  }
   public function productsByAge($age_name){
     $age_name = str_replace('_', ' ', $age_name);
     $age = Age::where('name','=',$age_name)->first();
     $products = Product::where('age_id','=',$age->id)
                        ->paginate(12);
     $searchType = $age->name;
-    $vac = compact('products','age','searchType');
+    $materials = Material::all();
+    $vac = compact('products','age','searchType','materials');
     return view('productos',$vac);
   }
   public function productsByGender($gender_name){
@@ -496,8 +520,9 @@ class ProductController extends Controller
 
         $products = Product::where('name', 'like', '%'. $request->name . '%')->orderBy('price','desc')->paginate(16);
         $brands = Brand::all();
+        $materials = Material::all();
         $categories = Category::all();
-        return view('/searchproduct', compact('products', 'request','brands','categories'));
+        return view('/searchproduct', compact('products', 'request','brands','categories','materials'));
       }
 
       public function searchProductByCategory(Request $request)

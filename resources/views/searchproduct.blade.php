@@ -22,7 +22,7 @@ productos
             </div>
           </form>
 
-          <form class="search-bar" action="/searchproduct/searchCategory" method="get">
+          <form class="search-bar" action="/searchproduct/searchCategoryId" method="get">
             <div class="input-group">
               <select class="form-control" name="category_id">
                 <option value="">Seleccione una categoria</option>
@@ -31,12 +31,12 @@ productos
                 @endforeach
               </select>
               <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-ligth"><i class="fas fa-search"></i></button>
+                <button type="submit" class="btn btn-outline-ligth">Buscar</button>
               </div>
             </div>
           </form>
 
-          <form class="search-bar" action="/searchproduct/searchBrand" method="get">
+          <form class="search-bar" action="/searchproduct/searchBrandId" method="get">
             <div class="input-group">
               {{-- <input type="text" class="form-control" placeholder="Buscar por marca" name="brand"> --}}
               <select class="form-control" name="brand">
