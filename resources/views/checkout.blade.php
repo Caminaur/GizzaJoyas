@@ -1,15 +1,12 @@
-@php
-  dd($potato);
-@endphp
 @extends('layouts.plantilla')
 @section('titulo')
 Checkout
 @endsection
 @section('main')
 
-  {{-- @if ($total == 0) --}}
-    {{-- <label>No tienes productos en tu carrito, <a href="/productos">continuar comprando</a></label> --}}
-  {{-- @else --}}
+  {{-- @if ($total == 0)
+    <label>No tienes productos en tu carrito, <a href="/productos">continuar comprando</a></label>
+  @endif --}}
 
   <div class="row">
 

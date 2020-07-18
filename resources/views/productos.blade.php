@@ -13,8 +13,17 @@ Productos
       <a href="">Inicio</a>
     </li>
     <li>
-      {{-- Si encuentra el search type lo imprime, sino imprime todos los productos --}}
-      <span class="dandelion">{{$searchType ?? 'Todos los productos'}}</span>
+      {{-- Si estamos observando una categoria --}}
+        @if (isset($category->name))
+          <span class="dandelion">
+            {{$category->name}}
+          </span>
+        @else
+          <span class="dandelion">
+            Todos los productos
+          </span>
+        @endif
+
     </li>
   </ul>
 
@@ -70,11 +79,21 @@ Productos
                         @if (Auth::user())
                           {{-- Si sos admin ves iconos de edicion/eliminacion --}}
                           @if (Auth::user()->isAdmin == true)
-                            <li><a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span></a></li>
-                            <li><a class="rounded-icon ico" href="/copy"><span class="hvr-pulse-shrink" uk-icon="icon: copy"></span></a></li>
+                            <li>
+                              <a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="rounded-icon ico" href="/copy">
+                                <span class="hvr-pulse-shrink" uk-icon="icon: copy">
+                                </span>
+                              </a>
+                            </li>
                             <li>
                               <!-- This is a anchor toggling the modal -->
-                              <a class="rounded-icon ico" href="#confirm" uk-toggle><span class="hvr-pulse-shrink" uk-icon="icon: trash"></span></a>
+                              <a class="rounded-icon ico" href="#confirm" uk-toggle>
+                                <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
+                              </a>
                             </li>
                             <!-- This is the modal -->
                             @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id])

@@ -61,9 +61,8 @@ class ProductController extends Controller
     // Buscamos los productos a partir del id de la categoria encontrada
     $products = Product::where('category_id','=',$category->id)
                        ->paginate(12);
-    // Preparamos el searchType
-    $searchType = $category->name;
-    $vac = compact('products','category','searchType');
+
+    $vac = compact('products','category');
     return view('productos',$vac);
   }
   public function productsByMaterial($material_name){
@@ -268,7 +267,11 @@ class ProductController extends Controller
   // se muestran los datos del producto elegido
   public function product($id){
         $product = Product::find($id);
-        return view('producto',compact('product'));
+        $category = Category::find($product->category->id);
+        // En caso de que haya algun espacio
+        $category_name = str_replace(' ', '_', $category->name);
+
+        return view('producto',compact('product','category_name','category'));
       }
 
   // se muestran los datos del producto elegido listo para editar

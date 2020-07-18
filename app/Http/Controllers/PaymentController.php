@@ -27,7 +27,6 @@ class PaymentController extends Controller
   }
 
   public function cartsUpdate(Request $req){
-    dd($req->all());
     // vamos a tener que actualizar los carts antes de continuar con el checkout
     foreach ($req->producto as $arrayCart) {
       $cart = Cart::find(intval($arrayCart['cart_id']));
@@ -60,7 +59,6 @@ class PaymentController extends Controller
 
   public function pay(Request $request)
     {
-      dd($request->all());
       $rules = [
           // 'payment_platform' => ['required', 'exists:payment_platforms,id'],
           'installments' => ['required', 'numeric', 'min:1']
@@ -69,11 +67,9 @@ class PaymentController extends Controller
         $request->validate($rules);
 
         $paymentPlatform = $this->paymentPlatformResolver
-            ->resolveService($request->payment_platform);
+            ->resolveService(1); // Aqui deberia estar el $request->paymentPlatformId. Pero en el formulario no lo enviamos.
 
-        dd($paymentPlatform);
-
-        session()->put('paymentPlatformId', $request->payment_platform);
+        session()->put('paymentPlatformId', 1);
 
         return $paymentPlatform->handlePayment($request);
     }

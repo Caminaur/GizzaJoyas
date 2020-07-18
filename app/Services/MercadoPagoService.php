@@ -80,12 +80,14 @@ class MercadoPagoService
         // Obtenemos el valor real mediante el metodo getRealPrice
         // Para protegernos en caso de edicion del total
 
-        $totalSinInteres = $this->realPriceWithDelivery($request);
+        // $totalSinInteres = $this->realPriceWithDelivery($request);
+        $totalSinInteres = getTotalPrice($carts);
 
         // $request->amount = MercadoPagoService::realPriceWithDeliveryAndFees();
         // dd(MercadoPagoService::realPriceWithDeliveryAndFees());
 
         $installments = intval($request->installments);
+
         $payment = $this->createPayment(
             $totalSinInteres, // Valor total con descuentos incluidos ( y envio y cuotas en caso de existir)
             $request->currency,
@@ -105,8 +107,8 @@ class MercadoPagoService
             // $originalCurrency = strtoupper($request->currency);
 
               // Enviar los 2 emails
-              Mail::send(new PurchaseMail($request,$payment));
-              Mail::send(new SoldMail($request,$payment));
+                                      // Mail::send(new PurchaseMail($request,$payment));
+                                      // Mail::send(new SoldMail($request,$payment));
               // Restar del stock
               $this->restarStock();
 
@@ -144,7 +146,7 @@ class MercadoPagoService
                     'email' => $email,
                 ],
                 'binary_mode' => true,
-                'transaction_amount' => round($value * $this->resolveFactor($currency)),
+                'transaction_amount' => round($value), //round($value * $this->resolveFactor($currency))
                 'payment_method_id' => $cardNetwork,
                 'token' => $cardToken,
                 'installments' => $installments,
@@ -167,7 +169,7 @@ class MercadoPagoService
       // El foreach recorre el array de ids
       foreach ($carts as $cart) {
         // Obtengo el valor del talle y lo guardo en una variable (Elejido por la persona M S L XL)
-        $size = Size::where('name','=',$cart->size)->get()->first();
+        $size = Size::find($cart->size_id);
         // Obtengo su objeto de tipo stock y lo guardo en una variable
         $stock = Stock::where('size_id','=',$size->id)
                       ->where('product_id','=',$cart->product_id)->get()->first();

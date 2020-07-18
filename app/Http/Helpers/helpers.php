@@ -16,7 +16,6 @@
     }
   }
 
-
   // Se encarga de que haya stock de por lo menos un talle del producto
   function hasStock($product){
     $hasStock = false;

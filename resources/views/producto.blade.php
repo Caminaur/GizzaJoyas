@@ -6,7 +6,7 @@ Producto
 
   <ul class="uk-breadcrumb  px-4 py-2">
     <li><a href="/">Inicio</a></li>
-    <li><a href="/{{$product->category->name}}">{{$product->category->name}}</a></li>
+    <li><a href="/productos/categoria/{{$category_name}}">{{$category->name}}</a></li>
     <li><span class="dandelion">{{$product->name}}</span></li>
   </ul>
 
@@ -227,7 +227,7 @@ Producto
           // Si la cantidad seleccionada supera al stock
           var mensajeDeError = document.getElementById('errorMessage')
           var botonComprar = document.getElementById('comprar_button');
-          if (quantity.value>stock_quantity.value) {
+          if (parseInt(quantity.value)>parseInt(stock_quantity.value)) {
             // mensaje de error
             mensajeDeError.removeAttribute('hidden');
             if (stock_quantity.value==0) {
@@ -239,7 +239,7 @@ Producto
             // bloqueamos el boton de comprar
             botonComprar.setAttribute('type','button');
           }
-          else if (quantity.value<=stock_quantity.value){
+          else if (parseInt(quantity.value)<=parseInt(stock_quantity.value)){
             mensajeDeError.setAttribute('hidden','true');
             mensajeDeError.innerHTML = "";
             botonComprar.setAttribute('type','submit');
