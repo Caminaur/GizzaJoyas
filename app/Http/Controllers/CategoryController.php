@@ -81,7 +81,7 @@ class CategoryController extends Controller
       $product_tag->delete();
     }
 
-    return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');
+    return view('selectcategory')->with('status', 'La relacion entre el tag y la categoria fue eliminada!');
   }
   public function createTag(Request $req){
     $reglas = [
@@ -218,7 +218,7 @@ class CategoryController extends Controller
       $path = basename($file);
 
       // guardamos la imagen
-      $category->image = $path;
+      $category->image = '/storage/'. $path;
 
       // guardo los cambios en la base de datos
       $category->save();

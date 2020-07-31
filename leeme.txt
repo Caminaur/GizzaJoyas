@@ -81,6 +81,7 @@ EXTRAS:
 - Agregar Contacts a la base de datos para generar un newsletter
 - Loguearse con redes sociales / google
 - Crear la columna precio de la DB con un formato 1.000 (punto cada 3 numeros) asi evitamos usar el number format en el front
+- La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
 
 
 Objetivo de la semana/s
@@ -88,7 +89,6 @@ Objetivo de la semana/s
 - slider relacionado *misma categoria (productos nuevos | productos relacionados | ofertas) 12 (4xslide)
 - Slider main productos nuevos & productos en oferta
 - Filtros gender|materials|age|etc
--
 
 front-end
 - Terminar navbar responsive
@@ -99,13 +99,11 @@ front-end
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
 - Ponerle number_format a toda la Web ($2.500)
 - Botones de confirmacion (Para eliminar)
-- Agregar foto a crear categoria & boton de elimnar categoria a c/u
-- Al eliminar una categoria que se abra un modal que avise que se eliminaran todos los productos de dicha categoria
+- Agregar foto a crear categoria (Circulo con un +) & boton de elimnar categoria (tachito) a c/u (Junto con el modal de confirmacion)
 
 Back-end
-- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions)
-- Logica perfil de usuario.
-- La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
+- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
-- Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google
+- Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Migrar el administrar precios.
+- Logica perfil de usuario.

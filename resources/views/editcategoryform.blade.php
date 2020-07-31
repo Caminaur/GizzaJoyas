@@ -7,18 +7,18 @@ editcategory
 @endsection('css')
 @section('main')
   <div class="container">
-    <h2>Editar categoria {{$category->name}}</h2>
+    <h2>Editar categoría {{$category->name}}</h2>
     <form class="" action="/changeName" method="post" enctype="multipart/form-data">
       @csrf
       <div class="col-md-4 form-group">
-        <label for="category_id">Categoria: *</label>
+        <label for="category_id">categoría: *</label>
         <input type="text" name="category_name" value="{{$category->name}}">
         <input type="hidden" name="category_id" value="{{$category->id}}">
       </div>
       <button class="col-md-2 offset-md-1" type="submit" name="button">Cambiar nombre</button>
     </form>
       <div class="col-md-4 mt-2 form-group">
-        <h2>Imagen de la categoria</h2>
+        <h2>Imagen de la categoría</h2>
       </div>
       <div class="col-md-4 mt-2 form-group">
         <img src="/storage/{{$category->image}}" alt="">
@@ -27,7 +27,7 @@ editcategory
         <form class="" action="/changeCategoryImage" method="post" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="_method" value="PUT">
-          <label for="">Cambiar imagen de la categoria: *</label>
+          <label for="">Cambiar imagen de la categoría: *</label>
           <div class="col-lg-8 form-group">
             <label for="file-upload" class="subir">
               <i class="fas fa-cloud-upload-alt"></i> Subir imagen
@@ -44,7 +44,7 @@ editcategory
           <button type="submit" name="button">Cambiar la imagen</button>
         </form>
       </div>
-      <h2>Tags relacionados a esta categoria</h2>
+      <h2>Tags relacionados a esta categoría</h2>
       <div class="row">
         @foreach ($category->tags as $tag)
           <div class="col-4 col-lg-4 mx-3 list-group-item form-group">
@@ -67,7 +67,7 @@ editcategory
             <option value="">Seleccione un tag a agregar</option>
             @php
             $tags_db = [];
-            // traemos todos los tags relacionados a esta categoria
+            // traemos todos los tags relacionados a esta categoría
             foreach ($category->tags as $tag_db) {
               // Los almacenamos en un array
               $tags_db[] = $tag_db->name;
@@ -99,7 +99,7 @@ editcategory
         </form>
       </div>
       <button class="btn-primary" id="addTag" type="button" name="button">Agregar Tag existente</button>
-      <button class="btn-primary" id="createTag" type="button" name="button">Crear Tag y asignarlo a esta categoria</button>
+      <button class="btn-primary" id="createTag" type="button" name="button">Crear Tag y asignarlo a esta categoría</button>
       <div class="row">
         @foreach ($sizes as $size)
             <div class="col-4 col-lg-4 mt-2 list-group-item form-group">
@@ -126,69 +126,9 @@ editcategory
         <button type="submit" name="">Actualizar talles</button>
       </form>
       <div class="">
-        <form class="" action="/deletecategory" method="post">
-          @csrf
-          <input type="hidden" name="category_id" value="{{$category->id}}">
-          <button class="btn btn-danger" type="submit" >Eliminar categoria y relaciones de esta</button>
-        </form>
+          <button uk-toggle='target: #confirmdeletecategory' class="btn btn-danger" type="button" >Eliminar categoría y relaciones de esta</button>
+          @include('partials.confirmbutton',['url'=>'/deletecategory','message'=>'Borrar una categoría borrará todos los productos relacionados a esta! esta seguro?'])
       </div>
   </div>
-<script type="text/javascript">
-  window.addEventListener('load',function(){
-    const divFormSize = document.getElementById('divFormSize');
-    const AddSizeButton = document.getElementById('addSize');
-    AddSizeButton.addEventListener('click',function(){
-      // creamos la label
-      var label = document.createElement('label');
-      label.innerHTML = "Ingrese el talle";
-      // creamos el input
-      var input = document.createElement('input');
-      input.name = 'sizes[]';
-      input.setAttribute('required','true');
-      input.setAttribute('class','ml-3');
-      // creamos un div para organizarlos
-      var div = document.createElement('div');
-      // boton de borrado
-      var button = document.createElement('button');
-      button.setAttribute('type','button');
-      button.setAttribute('class','close');
-      button.setAttribute('aria-label','Close');
-      // span
-      var span = document.createElement('span');
-      span.setAttribute('aria-hidden','true');
-      span.setAttribute('class','botonEliminar');
-      span.innerHTML = '&times;';
-
-      button.appendChild(span);
-
-      div.setAttribute('class','row m-2 p-2');
-      div.appendChild(label);
-      div.appendChild(input);
-      div.appendChild(button);
-      divFormSize.appendChild(div);
-      // Agregar boton para eliminar el input de forma individual
-      button.addEventListener('click',function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
-      })
-    });
-    var tagForm = document.getElementById("addTagId");
-    var addTag = document.getElementById("addTag")
-    addTag.addEventListener('click',function(){
-      tagForm.removeAttribute('hidden');
-    })
-    var hide = document.getElementById('btnHide');
-    hide.addEventListener('click',function(){
-      tagForm.setAttribute('hidden','true');
-    })
-    var createTagBtn = document.getElementById('createTag');
-    var divCreateTag = document.getElementById('createTagDiv');
-    createTagBtn.addEventListener('click',function(){
-      divCreateTag.removeAttribute('hidden');
-    })
-    var hideAddTag = document.getElementById('hideCreateTag');
-    hideAddTag.addEventListener('click',function(){
-      divCreateTag.setAttribute('hidden','true');
-    })
-  });
-</script>
+<script src="/js/editcategory.js" charset="utf-8"></script>
 @endsection
