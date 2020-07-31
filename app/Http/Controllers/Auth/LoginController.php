@@ -57,5 +57,7 @@ class LoginController extends Controller
     return $this->loggedOut($request) ?: \Redirect::back();
     }
 
+    // Una vez logueado si vamos a /login nos llevaba a /home, para cambiar esto hay que ir al middleware redirectIfAuthenticated https://laravel.io/forum/01-02-2017-logincontroller-keeps-redirecting-to-home-on-existing-session
+
 
 }
