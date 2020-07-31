@@ -31,8 +31,10 @@ Auth::routes();
 */
 
 // Home
-
-Route::get('/', 'HomeController@index');
+Route::get('/', function() {
+  $categories = Category::all();
+  return view('index',compact('categories'));
+});
 
 // Contacto
 
