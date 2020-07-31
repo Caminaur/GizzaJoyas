@@ -108,4 +108,4 @@ Back-end
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google
-- Revisar el searchProduct. & migrar el administrar precios.
+- Migrar el administrar precios.
