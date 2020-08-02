@@ -105,6 +105,8 @@ Route::get('/productos/gender/{gender_name}', 'ProductController@productsByGende
 
 Route::get('/productos/{parametro_de_busqueda}','ProductController@onSale');
 
+Route::get('/live_search/action','LiveSearch@action'); // ajax
+
 // Rutas /onsale /new
 
 Route::get('/addproduct', 'ProductController@new');

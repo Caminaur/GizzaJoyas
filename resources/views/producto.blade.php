@@ -94,13 +94,15 @@ Producto
                   @php
                     $cantidad = $stock->quantity;
                   @endphp
-                  @foreach (Auth::user()->carts as $cart)
-                    @if ($cart->size_id==$stock->size_id)
-                      @php
-                        $cantidad = $cantidad - $cart->quantity;
-                      @endphp
-                    @endif
-                  @endforeach
+                  @if (isset(Auth::user()->carts))
+                    @foreach (Auth::user()->carts as $cart)
+                      @if ($cart->size_id==$stock->size_id)
+                        @php
+                          $cantidad = $cantidad - $cart->quantity;
+                        @endphp
+                      @endif
+                    @endforeach
+                  @endif
                   <input type="hidden" name="{{$stock->size->id}}" value="{{$cantidad}}">
                 @endforeach
                 <p style="color:red;"hidden id="errorMessage"></p>

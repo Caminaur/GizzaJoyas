@@ -14,7 +14,6 @@
     <div class="uk-modal-body">
       <p>{{ $message ?? ""}}</p>
     </div>
-
     <div class="uk-modal-footer uk-text-right">
 
       <form class="" action="{{$url}}" method="post">

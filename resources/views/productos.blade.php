@@ -32,9 +32,9 @@ Productos
 
   <section id="productos" class="container mb-5">
 
-    <div class="uk-child-width-1-2 uk-child-width-1-3@m pb-4" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
+    <div id="prueba_ajax" class="uk-child-width-1-2 uk-child-width-1-3@m pb-4" uk-grid uk-height-match="target: > div > .product"> {{-- para igualar la altura use este atributo match--}}
       @forelse ($products as $product)
-          <div>
+          <div id="productos_change">
             <div class="product uk-text-center pb-4">
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
@@ -144,9 +144,9 @@ Productos
         <h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Productos Existentes</span></h3>
       @endforelse
     </div>
-
-
     {{$products->links()}}
   </section>
 
+
+  <script src="/js/ajax_products.js" charset="utf-8"></script>
 @endsection

@@ -12,7 +12,7 @@
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
               <form class="uk-visible@m uk-search uk-search-default uk-margin-left">
                 <span uk-search-icon></span>
-                <input class="uk-search-input" type="search" placeholder="Buscar...">
+                <input id="search" name="search" class="uk-search-input" type="text" placeholder="Buscar...">
               </form>
 
 
