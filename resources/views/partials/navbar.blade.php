@@ -74,7 +74,7 @@
                         </form>
                       </li>
                     </div>
-                  <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
+                  <li><a class="navlink blueSlate position-relative" href="/favoritos" offset="80"><span id="items-in-favs" class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
                   <li><a class="navlink blueSlate" href="/cart" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosEnCarrito)}}</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
 
                 @else

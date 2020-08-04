@@ -19,7 +19,7 @@ Productos
             {{$category->name}}
           </span>
         @else
-          <span class="dandelion">
+          <span id='span' class="dandelion">
             Todos los productos
           </span>
         @endif
@@ -65,12 +65,17 @@ Productos
                     <div class="uk-width-auto">
                       <ul class="uk-iconnav justify-content-center">
                         <li>
-                          <a class="rounded-icon ico" href="/addtofavs/{{$product->id}}">
+                          <input id="product{{$product->id}}" type="hidden" name="" value="{{$product->id}}">
+                          <a class="rounded-icon ico favourite_icon_ajax" href="/live_search/add_favourite">
                             {{-- Si el usuario esta logueado y tiene como favorito este producto, mostrar el corazon lleno                 --}}
                             @if (Auth::user() && isFavourite($product, Auth::user()))
-                              <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+                              <div class="">
+                                <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+                              </div>
                             @else
-                              <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
+                              <div class="">
+                                <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
+                              </div>
                             @endif
 
                           </a>
@@ -149,4 +154,5 @@ Productos
 
 
   <script src="/js/ajax_products.js" charset="utf-8"></script>
+  <script src="/js/ajax_products_favourite.js" charset="utf-8"></script>
 @endsection

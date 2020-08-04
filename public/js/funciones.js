@@ -10,7 +10,7 @@ var t = 0;
 $(function () {
 	$('.animated-icon').click(function (e) {
 		$(this).toggleClass('anim');
-	})
+	});
 
 	play();
 });

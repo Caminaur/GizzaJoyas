@@ -105,7 +105,7 @@ Route::get('/productos/gender/{gender_name}', 'ProductController@productsByGende
 
 Route::get('/productos/{parametro_de_busqueda}','ProductController@onSale');
 
-Route::get('/live_search/action','LiveSearch@action'); // ajax
+Route::get('/live_search/action','LiveSearch@action'); // ajax buscador
 
 // Rutas /onsale /new
 
@@ -223,6 +223,8 @@ Route::post('/deletegender','GenderController@delete')->middleware('admin');
 Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
 
 Route::get('/favoritos','UserController@favoritos')->middleware('auth');
+
+Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos
 
 Route::get('/deletefavorites','UserController@deleteFavourite')->middleware('auth');
 

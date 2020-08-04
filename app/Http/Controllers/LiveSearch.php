@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Product;
+use App\Favourite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class LiveSearch extends Controller
 {
-  function action(Request $request)
+  public function action(Request $request)
   {
    if($request->ajax())
    {
@@ -203,11 +204,65 @@ class LiveSearch extends Controller
      </tr>
      ';
     }
+    // lo transformamos en un array
     $data = array(
      'table_data'  => $output,
     );
-
+    // lo transformamos en json y lo imprimimos
     echo json_encode($data);
    }
+  }
+  public function add_favourite(Request $request)
+  {
+    if($request->ajax())
+    {
+      // declaramos el output vacio
+      $output = '';
+      // guardamos la query en una variable
+      $product_id = $request->product_id;
+      // si la query no esta vacia
+      if(!empty($product_id))
+      {
+        // buscamos si existe un fav del usuario con ese product_id
+        $favourites = Favourite::where('product_id','=',$product_id)
+        ->where('user_id','=',Auth::user()->id)
+        ->get();
+        // verificamos que el producto no este seleccionado como favorito
+        if (!count($favourites)>0) {
+          // creamos y guardamos la relacion
+          $favourite = New Favourite;
+          $favourite->product_id = $product_id;
+          $favourite->user_id = Auth::user()->id;
+          $favourite->save();
+          // buscamos nuevamente la cantidad de favoritos enviar la cantidad total
+          $user_favs = Favourite::where('user_id','=',Auth::user()->id)
+          ->get();
+          // lo transformamos en un array
+          $data = array(
+          'isFave' => true,
+          'selected_class' => 'hvr-pulse-shrink isFavourite',
+          'product_id' => $product_id,
+          'cantidad_favs' => count($user_favs),
+          );
+          // lo transformamos en json y lo imprimimos
+          echo json_encode($data);
+        }
+        else {
+          $favourites->first()->delete();
+          // buscamos nuevamente la cantidad de favoritos enviar la cantidad total
+          $user_favs = Favourite::where('user_id','=',Auth::user()->id)
+          ->get();
+          // lo transformamos en un array
+          $data = array(
+          'isFave' => false,
+          'selected_class' => 'hvr-pulse-shrink',
+          'product_id' => $product_id,
+          'cantidad_favs' => count($user_favs),
+          );
+          // lo transformamos en json y lo imprimimos
+          echo json_encode($data);
+        }
+      } // end if empty product_id
+    } // if request is ajax
   }
 }
