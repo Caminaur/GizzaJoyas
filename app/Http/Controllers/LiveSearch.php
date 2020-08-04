@@ -81,11 +81,16 @@ class LiveSearch extends Controller
 
        if (Auth::user() && isFavourite($row, Auth::user())) {
          $texto_authenticate = '
-            <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+             <div class="">
+              <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+             </div>
             ';
        }
        else {
-         $texto_authenticate = '<span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>';
+         $texto_authenticate = '
+         <div class="">
+          <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
+         </div>';
        }
 
 
@@ -165,7 +170,8 @@ class LiveSearch extends Controller
                          <div class="uk-width-auto">
                            <ul class="uk-iconnav justify-content-center">
                              <li>
-                               <a class="rounded-icon ico" href="/addtofavs/'.$row->id.'">
+                               <input id="product'.$row->id.'" type="hidden" name="" value="'.$row->id.'">
+                               <a class="rounded-icon ico favourite_icon_ajax" href="/live_search/add_favourite">
                                  '.$texto_authenticate.'
                                </a>
                              </li>

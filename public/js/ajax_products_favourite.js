@@ -1,3 +1,5 @@
+// Esta funcion ya no se usa. Queda a modo de ejemplo
+
 window.addEventListener('load',function(){
 $(document).ready(function(){
   $('.favourite_icon_ajax').click(function(e){
@@ -26,19 +28,15 @@ $(document).ready(function(){
        if (data.isFave == true) {
          // Le agregamos la clase correspondiente
          div_icon.attr('class',data.selected_class);
-
-         // Faltaria agregar el mensaje
-         alert("El producto fue exitosamente agregado a favoritos!")
        }
        else {
          // le agregamos la clase correspondiente
          div_icon.attr('class',data.selected_class);
-         alert("El producto fue eliminado de favoritos!")
        }
        // hacemos un update de la cantidad de favos
        $('#items-in-favs').html(data.cantidad_favs);
-     }
-   });
-  }
-});
-});
+     } // success
+   }); // ajax
+ } // function unfave
+}); // document on ready
+}); // add event listener on load
