@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class LiveSearch extends Controller
 {
-  public function action(Request $request)
+  // live search
+  public function search_product(Request $request)
   {
    if($request->ajax())
    {
@@ -218,6 +219,7 @@ class LiveSearch extends Controller
     echo json_encode($data);
    }
   }
+  // add favourite
   public function add_favourite(Request $request)
   {
     if($request->ajax())

@@ -1,5 +1,3 @@
-// Esta funcion ya no se usa. Queda a modo de ejemplo
-
 window.addEventListener('load',function(){
 $(document).ready(function(){
   $('.favourite_icon_ajax').click(function(e){

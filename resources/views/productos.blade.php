@@ -153,5 +153,6 @@ Productos
   </section>
 
 
+  <script src="/js/ajax_products_favourite.js" charset="utf-8"></script>
   <script src="/js/ajax_products.js" charset="utf-8"></script>
 @endsection
