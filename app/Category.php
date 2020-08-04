@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+  // public $table = "table_name";
   public $guarded = [];
 
   public function tags()

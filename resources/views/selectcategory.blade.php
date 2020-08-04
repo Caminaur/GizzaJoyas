@@ -22,9 +22,10 @@ Categorias
 				@empty
 					<h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Categorías Existentes</span></h3>
 				@endforelse
-        <a href="/addcategory">
-          Agregar categoria
-        </a>
+        <div class="uk-inline-clip uk-transition-toggle">
+          <label for="">Agregar categoria</label>
+          <a href="/addcategory" uk-icon="icon: plus-circle"></a>
+        </div>
 			</div>
     </div>
   </div>

@@ -6039,7 +6039,10 @@ ul.uk-nav-sub {
  * Primary
  */
 .uk-notification-message-primary {
-  color: #1e87f0;
+  border-radius: 7px;
+  background-color: #A6C2CE;
+  color: white;
+  border: none;
 }
 /*
  * Success
@@ -6057,7 +6060,10 @@ ul.uk-nav-sub {
  * Danger
  */
 .uk-notification-message-danger {
-  color: #f0506e;
+  border-radius: 7px;
+  background-color: #F85B4F;
+  color: white;
+  border: none;
 }
 /* ========================================================================
    Component: Tooltip
