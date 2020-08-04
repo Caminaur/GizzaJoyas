@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PaymentPlatform extends Model
+class Payment_platform extends Model
 {
   /**
    * The attributes that are mass assignable.

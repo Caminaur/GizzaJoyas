@@ -26,10 +26,12 @@ $(document).ready(function(){
        if (data.isFave == true) {
          // Le agregamos la clase correspondiente
          div_icon.attr('class',data.selected_class);
+         UIkit.notification({message: 'Producto agregado...', pos: 'bottom-right', status:'primary',timeout:1000});
        }
        else {
          // le agregamos la clase correspondiente
          div_icon.attr('class',data.selected_class);
+         UIkit.notification({message: 'Producto eliminado...', pos: 'bottom-right',status:'danger',timeout:1000});
        }
        // hacemos un update de la cantidad de favos
        $('#items-in-favs').html(data.cantidad_favs);
