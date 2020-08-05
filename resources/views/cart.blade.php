@@ -57,30 +57,30 @@ Carrito de compras
             <span name='errorMessage'hidden></span>
           </div>
         </div> {{-- producto --}}
+
+        <hr class="uk-divider-small">
+        {{-- <a class="m-3 blueSlate" href="/deletecarts">Vaciar carrito</a> --}}
+
+        <br>
+
+        <h2 id="subtotal" class="text-center">Subtotal: ${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h2>
+        <br>
+        <form class="" action="/checkout" method="post">
+          @csrf
+          @foreach ($carts as $cart)
+            <input type="hidden" name="producto[{{$cart->id}}][cart_id]" value="{{$cart->id}}">
+            <input id="cart{{$cart->id}}" type="hidden" name="producto[{{$cart->id}}][cart_quantity]" value="{{$cart->quantity}}">
+          @endforeach
+          <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+        </form>
+        <br>
         @endif
       @empty
-        <h2 class="text-center">Tu Carrito está vacío</h2>
+        <h4 class="text-center">Tu Carrito está vacío, <a href="/productos"><span class="bold blueSlate">Ver Productos</span></h4></a><br>
         {{-- <i class="text-center fas fa-shopping-basket"></i> --}}
 
       @endforelse
     </div> {{-- productos --}}
-
-    <hr class="uk-divider-small">
-    <a class="m-3 blueSlate" href="/deletecarts">Vaciar carrito</a>
-
-    <br>
-
-    <h2 id="subtotal" class="text-center">Subtotal: ${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h2>
-    <br>
-    <form class="" action="/checkout" method="post">
-      @csrf
-      @foreach ($carts as $cart)
-        <input type="hidden" name="producto[{{$cart->id}}][cart_id]" value="{{$cart->id}}">
-        <input id="cart{{$cart->id}}" type="hidden" name="producto[{{$cart->id}}][cart_quantity]" value="{{$cart->quantity}}">
-      @endforeach
-      <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
-    </form>
-    <br>
 
 
   </div>

@@ -101,7 +101,7 @@ Productos
                               </a>
                             </li>
                             <!-- This is the modal -->
-                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id], 'message'=>'Seguro quiere eliminar el producto?')
+                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id, 'message'=>'Seguro quiere eliminar el producto?'])
                           @endif
                         @endif
                       </ul>

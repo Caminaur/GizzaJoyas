@@ -73,7 +73,7 @@ Checkout
 
           <div class="form-group-checkout form-row" style="text-align: -webkit-center;">
             <div class="col-12 col-md-2 mb-3">
-                <select class="custom-select" id="docType" data-checkout="docType"></select>
+                <select class="custom-select" id="docType" data-checkout="docType" style="padding: 0px !important;"></select>
                 {{-- <small class="invisible text-center fomr-text text-muted">Elija una identificación</small> --}}
             </div>
             <div class="col-12 col-md-2 mb-3">

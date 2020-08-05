@@ -43,6 +43,10 @@ class PaymentController extends Controller
         // Traemos los carritos
         $carts = Cart::where('user_id','=',Auth::user()->id)->get();
 
+        if (count($carts) == 0) {
+          return view('/cart', compact('carts'));
+        }
+
         // Esta funcion obtiene el precio del total de los productos que tiene el usuario en el carrito,
         // teniendo en cuenta el descuento (si tiene). La utilizamos por seguridad para que no haya modificaciones del usuario
         $total = getTotalPrice($carts);

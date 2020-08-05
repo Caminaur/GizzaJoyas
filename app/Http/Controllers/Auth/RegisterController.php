@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/email/verify';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -77,5 +77,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'isAdmin' => 0,
         ]);
+    }
+
+    // Para redirigir back despues de registrarse https://stackoverflow.com/questions/42326430/how-to-redirect-to-previous-page-after-successful-register-in-laravel
+    protected function redirectTo()
+    {
+    return url()->previous();
     }
 }
