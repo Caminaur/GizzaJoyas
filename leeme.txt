@@ -70,6 +70,7 @@ NAVBAR
 
 
 EXTRAS:
+- En el proximo proyecto cuando manejemos precios tratar de guardar directamente en la base de datos con los puntos de los miles ej: 1.000 , 1.400
 - Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
 - Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
 - cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=2
@@ -93,11 +94,10 @@ Objetivo de la semana/s
 front-end
 - Terminar navbar responsive
 - Terminar vista Nosotros -- esperando a que envien la info
-- Hacer vista Perfil
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
-- Ponerle number_format a toda la Web ($2.500)
+- Ponerle number_format a toda la Web ($2.500) (error cuando agrego unidades al carrito)
 - Botones de confirmacion (Para eliminar)
 - Agregar foto a crear categoria (Circulo con un +) & boton de elimnar categoria (tachito) a c/u (Junto con el modal de confirmacion)
 

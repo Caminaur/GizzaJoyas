@@ -47,17 +47,17 @@ Productos
                   <p class="uk-h4 uk-margin-remove" style="color:white;">Ver más</p>
                 </div> --}}
 
-                {{-- Si el producto tiene descuento creo un cartelito --}}
-                @if ($product->discount)
-                  <div class="onSale-label">
-                    <ul>
-                      <li class="sale">
-                        <h4>{{$product->discount}}% off</h4>
-                      </li>
-                    </ul>
-                  </div>
-                @endif
-              </a>
+                  {{-- Si el producto tiene descuento creo un cartelito --}}
+                  @if ($product->discount)
+                    <div class="onSale-label">
+                      <ul>
+                        <li class="sale">
+                          <h4>{{$product->discount}}% off</h4>
+                        </li>
+                      </ul>
+                    </div>
+                  @endif
+                </a>
 
                 {{-- iconos de favoritos/carrito sobre cada producto --}}
                 <div class="uk-visible-toggle icons-product" tabindex="-1">
@@ -101,7 +101,7 @@ Productos
                               </a>
                             </li>
                             <!-- This is the modal -->
-                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id])
+                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id], 'message'=>'Seguro quiere eliminar el producto?')
                           @endif
                         @endif
                       </ul>

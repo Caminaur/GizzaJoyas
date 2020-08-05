@@ -826,7 +826,8 @@ div.producto {
 img.cart-img {
   display: flex;
   align-items: center;
-  width: 200px;
+  height: 150px;
+  object-fit: contain;
 }
 
 span.sale, span.new {
@@ -1035,7 +1036,7 @@ img.checkout-cart-img {
 }
 
 .notification-error {
-  background-color: red;
+  background-color: #F85B4F;
 }
 
 .opacity {
@@ -1189,6 +1190,10 @@ select.size {
   border-radius: 0.25rem;
   font-size: 14px;
   border: 1px solid #ced4da;
+}
+
+.errorForm {
+  color: #F85B4F;
 }
 
 /* Para modificar los valores de la barra de scroll lateral https://codepen.io/zakkain/pen/phjBC */

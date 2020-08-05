@@ -22,8 +22,10 @@ Carrito de compras
         @else
         <div class="producto row">
           <div class="img col-12 col-lg-4">
-            {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <a href="/producto/{{$cart->product->id}}">
+              {{-- Como imagen del producto en el carrito utilizo la primera --}}
+              <img class="cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            </a>
           </div>
 
           <div class="py-2 col-12 col-lg-2">
@@ -34,7 +36,7 @@ Carrito de compras
           </div>
           <div class="product-info col-12 col-lg-4">
 
-            <span class="p-2">${{getRealPrice($cart->product)}} c/u</span>
+            <span class="p-2">${{number_format((getRealPrice($cart->product)), 0, '.', '.')}}</h2> c/u</span>
             <div class="def-number-input number-input safari_only d-inline-flex">
               {{-- Guardamos el stock maximo de el producto de este carrito --}}
               <input type="hidden" name="cantidad_max" value="{{$maxStock[$cart->id]}}">
@@ -47,7 +49,7 @@ Carrito de compras
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
               <input name='priceHidden' type="hidden" name="" value="{{getRealPrice($cart->product)*$cart->quantity}}">
             </div>
-            <span name='price' class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</span>
+            <span name='price' class="p-2 ">${{number_format((getRealPrice($cart->product)*$cart->quantity), 0, '.', '.')}}</span>
             <a href="/deletecart/{{$cart->id}}">
               <span class="hvr-icon" uk-icon="icon: trash"></span>
             </a>
@@ -68,7 +70,7 @@ Carrito de compras
 
     <br>
 
-    <h2 id="subtotal" class="text-center">Subtotal: ${{getTotalPrice($carts)}}</h2>
+    <h2 id="subtotal" class="text-center">Subtotal: ${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h2>
     <br>
     <form class="" action="/checkout" method="post">
       @csrf

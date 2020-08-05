@@ -55,7 +55,12 @@ Producto
               @csrf
               <input type="hidden" name="product_id" value="{{ $product->id }}">
               <h1 class="bold">{{ $product->name }}</h1>
-              <h2 class="blueSlate">${{$product->price - ($product->price*$product->discount/100)}}</h2>
+
+              @if ($product->onSale)
+                <h3 class="dandelion mx-1 sinOferta">${{number_format($product->price, 0, '.', '.')}}</h3>
+              @endif
+              
+              <h2 class="blueSlate">${{number_format((getRealPrice($product)), 0, '.', '.')}}</h2>
               <h3 style="text-align:justify;">{{ $product->description }}</h3>
               <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>
                 @foreach ($product->tags as $tag)

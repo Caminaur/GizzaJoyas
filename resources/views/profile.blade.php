@@ -12,13 +12,10 @@ Perfil
 
     <div class="container">
 
-      {{-- <h2 class="regular text-center pb-3">Datos de tu <span class="bold blueSlate">Perfil</span></h2>
+      <h2 class="regular text-center pb-3">Datos de tu <span class="bold blueSlate">Perfil</span></h2>
+
       <br>
-        <li>Tu Nombre es: {{ Auth::user()->name }}</li>
-        <br>
-        <li>Tu Email es: {{ Auth::user()->email }}</li>
-        <br>
-        <a class="btn border-ashBlue" href="/editar-perfil">Editar Perfil</a> --}}
+
 
         <table class="uk-table uk-table-small uk-table-divider">
     <thead>
@@ -34,7 +31,9 @@ Perfil
             <td>{{ Auth::user()->name }}</td>
             <td>{{ Auth::user()->email }}</td>
             <td><a class="btn border-ashBlue" href="/editar-perfil">Editar Perfil</a></td>
-            <td><a class="btn border-dandelion" href="/editar-perfil">Eliminar Perfil</a></td>
+            <td><a class="btn border-dandelion" href="#confirm" uk-toggle>Eliminar Perfil</a></td>
+
+            @include('partials.confirm',['url'=>'/borrar-perfil', 'message'=>'Seguro quiere eliminar el usuario?'])
         </tr>
     </tbody>
 </table>

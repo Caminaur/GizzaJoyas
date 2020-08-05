@@ -1,6 +1,9 @@
 {{-- https://youtu.be/7QWZxjgvEQc?t=1204 --}}
 {{-- Ejemplo de personalizar el mensaje del modal --}}
 {{-- @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id,'mensaje' => 'seguro?']) --}}
+
+{{-- Es un Modal que nos permite agregar productos favoritos al carrito --}}
+
 <div id="confirm" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <h2 class="uk-modal-title">Confirmacion</h2>

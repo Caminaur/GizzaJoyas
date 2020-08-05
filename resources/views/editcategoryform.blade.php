@@ -126,8 +126,8 @@ editcategory
         <button type="submit" name="">Actualizar talles</button>
       </form>
       <div class="">
-          <button uk-toggle='target: #confirmdeletecategory' class="btn btn-danger" type="button" >Eliminar categoría y relaciones de esta</button>
-          @include('partials.confirmbutton',['url'=>'/deletecategory','message'=>'Borrar una categoría borrará todos los productos relacionados a esta! esta seguro?'])
+          <button uk-toggle='target: #confirmdeletebutton' class="btn btn-danger" type="button" >Eliminar categoría y relaciones de esta</button>
+          @include('partials.confirmbutton',['url'=>'/deletecategory','message'=>'Borrar una categoría borrará todos los productos relacionados a esta! esta seguro?','name'=>'catergory_id','id'=>'{{$category->id}}'])
       </div>
   </div>
 <script src="/js/editcategory.js" charset="utf-8"></script>

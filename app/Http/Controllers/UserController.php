@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Favourite;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,18 +57,18 @@ class UserController extends Controller
   {
     return view('profile');
   }
-  
+
   public function editForm()
   {
     return view('editprofile');
   }
 
   public function editProfile(Request $req){
+
     $reglas = [
       'name' =>'required|string|min:2|max:40|',
-      'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->id.',id',
-      'old_password' => ['nullable', 'min:6'],
-      'new_password' => ['nullable', 'min:6'],
+      'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->id.',id', // https://laravel.com/docs/5.2/validation#rule-unique , https://laracasts.com/discuss/channels/laravel/how-to-update-unique-email
+      'password' => ['nullable', 'min:6'],
     ];
     $mensajes = [
     "required" => "El campo es obligatorio",
@@ -97,9 +98,21 @@ class UserController extends Controller
         //guardo en la base de datos
         $user->save();
 
-        return back()->with('message','Tu perfil ha sido actualizado exitosamente!');
+          return redirect('/profile')->with('status', 'Usuario Editado exitosamente')
+        ->with('operation', 'success');
       }
       // else {
       //   return back()->with('error','La contraseña ingresada es incorrecta');
       // }
+
+      public function deleteProfile() // borrar el usuario y deslinkear cualquier relacion, en este caso, borra su carrito
+  {
+
+    // $cart = Cart::find(Auth::user()->cart_id);
+    $user = User::find(Auth::user()->id);
+
+    $user->delete(); // borramos el usuario
+    return redirect("/")->with('status', 'Usuario eliminado')
+  ->with('operation', 'success');
+  }
 }

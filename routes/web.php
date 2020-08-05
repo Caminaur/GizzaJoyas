@@ -119,7 +119,7 @@ Route::get('/editproduct/{id}', 'ProductController@edit')->middleware('admin');
 
 Route::put('/editproduct/{id}', 'ProductController@update')->middleware('admin');
 
-Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
+Route::post('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
 
 Route::get('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
 

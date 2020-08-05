@@ -40,11 +40,7 @@ class FaqController extends Controller
 
     $faq = Faq::find($req->id);
     $faq->title = $req->title;
-    $faq->description = $req->
-
-
-
-    description;
+    $faq->description = $req->description;
     $faq->save();
 
     $faqs = Faq::all();
@@ -52,6 +48,7 @@ class FaqController extends Controller
       return view('/editpreguntas',$vac)
         ->with('status', 'Pregunta actualizada exitosamente');
   }
+
   public function deleteFaq(Request $req){
     $faq = Faq::find($req->id);
     $faq->delete();
@@ -59,6 +56,7 @@ class FaqController extends Controller
     return back()
     ->with('status', 'Pregunta eliminada exitosamente');
   }
+  
   public function addImage(Request $req){
     $reglas = [
       "image" => "required",
@@ -112,6 +110,7 @@ class FaqController extends Controller
     // nos retorna a la ruta anterior
     return back();
   }
+
   public function createFaq(Request $req){
     $reglas = [
       'title' => 'required|string|min:1|max:50',
