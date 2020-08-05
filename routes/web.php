@@ -218,7 +218,7 @@ Route::post('/addgender','GenderController@store')->middleware('admin');
 
 Route::post('/deletegender','GenderController@delete')->middleware('admin');
 
-// Admin & User
+// Admin
 
 Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
 
@@ -226,14 +226,21 @@ Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 
 Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos
 
-Route::get('/deletefavorites','UserController@deleteFavourite')->middleware('auth');
+Route::get('/deletefavorites','UserController@deleteFavourite');
 
-Route::get('/addtofavs/{product_id}','UserController@addFav')->middleware('auth');
+Route::get('/addtofavs/{product_id}','UserController@addFav');
+
+// User
 
 Route::get('/profile','UserController@indexProfile')->middleware('auth');
+
 Route::get('/editar-perfil','UserController@editForm')->middleware('auth');
+
 Route::put('/editar-perfil','UserController@editProfile')->middleware('auth');
+
 Route::post('/borrar-perfil','UserController@deleteProfile')->middleware('auth');
+
+// Search
 
 Route::get('/searchproduct','ProductController@showallproducts');//->middleware('admin');
 
@@ -247,9 +254,6 @@ Route::get('/searchproduct/searchBrandId', 'ProductController@searchProductByBra
 
 // carts
 
-// Route::get('/cart', function () {
-//   return view('cart');
-// });
 Route::get('/cart','CartController@show')->middleware('auth');
 
 Route::post('/cart','CartController@addToCart')->middleware('auth');

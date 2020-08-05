@@ -23,8 +23,8 @@ Producto
                 <ul class="uk-slideshow-items" uk-lightbox>
                   @for ($i = 0; $i < count($product->images); $i++)
                     <li>
-                      <a href="/storage/{{$product->images[$i]->path}}" data-caption="{{$i}}">
-                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="/storage/{{$product->images[$i]->path}}" alt="" uk-cover>
+                      <a href="/{{$product->images[$i]->path}}" data-caption="{{$i}}">
+                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="/{{$product->images[$i]->path}}" alt="" uk-cover>
                       </a>
                     </li>
                   @endfor
@@ -34,8 +34,8 @@ Producto
                 	<ul class="uk-thumbnav align-items-center">
                     @for ($i = 0; $i < count($product->images); $i++)
                       <li class="" uk-slideshow-item="{{ $i }}">
-            						<a href="/storage/{{$product->images[$i]->path}}">
-            							<img src="/storage/{{$product->images[$i]->path}}" width="60">
+            						<a href="/{{$product->images[$i]->path}}">
+            							<img src="/{{$product->images[$i]->path}}" width="60">
             						</a>
             					</li>
                     @endfor

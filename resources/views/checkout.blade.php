@@ -200,6 +200,11 @@ Checkout
   <input type="hidden" id="cardToken" name="card_token">
   {{-- Input oculto que se usa para el JS --}}
 
+@endsection
+
+
+
+
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
   @push('scripts')
 
@@ -414,5 +419,3 @@ Checkout
             }
         });
       </script>
-
-@endsection

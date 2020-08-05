@@ -23,7 +23,7 @@ Carrito de compras
         <div class="producto row">
           <div class="img col-12 col-lg-4">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <img class="cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
           </div>
 
           <div class="py-2 col-12 col-lg-2">
@@ -58,7 +58,7 @@ Carrito de compras
         @endif
       @empty
         <h2 class="text-center">Tu Carrito está vacío</h2>
-        <i class="text-center fas fa-shopping-basket"></i>
+        {{-- <i class="text-center fas fa-shopping-basket"></i> --}}
 
       @endforelse
     </div> {{-- productos --}}

@@ -1035,7 +1035,7 @@ img.checkout-cart-img {
 }
 
 .notification-error {
-  background-color: #F85B4F;
+  background-color: red;
 }
 
 .opacity {

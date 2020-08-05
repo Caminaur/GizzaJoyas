@@ -107,3 +107,5 @@ Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Migrar el administrar precios.
 - Logica perfil de usuario.
+- Crear nuevos botones en el Admin panel con los informes
+- Poner la clase Carbon a las rutas "/" y  "/productos"

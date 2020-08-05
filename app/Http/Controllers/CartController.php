@@ -54,6 +54,7 @@ class CartController extends Controller
                               ->first()
                               ->quantity;
 
+    // Busca todos los productos en el carrito del usuario que coincidan con el size_id y product_id de la request
     $cart = Cart::where('user_id','=',Auth::user()->id)
                 ->where('product_id','=',$product->id)
                 ->where('size_id','=',$req->size_id)

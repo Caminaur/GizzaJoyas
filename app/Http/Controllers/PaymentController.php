@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Currency;
 use App\Cart;
-use App\PaymentPlatform;
+use App\Payment_platform;
 use App\User;
 use App\Image;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +47,7 @@ class PaymentController extends Controller
         // teniendo en cuenta el descuento (si tiene). La utilizamos por seguridad para que no haya modificaciones del usuario
         $total = getTotalPrice($carts);
 
-        $paymentPlatforms = PaymentPlatform::all();
+        $paymentPlatforms = Payment_platform::all();
 
         return view('checkout')->with([
           'paymentPlatforms' => $paymentPlatforms,

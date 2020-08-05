@@ -3,7 +3,7 @@
 namespace App\Resolvers;
 
 use Exception;
-use App\PaymentPlatform;
+use App\Payment_platform;
 
 class PaymentPlatformResolver
 {
@@ -11,7 +11,7 @@ class PaymentPlatformResolver
 
     public function __construct()
     {
-        $this->paymentPlatforms = PaymentPlatform::all();
+        $this->paymentPlatforms = Payment_platform::all();
     }
 
     public function resolveService($paymentPlatformId)

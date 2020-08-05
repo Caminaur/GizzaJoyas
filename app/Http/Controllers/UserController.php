@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
   public function cpanel(){
     return view('adminpanel');
   }
@@ -18,7 +19,9 @@ class UserController extends Controller
                            ->get();
     return view('/favoritos',compact('favourites'));
   }
-  public function addFav($product_id){
+
+  public function addFav($product_id)
+  {
 
     // verificamos que el producto no este seleccionado como favorito
     $favourites = Favourite::where('product_id','=',$product_id)
@@ -36,7 +39,10 @@ class UserController extends Controller
       return back()->with('error','Producto eliminado de favoritos!');
     }
   }
-  public function deleteFavourite(){
+
+
+  public function deleteFavourite()
+  {
     $favourites = Favourite::where('user_id','=',Auth::user()->id)
                            ->get();
     foreach ($favourites as $favourite) {
@@ -45,12 +51,17 @@ class UserController extends Controller
     return back();
   }
 
-  public function indexProfile(){
+
+  public function indexProfile()
+  {
     return view('profile');
   }
-  public function editForm(){
+  
+  public function editForm()
+  {
     return view('editprofile');
   }
+
   public function editProfile(Request $req){
     $reglas = [
       'name' =>'required|string|min:2|max:40|',

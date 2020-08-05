@@ -10,14 +10,14 @@ Editar Perfil
     <h2 style="text-align:left"class="ml-3 mb-5">Editar Perfil</h2>
 
         <!-- Vista de edicion del Usuario-->
-    <form class="" action='/editar-perfil' method="post" enctype="multipart/form-data">
+    <form class="text-center" action='/editar-perfil' method="post" enctype="multipart/form-data" style="text-align-last: center;">
       @csrf
       @method('put')
 
 
-        <div class="form-group col-6">
+        <div class="col-6">
           <label for="">Nombre: *</label>
-          <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }} ">
+          <input type="text" class="form-control-checkout" name="name" value="{{ Auth::user()->name }} ">
           @error('name')
             <p class="errorForm">{{ $message }}</p>
           @enderror
@@ -27,35 +27,35 @@ Editar Perfil
       <br>
 
 
-        <div class="form-group col-6">
-          <label for="">Email: *</label>
-          <input type="text" class="form-control" name="email" value="{{ Auth::user()->email }}">
+        <div class="col-6">
+          <label for="">Email: *</label><br>
+          <input type="text" class="form-control-checkout" name="email" value="{{ Auth::user()->email }}">
           @error('email')
             <p class="errorForm">{{ $message }}</p>
           @enderror
         </div>
 
         <br>
-        <div class="form-group col-6">
-          <label for="">Ingrese su contraseña actual: *</label>
-          <input type="password" class="form-control" name="old_password" value="" placeholder="Ingresa tu Contraseña">
+        <div class="col-6">
+          <label for="">Ingrese su contraseña actual: *</label><br>
+          <input type="password" class="form-control-checkout" name="old_password" value="" placeholder="Ingresa tu Contraseña">
           @error('password')
             <p class="errorForm">{{ $message }}</p>
           @enderror
         </div>
         <br>
 
-        <div class="form-group col-6">
-          <label for="">Nueva contraseña: *</label>
-          <input id="password"type="password" class="form-control" name="new_password" value="" placeholder="Ingresa tu nueva password">
+        <div class="col-6">
+          <label for="">Nueva contraseña: *</label><br>
+          <input id="password"type="password" class="form-control-checkout" name="new_password" value="" placeholder="Ingresa tu nueva password">
           @error('password')
             <p class="errorForm">{{ $message }}</p>
           @enderror
         </div>
         <br>
-        <div class="form-group col-6">
-          <label for="">Repite su nueva contraseña: *</label>
-          <input id="repeat_password"type="password" class="form-control" name="" value="" placeholder="Ingresa tu nueva password">
+        <div class="col-6">
+          <label for="">Repite su nueva contraseña: *</label><br>
+          <input id="repeat_password"type="password" class="form-control-checkout" name="" value="" placeholder="Ingresa tu nueva password">
           @error('password')
             <p class="errorForm">{{ $message }}</p>
           @enderror
@@ -68,14 +68,14 @@ Editar Perfil
 
 
         <div class="form-group col-6">
-          <input type="submit" class="btn btn-info" name="" value="Editar Usuario">
+          <input type="submit" class="btn border-ashBlue" name="" value="Editar Usuario">
         </div>
     </form>
 
     <form class="" action="/deleteUser" method="post">
       @csrf
       <div class="form-group col-6">
-      <input type="submit" class="btn btn-danger" name="" value="Eliminar Usuario">
+      <input type="submit" class="btn border-dandelion" name="" value="Eliminar Usuario">
     </form>
       </div>
       <div class="">

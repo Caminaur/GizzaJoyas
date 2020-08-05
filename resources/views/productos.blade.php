@@ -39,9 +39,9 @@ Productos
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                 <a href="/producto/{{$product->id}}">
-                  <img class="producto" src="/{{$product->images->first()->path}}" alt="">
+                  <img class="producto" src="{{$product->images->first()->path}}" alt="">
                   @if (count($product->images)>1)
-                    <img class="uk-transition-scale-up uk-position-cover" src="/storage/{{$product->images[1]->path}}" alt="">
+                    <img class="uk-transition-scale-up uk-position-cover" src="{{$product->images[1]->path}}" alt="">
                   @endif
                   {{-- <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
                   <p class="uk-h4 uk-margin-remove" style="color:white;">Ver más</p>
