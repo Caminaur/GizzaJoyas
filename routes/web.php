@@ -226,7 +226,9 @@ Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 
 Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos
 
-Route::get('/deletefavorites','UserController@deleteFavourite');
+Route::get('/deletefavorites','UserController@deleteFavourites');
+
+Route::get('/deletefavourite/{favourite_id}','UserController@deleteFavourite');
 
 Route::get('/addtofavs/{product_id}','UserController@addFav');
 

@@ -44,7 +44,7 @@ class LiveSearch extends Controller
 
        if (count($row->images)>1) {
          $texto1 = '
-           <img class="uk-transition-scale-up uk-position-cover" src="/storage/'.$row->images[1]->path.'" alt="">
+           <img class="uk-transition-scale-up uk-position-cover" src="'.$row->images[1]->path.'" alt="">
          ';
        }
        else {
@@ -160,7 +160,7 @@ class LiveSearch extends Controller
 
                    <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                      <a href="/producto/'.$row->id.'">
-                       <img class="producto" src="/'.$row->images->first()->path.'" alt="">
+                       <img class="producto" src="'.$row->images->first()->path.'" alt="">
                        '.$texto1.'
 
                      '.$texto_discount.'

@@ -26,9 +26,9 @@ Edit product
             @enderror
           </div>
 
-          <div class="col-md-4 form-group">
+          <div class="col-md-4 offset-md-2 form-group">
             <label for="">Modelo: *</label>
-            <input type="text" class="form-control" name="model" value="{{ old('model',$product->model)}}">
+            <input class="form-control type="text" class="form-control" name="model" value="{{ old('model',$product->model)}}">
             @error('model')
               <p class="errorForm">{{ $message }}</p>
             @enderror

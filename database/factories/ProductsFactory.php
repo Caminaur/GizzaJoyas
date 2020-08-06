@@ -44,7 +44,7 @@ $factory->define(Product::class, function (Faker $faker) {
     $product->age_id = $age->id;
     $product->save();
 
-    $imagesRoutes = ['images/foto1.jpg','images/foto2.jpg','images/foto3.jpg','images/foto4.jpg'];
+    $imagesRoutes = ['/images/foto1.jpg','/images/foto2.jpg','/images/foto3.jpg','/images/foto4.jpg'];
     $index = array_rand($imagesRoutes);
     $image = New Image;
     $image->path = $imagesRoutes[$index];

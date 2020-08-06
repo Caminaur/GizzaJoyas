@@ -2,10 +2,15 @@ window.addEventListener('load',function(){
   // Cantidad
   var quantity = document.querySelector('input[name="quantity"]');
   // Selector que nos provee el size_id
-  var size_selector = document.getElementById('size');
   quantity.addEventListener('change',function(){
+    // deberia buscar el id de favourite
+    var favourite_id = $(this).next('input').val();
+    // Aca conseguimos el id de size
+    var size_selector = $(this).siblings('select').val();
+    console.log(size_selector);
     // Buscamos el input que guarda la cantidad del talle seleccionado
-    var stock_quantity = document.querySelector('input[name="'+size_selector.value+'"]');
+    var stock_quantity = document.querySelector('input[name="size_'+size_selector+'"]');
+    console.log(stock_quantity);
     // Si la cantidad seleccionada supera al stock
     var mensajeDeError = document.getElementById('errorMessage')
     var botonComprar = document.getElementById('agregar_carrito');

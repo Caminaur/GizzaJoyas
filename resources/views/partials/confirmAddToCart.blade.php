@@ -11,7 +11,7 @@
         <p class="uk-text-right">
             <form class="" action="/cart" method="post">
               @csrf
-              <select id="size" class="size" name="size_id">
+              <select id="size{{$favourite->id}}" class="size" name="size_id">
                 @if (!hasStock($product))
                   <option value="">--</option>
                 @endif
@@ -26,6 +26,7 @@
                   @endif
                 @endforeach
               </select>
+              <input type="hidden" name="favourite" value="{{$favourite->id}}">
               <input type="number" name="quantity" value="">
               <input type="hidden" name="product_id" value="{{$product->id}}">
               <div class="">

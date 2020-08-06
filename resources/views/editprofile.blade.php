@@ -59,7 +59,7 @@ Editar Perfil
 
           <div class="col-6">
             <label for="">Nueva contraseña: </label><br>
-            <input id="password"type="password" class="form-control-checkout" name="password" value="" placeholder="Ingresa tu nueva password">
+            <input id="password" type="password" class="form-control-checkout" name="password" value="" placeholder="Ingresa tu nueva password">
             @error('password')
               <p class="errorForm">{{ $message }}</p>
             @enderror

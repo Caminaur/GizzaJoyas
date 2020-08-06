@@ -215,7 +215,7 @@ class ProductController extends Controller
             $image = new Image;
             // asigno las rutas correspondientes y asigno el id de la imagen que debe ser igual al id del ultimo producto creado
             $image->product_id = $productId;
-            $image->path = $path;
+            $image->path = '/storage/'.$path;
 
             // guardo el objeto imagen instanciado en la base de datos
             $image->save();

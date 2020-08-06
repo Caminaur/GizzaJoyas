@@ -66,6 +66,9 @@ Favoritos
               <a type="submit" class="px-1 blueSlate" href="" offset="80">
                 <span href="#confirm" uk-toggle class="hvr-rotate" uk-icon="icon: cart; ratio: 2"></span>
               </a>
+              <a class="px-1 blueSlate" href="/deletefavourite/{{$favourite->id}}">
+                <span class="hvr-rotate" uk-icon="icon: trash"></span>
+              </a>
               @include('partials.confirmAddToCart',['url'=>'/addToCart','mensaje'=>'Elija un talle y la cantidad para agregar el producto al carrito'])
             </div>
           </div> {{-- producto --}}
@@ -76,16 +79,23 @@ Favoritos
       {{-- Guardamos los stocks de los talles disponibles --}}
       @foreach ($product->stocks as $stock)
         @php
+        // Cantidad disponible
           $cantidad = $stock->quantity;
         @endphp
         @foreach (Auth::user()->carts as $cart)
-          @if ($cart->size_id==$stock->size_id)
+          {{-- Si tienen el mismo size_id --}}
+          @if ($cart->size_id==$stock->size_id && $cart->product_id == $stock->product_id)
             @php
-              $cantidad = $cantidad - $cart->quantity;
+            // Cantidad posible para agregar
+              $cantidad_a_agregar = $cantidad - $cart->quantity;
+            @endphp
+          @else
+            @php
+              $cantidad_a_agregar = $stock->quantity;
             @endphp
           @endif
         @endforeach
-        <input type="hidden" name="{{$stock->size->id}}" value="{{$cantidad}}">
+        <input type="hidden" name="size_{{$stock->size_id}}" value="{{$cantidad_a_agregar}}">
       @endforeach
       <hr class="uk-divider-small">
       <a class="m-3" href="/deletefavorites">Borrar todos</a>

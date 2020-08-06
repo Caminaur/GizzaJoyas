@@ -42,7 +42,7 @@ class UserController extends Controller
   }
 
 
-  public function deleteFavourite()
+  public function deleteFavourites()
   {
     $favourites = Favourite::where('user_id','=',Auth::user()->id)
                            ->get();
@@ -50,6 +50,16 @@ class UserController extends Controller
       $favourite->delete();
     }
     return back();
+  }
+
+  public function deleteFavourite($favourite_id)
+  {
+    $favourite = Favourite::where('user_id','=',Auth::user()->id)
+                           ->where('id' , '=' , $favourite_id)
+                           ->get()[0];
+    $status = 'El producto ' . $favourite->product->name . 'fue elminado de favoritos correctamente!';
+    $favourite->delete();
+    return back()->with('status',$status);
   }
 
 
