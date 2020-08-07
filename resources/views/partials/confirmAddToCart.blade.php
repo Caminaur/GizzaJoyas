@@ -30,7 +30,7 @@
               <input type="number" name="quantity" value="">
               <input type="hidden" name="product_id" value="{{$product->id}}">
               <div class="">
-                <p style="color:red;" id="errorMessage"></p>
+                <p style="color:red;"></p>
               </div>
               <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
               <button id="agregar_carrito" type="submit" class="uk-button uk-button-primary" href="{{$url}}">Agregar al carrito</button>

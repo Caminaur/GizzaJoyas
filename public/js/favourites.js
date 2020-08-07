@@ -13,7 +13,10 @@ window.addEventListener('load',function(){
     // Si la cantidad seleccionada supera al stock
     var mensajeDeError = document.getElementById('errorMessage')
     var botonComprar = document.getElementById('agregar_carrito');
+
+    // Lo buscamos de esta forma para que no genere problemas cuando haya varios favoritos agregados 
     var botonComprar = $(this).siblings('div').children('p');
+
     if (parseInt(quantity.value)>parseInt(stock_quantity.value)) {
       // mensaje de error
       mensajeDeError.removeAttribute('hidden');
