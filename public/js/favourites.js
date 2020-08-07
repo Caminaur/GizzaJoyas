@@ -10,10 +10,10 @@ window.addEventListener('load',function(){
     console.log(size_selector);
     // Buscamos el input que guarda la cantidad del talle seleccionado
     var stock_quantity = document.querySelector('input[name="size_'+size_selector+'"]');
-    console.log(stock_quantity);
     // Si la cantidad seleccionada supera al stock
     var mensajeDeError = document.getElementById('errorMessage')
     var botonComprar = document.getElementById('agregar_carrito');
+    var botonComprar = $(this).siblings('div').children('p');
     if (parseInt(quantity.value)>parseInt(stock_quantity.value)) {
       // mensaje de error
       mensajeDeError.removeAttribute('hidden');

@@ -52,14 +52,38 @@ class UserController extends Controller
     return back();
   }
 
-  public function deleteFavourite($favourite_id)
+  public function deleteFavourite(Request $req)
   {
-    $favourite = Favourite::where('user_id','=',Auth::user()->id)
-                           ->where('id' , '=' , $favourite_id)
-                           ->get()[0];
-    $status = 'El producto ' . $favourite->product->name . 'fue elminado de favoritos correctamente!';
-    $favourite->delete();
-    return back()->with('status',$status);
+    if ($req->ajax()) {
+
+        // buscamos el favorito
+        $favourite = Favourite::find($req->fave_id);
+        // lo eliminamos
+
+        $favourite->delete();
+
+        // Contamos el total de favoritos del usuario
+        $favourites_total = Favourite::where('user_id','=',Auth::user()->id)
+        ->get();
+
+        // Retornamos la respuesta
+        $data = array(
+          'total' => count($favourites_total),
+          'message' => 'El producto ' . $favourite->product->name . ' fue eliminado de favoritos correctamente',
+        );
+
+        // lo transformamos en json y lo imprimimos
+        echo json_encode($data);
+      }
+
+    else {
+      $data = array(
+        'message' =>  'Hubo un error, no se pudo borrar el producto',
+      );
+
+      // lo transformamos en json y lo imprimimos
+      echo json_encode($data);
+    }
   }
 
 

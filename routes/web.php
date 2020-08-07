@@ -228,7 +228,7 @@ Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax fav
 
 Route::get('/deletefavorites','UserController@deleteFavourites');
 
-Route::get('/deletefavourite/{favourite_id}','UserController@deleteFavourite');
+Route::get('/deletefavourite','UserController@deleteFavourite');
 
 Route::get('/addtofavs/{product_id}','UserController@addFav');
 
