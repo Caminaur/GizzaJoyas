@@ -65,9 +65,9 @@ Favoritos
               </a>
               {{-- Al clickear aqui te lleva al detalle del producto --}}
               <a type="submit" class="px-1 blueSlate" href="" offset="80">
-                <span href="#confirm" uk-toggle class="hvr-rotate" uk-icon="icon: cart; ratio: 2"></span>
+                <span href="#confirm{{$product->id}}" uk-toggle class="hvr-rotate" uk-icon="icon: cart; ratio: 2"></span>
               </a>
-              @include('partials.confirmAddToCart',['url'=>'/addToCart','mensaje'=>'Elija un talle y la cantidad para agregar el producto al carrito'])
+              @include('partials.confirmAddToCart',['url'=>'/addToCart','mensaje'=>'Elija un talle y la cantidad para agregar el producto al carrito','product_object'=>$product])
             </div>
           </div> {{-- producto --}}
           @foreach ($favourite->product->stocks as $stock)
@@ -80,15 +80,15 @@ Favoritos
               @if ($cart->size_id==$stock->size_id && $cart->product_id == $stock->product_id)
                 @php
                 // Cantidad posible para agregar
-                  $cantidad_a_agregar = $cantidad - $cart->quantity;
+                  $cantidad = $cantidad - $cart->quantity;
                 @endphp
               @else
                 @php
-                  $cantidad_a_agregar = $stock->quantity;
+                  $cantidad = $stock->quantity;
                 @endphp
               @endif
             @endforeach
-            <input type="hidden" name="size_{{$stock->size_id}}" value="{{$cantidad_a_agregar}}">
+            <input type="hidden" name="size_{{$favourite->product_id}}_{{$stock->size_id}}" value="{{$cantidad}}">
           @endforeach
         @empty
           <h2 class="regular text-center pb-3">No tienes ningun producto guardado como <span class="bold blueSlate">Favorito</span></h2>
