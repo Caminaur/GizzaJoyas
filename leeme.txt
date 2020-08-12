@@ -97,7 +97,6 @@ front-end
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Hacer Checkbox en lugar de Radio Button en Agregar producto tags
-- Ponerle number_format a toda la Web ($2.500) (error cuando agrego unidades al carrito)
 - Botones de confirmacion (Para eliminar)
 - Agregar foto a crear categoria (Circulo con un +) & boton de elimnar categoria (tachito) a c/u (Junto con el modal de confirmacion)
 
@@ -110,6 +109,3 @@ Back-end
 - Crear nuevos botones en el Admin panel con los informes
 - Poner la clase Carbon a las rutas "/" y  "/productos"
 - Testear el confirm y comprobar que borra el producto correcto
-10 columnas nuevas de tablas existentes
-1 rol de admin
-4 tablas nuevas (data, vlog, unidades, ciudades)

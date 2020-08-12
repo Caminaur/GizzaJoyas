@@ -49,11 +49,11 @@ Favoritos
               {{-- <div class="uk-flex uk-flex-center mb-3"> --}}
               {{-- Con descuento--}}
               @if ($product->onSale)
-                <span class="dandelion mx-1 sinOferta">${{getRealPrice($product)}}</span>
-                <span class="doveGrey mx-1">${{$product->price}}</span>
+                <span class="dandelion mx-1 sinOferta">${{number_format((getRealPrice($product)), 0, '.', '.')}}</span>
+                <span class="doveGrey mx-1">${{number_format($product->price, 0, '.', '.')}}</span>
               @else
                 {{-- Sin descuento (precio de lista) --}}
-                <span class="doveGrey mx-1">${{getRealPrice($product)}}</span>
+                <span class="doveGrey mx-1">${{number_format((getRealPrice($product)), 0, '.', '.')}}</span>
               @endif
             </div>
 

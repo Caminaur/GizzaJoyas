@@ -39,10 +39,12 @@ function fave_unfave(url = '', product_id = ''){
      if (data.isFave == true) {
        // Le agregamos la clase correspondiente
        div_icon.attr('class',data.selected_class);
+       UIkit.notification({message: 'Producto agregado a favoritos correctamente', pos: 'bottom-right', status:'primary',timeout:1300});
      }
      else {
        // le agregamos la clase correspondiente
        div_icon.attr('class',data.selected_class);
+       UIkit.notification({message: 'Producto eliminado de favoritos correctamente', pos: 'bottom-right',status:'danger',timeout:1300});
      }
      // hacemos un update de la cantidad de favos
      $('#items-in-favs').html(data.cantidad_favs);

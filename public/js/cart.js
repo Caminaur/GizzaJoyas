@@ -19,7 +19,8 @@ window.addEventListener('load',function(){
       var productoCantidad = this.parentNode.querySelector("input[name=quantity]").value;
 
       // Modificamos el span de acuerdo a los cambios realizados
-      precioProducto.innerHTML = '$' + valorIndividual * productoCantidad;
+      precioProducto.innerHTML = '$' + formatNumber( (valorIndividual * productoCantidad) , 0 , '.' , ',' );
+
       precioProductoHidden.value = valorIndividual * productoCantidad;
 
       // Modificamos el subtotal
@@ -35,7 +36,7 @@ window.addEventListener('load',function(){
       }
 
       // Modificamos el subtotal para que refleje los cambios realizados
-      subtotal.innerHTML = 'Subtotal: $' + precioFinal;
+      subtotal.innerHTML = 'Subtotal: $' + formatNumber( precioFinal , 0 , '.' , ',' );
 
 
 
@@ -78,5 +79,35 @@ window.addEventListener('load',function(){
 
     })
   }
+
+
+
+  // Funcion para darle formato a los precios dinamicos
+  // Link: https://stackoverflow.com/questions/19307271/how-to-format-clean-numbers-so-1000-appear-as-1-000-00
+  function formatNumber(n, p, ts, dp) {
+    var t = [];
+    // Get arguments, set defaults
+    if (typeof p  == 'undefined') p  = 2;
+    if (typeof ts == 'undefined') ts = ',';
+    if (typeof dp == 'undefined') dp = '.';
+
+    // Get number and decimal part of n
+    n = Number(n).toFixed(p).split('.');
+
+    // Add thousands separator and decimal point (if requied):
+    for (var iLen = n[0].length, i = iLen? iLen % 3 || 3 : 0, j = 0; i <= iLen; i+=3) {
+      t.push(n[0].substring(j, i));
+      j = i;
+    }
+    // Insert separators and return result
+    return t.join(ts) + (n[1]? dp + n[1] : '');
+  }
+
+  console.log(formatNumber(
+    5220.567,  // value to format
+                 0,  // number of decimal places
+                '.', // thousands separator
+                ','  // decimal separator
+  ));
 
 })
