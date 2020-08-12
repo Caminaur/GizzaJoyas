@@ -109,3 +109,7 @@ Back-end
 - Logica perfil de usuario.
 - Crear nuevos botones en el Admin panel con los informes
 - Poner la clase Carbon a las rutas "/" y  "/productos"
+- Testear el confirm y comprobar que borra el producto correcto
+10 columnas nuevas de tablas existentes
+1 rol de admin
+4 tablas nuevas (data, vlog, unidades, ciudades)
