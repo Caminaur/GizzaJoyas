@@ -76,7 +76,7 @@ a:hover {
 .form-group {
   display: flex; }
   .form-group input {
-    width: 50%; }
+    width: 100%; }
     .form-group input:first-child {
       margin-right: 25px; }
 
@@ -126,6 +126,12 @@ select {
   padding-left: 20px; }
   select option[value=""][disabled] {
     display: none; }
+
+.centrado {
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+}
 
 button {
   // border: none;

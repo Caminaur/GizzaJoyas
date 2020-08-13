@@ -24,9 +24,11 @@ window.addEventListener('load',function(){
 
       size.name = talle.value;
       size.setAttribute('type','number');
+      size.setAttribute('class','form-control-checkout px-1');
+      size.setAttribute('value', 0);
       size.value = 0
 
-      divTalle.setAttribute('class','col-md-4 offset-md-2 form-group')
+      divTalle.setAttribute('class','centrado col-4 col-lg-2 form-group')
 
       divTalle.appendChild(sizeLabel)
 
@@ -38,12 +40,13 @@ window.addEventListener('load',function(){
     // En caso de que la categoria sea de talle unico agregamos igual mente el input de quantity
     if (inputsTalles.length===0) {
       var divTalle = document.createElement('div')
-      divTalle.setAttribute('class','col-md-4 offset-md-2 form-group')
+      divTalle.setAttribute('class','centrado col-4 col-lg-2 form-group')
       var size = document.createElement('input');
       size.value = 0
       var sizeLabel = document.createElement('label');
       sizeLabel.innerHTML = "Talle Unico";
       size.setAttribute('type','number');
+      size.setAttribute('class','form-control-checkout px-1');
       divTalle.appendChild(sizeLabel)
       divTalle.appendChild(size)
       divCentral.appendChild(divTalle)
@@ -62,38 +65,22 @@ window.addEventListener('load',function(){
     // Creamos el div individual que contendra un tag
     var divTag = document.createElement('div');
     // Le damos estetica
-    divTag.setAttribute('class','col-md-4 offset-md-2 form-group')
-    // Creamos un titulo h5 para cada tag
-    var h5tag = document.createElement('h5');
-    // Le damos al titulo el nombre del tag
-    h5tag.innerHTML = tag.value;
+    divTag.setAttribute('class','col-md-3 centrado')
 
     // Preparamos las opciones
 
-    // Creamos el label y el input de la opcion Si
-    var tagLabelSi = document.createElement('label');
-    tagLabelSi.innerHTML = 'SI'
+    // Creamos el label y el input de la opcion
+    var tagLabel = document.createElement('label');
+    tagLabel.innerHTML = 'Electroformatura'
 
-    var tagInputSi = document.createElement('input');
-    tagInputSi.name = tag.value
-    tagInputSi.value = 'true'
-    tagInputSi.type = 'radio'
-
-    // Creamos el label y el input de la opcion No
-    var tagLabelNo = document.createElement('label');
-    tagLabelNo.innerHTML = 'NO'
-
-    var tagInputNo = document.createElement('input');
-    tagInputNo.name = tag.value
-    tagInputNo.value = 'false'
-    tagInputNo.type = 'radio'
+    var tagInput = document.createElement('input');
+    tagInput.name = tag.value
+    tagInput.value = ''
+    tagInput.type = 'checkbox'
 
     // Armamos el div del tag individual
-    divTag.appendChild(h5tag)
-    divTag.appendChild(tagLabelSi)
-    divTag.appendChild(tagInputSi)
-    divTag.appendChild(tagLabelNo)
-    divTag.appendChild(tagInputNo)
+    divTag.appendChild(tagLabel)
+    divTag.appendChild(tagInput)
 
     // Lo agregamos al div central de tags
     divCentral.appendChild(divTag)

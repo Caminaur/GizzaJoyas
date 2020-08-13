@@ -574,7 +574,7 @@ a:hover {
 }
 
 .form-group input {
-  width: 50%;
+  width: 100%;
 }
 
 .form-group input:first-child {
@@ -633,6 +633,12 @@ select {
 
 select option[value=""][disabled] {
   display: none;
+}
+
+.centrado {
+  place-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -883,12 +889,13 @@ img.checkout-cart-img {
 }
 
 .form-control-checkout {
+  text-align: center;
+  text-align-last: center;
   border: 1px solid #6B799E;
   border-radius: 0;
   display: block;
   width: 100%;
   height: 30px;
-  padding: 0;
 }
 
 .custom-select {
@@ -1178,6 +1185,11 @@ img.checkout-cart-img {
 
 .def-number-input button:focus {
   outline: none;
+}
+
+/* para persistir las flechitas del input number sin necesidad de hacerle hover */
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
 }
 
 select {

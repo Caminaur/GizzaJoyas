@@ -193,6 +193,11 @@
   outline: none;
 }
 
+/* para persistir las flechitas del input number sin necesidad de hacerle hover */
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
 select {
   -webkit-appearance: menulist;
 }
