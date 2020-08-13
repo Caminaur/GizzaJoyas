@@ -31,7 +31,7 @@ Agregar Producto
             </div>
 
             <div class="col-md-4 mb-3">
-              <input class="form-control-checkout" type="number" min="100" name="price" step="100" placeholder="Ingrese el precio *" @if (old('price') !== null) value="{{ old('price') }}" @else value="0" @endif>
+              <input class="form-control-checkout px-1" type="number" min="100" name="price" step="100" placeholder="Ingrese el precio *" @if (old('price') !== null) value="{{ old('price') }}" @else value="0" @endif>
               @error('price')
                 <p class="errorForm">{{ $message }}</p>
               @enderror

@@ -96,11 +96,12 @@ front-end
 - Terminar vista Nosotros -- esperando a que envien la info
 - Hacer vistas - edit/add
 - Hacer Email Templates
-- Hacer Checkbox en lugar de Radio Button en Agregar producto tags
+- Hacer Checkbox en lugar de Radio Button en Agregar producto tags (probarlo)
 - Botones de confirmacion (Para eliminar)
-- Agregar foto a crear categoria (Circulo con un +) & boton de elimnar categoria (tachito) a c/u (Junto con el modal de confirmacion)
 
 Back-end
+- Crear una categoria manualmente y borrarla (tira error en los sizes)
+- Hacer format number en vista Checkout
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
