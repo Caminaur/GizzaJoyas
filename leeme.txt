@@ -100,7 +100,6 @@ front-end
 - Botones de confirmacion (Para eliminar)
 
 Back-end
-- Crear una categoria manualmente y borrarla (tira error en los sizes)
 - Hacer format number en vista Checkout
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
@@ -109,4 +108,3 @@ Back-end
 - Logica perfil de usuario.
 - Crear nuevos botones en el Admin panel con los informes
 - Poner la clase Carbon a las rutas "/" y  "/productos"
-- Testear el confirm y comprobar que borra el producto correcto

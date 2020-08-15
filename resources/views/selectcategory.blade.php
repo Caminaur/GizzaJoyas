@@ -11,9 +11,9 @@ Categorias
 					<div>
 						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
               <!-- This is the modal -->
-              @include('partials.confirm',['url'=>'/deletecategory', 'message'=>'Seguro quiere eliminar la Categoría?', 'name'=>'categoryId', 'id'=>'{{$categpry->id}}'])
+              @include('partials.confirm',['url'=>'/deletecategory', 'message'=>'Seguro quiere eliminar la Categoría '.$category->name.'?', 'name'=>'categoryId', 'id'=>"{$category->id}"])
 
-              <a class="hvr-shrink rounded-icon ico" style="border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  top: 2%;  right: 3%;" href="#confirm" uk-icon="icon: trash;" uk-toggle></a>
+              <a class="hvr-shrink rounded-icon ico" style="border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  top: 2%;  right: 3%;" href="#confirm{{$category->id}}" uk-icon="icon: trash;" uk-toggle></a>
               <a href="/editcategory/{{$category->id}}">
                 <img class="brightness uk-transition-scale-up uk-transition-opaque" src="{{$category->image}}" alt="">
               </a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
+use Redirect;
 use App\Category;
 use App\Size;
 use App\Product;
@@ -242,17 +243,15 @@ class CategoryController extends Controller
         $category_size->save();
       }
 
-      return back()->with('status', 'Categoria creada exitosamente!');;
+      return Redirect::to('/editcategory')->with('status', 'Categoria creada exitosamente!');;
     }
   }
   public function delete(Request $req){
 
     // Buscamos la categoria
-    $category = Category::find($req->category_id);
-
+    $category = Category::find($req->categoryId);
     // Buscamos los talles relacionados
     $talles = $category->sizes;
-
     // Eliminamos los talles relacionados
     foreach ($talles as $talle) {
       $talle->delete();
@@ -263,7 +262,6 @@ class CategoryController extends Controller
 
     // Redirigimos a la vista de selectcategory
     $categories = Category::all();
-
-    return view('selectcategory',compact('categories'))->with('status', 'Categoria eliminada exitosamente!');
+    return Redirect::to('/editcategory')->with('status', 'Categoria eliminada exitosamente!');
   }
 }

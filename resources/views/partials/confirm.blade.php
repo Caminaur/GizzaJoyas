@@ -12,7 +12,7 @@
   }
 @endphp
 
-<div id="confirm" uk-modal>
+<div id="confirm{{$id}}" uk-modal>
 
   <div class="uk-modal-dialog">
     <button class="uk-modal-close-default" type="button" uk-close></button>

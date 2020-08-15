@@ -133,7 +133,6 @@ class ProductController extends Controller
   }
   // agrega un producto y te redirige a la lista de productos
   public function store(Request $request){
-
         $reglas = [
           'title' => 'required|string|min:1|max:50',
           'price' => 'required|integer|min:50|max:150000',
@@ -168,7 +167,7 @@ class ProductController extends Controller
           ];
 
           $this->validate($request, $reglas, $mensajes);
-          // dd($request->all());
+
           $product = new Product();
           $product->name = $request->title;
           $product->price = $request->price;
@@ -261,7 +260,7 @@ class ProductController extends Controller
           if (strpos($tag->name, '_') == false) {
             // Ya que nombres espaciados en un formulario pasan de "Hola Mundo" a "Hola_Mundo" en la request
             $tagAGuardar = str_replace(' ',"_", $tag->name);
-            if ($request->$tagAGuardar=='true') {
+            if (isset($request->$tagAGuardar)) {
               $product_tag->hasTag = 1;
               $product_tag->save();
             }
@@ -272,7 +271,7 @@ class ProductController extends Controller
           }
           else {
             $tagName = $tag->name;
-            if ($request->$tagName=='true') {
+            if (isset($request->$tagName)) {
               $product_tag->hasTag = 1;
               $product_tag->save();
             }
@@ -281,7 +280,7 @@ class ProductController extends Controller
               $product_tag->save();
             }
           }
-        }
+        } // for each tags in DB
 
           return redirect('/productos')
           ->with('status', 'Producto creado exitosamente!!!')

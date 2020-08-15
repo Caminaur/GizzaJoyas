@@ -7,8 +7,7 @@ window.addEventListener('load',function(){
     // Corresponde al div donde se agregaran los talles
     var divCentral = document.getElementById('talles')
     // Al cambiar de categoria se vacia el div, para luego llenarlo con los nuevos valores
-    divCentral.innerHTML = ""
-
+    divCentral.innerHTML = "";
     // traemos los inputs de ese talle en particular
     var inputsTalles = document.querySelectorAll('.categoria' + category.value)
 
@@ -36,6 +35,9 @@ window.addEventListener('load',function(){
 
       divCentral.appendChild(divTalle)
 
+      // Mostramos la label "Ingrese el stock por talle:"
+      var stock_title = document.getElementById('show_stock');
+      stock_title.removeAttribute('hidden');
     }
     // En caso de que la categoria sea de talle unico agregamos igual mente el input de quantity
     if (inputsTalles.length===0) {
@@ -50,6 +52,9 @@ window.addEventListener('load',function(){
       divTalle.appendChild(sizeLabel)
       divTalle.appendChild(size)
       divCentral.appendChild(divTalle)
+      // Mostramos la label "Ingrese el stock por talle:"
+      var stock_title = document.getElementById('show_stock');
+      stock_title.removeAttribute('hidden')
     }
 
 
@@ -59,31 +64,33 @@ window.addEventListener('load',function(){
   // Al cambiar de categoria se vacia el div, para luego llenarlo con los nuevos valores
   divCentral.innerHTML = ""
   // Recopilamos los inputs de los tags correspondientes a esa categoria
-  var inputTags = document.querySelectorAll('.tag' + category.value)
+  var inputTags = document.querySelectorAll('.tag' + category.value);
   // Recorremos cada uno y lo agregamos al div
   for (var tag of inputTags) {
     // Creamos el div individual que contendra un tag
     var divTag = document.createElement('div');
     // Le damos estetica
-    divTag.setAttribute('class','col-md-3 centrado')
+    divTag.setAttribute('class','col-md-3 centrado');
 
     // Preparamos las opciones
 
     // Creamos el label y el input de la opcion
     var tagLabel = document.createElement('label');
-    tagLabel.innerHTML = 'Electroformatura'
+    tagLabel.innerHTML = tag.value;
 
     var tagInput = document.createElement('input');
-    tagInput.name = tag.value
-    tagInput.value = ''
-    tagInput.type = 'checkbox'
+    tagInput.name = tag.value;
+    tagInput.value = tag.value;
+    tagInput.type = 'checkbox';
 
     // Armamos el div del tag individual
-    divTag.appendChild(tagLabel)
-    divTag.appendChild(tagInput)
-
+    divTag.appendChild(tagLabel);
+    divTag.appendChild(tagInput);
     // Lo agregamos al div central de tags
     divCentral.appendChild(divTag)
+    // Mostramos la label "Lista de Tags:"
+    var tags_title = document.getElementById('show_tags');
+    tags_title.removeAttribute('hidden');
   }
   })
 

@@ -23,8 +23,8 @@ Producto
                 <ul class="uk-slideshow-items" uk-lightbox>
                   @for ($i = 0; $i < count($product->images); $i++)
                     <li>
-                      <a href="/{{$product->images[$i]->path}}" data-caption="{{$i}}">
-                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="/{{$product->images[$i]->path}}" alt="" uk-cover>
+                      <a href="{{$product->images[$i]->path}}" data-caption="{{$i}}">
+                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="{{$product->images[$i]->path}}" alt="" uk-cover>
                       </a>
                     </li>
                   @endfor
@@ -34,8 +34,8 @@ Producto
                 	<ul class="uk-thumbnav align-items-center">
                     @for ($i = 0; $i < count($product->images); $i++)
                       <li class="" uk-slideshow-item="{{ $i }}">
-            						<a href="/{{$product->images[$i]->path}}">
-            							<img src="/{{$product->images[$i]->path}}" width="60">
+            						<a href="{{$product->images[$i]->path}}">
+            							<img src="{{$product->images[$i]->path}}" width="60">
             						</a>
             					</li>
                     @endfor
@@ -59,7 +59,7 @@ Producto
               @if ($product->onSale)
                 <h3 class="dandelion mx-1 sinOferta">${{number_format($product->price, 0, '.', '.')}}</h3>
               @endif
-              
+
               <h2 class="blueSlate">${{number_format((getRealPrice($product)), 0, '.', '.')}}</h2>
               <h3 style="text-align:justify;">{{ $product->description }}</h3>
               <h3>Estas viendo <a href="/{{ $product->category->name }}" class="blueSlate">{{$product->category->name}}</span></h3>

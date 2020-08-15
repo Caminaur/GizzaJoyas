@@ -149,28 +149,11 @@ Agregar Producto
 
           <div class="container" style="max-width: 69%;">
 
-            <label class="m-3">Lista de Tags:</label>
+            <label id="show_tags" hidden class="m-3">Lista de Tags:</label>
 
             <div id="tags" class="row justify-content-center">
 
               {{-- En este espacio se va a crear por JS los talles que correspondan a la categoria --}}
-
-              <div class="col-md-3 centrado">
-                <label for="">Electroformatura</label>
-                <input type="checkbox" name="" value="">
-              </div>
-              <div class="col-md-3 centrado">
-                <label for="">Electroformatura</label>
-                <input type="checkbox" name="" value="">
-              </div>
-              <div class="col-md-3 centrado">
-                <label for="">Electroformatura</label>
-                <input type="checkbox" name="" value="">
-              </div>
-              <div class="col-md-3 centrado">
-                <label for="">Electroformatura</label>
-                <input type="checkbox" name="" value="">
-              </div>
 
             </div>
 
@@ -182,8 +165,8 @@ Agregar Producto
 
           <div class="container" style="max-width: 69%;">
 
+            <label id="show_stock" hidden class="mt-3">Ingrese el stock por talle:</label>
 
-            <label class="mt-3">Ingrese el stock por talle:</label>
 
             <div class="row" id="talles">
               <br>
