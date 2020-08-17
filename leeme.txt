@@ -96,7 +96,7 @@ front-end
 - Terminar vista Nosotros -- esperando a que envien la info
 - Hacer vistas - edit/add
 - Hacer Email Templates
-- Hacer Checkbox en lugar de Radio Button en Agregar producto tags (probarlo)
+- Reordenar Adminpanel en 2 columnas (desktop)
 - Botones de confirmacion (Para eliminar)
 
 Back-end
