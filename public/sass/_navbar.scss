@@ -69,6 +69,24 @@ button.navlink {
   z-index: 1000;
 }
 
+// Cambios esteticos para el Menu hamburguesa
+
+button.navlink-mobile {
+  background-color: #141414;
+  color: white;
+  outline: none !important;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0.5px;
+  display: inline !important;
+  font-size: 16px;
+  padding: 2px 0px !important;
+}
+
+#navbarMobile {
+  font-family: $secondary;
+}
+
 // Al achicharse la navbar van a presentarste estos valores
 
 /* La animacion de cambio */

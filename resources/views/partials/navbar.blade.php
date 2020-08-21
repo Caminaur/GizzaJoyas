@@ -155,22 +155,64 @@
         {{-- Fin navbar principal --}}
 
       {{-- Al clickear en el menu hamburguesa aparece esta navbar --}}
-      <div id="navbarMobile" uk-offcanvas="mode: push; overlay: true">
+      <div id="navbarMobile" uk-offcanvas="mode: slide; overlay: true">
 
         <div class="uk-offcanvas-bar">
           <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-          <a class="uk-navbar-item uk-logo" uk-scroll href="#body">Logo</a>
+          <a class="uk-navbar-item uk-logo uk-flex-column" uk-scroll href="/"><span class="gizza text-center wow animated fadeInDown slow" style="color:white;">GIZZA</span></a><span class="joyas text-center mt-2 wow animated fadeInDown slow" style="color:white;">Joyas - Relojes</span>
 
-          <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-            <li><a href="#asd" offset="80" uk-scroll>Item</a></li>
-            <li><a href="#asd1" offset="80" uk-scroll>Item</a></li>
-            <li><a href="#asd2" offset="80" uk-scroll>Item</a></li>
+          <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav style="transform: translateY(20%);">
+            <li class="uk-parent">
+              <a href="#">Productos</a>
+              <ul class="uk-nav-sub">
+                <li><a href="/productos">Todos los productos</a></li>
+                @foreach ($categories as $category)
+                <li><a href="/productos/categoria/{{strtolower($category->name)}}">{{$category->name}}</a></li>
+                @endforeach
+                <li class="uk-nav-divider"></li>
+                <hr class="uk-divider-small">
+              </ul>
+            </li>
+            <li><a class="dandelion" href="/productos/ofertas">Ofertas</a></li>
+            <li><a href="/productos/nuevos">Lo nuevo</a></li>
+
+            <hr class="uk-divider-small">
+
+            
+            <li><a href="/preguntas" offset="80" uk-scroll>Preguntas Frecuentes</a></li>
+            <li><a href="/nosotros" offset="80" uk-scroll>Nosotros</a></li>
+            <li><a href="/contacto" offset="80" uk-scroll>Contactanos</a></li>
 
 
-            <li><a href="#asd" offset="80" uk-scroll>Item</a></li>
-            <li><a href="#asd1" offset="80" uk-scroll>Item</a></li>
-            <li><a href="#asd2" offset="80" uk-scroll>Item</a></li>
+            <hr class="uk-divider-small">
+
+            @if (Auth::user())
+              @if (Auth::user()->isAdmin == true)
+              <li><a href="/controlpanel"><i class="pe-7s-config pe-spin pe-2x"></i></a></li>
+              @endif
+              <li class="uk-parent">
+                <a href="#"><i class="hvr-shrink pe-7s-user-female pe-2x"></i></a>
+                <ul class="uk-nav-sub">
+                  <li class="nav-item">
+                    <li><a href="/profile">Perfil</a></li>
+                    <form class="" action="/logout" method="post">
+                      @csrf
+                      <button class="navlink-mobile" type="submit" name="button">Cerrar Sesión</button>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/favoritos" offset="80"><span id="items-in-favs" class="items-in-cart">{{count(Auth::user()->productosFavoritos)}}</span><span class="hvr-pulse-shrink pe-7s-like pe-2x"></span></a></li>
+              <li><a href="/cart" offset="80"><span class="items-in-cart">{{count(Auth::user()->productosEnCarrito)}}</span><span class="hvr-shrink pe-7s-shopbag pe-2x"></span></a></li>
+
+            @else
+
+              <li><a href="/register">Registrarse</a></li>
+              <li><a href="/login">Ingresar</a></li>
+
+            @endif
+
           </ul>
 
         </div>

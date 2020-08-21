@@ -350,7 +350,7 @@ hr,
   /* 2 */
   text-align: inherit;
   /* 3 */
-  margin: 0 0 20px 0;
+  /* margin: 0 0 20px 0; */
   border: 0;
   border-top: 1px solid #e5e5e5;
 }
