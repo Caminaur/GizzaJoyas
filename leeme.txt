@@ -92,13 +92,12 @@ Objetivo de la semana/s
 - Filtros gender|materials|age|etc
 
 front-end
-- Terminar navbar responsive
 - Terminar vista Nosotros -- esperando a que envien la info
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Reordenar Adminpanel en 2 columnas (desktop)
 - Botones de confirmacion (Para eliminar)
-
+- Poner favorito dentro del producto
 Back-end
 - Hacer format number en vista Checkout
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
@@ -108,3 +107,4 @@ Back-end
 - Logica perfil de usuario.
 - Crear nuevos botones en el Admin panel con los informes
 - Poner la clase Carbon a las rutas "/" y  "/productos"
+- Si no estas logueado al clickear favorito, redirigir a register. Editar el ajax acorde a las necesidades
