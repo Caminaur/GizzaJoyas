@@ -20,9 +20,9 @@ class LiveSearch extends Controller
     $query = $request->get('query');
     if(!empty($query))
     {
-     $data = Product::where('name', 'like', '%'.$query.'%')
-       ->orWhere('description', 'like', '%'.$query.'%')
-       ->orWhere('model', 'like', '%'.$query.'%')
+     $data = Product::where('name', 'like', "%$query%")
+       ->orWhere('description', 'like', "%$query%")
+       ->orWhere('model', 'like', "%$query%")
        ->get();
     }
     else
@@ -154,7 +154,7 @@ class LiveSearch extends Controller
        }
 
        $output .= '
-
+       
                <div>
                  <div class="product uk-text-center pb-4">
 
