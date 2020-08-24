@@ -99,7 +99,7 @@ front-end
 - Botones de confirmacion (Para eliminar)
 - Poner favorito dentro del producto
 Back-end
-- Hacer format number en vista Checkout
+- Agregar costos de envio en checkout (checkout linea 318).
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)

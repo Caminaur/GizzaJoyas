@@ -162,7 +162,7 @@ Checkout
         <div class="producto row">
           <div class="img col-12 col-lg-6">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="checkout-cart-img" src="/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <img class="checkout-cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
             <article class="">
               <h6>{{$cart->product->name}}</h6>
               <h6 class="light">Talle {{$cart->size->name}} / {{$cart->quantity}} uni.</h6>
@@ -170,7 +170,8 @@ Checkout
           </div>
 
           <div class="product-info col-12 col-lg-6">
-            <h6 class="p-2 ">${{getRealPrice($cart->product)*$cart->quantity}}</h6>
+            <h6 class="p-2 ">${{number_format((getRealPrice($cart->product)*$cart->quantity), 0, '.', '.')}}</h6>
+            <h6 class="p-2 ">${{number_format((getRealPrice($cart->product)*$cart->quantity), 0, '.', '.')}}</h6>
           </div>
         </div> {{-- producto --}}
       @endforeach
@@ -179,7 +180,7 @@ Checkout
       <div class="calculos pt-4">
         <div class="d-flex justify-content-between">
           <h6>Subtotal</h6>
-          <h6>${{getTotalPrice($carts)}}</h6>
+          <h6>${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h6>
         </div>
         <div class="d-flex justify-content-between">
           <h6>Envío</h6>
@@ -187,9 +188,8 @@ Checkout
         </div>
         <div class="d-flex justify-content-between">
           <h4 class="bold">Total</h4>
-          <h4 class="bold">${{getTotalPrice($carts)}}</h4>
+          <h4 class="bold">${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h4>
         </div>
-
       </div>
     </section>
 
@@ -315,6 +315,7 @@ Checkout
             var conEnvio = document.getElementById("si").value;
             if (conEnvio=="true") {
               var envio = document.getElementById("shipment").value;
+              envio = 0;
               // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
               var compra = document.querySelector('#total').value;
               var total = parseInt(envio) + parseInt(compra);
