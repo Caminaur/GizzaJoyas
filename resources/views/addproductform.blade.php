@@ -226,18 +226,21 @@ Agregar Producto
 
       </div>
       <div class="">
-        {{-- Creamos los inputs hidden para los talles relacionados a cada categoria --}}
+
         @foreach ($categories as $category)
-          @foreach ($category->sizes as $size)
-            <input class="categoria{{$category->id}}" type="text" hidden name="" value="{{$size->name}}">
-          @endforeach
-        @endforeach
-        {{-- Creamos los inputs hidden para los tags relacionados a cada categoria --}}
-        @foreach ($categories as $category)
+
+          {{-- Creamos los inputs hidden para los tags relacionados a cada categoria --}}
           @foreach ($category->tags as $tag)
             <input class="tag{{$category->id}}" type="text" hidden name="" value="{{$tag->name}}">
           @endforeach
+
+          {{-- Creamos los inputs hidden para los talles relacionados a cada categoria --}}
+          @foreach ($category->sizes as $size)
+            <input class="categoria{{$category->id}}" type="text" hidden name="" value="{{$size->name}}">
+          @endforeach
+
         @endforeach
 
     <script src="/js/addproduct.js" charset="utf-8"></script>
+    <script src="/js/funciones.js" charset="utf-8"></script>
 @endsection

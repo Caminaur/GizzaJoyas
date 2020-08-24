@@ -92,6 +92,10 @@ window.addEventListener('load',function(){
     var tags_title = document.getElementById('show_tags');
     tags_title.removeAttribute('hidden');
   }
+    if (inputTags.length === 0) {
+      var tags_title = document.getElementById('show_tags');
+      tags_title.setAttribute('hidden', true);
+    }
   })
 
   // Creacion de input descuento en vista add product
