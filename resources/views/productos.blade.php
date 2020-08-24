@@ -149,7 +149,9 @@ Productos
         <h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Productos Existentes</span></h3>
       @endforelse
     </div>
-    {{$products->links()}}
+    <div id="paginas" class="">
+      {{$products->links()}}
+    </div>
   </section>
 
 

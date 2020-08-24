@@ -107,6 +107,8 @@ Route::get('/productos/{parametro_de_busqueda}','ProductController@onSale');
 
 Route::get('/live_search/action','LiveSearch@search_product'); // ajax buscador
 
+Route::get('/product/page/{id}', 'LiveSearch@paginate_search' ); // ajax paginador
+
 // Rutas /onsale /new
 
 Route::get('/addproduct', 'ProductController@new');
