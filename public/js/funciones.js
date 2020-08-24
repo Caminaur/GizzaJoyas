@@ -34,14 +34,29 @@ function play () {
 // esta funcion la utilizamos para cambiar la fachada del input file y poder seguir viendo los nombres de los archivos subidos.
 
 function change(){
-  var pdrs = document.getElementById('file-upload').files;
-  var info = document.getElementById('info').innerHTML;
 
-  console.log(pdrs);
-  console.log(info);
+	var pdrs = document.getElementById('file-upload').files;
 
+	// div donde se insertaran los names de las images
+  var info = document.getElementById('info');
+
+	// lo vaciamso para evitar que se repitan
+	info.innerHTML = "";
+
+	// recorremos los archivos subidos
   for (var i = 0; i < pdrs.length; i++) {
-    info.innerHTML.concat(pdrs[i].name)
+
+		// guardamos el nombre del archivo
+    var image_name = pdrs[i].name;
+
+		// creamos una etiqueta
+		var etiqueta_p = document.createElement('p');
+
+		// guardamos el nombre del archivo en ella
+		etiqueta_p.innerHTML = image_name;
+
+		// lo metemos en el div
+		info.appendChild(etiqueta_p);
   }
 
 }
