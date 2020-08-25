@@ -26,7 +26,7 @@
     </div>
 
     <div class="uk-modal-footer uk-text-right">
-      <form class="" action="{{$url}}" method="post">
+      <form action="{{$url}}" method="post">
         <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
         @csrf
         <input type="hidden" name="{{$name}}" value="{{$id}}">

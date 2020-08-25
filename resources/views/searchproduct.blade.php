@@ -53,7 +53,7 @@ productos
         </div>
 
         <div class="form-control">
-          <a href="/importexcel">Importar Excel de productos</a>
+          <a href="/exportexcel">Exportar Excel de productos</a>
         </div>
 
         <div class="">

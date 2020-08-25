@@ -12,13 +12,13 @@ Agregar Producto
   </ul>
 
 
-  <div class="container pb-4" style="text-align: -webkit-center;">
+  <div class="container text-center pb-4">
 
       <h2 class="regular text-center pb-3">Agregar <span class="bold blueSlate">Producto</span></h2>
 
       <div class="uk-card uk-card-default uk-card-body uk-margin-small">
 
-        <form class="text-center p-4" action="/addproduct" method="post" enctype="multipart/form-data">
+        <form class="p-4" action="/addproduct" method="post" enctype="multipart/form-data">
           @csrf
 
           <div class="row">
@@ -147,9 +147,9 @@ Agregar Producto
           </div>
 
 
-          <div class="container" style="max-width: 69%;">
+          <div id="show_tags" hidden class="container">
 
-            <label id="show_tags" hidden class="m-3">Lista de Tags:</label>
+            <label class="m-3">Lista de Tags:</label>
 
             <div id="tags" class="row justify-content-center">
 
@@ -159,16 +159,15 @@ Agregar Producto
 
           </div>
 
-          <br>
-
           {{-- ------------------------------------------------------------------------------------------- --}}
 
-          <div class="container" style="max-width: 69%;">
+          <div id="show_stock" hidden class="container" style="max-width: 69%;">
+            <br>
 
-            <label id="show_stock" hidden class="mt-3">Ingrese el stock por talle:</label>
+            <label  class="mt-3">Ingrese el stock por talle:</label>
 
 
-            <div class="row" id="talles">
+            <div class="row justify-content-center" id="talles">
               <br>
 
               {{-- En este espacio se va a crear por JS los talles que correspondan a la categoria --}}
@@ -178,24 +177,21 @@ Agregar Producto
           </div>
 
 
-
-
-
-          <div class="m-5"></div> {{-- div separador --}}
+          <div class="m-4"></div> {{-- div separador --}}
 
 
           <div class="col-md-8 offset-md-2 form-group-checkout mb-3">
-            <div class="row">
-              <textarea class="p-3" name="description" rows="6" cols="80" placeholder="Escriba una descripción ..."></textarea>
-            </div>
+            <textarea class="p-3" name="description" rows="6" cols="80" placeholder="Escriba una descripción ..."></textarea>
           </div>
 
+          <div class="m-4"></div> {{-- div separador --}}
 
           <div class="row">
-            <div class="col-lg-4 offset-lg-2 col-md-6  form-group-checkout mb-3">
+
+            <div class="col-lg-4 offset-lg-4 form-group-checkout mb-3">
               <label for="">Agregue la/s imagenes del producto: *</label>
               <label for="file-upload" class="subir">
-              <i class="fas fa-cloud-upload-alt"></i> Subir imagen
+              <i class="fas fa-cloud-upload-alt"></i> Subir imágenes
               </label>
               <br>
               {{-- para poder agregar varios archivos hay que colocar los [] en el name del file y el atributo multiple --}}
@@ -206,11 +202,12 @@ Agregar Producto
               @enderror
               <small id="emailHelp" class="form-text text-muted">Extensiones: jpg, jpeg, png. Peso maximo 2MB</small><br>
             </div>
+
           </div>
 
 
-          <div class="col-lg-4 offset-lg-2 col-md-6  form-group-checkout mb-3">
-            <button class="btn" type="submit">Crear producto</button>
+          <div class="col-lg-4 offset-lg-4 form-group-checkout mb-3">
+            <button class="btn bg-blueSlate" type="submit">Crear producto</button>
           </div>
 
         </form>
@@ -220,12 +217,6 @@ Agregar Producto
 
   </div>
 
-
-    {{-- //// ordenar esto  --}}
-      <h2 class="col-md-4 offset-md-2 form-group-checkout mb-3">Agregar producto</h2>
-
-      </div>
-      <div class="">
 
         @foreach ($categories as $category)
 
@@ -242,5 +233,5 @@ Agregar Producto
         @endforeach
 
     <script src="/js/addproduct.js" charset="utf-8"></script>
-    <script src="/js/funciones.js" charset="utf-8"></script>
+    {{-- <script src="/js/funciones.js" charset="utf-8"></script> --}}
 @endsection

@@ -111,9 +111,9 @@ Route::get('/product/page/{id}', 'LiveSearch@paginate_search' ); // ajax paginad
 
 // Rutas /onsale /new
 
-Route::get('/addproduct', 'ProductController@new');
+Route::get('/addproduct', 'ProductController@new')->middleware('admin');
 
-Route::post('/addproduct', 'ProductController@store');
+Route::post('/addproduct', 'ProductController@store')->middleware('admin');
 
 Route::get('/producto/{id}', 'ProductController@product');
 
@@ -123,9 +123,9 @@ Route::put('/editproduct/{id}', 'ProductController@update')->middleware('admin')
 
 Route::post('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
 
-Route::get('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
+Route::post('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
 
-Route::get('/importexcel', 'ProductController@importExcel')->middleware('admin');
+Route::get('/exportexcel', 'ProductController@exportExcel')->middleware('admin');
 
 Route::post('/updateprices', 'ProductController@updatePrice')->middleware('admin');
 

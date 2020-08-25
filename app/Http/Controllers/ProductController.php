@@ -319,12 +319,12 @@ class ProductController extends Controller
     return view('/editproduct', $vac)->with('status', 'Producto editado exitosamente!');;
   }
 
-  public function update(Request $request){
+  public function update(Request $request, int $id){
 
     $reglas = [
       'title' => 'required|string|min:1|max:50',
       'price' => 'required|integer|min:50|max:150000',
-      'model' => 'max:255|required|unique:products,model,' . $request->productId, // https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
+      'model' => 'max:255|required|unique:products,model,' . $id, // https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
       'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
       'description' => 'string|max:200',
       "images" => "array|min:1",
@@ -355,7 +355,7 @@ class ProductController extends Controller
 
       $this->validate($request, $reglas, $mensajes);
 
-      $product = Product::find($request->productId);
+      $product = Product::find($id);
 
       $product->name = $request->title; // alternativa $producto->name = $request->name;
       $product->price = $request->price;
@@ -382,10 +382,6 @@ class ProductController extends Controller
       // guardo en la base de datos
       $product->save();
 
-      // traigo el producto recien creado para obtener su ID
-      // $lastProduct = Product::all()->last();
-      // $productId = $lastProduct->id;
-
       if (!empty($request['images'])) { // si suben una o mas fotos, entonces comenzamos el proceso de guardado
         // obtengo el array de imagenes
 
@@ -402,15 +398,12 @@ class ProductController extends Controller
           $image = new Image;
           // asigno las rutas correspondientes y asigno el id de la imagen que debe ser igual al id del ultimo producto creado
           $image->product_id = $product->id;
-          $image->path = $path;
+          $image->path = '/storage/'.$path;
 
           // guardo el objeto imagen instanciado en la base de datos
           $image->save();
         }
       }
-
-    // Traigo el ultimo producto agregado y su id
-    // $lastProduct = Product::all()->last();
 
     // Traemos los talles especificos de la categoria seleccionada
     $sizes = $product->category->sizes;
@@ -548,8 +541,8 @@ class ProductController extends Controller
         return view('/searchproduct', compact('products','brands','categories'));
       }
 
-  // Para importar un excel del catalogo de productos actual
-  public function importExcel(){
+  // Para exportar un excel del catalogo de productos actual
+  public function exportExcel(){
     // https://docs.laravel-excel.com/3.1/getting-started/
     // https://phpspreadsheet.readthedocs.io/
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');

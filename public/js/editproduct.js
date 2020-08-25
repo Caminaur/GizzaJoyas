@@ -24,7 +24,7 @@ window.addEventListener('load',function(){
         size.setAttribute('type','number');
         size.value = 0
 
-        divTalle.setAttribute('class','col-md-4 offset-md-2 form-group')
+        divTalle.setAttribute('class','centrado col-4 col-lg-2 form-group')
 
         divTalle.appendChild(sizeLabel)
 

@@ -95,9 +95,9 @@ front-end
 - Terminar vista Nosotros -- esperando a que envien la info
 - Hacer vistas - edit/add
 - Hacer Email Templates
-- Reordenar Adminpanel en 2 columnas (desktop)
 - Botones de confirmacion (Para eliminar)
 - Poner favorito dentro del producto
+
 Back-end
 - Agregar costos de envio en checkout (checkout linea 318).
 - Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
@@ -108,3 +108,8 @@ Back-end
 - Crear nuevos botones en el Admin panel con los informes
 - Poner la clase Carbon a las rutas "/" y  "/productos"
 - Si no estas logueado al clickear favorito, redirigir a register. Editar el ajax acorde a las necesidades
+- Crear MVC de Shipments (ya agregue la tabla al DER)
+- Surgio un problema, cuando queremos borrar una imagen con la funcion unlink(storage_path('app/public/').$image->path);
+(VER Product Controller linea 488) al tener guardado en la base de datos las rutas con /storage, duplica la ruta /storage
+y no encuenta la imagen. Buscar una solucion. Yo propongo que las imagenes que ya traemos con el sistema las guardemos
+en Storage. y que a todos los linkeos de imagenes le agreguemos /storage pero en la base de datos solo guardemos la ruta final

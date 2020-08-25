@@ -81,9 +81,9 @@ Editar Perfil
           <br>
 
           <div class="col-6">
-            <input style="width:190px;" type="submit" class="btn border-ashBlue" name="" value="Editar Usuario">
+            <input style="width:190px;" type="submit" class="btn bg-ashBlue" name="" value="Editar Usuario">
             <br><br>
-            <a style="width:190px;" class="btn border-dandelion" href="#confirm" uk-toggle>Eliminar Usuario</a>
+            <a style="width:190px;" class="btn bg-dandelion" href="#confirm" uk-toggle>Eliminar Usuario</a>
           </div>
 
       </form>

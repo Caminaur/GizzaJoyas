@@ -21,7 +21,7 @@ Perfil
           <thead>
               <tr>
                   <th>Nombre</th>
-                  <th>Correo</th>                  
+                  <th>Correo</th>
               </tr>
           </thead>
           <tbody>
@@ -32,8 +32,8 @@ Perfil
           </tbody>
         </table>
 
-        <a class="btn border-ashBlue" href="/editar-perfil">Editar</a>
-        <a class="btn border-dandelion" href="#confirm" uk-toggle>Eliminar</a>
+        <a class="btn bg-ashBlue" href="/editar-perfil">Editar</a>
+        <a class="btn bg-dandelion" href="#confirm" uk-toggle>Eliminar</a>
         @include('partials.confirm',['url'=>'/borrar-perfil', 'message'=>'Seguro quiere eliminar el usuario?'])
 
     </div>

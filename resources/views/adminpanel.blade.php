@@ -4,19 +4,69 @@ Panel de Control
 @endsection
 @section('main')
 
-  <div class="container text-center">
+  <div class="container text-center my-4">
 
     <div class="controles">
 
-      <a class="control" href="/addproduct">Agregar Producto</a>
-      <a class="control" href="/searchproduct">Editar Producto</a>
-      <a class="control" href="/editbrands">Agregar / Editar Marca</a>
-      <a class="control" href="/editcategory">Agregar / Editar Categoria</a>
-      <a class="control" href="/editcolors">Agregar / Editar Colores</a>
-      <a class="control" href="/editmaterials">Agregar / Editar Material</a>
-      <a class="control" href="/editgenders">Agregar / Editar Genero</a>
-      <a class="control" href="/edittags">Agregar / Editar Tag</a>
-      <a class="control" href="/editpreguntas">Agregar / Editar Preguntas Frecuentes</a>
+      <div class="row">
+        <div class="col-12">
+          <a class="d-block control" href="#" uk-toggle="target: .hidden-control; animation:  uk-animation-slide-left, uk-animation-slide-right; duration:400;">Productos</a>
+        </div>
+      </div>
+
+      <div class="row hidden-control" hidden>
+        <div class="col-6">
+          <a class="d-block hidden-control control" href="/addproduct" hidden>Agregar Producto</a>
+        </div>
+        <div class="col-6">
+          <a class="d-block hidden-control control" href="/searchproduct" hidden>Editar Producto</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editbrands">Marcas</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editcategory">Categorias</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editmaterials">Materiales</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editgenders">Géneros</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/edittags">Etiquetas</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editpreguntas">Preguntas Frecuentes</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editenvio">Envío</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editcolors">Colores</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/exportexcel">Exportar Productos</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/editcolors">Ajustar Precios</a>
+        </div>
+      </div>
 
     </div>
 
