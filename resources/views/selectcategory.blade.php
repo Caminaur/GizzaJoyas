@@ -15,7 +15,7 @@ Categorias
 
               <a class="hvr-shrink rounded-icon ico" style="border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  top: 2%;  right: 3%;" href="#confirm{{$category->id}}" uk-icon="icon: trash;" uk-toggle></a>
               <a href="/editcategory/{{$category->id}}">
-                <img class="brightness uk-transition-scale-up uk-transition-opaque" src="{{$category->image}}" alt="">
+                <img class="brightness uk-transition-scale-up uk-transition-opaque" src="/storage/{{$category->image}}" alt="">
               </a>
 							<div class="uk-position-center ncursor">
 									<div class="uk-light"><h3 class="medium uk-margin-remove">{{$category->name}}</h3></div>

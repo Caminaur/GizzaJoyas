@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Currency;
 use App\Cart;
 use App\Payment_platform;
+use App\Shipment;
 use App\User;
 use App\Image;
 use Illuminate\Support\Facades\Auth;
@@ -53,10 +54,13 @@ class PaymentController extends Controller
 
         $paymentPlatforms = Payment_platform::all();
 
+        $shipment = Shipment::all()->first()->value;
+
         return view('checkout')->with([
           'paymentPlatforms' => $paymentPlatforms,
           'total' => $total,
           'carts' => $carts,
+          'shipment' => $shipment,
         ]);
 
     }

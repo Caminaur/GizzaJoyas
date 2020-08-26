@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Favourite;
+use App\Shipment;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,15 @@ class UserController extends Controller
 {
 
   public function cpanel(){
-    return view('adminpanel');
+    $shipment = Shipment::all()->first();
+    return view('adminpanel',compact('shipment'));
+  }
+
+  public function editshipment(Request $req){
+    $shipment = Shipment::all()->first();
+    $shipment->value = $req->shipment_value;
+    $shipment->save();
+    return back()->with('status','Envío actualizado!');
   }
 
   public function favoritos(){
@@ -97,7 +106,8 @@ class UserController extends Controller
     return view('editprofile');
   }
 
-  public function editProfile(Request $req){
+  public function editProfile(Request $req)
+  {
 
     $reglas = [
       'name' =>'required|string|min:2|max:40|',
@@ -112,34 +122,19 @@ class UserController extends Controller
     ];
     $this->validate($req, $reglas,$mensajes);
 
-      $user = Auth::user();
+    $user = Auth::user();
+    $user->password = Hash::make($req->password);
+    $user->name = $req->name;
+    $user->email = $req->email;
 
-      // // Validamos las contraseñas    (NO FUNCIONA, don't know why..)
-      // if (Hash::check($req->old_password,$user->password)) {
-      //   $user->password = Hash::make($req->password);
-      //   $user->name = $req->name;
-      //   if (Auth::user()->email == $req->email){
-      //     $user->email;
-      //   }else{
-      //     $user->email = $req->email;
-      //   }
+    //guardo en la base de datos
+    $user->save();
 
+    return redirect('/profile')->with('status', 'Usuario Editado exitosamente')
+                               ->with('operation', 'success');
+  }
 
-        $user->password = Hash::make($req->password);
-        $user->name = $req->name;
-        $user->email = $req->email;
-
-        //guardo en la base de datos
-        $user->save();
-
-          return redirect('/profile')->with('status', 'Usuario Editado exitosamente')
-        ->with('operation', 'success');
-      }
-      // else {
-      //   return back()->with('error','La contraseña ingresada es incorrecta');
-      // }
-
-      public function deleteProfile() // borrar el usuario y deslinkear cualquier relacion, en este caso, borra su carrito
+  public function deleteProfile() // borrar el usuario y deslinkear cualquier relacion, en este caso, borra su carrito
   {
 
     // $cart = Cart::find(Auth::user()->cart_id);
@@ -147,6 +142,6 @@ class UserController extends Controller
 
     $user->delete(); // borramos el usuario
     return redirect("/")->with('status', 'Usuario eliminado')
-  ->with('operation', 'success');
+                        ->with('operation', 'success');
   }
 }

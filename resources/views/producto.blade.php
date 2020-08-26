@@ -23,8 +23,8 @@ Producto
                 <ul class="uk-slideshow-items" uk-lightbox>
                   @for ($i = 0; $i < count($product->images); $i++)
                     <li>
-                      <a href="{{$product->images[$i]->path}}" data-caption="{{$i}}">
-                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="{{$product->images[$i]->path}}" alt="" uk-cover>
+                      <a href="/storage/{{$product->images[$i]->path}}" data-caption="{{$i}}">
+                        <img class="imagenes-producto {{-- Si no hay stock poner clase opacity --}}" src="/storage/{{$product->images[$i]->path}}" alt="" uk-cover>
                       </a>
                     </li>
                   @endfor
@@ -35,7 +35,7 @@ Producto
                     @for ($i = 0; $i < count($product->images); $i++)
                       <li class="" uk-slideshow-item="{{ $i }}">
             						<a href="{{$product->images[$i]->path}}">
-            							<img src="{{$product->images[$i]->path}}" width="60">
+            							<img src="/storage/{{$product->images[$i]->path}}" width="60">
             						</a>
             					</li>
                     @endfor
@@ -149,63 +149,31 @@ Producto
         <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1" uk-height-match="target: > ul > li > .uk-card">
 
           <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid">
-              <li>
+            @foreach ($productos_relacionados as $related)
+              @if ($related->id!=$product->id)
+                <li>
                   <div class="uk-card uk-card-default">
-                      <div class="uk-card-media-top">
-                          <img src="/img/anillos.jpg" alt="">
+                    <div style="text-align: center;" class="uk-card-media-top">
+                      <a href="/producto/{{$related->id}}">
+                        <img src="/storage/{{$related->images[0]->path}}" alt="">
+                      </a>
+                    </div>
+                    <div class="uk-card-body">
+                      <h3 class="product-desc text-center">{{$related->name}}</h3>
+                      <div class="uk-flex uk-flex-center mb-3">
+                        @if ($product->onSale)
+                          <h3 class="dandelion mx-1 sinOferta">${{number_format($related->price, 0, '.', '.')}}</h3>
+                          <h3 class="doveGrey mx-1">${{number_format((getRealPrice($related)), 0, '.', '.')}}</h3>
+                        @else
+                          {{-- Sin descuento (precio de lista) --}}
+                          <h3 class="doveGrey mx-1">${{number_format($related->price, 0, '.', '.')}}</h3>
+                        @endif
                       </div>
-                      <div class="uk-card-body">
-                            <h3 class="product-desc text-center">Collar Primavera</h3>
-                          <div class="uk-flex uk-flex-center mb-3">
-                            <h3 class="dandelion mx-1 sinOferta">$500</h3><h3 class="doveGrey mx-1">$250</h3>
-                          </div>
-                      </div>
+                    </div>
                   </div>
-              </li>
-              <li>
-                  <div class="uk-card uk-card-default">
-                      <div class="uk-card-media-top">
-                          <img src="/img/anillos.jpg" alt="">
-                      </div>
-                      <div class="uk-card-body">
-                          <h3 class="uk-card-title">Headline</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                      </div>
-                  </div>
-              </li>
-              <li>
-                  <div class="uk-card uk-card-default">
-                      <div class="uk-card-media-top">
-                          <img src="/img/anillos.jpg" alt="">
-                      </div>
-                      <div class="uk-card-body">
-                          <h3 class="uk-card-title">Headline</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                      </div>
-                  </div>
-              </li>
-              <li>
-                  <div class="uk-card uk-card-default">
-                      <div class="uk-card-media-top">
-                          <img src="/img/anillos.jpg" alt="">
-                      </div>
-                      <div class="uk-card-body">
-                          <h3 class="uk-card-title">Headline</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                      </div>
-                  </div>
-              </li>
-              <li>
-                  <div class="uk-card uk-card-default">
-                      <div class="uk-card-media-top">
-                          <img src="/img/anillos.jpg" alt="">
-                      </div>
-                      <div class="uk-card-body">
-                          <h3 class="uk-card-title">Headline</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                      </div>
-                  </div>
-              </li>
+                </li>
+              @endif
+            @endforeach
           </ul>
 
           <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>

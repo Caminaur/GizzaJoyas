@@ -214,7 +214,7 @@ class ProductController extends Controller
             $image = new Image;
             // asigno las rutas correspondientes y asigno el id de la imagen que debe ser igual al id del ultimo producto creado
             $image->product_id = $productId;
-            $image->path = '/storage/'.$path;
+            $image->path = $path;
 
             // guardo el objeto imagen instanciado en la base de datos
             $image->save();
@@ -294,7 +294,29 @@ class ProductController extends Controller
         // En caso de que haya algun espacio
         $category_name = str_replace(' ', '_', $category->name);
 
-        return view('producto',compact('product','category_name','category'));
+
+        // buscamos productos relacionados
+
+        $productos_relacionados = Product::where('category_id','=',$product->category_id)->take(6)->get();
+
+        if (count($productos_relacionados)<6) {
+          $productos_relacionados = Product::where('category_id','=',$product->category_id)
+                                           ->orWhere('material_id','=',$product->material_id)
+                                           ->take(6)
+                                           ->get();
+          if (count($productos_relacionados)<6) {
+            $productos_relacionados = Product::where('category_id','=',$product->category_id)
+                                             ->orWhere('material_id','=',$product->material_id)
+                                             ->orWhere('brand_id','=',$product->brand_id)
+                                             ->take(6)
+                                             ->get();
+            if (count($productos_relacionados)<6) {
+              $productos_relacionados = Product::all()->take(6);
+            }
+          }
+        }
+
+        return view('producto',compact('product','category_name','category','productos_relacionados'));
       }
 
   // se muestran los datos del producto elegido listo para editar
@@ -398,7 +420,7 @@ class ProductController extends Controller
           $image = new Image;
           // asigno las rutas correspondientes y asigno el id de la imagen que debe ser igual al id del ultimo producto creado
           $image->product_id = $product->id;
-          $image->path = '/storage/'.$path;
+          $image->path = $path;
 
           // guardo el objeto imagen instanciado en la base de datos
           $image->save();
@@ -552,18 +574,20 @@ class ProductController extends Controller
   public function updatePrice(Request $req){
     $reglas = [
       'operacion' => 'required',
+      'criterio_busqueda' => 'required',
       'percentage' => 'required',
       ];
 
     $mensajes = [
       "operacion.required" => "La operacion seleccionada es invalida",
       "percentage.required" => "El porcentaje es necesario",
+      "criterio_busqueda.required" => "Es necesario seleccionar un criterio de búsqueda",
     ];
-
+    // dd($req->all());
     $this->validate($req, $reglas, $mensajes);
+    $criterioDeBusqueda = $req->criterio_busqueda .'_id';
 
-    // El calculo se hara a la categoria o al material seleccionado
-    $products = Product::where($req->criterioDeBusqueda,'=',$req[$req->criterioDeBusqueda])->get();
+    $products = Product::where($criterioDeBusqueda,'=',$req[$criterioDeBusqueda])->get();
 
     // Si la categoria/material seleccionado no tiene productos, lanzara un error
     if ($products->first()===null) {
@@ -596,5 +620,13 @@ class ProductController extends Controller
     return back()->with('status', 'Modificación exitosa');
   }
 
+  public function prices(){
+    $products = Product::paginate(10);
+    $categories = Category::all();
+    $materials = Material::all();
+    $brands = Brand::all();
+
+    return view('price_controller',compact('products','categories','brands','materials'));
+  }
 
 }

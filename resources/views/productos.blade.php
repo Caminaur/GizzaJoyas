@@ -39,9 +39,9 @@ Productos
 
               <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                 <a href="/producto/{{$product->id}}">
-                  <img class="producto" src="{{$product->images->first()->path}}" alt="">
+                  <img class="producto" src="/storage/{{$product->images->first()->path}}" alt="">
                   @if (count($product->images)>1)
-                    <img class="uk-transition-scale-up uk-position-cover" src="{{$product->images[1]->path}}" alt="">
+                    <img class="uk-transition-scale-up uk-position-cover" src="/storage/{{$product->images[1]->path}}" alt="">
                   @endif
                   {{-- <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
                   <p class="uk-h4 uk-margin-remove" style="color:white;">Ver más</p>
@@ -96,12 +96,12 @@ Productos
                             </li>
                             <li>
                               <!-- This is a anchor toggling the modal -->
-                              <a class="rounded-icon ico" href="#confirm" uk-toggle>
+                              <a class="rounded-icon ico" href="#confirm{{$product->id}}" uk-toggle>
                                 <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
                               </a>
                             </li>
                             <!-- This is the modal -->
-                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id, 'message'=>'Seguro quiere eliminar el producto?'])
+                            @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id,'id'=>$product->id, 'message'=>'Seguro quiere eliminar el producto?'])
                           @endif
                         @endif
                       </ul>
@@ -153,6 +153,11 @@ Productos
       {{$products->links()}}
     </div>
   </section>
+  @if (Auth::user())
+    <input id="control_de_registro" type="hidden" name="" value="true">
+  @else
+    <input id="control_de_registro" type="hidden" name="" value="false">
+  @endif
 
 
   <script src="/js/ajax_products_favourite.js" charset="utf-8"></script>

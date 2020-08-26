@@ -130,7 +130,7 @@ Checkout
             <input type="hidden" name="amount" id="total" value={{getTotalPrice($carts)}} />
             <input type="hidden" name="description"/>
             <input type="hidden" name="paymentMethodId"/>
-            <input type="hidden" name="shipment" id="shipment" value="{{--{{$shipment}}--}}">
+            <input type="hidden" name="shipment" id="shipment" value="{{$shipment}}">
           </div>
 
           {{-- Aqui se muestran los error que puedan existir y va a ser establecido desde el JS --}}
@@ -184,7 +184,7 @@ Checkout
         </div>
         <div class="d-flex justify-content-between">
           <h6>Envío</h6>
-          <h6>A calcular</h6>
+          <h6>${{$shipment}}</h6>
         </div>
         <div class="d-flex justify-content-between">
           <h4 class="bold">Total</h4>
@@ -315,7 +315,6 @@ Checkout
             var conEnvio = document.getElementById("si").value;
             if (conEnvio=="true") {
               var envio = document.getElementById("shipment").value;
-              envio = 0;
               // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
               var compra = document.querySelector('#total').value;
               var total = parseInt(envio) + parseInt(compra);

@@ -52,7 +52,7 @@ Panel de Control
 
       <div class="row">
         <div class="col-12 col-md-6">
-          <a class="d-block control" href="/editenvio">Envío</a>
+          <a class="d-block control" href="#envio" uk-toggle>Envío</a>
         </div>
         <div class="col-12 col-md-6">
           <a class="d-block control" href="/editcolors">Colores</a>
@@ -64,8 +64,11 @@ Panel de Control
           <a class="d-block control" href="/exportexcel">Exportar Productos</a>
         </div>
         <div class="col-12 col-md-6">
-          <a class="d-block control" href="/editcolors">Ajustar Precios</a>
+          <a class="d-block control" href="/pricecontroller">Ajustar Precios</a>
         </div>
+
+        <!-- Modal envios -->
+        @include('partials.envio')
       </div>
 
     </div>

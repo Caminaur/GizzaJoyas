@@ -137,8 +137,14 @@ $('.favourite_icon_ajax').click(function(e){
   var url = $(this).attr('href');
   // traemos el id del producto
   var product_id = $(this).siblings('input').val();
-  // llamamos la funcion
-  fave_unfave(url, product_id);
+  console.log();
+  if ($('#control_de_registro').val()==="false") {
+    UIkit.notification({message: 'Debes estar registrado para poder agregar un producto a favoritos', pos: 'bottom-right', status:'primary',timeout:1300});
+  }
+  else {
+    // llamamos la funcion
+    fave_unfave(url, product_id);
+  }
 });
 }
 

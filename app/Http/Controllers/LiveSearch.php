@@ -111,20 +111,32 @@ class LiveSearch extends Controller
          </li>
          <li>
            <!-- This is a anchor toggling the modal -->
-           <a class="rounded-icon ico" href="#confirm" uk-toggle>
+           <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
              <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
            </a>
          </li>
          <!-- This is the modal -->
-         <div id="confirm" uk-modal>
-             <div class="uk-modal-dialog uk-modal-body">
-                 <h2 class="uk-modal-title">Confirmacion</h2>
-                 <p>¿Desea eliminar el producto?</p>
-                 <p class="uk-text-right">
-                     <a class="uk-button uk-button-default uk-modal-close" type="button">Cancel</a>
-                     <a class="uk-button uk-button-primary" href="/deleteproduct/'. $row->id .'" type="button">Eliminar</a>
-                 </p>
+         <div id="confirm'.$row->id.'" uk-modal>
+
+           <div class="uk-modal-dialog">
+             <button class="uk-modal-close-default" type="button" uk-close></button>
+
+             <div class="uk-modal-header">
+                 <h2 class="uk-modal-title">Confirmación</h2>
              </div>
+
+             <div class="uk-modal-body">
+               <p>"Esta seguro que desea eliminar el producto?"</p>
+             </div>
+
+             <div class="uk-modal-footer uk-text-right">
+               <form action="/deleteproduct/'.$row->id.'" method="get">
+                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                 <input type="hidden" name="product_id" value="'.$row->id.'">
+                 <button class="uk-button uk-button-primary" type="submit">Borrar</button>
+               </form>
+             </div>
+           </div>
          </div>
          ';
        }
@@ -427,20 +439,32 @@ class LiveSearch extends Controller
            </li>
            <li>
              <!-- This is a anchor toggling the modal -->
-             <a class="rounded-icon ico" href="#confirm" uk-toggle>
+             <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
                <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
              </a>
            </li>
            <!-- This is the modal -->
-           <div id="confirm" uk-modal>
-               <div class="uk-modal-dialog uk-modal-body">
-                   <h2 class="uk-modal-title">Confirmacion</h2>
-                   <p>¿Desea eliminar el producto?</p>
-                   <p class="uk-text-right">
-                       <a class="uk-button uk-button-default uk-modal-close" type="button">Cancel</a>
-                       <a class="uk-button uk-button-primary" href="/deleteproduct/'. $row->id .'" type="button">Eliminar</a>
-                   </p>
+           <div id="confirm'.$row->id.'" uk-modal>
+
+             <div class="uk-modal-dialog">
+               <button class="uk-modal-close-default" type="button" uk-close></button>
+
+               <div class="uk-modal-header">
+                   <h2 class="uk-modal-title">Confirmación</h2>
                </div>
+
+               <div class="uk-modal-body">
+                 <p>"Esta seguro que desea eliminar el producto?"</p>
+               </div>
+
+               <div class="uk-modal-footer uk-text-right">
+                 <form action="/deleteproduct/'.$row->id.'" method="get">
+                   <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                   <input type="hidden" name="product_id" value="'.$row->id.'">
+                   <button class="uk-button uk-button-primary" type="submit">Borrar</button>
+                 </form>
+               </div>
+             </div>
            </div>
            ';
          }

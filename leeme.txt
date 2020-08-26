@@ -99,18 +99,28 @@ front-end
 - Poner favorito dentro del producto
 
 Back-end
-- Agregar costos de envio en checkout (checkout linea 318).
-- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
-- Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
-- Migrar el administrar precios.
-- Logica perfil de usuario.
-- Crear nuevos botones en el Admin panel con los informes
-- Poner la clase Carbon a las rutas "/" y  "/productos"
-- Si no estas logueado al clickear favorito, redirigir a register. Editar el ajax acorde a las necesidades
+- Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Crear MVC de Shipments (ya agregue la tabla al DER)
-- Surgio un problema, cuando queremos borrar una imagen con la funcion unlink(storage_path('app/public/').$image->path);
-(VER Product Controller linea 488) al tener guardado en la base de datos las rutas con /storage, duplica la ruta /storage
-y no encuenta la imagen. Buscar una solucion. Yo propongo que las imagenes que ya traemos con el sistema las guardemos
-en Storage. y que a todos los linkeos de imagenes le agreguemos /storage pero en la base de datos solo guardemos la ruta final
-- Modificar los radio button de Ajuste de precios por un select
+- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
+- Poner la clase Carbon a las rutas "/" y  "/productos"
+- Ordenar un poco el js del checkout para que cuando se seleccione con envio se modifique el valor total y mantenga el numberformat
+
+
+NOTA
+- agregue una ruta por get para delete product, el modal trabaja con un form de POST, y estos necesitan un CSRF, como no puedo crear un csrf desde el back agregue la ruta.
+- recordar modificar la DB tanto en images de productos como de categorias
+- En la vista de producto ahora traemos 5 productos de la misma categoria para el carrousel de abajo, si no existen de la misma categoria, ni del mismo material, ni de
+ la misma marca traemos 5 aleatorios.
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------

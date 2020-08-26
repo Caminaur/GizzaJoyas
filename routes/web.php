@@ -109,6 +109,9 @@ Route::get('/live_search/action','LiveSearch@search_product'); // ajax buscador
 
 Route::get('/product/page/{id}', 'LiveSearch@paginate_search' ); // ajax paginador
 
+Route::get('/pricecontroller', 'ProductController@prices' ); // ajax paginador
+
+
 // Rutas /onsale /new
 
 Route::get('/addproduct', 'ProductController@new')->middleware('admin');
@@ -122,6 +125,8 @@ Route::get('/editproduct/{id}', 'ProductController@edit')->middleware('admin');
 Route::put('/editproduct/{id}', 'ProductController@update')->middleware('admin');
 
 Route::post('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
+
+Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin'); // este fue agregado porque sino se rompia el modal
 
 Route::post('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
 
@@ -226,6 +231,8 @@ Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
 
 Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 
+Route::post('/editshipment','UserController@editshipment')->middleware('auth');
+
 Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos
 
 Route::get('/deletefavorites','UserController@deleteFavourites');
@@ -233,6 +240,7 @@ Route::get('/deletefavorites','UserController@deleteFavourites');
 Route::get('/deletefavourite','UserController@deleteFavourite');
 
 Route::get('/addtofavs/{product_id}','UserController@addFav');
+
 
 // User
 
