@@ -113,3 +113,4 @@ Back-end
 (VER Product Controller linea 488) al tener guardado en la base de datos las rutas con /storage, duplica la ruta /storage
 y no encuenta la imagen. Buscar una solucion. Yo propongo que las imagenes que ya traemos con el sistema las guardemos
 en Storage. y que a todos los linkeos de imagenes le agreguemos /storage pero en la base de datos solo guardemos la ruta final
+- Modificar los radio button de Ajuste de precios por un select

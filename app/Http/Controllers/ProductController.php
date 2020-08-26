@@ -570,11 +570,11 @@ class ProductController extends Controller
       return back()->with('error', 'Modificación Fallida');
     }
 
-    // Creamos la variable porcentaje con el numero elejido para luego trabajar con ella
-    $percentage = 1 + $req->percentage/100;
 
     // Si elegimos sumar
     if ($req->operacion=='sum') {
+      // Creamos la variable porcentaje con el numero elejido para luego trabajar con ella
+      $percentage = 1 + $req->percentage/100;
       // A cada producto le sumamos el porcentaje elejido
       foreach ($products as $product) {
         $product->price = $product->price * $percentage;
@@ -584,9 +584,11 @@ class ProductController extends Controller
 
     // si elegimos restar
     if ($req->operacion=='rest') {
+      // Creamos la variable porcentaje con el numero elejido para luego trabajar con ella
+      $percentage = 1 - $req->percentage/100;
       // A cada producto le restamos el porcentaje elejido
       foreach ($products as $product) {
-        $product->price = $product->price / $percentage;
+        $product->price = $product->price * $percentage;
         $product->save();
       }
     }
