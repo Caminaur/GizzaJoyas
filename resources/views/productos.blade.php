@@ -1,7 +1,3 @@
-@php
-  use Carbon\Carbon;
-@endphp
-
 @extends('layouts.plantilla')
 @section('titulo')
 Productos
@@ -131,7 +127,7 @@ Productos
             </div>
 
             {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
-              @if ($product->created_at->diffInDays( Carbon::now() ) <= 20)
+              @if (isThisNew($product->created_at))
                 <div class="new-label">
                   <ul>
                     <li class="new"><h4>Nuevo</h4></li>

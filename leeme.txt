@@ -87,7 +87,6 @@ EXTRAS:
 
 Objetivo de la semana/s
 - Navbar
-- slider relacionado *misma categoria (productos nuevos | productos relacionados | ofertas) 12 (4xslide)
 - Slider main productos nuevos & productos en oferta
 - Filtros gender|materials|age|etc
 
@@ -101,19 +100,12 @@ front-end
 Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
-- Crear MVC de Shipments (ya agregue la tabla al DER)
-- Crear logica de timestamps para productos nuevos (ya lo cree. Ver vista productos y buscar Carbon:: ... tratar de llevar esa funcion a Reusable Functions).
-- Poner la clase Carbon a las rutas "/" y  "/productos"
-- Ordenar un poco el js del checkout para que cuando se seleccione con envio se modifique el valor total y mantenga el numberformat
-
+- Buscar la forma de evitar la ruta delete product por get.
 
 NOTA
-- agregue una ruta por get para delete product, el modal trabaja con un form de POST, y estos necesitan un CSRF, como no puedo crear un csrf desde el back agregue la ruta.
-- recordar modificar la DB tanto en images de productos como de categorias
-- En la vista de producto ahora traemos 5 productos de la misma categoria para el carrousel de abajo, si no existen de la misma categoria, ni del mismo material, ni de
- la misma marca traemos 5 aleatorios.
-
-
+- Recordar modificar la DB tanto en images de productos como de categorias
+- En la vista de producto ahora traemos 5 productos de la misma categoria para el carrousel de abajo, si no existen de la misma categoria, ni del mismo material, ni de la misma marca traemos 5 aleatorios.
+- Para el carbon en productos en vez de usar reusable functions use los helpers y cree una funcion que recive el created_at del product y usa la clase Carbon para determinar si es nuevo.
 
 
 

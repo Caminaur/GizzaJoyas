@@ -297,26 +297,31 @@ class ProductController extends Controller
 
         // buscamos productos relacionados
 
-        $productos_relacionados = Product::where('category_id','=',$product->category_id)->take(6)->get();
+        $productos_relacionados = Product::where('id','!=',$product->id)->where('category_id','=',$product->category_id)->take(12)->get();
+        $chunk_1 = $productos_relacionados->chunk(1);
+        $cantidad_faltante = 12 - count($chunk_1);
 
-        if (count($productos_relacionados)<6) {
-          $productos_relacionados = Product::where('category_id','=',$product->category_id)
-                                           ->orWhere('material_id','=',$product->material_id)
-                                           ->take(6)
+        if ($cantidad_faltante != 0) {
+          $productos_relacionados = Product::where('id','!=',$product->id)
+                                           ->where('category_id','!=',$product->category_id)
+                                           ->where('material_id','=',$product->material_id)
+                                           ->orWhere('brand_id','=',$product->material_id)
+                                           ->take($cantidad_faltante)
                                            ->get();
-          if (count($productos_relacionados)<6) {
-            $productos_relacionados = Product::where('category_id','=',$product->category_id)
-                                             ->orWhere('material_id','=',$product->material_id)
-                                             ->orWhere('brand_id','=',$product->brand_id)
-                                             ->take(6)
-                                             ->get();
-            if (count($productos_relacionados)<6) {
-              $productos_relacionados = Product::all()->take(6);
-            }
-          }
         }
 
-        return view('producto',compact('product','category_name','category','productos_relacionados'));
+        $chunk_2 = $productos_relacionados->chunk(1);
+        $array_chunks = [];
+        foreach ($chunk_1 as $chunk) {
+          $array_chunks[] = $chunk->first();
+        }
+        foreach ($chunk_2 as $chunk) {
+          $array_chunks[] = $chunk->first();
+        }
+        if (count($array_chunks)<5) {
+          $array_chunks = Product::where('id','!=',$product->id)->take(12);
+        }
+        return view('producto',compact('product','category_name','category','array_chunks'));
       }
 
   // se muestran los datos del producto elegido listo para editar

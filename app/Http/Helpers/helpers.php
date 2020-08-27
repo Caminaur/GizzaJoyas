@@ -1,8 +1,8 @@
 <?php
+use Carbon\Carbon;
   // https://stackoverflow.com/questions/35332784/how-to-call-a-controller-function-inside-a-view-in-laravel-5
   // https://styde.net/como-crear-helpers-personalizados-en-laravel/
   // Encontre esta solucion para el uso de funciones globales
-
   // Obtiene el precio real de un producto, con descuento incluido si es que lo tiene
   function getRealPrice($product){
     $precio = 0;
@@ -58,5 +58,9 @@
       }
     }
     return $isFavorite;
+  }
+
+  function isThisNew($created_at){
+    return ($created_at->diffInDays( Carbon::now() ) <= 20);
   }
 ?>

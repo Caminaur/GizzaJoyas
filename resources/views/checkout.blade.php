@@ -182,13 +182,13 @@ Checkout
           <h6>Subtotal</h6>
           <h6>${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h6>
         </div>
-        <div class="d-flex justify-content-between">
+        <div id="shipment_div" hidden class="d-flex justify-content-between">
           <h6>Envío</h6>
           <h6>${{$shipment}}</h6>
         </div>
         <div class="d-flex justify-content-between">
           <h4 class="bold">Total</h4>
-          <h4 class="bold">${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h4>
+          <h4 id="total_h4" class="bold">${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h4>
         </div>
       </div>
     </section>
@@ -265,6 +265,26 @@ Checkout
     </script>
 
     <script type="text/javascript">
+    // Funcion para darle formato a los precios dinamicos
+    // Link: https://stackoverflow.com/questions/19307271/how-to-format-clean-numbers-so-1000-appear-as-1-000-00
+    function formatNumber(n, p, ts, dp) {
+      var t = [];
+      // Get arguments, set defaults
+      if (typeof p  == 'undefined') p  = 2;
+      if (typeof ts == 'undefined') ts = ',';
+      if (typeof dp == 'undefined') dp = '.';
+
+      // Get number and decimal part of n
+      n = Number(n).toFixed(p).split('.');
+
+      // Add thousands separator and decimal point (if requied):
+      for (var iLen = n[0].length, i = iLen? iLen % 3 || 3 : 0, j = 0; i <= iLen; i+=3) {
+        t.push(n[0].substring(j, i));
+        j = i;
+      }
+      // Insert separators and return result
+      return t.join(ts) + (n[1]? dp + n[1] : '');
+    }
     function addEvent(to, type, fn){
             if(document.addEventListener){
                 to.addEventListener(type, fn, false);
@@ -318,16 +338,26 @@ Checkout
               // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
               var compra = document.querySelector('#total').value;
               var total = parseInt(envio) + parseInt(compra);
+              // modificamos el valor total del envio y le agregamos el number format
+              var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
+              $("#total_h4").html(precio_total);
+              $("#shipment_div").removeAttr('hidden');
+
               Mercadopago.getInstallments({
                 "bin": getBin(),
                 "amount": parseFloat(total),
               }, setInstallmentInfo);
             }
             else {
+              var precio_total = parseInt(document.querySelector('#total').value);
+              var precio_total = '$' + formatNumber( (precio_total) , 0 , '.' , ',' );
+              $("#total_h4").html(precio_total);
+              $("#shipment_div").attr('hidden',true);
               Mercadopago.getInstallments({
                 "bin": getBin(),
                 "amount": parseFloat(document.querySelector('#total').value),
               }, setInstallmentInfo);
+
             }
         } else {
             alert(`payment method info error: ${response}`);

@@ -149,8 +149,7 @@ Producto
         <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1" uk-height-match="target: > ul > li > .uk-card">
 
           <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid">
-            @foreach ($productos_relacionados as $related)
-              @if ($related->id!=$product->id)
+            @foreach ($array_chunks as $related)
                 <li>
                   <div class="uk-card uk-card-default">
                     <div style="text-align: center;" class="uk-card-media-top">
@@ -168,11 +167,11 @@ Producto
                           {{-- Sin descuento (precio de lista) --}}
                           <h3 class="doveGrey mx-1">${{number_format($related->price, 0, '.', '.')}}</h3>
                         @endif
+                          <h3>{{$related->category->name}}</h3>
                       </div>
                     </div>
                   </div>
                 </li>
-              @endif
             @endforeach
           </ul>
 
