@@ -126,19 +126,20 @@ Producto
           <ul class="uk-iconnav mt-3">
             <li>
               <input id="product{{$product->id}}" type="hidden" name="" value="{{$product->id}}">
-              <a class="rounded-icon ico favourite_icon_ajax" href="/live_search/add_favourite">
+              <a id="add_to_favourite" class="rounded-icon ico favourite_icon_ajax" href="/live_search/add_favourite_from_product">
                 {{-- Si el usuario esta logueado y tiene como favorito este producto, mostrar el corazon lleno                 --}}
                 @if (Auth::user() && isFavourite($product, Auth::user()))
                   <div class="">
-                    <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+                    <span id="heart_icon" class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
                   </div>
                 @else
                   <div class="">
-                    <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
+                    <span id="heart_icon" class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
                   </div>
                 @endif
 
               </a>
+              <input type="hidden" name="" value="{{$product->id}}">
             </li>
             <li><a class="rounded-icon ico" href="/cart"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
             @if (Auth::user())
@@ -234,5 +235,6 @@ Producto
 
 
   </div>
+  <script src="/js/producto_favorito.js" charset="utf-8"></script>
   <script src="/js/producto.js" charset="utf-8"></script>
 @endsection

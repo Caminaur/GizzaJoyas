@@ -95,7 +95,6 @@ front-end
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Botones de confirmacion (Para eliminar)
-- Poner favorito dentro del producto
 
 Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)

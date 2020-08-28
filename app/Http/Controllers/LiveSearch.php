@@ -611,4 +611,55 @@ class LiveSearch extends Controller
       echo json_encode($data);
     } // request ajax
   } // paginate search
+  public function add_favourite_from_product(Request $request)
+  {
+    if($request->ajax())
+    {
+      // guardamos la query en una variable
+      $product_id = $request->product_id;
+      // si la query no esta vacia
+      if(!empty($product_id))
+      {
+        // buscamos si existe un fav del usuario con ese product_id
+        $favourites = Favourite::where('product_id','=',$product_id)
+        ->where('user_id','=',Auth::user()->id)
+        ->get();
+        // verificamos que el producto no este seleccionado como favorito
+        if (!count($favourites)) {
+          // creamos y guardamos la relacion
+          $favourite = New Favourite;
+          $favourite->product_id = $product_id;
+          $favourite->user_id = Auth::user()->id;
+          $favourite->save();
+          // buscamos nuevamente la cantidad de favoritos enviar la cantidad total
+          $user_favs = Favourite::where('user_id','=',Auth::user()->id)
+          ->get();
+          // lo transformamos en un array
+          $data = array(
+          'isFave' => true,
+          'selected_class' => 'hvr-pulse-shrink isFavourite',
+          'cantidad_favs' => count($user_favs),
+          'message' => "Producto agregado a favoritos!"
+          );
+          // lo transformamos en json y lo imprimimos
+          echo json_encode($data);
+        }
+        else {
+          $favourites->first()->delete();
+          // buscamos nuevamente la cantidad de favoritos enviar la cantidad total
+          $user_favs = Favourite::where('user_id','=',Auth::user()->id)
+          ->get();
+          // lo transformamos en un array
+          $data = array(
+          'isFave' => false,
+          'selected_class' => 'hvr-pulse-shrink',
+          'cantidad_favs' => count($user_favs),
+          'message' => "Producto eliminado de favoritos!"
+          );
+          // lo transformamos en json y lo imprimimos
+          echo json_encode($data);
+        }
+      } // end if empty product_id
+    } // if request is ajax
+  }
 }
