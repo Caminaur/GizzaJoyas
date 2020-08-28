@@ -4,7 +4,10 @@ use App\Category;
 use App\Age;
 use App\Material;
 use App\Gender;
-
+use Illuminate\Http\Request; // Por el formulario de contacto
+use App\Mail\ContactMail; // Por el formulario de contacto
+use App\Mail\PurchaseMail; // Por el email de compra realizada que le llega al comprador
+use Illuminate\Support\Facades\Mail; // Por el formulario de contacto
 
 /*
 |--------------------------------------------------------------------------

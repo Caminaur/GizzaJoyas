@@ -298,7 +298,9 @@ class ProductController extends Controller
         // buscamos productos relacionados
 
         $productos_relacionados = Product::where('id','!=',$product->id)->where('category_id','=',$product->category_id)->take(12)->get();
+
         $chunk_1 = $productos_relacionados->chunk(1);
+
         $cantidad_faltante = 12 - count($chunk_1);
 
         if ($cantidad_faltante != 0) {
@@ -311,6 +313,7 @@ class ProductController extends Controller
         }
 
         $chunk_2 = $productos_relacionados->chunk(1);
+
         $array_chunks = [];
         foreach ($chunk_1 as $chunk) {
           $array_chunks[] = $chunk->first();
@@ -318,9 +321,9 @@ class ProductController extends Controller
         foreach ($chunk_2 as $chunk) {
           $array_chunks[] = $chunk->first();
         }
-        if (count($array_chunks)<5) {
-          $array_chunks = Product::where('id','!=',$product->id)->take(12);
-        }
+        // if (count($array_chunks)<5) {
+        //   $array_chunks = Product::where('id','!=',$product->id)->take(12);
+        // }
         return view('producto',compact('product','category_name','category','array_chunks'));
       }
 
