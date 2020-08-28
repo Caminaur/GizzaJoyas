@@ -34,7 +34,7 @@ $(document).ready(function(){
        if (data.isFave == true) {
          // Le agregamos la clase correspondiente
          div_icon.attr('class',data.selected_class);
-         UIkit.notification({message: 'Producto agregado a favoritos correctamente', pos: 'bottom-right', status:'primary',timeout:1300});
+         UIkit.notification({message: 'Producto agregado a favoritos', pos: 'bottom-right', status:'primary',timeout:1300});
        }
        else {
          // le agregamos la clase correspondiente

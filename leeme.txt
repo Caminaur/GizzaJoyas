@@ -101,6 +101,8 @@ Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Buscar la forma de evitar la ruta delete product por get.
+- Poner favorito dentro del producto (solo falta logica)
+- En el modal de la ruta  /Favoritos que manda el producto al carrito, ordenar el Jquery para que muestre el error de unidades
 
 NOTA
 - Recordar modificar la DB tanto en images de productos como de categorias

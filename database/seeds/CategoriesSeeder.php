@@ -17,7 +17,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Anillos",
-          "image" => '/img/anillos.jpg',
+          "image" => '/images/anillos.jpg',
         ]
       );
       // Creamos los talles de los anillos base
@@ -42,7 +42,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Aros",
-          "image" => '/img/aros.jpg',
+          "image" => '/images/aros.jpg',
         ]
       );
       // Creamos los talles de los anillos base
@@ -67,7 +67,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Collares",
-          "image" => '/img/collares.jpg',
+          "image" => '/images/collares.jpg',
         ]
       );
       $tallesCadenas = [40,45,50,55,60,65];
@@ -91,7 +91,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Pulseras",
-          "image" => '/img/pulseras.jpg',
+          "image" => '/images/pulseras.jpg',
         ]
       );
       $tallesPulseras = [18,19,20,21];
@@ -114,7 +114,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Relojes",
-          "image" => '/img/relojes.jpg',
+          "image" => '/images/relojes.jpg',
         ]
       );
       DB::table('sizes')->insert(
@@ -134,7 +134,7 @@ class CategoriesSeeder extends Seeder
       DB::table('categories')->insert(
         [
           "name" => "Accesorios",
-          "image" => '/img/accesorios.jpg',
+          "image" => '/images/accesorios.jpg',
         ]
       );
       DB::table('sizes')->insert(

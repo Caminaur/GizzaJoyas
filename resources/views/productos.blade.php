@@ -76,7 +76,7 @@ Productos
 
                           </a>
                         </li>
-                        <li><a class="rounded-icon ico" href="/cart"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
+                        <li><a class="rounded-icon ico" href="/producto/{{$product->id}}"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
                         @if (Auth::user())
                           {{-- Si sos admin ves iconos de edicion/eliminacion --}}
                           @if (Auth::user()->isAdmin == true)
@@ -84,12 +84,12 @@ Productos
                               <a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span>
                               </a>
                             </li>
-                            <li>
-                              <a class="rounded-icon ico" href="/copy">
-                                <span class="hvr-pulse-shrink" uk-icon="icon: copy">
-                                </span>
-                              </a>
-                            </li>
+                            {{-- <li> --}}
+                              {{-- <a class="rounded-icon ico" href="/copy"> --}}
+                                {{-- <span class="hvr-pulse-shrink" uk-icon="icon: copy"> --}}
+                                {{-- </span> --}}
+                              {{-- </a> --}}
+                            {{-- </li> --}}
                             <li>
                               <!-- This is a anchor toggling the modal -->
                               <a class="rounded-icon ico" href="#confirm{{$product->id}}" uk-toggle>

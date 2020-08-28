@@ -15,40 +15,38 @@ Edit brands
 
     <h2 class="regular text-center pb-3">Agregar una <span class="bold blueSlate">Marca</span></h2>
 
-      <form class="form-signup" action='/addbrand' method="post" enctype="multipart/form-data">
-        {{csrf_field()}}
-          <div class="uk-card uk-card-default uk-card-body uk-margin-small my-4" style='max-width: 500px; margin: 0 auto;'>
-            <input type="text" class="form-control-checkout" name="name" placeholder="Nombre de la Marca" value="">
-            @error('name')
-              <p class="errorForm">{{ $message }}</p>
-            @enderror
-            <button class="btn bg-blueSlate" type="submit" name="button">Agregar Marca</button>
-          </div>
-      </form>
-
-      <h2 class="regular text-center pb-3">Editar una <span class="bold blueSlate">Marca</span></h2>
-
-      @foreach ($brands as $brand)
+    <form action='/addbrand' method="post" enctype="multipart/form-data">
+      {{csrf_field()}}
         <div class="uk-card uk-card-default uk-card-body uk-margin-small my-4" style='max-width: 500px; margin: 0 auto;'>
-          <form class="p-4" action='/editbrand' method="post" enctype="multipart/form-data">
-            {{csrf_field()}}
-            @method('put')
-              <div class="form-group">
-                <input class="form-control-checkout" type="text" hidden name="brand_id" value="{{$brand->id}}">
-                <input class="form-control-checkout" type="text" class="form-control" name="name" value="{{$brand->name}}">
-                @error('name')
-                  <p class="errorForm">{{ $message }}</p>
-                @enderror
-              </div>
-              <button class="btn bg-ashBlue" type="submit" name="button">Editar</button>
-          </form>
-
-          <form class="" action="/deletebrand" method="post">
-            {{csrf_field()}}
-            <input class="form-control-checkout" type="text" hidden name="brand_id" value="{{$brand->id}}">
-            <a class="btn bg-dandelion"  href="#confirm" uk-toggle>Eliminar</a>
-          </form>
+          <input type="text" class="form-control-checkout" name="name" placeholder="Nombre de la Marca" value="">
+          @error('name')
+            <p class="errorForm">{{ $message }}</p>
+          @enderror
+          <button class="btn bg-blueSlate" type="submit" name="button">Agregar</button>
         </div>
-      @endforeach
+    </form>
 
+    <h2 class="regular text-center pb-3">Editar una <span class="bold blueSlate">Marca</span></h2>
+
+    @foreach ($brands as $brand)
+      <div class="uk-card uk-card-default uk-card-body uk-margin-small my-4" style='max-width: 500px; margin: 0 auto;'>
+        <form class="p-4" action='/editbrand' method="post" enctype="multipart/form-data">
+          {{csrf_field()}}
+          @method('put')
+            <div class="form-group">
+              <input class="form-control-checkout" type="text" hidden name="brand_id" value="{{$brand->id}}">
+              <input class="form-control-checkout" type="text" class="form-control" name="name" value="{{$brand->name}}">
+              @error('name')
+                <p class="errorForm">{{ $message }}</p>
+              @enderror
+            </div>
+            <button class="btn bg-ashBlue" type="submit" name="button">Editar</button>
+        </form>
+
+        <a class="btn bg-dandelion"  href="#confirm{{$brand->id}}" uk-toggle>Eliminar</a>
+        @include('partials.confirm',['url'=>"/deletematerial", 'message'=>"Seguro quiere eliminar la marca {$brand->name}?", 'name'=>'brand_id', 'id'=>"{$brand->id}"])
+      </div>
+    @endforeach
+
+  </div>
 @endsection

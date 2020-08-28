@@ -85,6 +85,7 @@ Panel de Control
 
         </form>
       </div>
+      <div class="table-responsive-md">
       <table class="table">
         <thead class="">
           <tr>
@@ -109,6 +110,7 @@ Panel de Control
           @endforeach
         </tbody>
       </table>
+    </div>
       {{$products->links()}}
     </div>
   <script src="/js/price_controller.js" charset="utf-8"></script>

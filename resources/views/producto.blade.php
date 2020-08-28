@@ -122,6 +122,52 @@ Producto
               </div>
           </form>
 
+
+          <ul class="uk-iconnav mt-3">
+            <li>
+              <input id="product{{$product->id}}" type="hidden" name="" value="{{$product->id}}">
+              <a class="rounded-icon ico favourite_icon_ajax" href="/live_search/add_favourite">
+                {{-- Si el usuario esta logueado y tiene como favorito este producto, mostrar el corazon lleno                 --}}
+                @if (Auth::user() && isFavourite($product, Auth::user()))
+                  <div class="">
+                    <span class="hvr-pulse-shrink isFavourite" uk-icon="icon: heart;"></span>
+                  </div>
+                @else
+                  <div class="">
+                    <span class="hvr-pulse-shrink" uk-icon="icon: heart;"></span>
+                  </div>
+                @endif
+
+              </a>
+            </li>
+            <li><a class="rounded-icon ico" href="/cart"><span class="hvr-rotate" uk-icon="icon: cart"></span></a></li>
+            @if (Auth::user())
+              {{-- Si sos admin ves iconos de edicion/eliminacion --}}
+              @if (Auth::user()->isAdmin == true)
+                <li>
+                  <a class="rounded-icon ico" href="/editproduct/{{$product->id}}"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span>
+                  </a>
+                </li>
+                {{-- <li> --}}
+                  {{-- <a class="rounded-icon ico" href="/copy"> --}}
+                    {{-- <span class="hvr-pulse-shrink" uk-icon="icon: copy"> --}}
+                    {{-- </span> --}}
+                  {{-- </a> --}}
+                {{-- </li> --}}
+                <li>
+                  <!-- This is a anchor toggling the modal -->
+                  <a class="rounded-icon ico" href="#confirm{{$product->id}}" uk-toggle>
+                    <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
+                  </a>
+                </li>
+                <!-- This is the modal -->
+                @include('partials.confirm',['url'=>'/deleteproduct/'.$product->id,'id'=>$product->id, 'message'=>'Seguro quiere eliminar el producto?'])
+              @endif
+            @endif
+          </ul>
+
+
+
         <div class="share py-4">
           <h5>Te gusta el producto? compartilo con tus amigos en las redes</h5>
           <!-- AddToAny BEGIN -->
@@ -145,6 +191,7 @@ Producto
       <h2 class="regular text-center pb-3">Productos <span class="bold blueSlate">Relacionados</span></h2>
 
       <div uk-slider>
+        {{-- uk-slider="sets: true" Para pasar de a varios items --}}
 
         <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1" uk-height-match="target: > ul > li > .uk-card">
 
@@ -154,21 +201,21 @@ Producto
                   <div class="uk-card uk-card-default">
                     <div style="text-align: center;" class="uk-card-media-top">
                       <a href="/producto/{{$related->id}}">
-                        <img src="/storage/{{$related->images[0]->path}}" alt="">
+                        <img style="width: 300px; height: 300px; object-fit: cover;" src="/storage/{{$related->images[0]->path}}" alt="">
                       </a>
                     </div>
-                    <div class="uk-card-body">
-                      <h3 class="product-desc text-center">{{$related->name}}</h3>
-                      <div class="uk-flex uk-flex-center mb-3">
-                        @if ($product->onSale)
+                    <div class="uk-card-body text-center">
+                      <h3 class="product-desc">{{$related->name}}</h3>
+                      <h3>{{$related->category->name}}</h3>
+                      {{-- <div class="uk-flex uk-flex-center mb-3"> --}}
+                        @if ($related->onSale)
                           <h3 class="dandelion mx-1 sinOferta">${{number_format($related->price, 0, '.', '.')}}</h3>
-                          <h3 class="doveGrey mx-1">${{number_format((getRealPrice($related)), 0, '.', '.')}}</h3>
+                          <h3 class="blueSlate mx-1">${{number_format((getRealPrice($related)), 0, '.', '.')}}</h3>
                         @else
                           {{-- Sin descuento (precio de lista) --}}
-                          <h3 class="doveGrey mx-1">${{number_format($related->price, 0, '.', '.')}}</h3>
+                          <h3 class="blueSlate mx-1">${{number_format($related->price, 0, '.', '.')}}</h3>
                         @endif
-                          <h3>{{$related->category->name}}</h3>
-                      </div>
+                      {{-- </div> --}}
                     </div>
                   </div>
                 </li>

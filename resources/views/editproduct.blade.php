@@ -200,19 +200,6 @@ Edit product
 
             <div class="row justify-content-center">
 
-              {{-- @foreach ($product->images as $image)
-                <div class="col-12 col-md-3 form-group ">
-                  <img class="edit-img" src="{{$image->path}}" alt="Imagen del Producto">
-                  <!-- This is the modal -->
-                  @include('partials.confirm',['url'=>"/deleteimage/$image->id", 'message'=>'Seguro quiere eliminar la Imagen seleccionada?', 'id'=>"{$image->id}"])
-                  <a class="hvr-shrink rounded-icon ico" style="background-color:black ; border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  bottom: 6%;  left: 46%;" href="#confirm{{$image->id}}" uk-icon="icon: trash;" uk-toggle></a>
-                </div>
-              @endforeach --}}
-
-            </div>
-
-              <div class="row justify-content-center">
-
               <div class="col-lg-4 form-group-checkout mb-3">
                 <label for="">Agregar imagenes al producto: *</label>
                 <label for="file-upload" class="subir">
