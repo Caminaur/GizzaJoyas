@@ -100,14 +100,10 @@ Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Buscar la forma de evitar la ruta delete product por get.
-- Poner favorito dentro del producto (solo falta logica)
-- En el modal de la ruta  /Favoritos que manda el producto al carrito, ordenar el Jquery para que muestre el error de unidades
 
 NOTA
-- Recordar modificar la DB tanto en images de productos como de categorias
-- En la vista de producto ahora traemos 5 productos de la misma categoria para el carrousel de abajo, si no existen de la misma categoria, ni del mismo material, ni de la misma marca traemos 5 aleatorios.
-- Para el carbon en productos en vez de usar reusable functions use los helpers y cree una funcion que recive el created_at del product y usa la clase Carbon para determinar si es nuevo.
-
+- Control de stock en favoritos arreglado. Falta buscarle un buen lugar al mensaje de error, ya que rompe un poco todo.
+- Estaba pensando en la diferencia entre agregar al carrito y comprar. Comprar deberia agregar al carrito y redirigir al checkout?
 
 
 
