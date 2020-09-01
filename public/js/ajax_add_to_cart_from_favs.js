@@ -7,6 +7,7 @@ $(document).ready(function(){
     var fave_id = $(this).siblings('input').val();
     // div del producto
     var product_div = $(this).parents('.producto.row');
+
     $.ajax({
      url:src,
      method:'GET',

@@ -8,7 +8,7 @@ window.addEventListener('load',function(){
     quantity.addEventListener('change',function(){
       var quantity_value = this.value;
       // deberia buscar el id de favourite
-      var favourite_id = $(this).next('input').val();
+      var favourite_id = $(this).siblings('.favourite_id').val()
       // Aca conseguimos el id de size
       var product_id = $(this).siblings('.product_id').val();
       // Aca conseguimos el id de size
@@ -19,10 +19,13 @@ window.addEventListener('load',function(){
       // var mensajeDeError = document.getElementById('errorMessage');
       var botonComprar = document.getElementById('agregar_carrito');
       var botonComprar = $(this).siblings('.boton_agregar');
-      // console.log('quantity.value: ' + quantity.value);
-      // console.log('stock_quantity.value: ' + stock_quantity.value);
       // Lo buscamos de esta forma para que no genere problemas cuando haya varios favoritos agregados
-      var mensajeDeError = $(this).siblings('div').children('p');
+      var mensajeDeError = $(this).parents('div').siblings('div').children('p');
+      // console.log("Quantity: " + quantity_value);
+      // console.log("Favourite id: " + favourite_id);
+      // console.log("Product id: " + product_id);
+      // console.log("Size selector: " + size_selector);
+      // console.log("Stock: " + stock_quantity);
 
       if (parseInt(quantity_value)>parseInt(stock_quantity.value)) {
         // mensaje de error

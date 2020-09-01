@@ -18,9 +18,9 @@
       <br>
       <form class="align-items-center d-flex justify-content-between" action="/cart" method="post">
         @csrf
-        <input type="hidden" name="favourite" value="{{$favourite->id}}">
-        <input type="hidden" class="product_id" name="product_id" value="{{$product_object->id}}">
         <div class="d-flex justify-content-between">
+          <input type="hidden" class="favourite_id" name="favourite" value="{{$favourite->id}}">
+          <input type="hidden" class="product_id" name="product_id" value="{{$product_object->id}}">
           <p>Talle</p>
           <select id="size{{$favourite->id}}" class="custom-select" name="size_id" style="width: 30%; padding:0 !important">
             @if (!hasStock($product_object))
@@ -50,3 +50,4 @@
       </form>
     </div>
   </div>
+</div>

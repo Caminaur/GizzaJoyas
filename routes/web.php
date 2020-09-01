@@ -112,6 +112,10 @@ Route::get('/product/page/{id}', 'LiveSearch@paginate_search' ); // ajax paginad
 
 Route::get('/pricecontroller', 'ProductController@prices' ); // ajax paginador
 
+Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos desde productos
+
+Route::get('/live_search/add_favourite_from_product','LiveSearch@add_favourite_from_product'); // ajax favoritos desde producto
+
 
 // Rutas /onsale /new
 
@@ -233,8 +237,6 @@ Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
 Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 
 Route::post('/editshipment','UserController@editshipment')->middleware('auth');
-
-Route::get('/live_search/add_favourite','LiveSearch@add_favourite'); // ajax favoritos
 
 Route::get('/deletefavorites','UserController@deleteFavourites');
 
