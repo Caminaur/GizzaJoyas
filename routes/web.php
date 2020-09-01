@@ -84,8 +84,6 @@ Route::get('/editpreguntas', 'FaqController@editView')->middleware('admin');
 
 Route::put('/editfaq' ,'FaqController@editFaq')->middleware('admin');
 
-Route::post('/faq/addimage' ,'FaqController@addImage')->middleware('admin');
-
 Route::post('/faq/deleteimage' ,'FaqController@deleteImage')->middleware('admin');
 
 Route::post('/deletefaq' ,'FaqController@deleteFaq')->middleware('admin');

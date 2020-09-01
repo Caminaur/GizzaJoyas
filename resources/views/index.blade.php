@@ -77,7 +77,7 @@ Gizza Joyas Home
 					<div>
 						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 							<a href="productos/categoria/{{$category->name}}">
-                <img class="brightness uk-transition-scale-up uk-transition-opaque" src="{{$category->image}}" alt="">
+                <img class="brightness uk-transition-scale-up uk-transition-opaque" src="/storage/{{$category->image}}" alt="">
               </a>
 							<div class="uk-position-center ncursor">
 								<div class="uk-light"><h3 class="medium uk-margin-remove">{{$category->name}}</h3></div>

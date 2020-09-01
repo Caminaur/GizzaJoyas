@@ -41,61 +41,46 @@ class FaqController extends Controller
     $faq = Faq::find($req->id);
     $faq->title = $req->title;
     $faq->description = $req->description;
+
+    if (!empty($req['image'])) {
+
+      // Capturo la imagen vieja, si es que tiene una
+      $imagen_vieja = $faq->image_path;
+
+      // Si ya posee una imagen, la borro
+      if (!empty($imagen_vieja)) {
+        // elimina las imagenes de storage
+        unlink(storage_path('app/public/').$imagen_vieja);
+      }
+
+      // Capturo la imagen nueva que viene por request
+      $imagen_nueva = $req->image;
+      // Lo guardo en storage
+      $file = $imagen_nueva->store('public');
+      // Obtengo el nombre final del archivo
+      $path = basename($file);
+      // La coloco en la posicion correcta dentro de su objeto
+      $faq->image_path = $path;
+      // Guardo el objeto modificado en la base de datos con la nueva imagen
+  }
+
+    // guardo el objeto faq instanciado en la base de datos
     $faq->save();
 
     $faqs = Faq::all();
     $vac = compact('faqs');
-      return view('/editpreguntas',$vac)
+      return back()
         ->with('status', 'Pregunta actualizada exitosamente');
   }
 
   public function deleteFaq(Request $req){
-    $faq = Faq::find($req->id);
+    $faq = Faq::find($req->faqid);
     $faq->delete();
     $faqs = Faq::All();
     return back()
     ->with('status', 'Pregunta eliminada exitosamente');
   }
-  
-  public function addImage(Request $req){
-    $reglas = [
-      "image" => "required",
-      "image.*" => "image|mimes:jpeg,jpg,png|max:2048",
-    ];
-    $mensajes = [
-      "required" => "Debes subir una imagen",
-      "image.*.image" => "Debe ser un formato de imagen",
-      "mimes" => "Formato de imagen invalido",
-      "image.*.max" => 'La imagen es muy pesada',
-    ];
-    // Validamos
-    $this->validate($req, $reglas, $mensajes);
 
-    // Capturo la pregunta en la cual se le va a agregar la imagen
-    $faq = Faq::where('id', '=', $req->faqid)->first();
-
-    // Capturo la imagen vieja, si es que tiene una
-    $imagen_vieja = $faq->image_path;
-
-    // Si ya posee una imagen, la borro
-    if (!empty($imagen_vieja)) {
-      // elimina las imagenes de storage
-      unlink(storage_path('app/public/').$imagen_vieja);
-    }
-
-    // Capturo la imagen nueva que viene por request
-    $imagen_nueva = $req->image;
-    // Lo guardo en storage
-    $file = $imagen_nueva->store('public');
-    // Obtengo el nombre final del archivo
-    $path = basename($file);
-    // La coloco en la posicion correcta dentro de su objeto
-    $faq->image_path = $path;
-    // Guardo el objeto modificado en la base de datos con la nueva imagen
-    $faq->save();
-
-    return back();
-  }
   public function deleteImage(Request $req){
     // Capturo la pregunta en la cual se va a eliminar la imagen
     $faq = Faq::where('id', '=', $req->faqid)->first();
@@ -108,7 +93,7 @@ class FaqController extends Controller
     // guardamos los cambios
     $faq->save();
     // nos retorna a la ruta anterior
-    return back();
+    return back()->with('status', 'Imagen eliminada');
   }
 
   public function createFaq(Request $req){

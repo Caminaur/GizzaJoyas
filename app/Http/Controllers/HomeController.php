@@ -25,6 +25,11 @@ class HomeController extends Controller
     public function index()
     {
       $categories = Category::all();
+
+      // $loNuevo = Product:: Nos tiene que traer X cantidad de productos ordenados por fecha
+
+      // $oferta = Product:: Nos tiene que traer X cantidad de productos en oferta aleatoriamente
+
       return view('index', compact('categories'));
     }
 
