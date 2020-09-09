@@ -9,7 +9,7 @@
       var input = document.createElement('input');
       input.name = 'sizes[]';
       input.setAttribute('required','true');
-      input.setAttribute('class','ml-3');
+      input.setAttribute('class','form-control-checkout w-25');
       // creamos un div para organizarlos
       var div = document.createElement('div');
       // boton de borrado
@@ -23,13 +23,18 @@
       span.setAttribute('class','botonEliminar');
       span.innerHTML = '&times;';
 
+      // Div
+      var div2 = document.createElement('div');
+      div2.setAttribute('class','d-flex flex-row align-items-center');
+
       button.appendChild(span);
 
-      div.setAttribute('class','row m-2 p-2');
+      div.setAttribute('class','d-flex flex-column align-items-center');
       div.appendChild(label);
-      div.appendChild(input);
-      div.appendChild(button);
+      div2.appendChild(input);
+      div2.appendChild(button);
       divFormSize.appendChild(div);
+      divFormSize.appendChild(div2);
       // Agregar boton para eliminar el input de forma individual
       button.addEventListener('click',function(){
         this.parentNode.parentNode.removeChild(this.parentNode);

@@ -848,16 +848,9 @@ div.producto {
 img.cart-img {
   display: flex;
   align-items: center;
+  width: 150px;
   height: 150px;
   object-fit: contain;
-}
-
-img.edit-img {
-  display: flex;
-  align-items: center;
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
 }
 
 span.sale, span.new {
@@ -902,6 +895,8 @@ img.checkout-cart-img {
   display: flex;
   align-items: center;
   width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 .calculos {

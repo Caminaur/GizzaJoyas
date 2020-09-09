@@ -91,8 +91,8 @@ Editar Preguntas Frecuentes
           <div class="my-3 row justify-content-center">
             <div class="form-group-checkout">
               <label for="">Agregar imagen:</label><br>
-              <label for="file-upload{{$faq->id}}" class="subir"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</label>
-              <input type="file" id="file-upload{{$faq->id}}" onchange='change()' style='display: none;' class="sin-archivo"  name="image" value="">
+              <label for="file-upload" class="subir"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</label>
+              <input type="file" id="file-upload" onchange='change()' style='display: none;' class="sin-archivo"  name="image" value="">
               <div id="info"></div>
               @error('image')
                 <p class="errorForm">{{ $message }}</p>
@@ -109,10 +109,10 @@ Editar Preguntas Frecuentes
         @if ($faq->image_path)
           <div class="flex position-relative">
             <img style="width:300px;" src="/storage/{{$faq->image_path}}" alt=""><br>
-            <a class="hvr-shrink rounded-icon ico" style="background-color: black; border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  top: 2%;  right: 20%;" href="#confirm{{$faq->id}}" uk-icon="icon: trash;" uk-toggle></a>
+            <a class="hvr-shrink rounded-icon ico" style="background-color: black; border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;  top: 2%;  right: 20%;" href="#confirmimage{{$faq->id}}" uk-icon="icon: trash;" uk-toggle></a>
           </div>
           <!-- This is the modal -->
-          @include('partials.confirm',['url'=>"/faq/deleteimage", 'message'=>'Seguro quiere eliminar la Imagen seleccionada?', 'name'=>'faqid', 'id'=>"{$faq->id}"])
+          @include('partials.confirmimage',['url'=>"/faq/deleteimage", 'message'=>'Seguro quiere eliminar la Imagen seleccionada?', 'name'=>'faqid', 'id'=>"{$faq->id}"])
         @endif
 
 

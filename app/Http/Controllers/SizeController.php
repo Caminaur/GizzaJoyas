@@ -18,7 +18,7 @@ class SizeController extends Controller
 
     $reglas = [
       "sizes" => "required|array|min:1",
-      "sizes.*" => 'integer|min:1|max:80',
+      "sizes.*" => 'integer|min:1',
       ];
 
     $mensajes = [

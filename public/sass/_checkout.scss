@@ -19,6 +19,8 @@ img.checkout-cart-img {
   display: flex;
   align-items: center;
   width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 .calculos {

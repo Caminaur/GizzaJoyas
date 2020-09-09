@@ -95,11 +95,13 @@ front-end
 - Hacer vistas - edit/add
 - Hacer Email Templates
 - Botones de confirmacion (Para eliminar)
+- Completar las etiquetas A del footer
 
 Back-end
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Buscar la forma de evitar la ruta delete product por get.
+- Al borrar categoria (desde la vista editcategory) esta tirando un error de Sizes. En cambio si borramos categorya desde la vista Selectcategory no tira error
 
 NOTA
 - Control de stock en favoritos arreglado. Falta buscarle un buen lugar al mensaje de error, ya que rompe un poco todo.

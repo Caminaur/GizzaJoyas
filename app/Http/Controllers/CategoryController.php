@@ -82,7 +82,7 @@ class CategoryController extends Controller
       $product_tag->delete();
     }
 
-    return view('selectcategory')->with('status', 'La relacion entre el tag y la categoria fue eliminada!');
+    return back()->with('status', 'La relacion entre el tag y la categoria fue eliminada!');
   }
   public function createTag(Request $req){
     $reglas = [
@@ -262,6 +262,6 @@ class CategoryController extends Controller
 
     // Redirigimos a la vista de selectcategory
     $categories = Category::all();
-    return Redirect::to('/editcategory')->with('status', 'Categoria eliminada exitosamente!');
+    return back()->with('status', 'Categoria eliminada exitosamente!');
   }
 }

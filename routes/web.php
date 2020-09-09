@@ -164,7 +164,7 @@ Route::post('/createtag','CategoryController@createTag')->middleware('admin');
 
 Route::post('/selecttag','CategoryController@addTag')->middleware('admin');
 
-Route::post('/changeName','CategoryController@changeName')->middleware('admin');
+Route::put('/changeName','CategoryController@changeName')->middleware('admin');
 
 Route::get('/addcategory','CategoryController@createCategoryForm')->middleware('admin');
 
