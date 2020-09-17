@@ -249,7 +249,7 @@ class CategoryController extends Controller
   public function delete(Request $req){
 
     // Buscamos la categoria
-    $category = Category::find($req->categoryId);
+    $category = Category::find($req->category_id);
     // Buscamos los talles relacionados
     $talles = $category->sizes;
     // Eliminamos los talles relacionados
@@ -261,7 +261,6 @@ class CategoryController extends Controller
     $category->delete();
 
     // Redirigimos a la vista de selectcategory
-    $categories = Category::all();
-    return back()->with('status', 'Categoria eliminada exitosamente!');
+    return  Redirect::to('/editcategory')->with('status', 'Categoria eliminada exitosamente!');
   }
 }

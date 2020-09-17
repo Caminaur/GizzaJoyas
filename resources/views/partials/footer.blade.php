@@ -46,11 +46,11 @@
     <br>
     <span class="footlink"><i class="far fa-clock"></i> Visitanos de 9hs a 17hs</span>
     <br>
-    <span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span>
+    <a href="tel:+549-11-54126300"><span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span></a>
 
     <div class="mt-3">
       <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>
-      <a href="#"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+      <a href="tel:+549-11-54126300"><i class="social fas fa-phone-alt" target="_blank"></i></a>
       <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
     </div>
@@ -62,5 +62,5 @@
 
 <div class="uk-flex uk-flex-around pb-3">
   <span style="font-size: 10px;">Copyright ® Gizza Joyas-Relojes © <?php echo date("Y");?>.</span>
-  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="https://www.linkedin.com/in/juliancaminaur/" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="https://www.dakotadevelopers.com" style="font-size: 10px;">Taten</a></span>
+  <span style="font-size: 10px;"> Diseño y programación <a class="footlink" href="https://www.linkedin.com/in/juliancaminaur/" style="font-size: 10px;">Caminaur</a> - <a class="footlink" href="https://www.linkedin.com/in/rodriguez-alan/" style="font-size: 10px;">Taten</a></span>
 </div>

@@ -84,28 +84,26 @@ EXTRAS:
 - Crear la columna precio de la DB con un formato 1.000 (punto cada 3 numeros) asi evitamos usar el number format en el front
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
 
-
 Objetivo de la semana/s
 - Navbar
 - Slider main productos nuevos & productos en oferta
 - Filtros gender|materials|age|etc
 
 front-end
-- Terminar vista Nosotros -- esperando a que envien la info
-- Hacer vistas - edit/add
 - Hacer Email Templates
-- Botones de confirmacion (Para eliminar)
-- Completar las etiquetas A del footer
+- Completar las etiquetas A del footer (whatsapp)
+- Filtros
+- Hacer textos de slider index
 
 Back-end
+- Filtros
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Buscar la forma de evitar la ruta delete product por get.
-- Al borrar categoria (desde la vista editcategory) esta tirando un error de Sizes. En cambio si borramos categorya desde la vista Selectcategory no tira error
-
-NOTA
-- Control de stock en favoritos arreglado. Falta buscarle un buen lugar al mensaje de error, ya que rompe un poco todo.
-- Estaba pensando en la diferencia entre agregar al carrito y comprar. Comprar deberia agregar al carrito y redirigir al checkout?
+- Traer productos en oferta y lo mas nuevo
+- Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
+- Terminar vista Nosotros -- esperando a que envien la info
+- Generarles las API keys de produccion de Mercado Pago
 
 
 

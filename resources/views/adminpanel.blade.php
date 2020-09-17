@@ -19,7 +19,7 @@ Panel de Control
           <a class="d-block hidden-control control" href="/addproduct" hidden>Agregar Producto</a>
         </div>
         <div class="col-6">
-          <a class="d-block hidden-control control" href="/searchproduct" hidden>Editar Producto</a>
+          <a class="d-block hidden-control control" href="/productos" hidden>Editar Producto</a>
         </div>
       </div>
 

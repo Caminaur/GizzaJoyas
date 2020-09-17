@@ -16,7 +16,7 @@
     <div class="uk-modal-body">
       <p>{{ $mensaje ?? "¿Desea eliminar el producto?"}}</p>
       <br>
-      <form class="align-items-center d-flex justify-content-between" action="/cart" method="post">
+      <form action="/cart" method="post">
         @csrf
         <div class="d-flex justify-content-between">
           <input type="hidden" class="favourite_id" name="favourite" value="{{$favourite->id}}">

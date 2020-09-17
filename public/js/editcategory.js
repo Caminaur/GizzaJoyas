@@ -17,21 +17,21 @@
       // creamos un div para organizarlos
       var div = document.createElement('div');
       // boton de borrado
-      var button = document.createElement('button');
-      button.setAttribute('type','button');
-      button.setAttribute('class','close');
-      button.setAttribute('aria-label','Close');
-      // span
-      var span = document.createElement('span');
-      span.setAttribute('aria-hidden','true');
-      span.setAttribute('class','botonEliminar');
-      span.innerHTML = '&times;';
+      var button = document.createElement('a');
+      button.setAttribute('class','close position-absolute');
+      button.setAttribute('style','right:30%; cursor:pointer;');
+      button.innerHTML = "X";
+      // // span
+      // var span = document.createElement('span');
+      // span.setAttribute('aria-hidden','true');
+      // span.setAttribute('class','botonEliminar');
+      // span.innerHTML = '&times;';
 
       // Div
       var div2 = document.createElement('div');
-      div2.setAttribute('class','d-flex flex-row');
+      div2.setAttribute('class','d-flex flex-column align-items-center position-relative');
 
-      button.appendChild(span);
+      // button.appendChild(span);
 
       div.setAttribute('class','d-flex flex-column');
       div.appendChild(label);

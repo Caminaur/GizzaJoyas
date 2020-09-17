@@ -41,8 +41,8 @@ class PurchaseMail extends Mailable
       $carts = Cart::where('user_id', '=', Auth::user()->id)->get();
       $payment = $this->payment;
       $shipment = Shipment::first()->value;
-      return $this->subject('Compra realizada iL Nato tienda online')
-                    ->from('info@gizzaJoyas.com','iL Nato tienda online') // Lo envia il nato
+      return $this->subject('Compra realizada - Gizza Joyas')
+                    ->from('info@gizzajoyas.com','Gizza Joyas') // Lo envia Gizza
                     ->to($this->purchases->email) // Lo recibe el comprador direccion $this->purchases->email
                     ->bcc('taten210@gmail.com')
                     ->view('email.purchasemail', compact('carts','payment', 'shipment'));

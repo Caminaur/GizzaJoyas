@@ -33,7 +33,7 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-      return $this->subject('Email de contacto iL Nato tienda online')
+      return $this->subject('Email de contacto Gizza Joyas')
                   ->from($this->email->email, $this->email->name)
                   ->to('info@gizzajoyas.com')
                   ->view('email.contactmail');

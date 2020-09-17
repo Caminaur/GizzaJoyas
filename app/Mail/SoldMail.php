@@ -41,9 +41,9 @@ class SoldMail extends Mailable
       $carts = Cart::where('user_id', '=', Auth::user()->id)->get();
       $payment = $this->payment;
       $shipment = Shipment::first()->value;
-      return $this->subject('Venta Realizada iL Nato tienda online')
+      return $this->subject('Venta Realizada Gizza Joyas')
                   ->from($this->purchases->email, Auth::user()->name) // Lo envia el comprador
-                  ->to('info@ilnato.com') // Lo recibe il nato
+                  ->to('info@gizzajoyas.com') // Lo recibe gizza
                   ->bcc('taten210@gmail.com')
                   ->view('email.soldemail', compact('carts','payment', 'shipment'));
     }

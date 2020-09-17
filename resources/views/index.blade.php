@@ -155,7 +155,7 @@ Gizza Joyas Home
 
 		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
-    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+    	<ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
         <li>
             <img src="img/aros.jpg" alt="">
             <div class="uk-position-center uk-panel"><h1>1</h1></div>
@@ -196,19 +196,19 @@ Gizza Joyas Home
             <img src="img/relojes.jpg" alt="">
             <div class="uk-position-center uk-panel"><h1>10</h1></div>
         </li>
-    </ul>
+    	</ul>
 
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+    	<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    	<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
-</div>
+		</div>
 
 	</section>
 
-	<section id="info" class="uk-background-muted p-4">
+	<section id="info" class="p-4">
 
 		<div class="uk-section uk-section-small">
-    <div class="uk-container">
+    	<div class="uk-container">
 
         <div class="uk-grid-match uk-child-width-1-2 uk-child-width-1-4@m align-items-start" uk-grid>
             <div class="text-center">
@@ -233,19 +233,17 @@ Gizza Joyas Home
             </div>
         </div>
 
-    </div>
-</div>
-
-
+    	</div>
+		</div>
 	</section>
 
-	<section id="social" class="p-4">
+	{{-- <section id="social" class="p-4"> --}}
 
-		<h2 class="regular text-center pb-3">Seguinos en <span class="bold blueSlate">Instagram</span></h2>
+		{{-- <h2 class="regular text-center pb-3">Seguinos en <span class="bold blueSlate">Instagram</span></h2> --}}
 
 		{{-- <!-- SnapWidget Galeria desktop--> https://snapwidget.com/widgets --}}
-		<script src="https://snapwidget.com/js/snapwidget.js"></script>
-		<iframe src="https://snapwidget.com/embed/819103" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
+		{{-- <script src="https://snapwidget.com/js/snapwidget.js"></script> --}}
+		{{-- <iframe src="https://snapwidget.com/embed/819103" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe> --}}
 
 		{{-- <div class="w-25"> --}}
 
@@ -262,7 +260,7 @@ Gizza Joyas Home
 		{{-- <div class='embedsocial-instagram' data-ref="548d196cc5fceb820adf4a47e830ff6ca19c5c4d"></div>
 		<script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/in.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialInstagramScript"));</script> --}}
 
-	</section>
+	{{-- </section> --}}
 
 
 
