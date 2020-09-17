@@ -10,6 +10,10 @@
       input.name = 'sizes[]';
       input.setAttribute('required','true');
       input.setAttribute('class','form-control-checkout w-25');
+
+      // creamos un main div para contener al div y al div2 asi al apretar la "X" borramos ambos.
+      var main_div = document.createElement('div');
+
       // creamos un div para organizarlos
       var div = document.createElement('div');
       // boton de borrado
@@ -33,11 +37,12 @@
       div.appendChild(label);
       div2.appendChild(input);
       div2.appendChild(button);
-      divFormSize.appendChild(div);
-      divFormSize.appendChild(div2);
+      main_div.appendChild(div);
+      main_div.appendChild(div2);
+      divFormSize.appendChild(main_div);
       // Agregar boton para eliminar el input de forma individual
       button.addEventListener('click',function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
       })
     });
     var tagForm = document.getElementById("addTagId");
