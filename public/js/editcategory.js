@@ -29,11 +29,11 @@
 
       // Div
       var div2 = document.createElement('div');
-      div2.setAttribute('class','d-flex flex-row align-items-center');
+      div2.setAttribute('class','d-flex flex-row');
 
       button.appendChild(span);
 
-      div.setAttribute('class','d-flex flex-column align-items-center');
+      div.setAttribute('class','d-flex flex-column');
       div.appendChild(label);
       div2.appendChild(input);
       div2.appendChild(button);
