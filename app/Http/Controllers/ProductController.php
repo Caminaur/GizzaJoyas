@@ -601,8 +601,6 @@ class ProductController extends Controller
     if ($products->first()===null) {
       return back()->with('error', 'Modificación Fallida');
     }
-
-
     // Si elegimos sumar
     if ($req->operacion=='sum') {
       // Creamos la variable porcentaje con el numero elejido para luego trabajar con ella

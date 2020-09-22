@@ -8,6 +8,28 @@ Checkout
     <label>No tienes productos en tu carrito, <a href="/productos">continuar comprando</a></label>
   @endif --}}
 
+  <div>
+      @if (isset($errors) && $errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+
+      @if (session()->has('success'))
+          <div class="alert alert-success">
+              <ul>
+                  @foreach (session()->get('success') as $message)
+                      <li>{{ $message }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+  </div>
+
   <div class="row">
 
     <section id="formulario" class="col-lg-7 p-5">
@@ -107,7 +129,7 @@ Checkout
 
 
           <div class="form-group-checkout form-row hidden justify-content-center" id='deliveryAddress' style="text-align: -webkit-center;">
-            <span class="h6 light text-center">Para saber más sobre los gastos de envío haz{{--{{$shipment}}--}} <a href="/PreguntasFrecuentes" class="text-info">click aquí</a></span>
+            <span class="h6 light text-center">Para saber más sobre los gastos de envío haz{{--{{$shipment}}--}} <a href="/preguntas" class="text-info">click aquí</a></span>
             <div class="col-12 col-md-6 mb-3">
               <input class="form-control-checkout" type="text" placeholder="Dirección" name="address" value="">
             </div>

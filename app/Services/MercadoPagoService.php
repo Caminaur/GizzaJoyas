@@ -58,7 +58,7 @@ class MercadoPagoService
 
     public function handlePayment(Request $request)
     {
-
+        dd($request->all());
         // Chequeamos que haya productos en el carrito
         $carts = Cart::where('user_id', '=', Auth::user()->id)->get();
         if (count($carts)<1) {

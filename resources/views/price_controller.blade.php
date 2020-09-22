@@ -31,14 +31,12 @@ Control de precios
             </select>
           </div>
         </div>
+        
+        <br>
 
-
-        <div id="categoryDiv" class="row" hidden>
-          <div class="col-3"></div>
-          <div class="col-3">
-            <label for="categoria">Seleccione la categoria de los productos a modificar</label>
-          </div>
-          <div class="col-3">
+        <div id="categoryDiv" hidden>
+          <label for="categoria">Seleccione la categoria de los productos a modificar</label>
+          <div>
             <select id="categoria" class="form-control-checkout" name="category_id">
               <option value="">Todas las categorias</option>
               @foreach ($categories as $category)
@@ -46,41 +44,32 @@ Control de precios
               @endforeach
             </select>
           </div>
-          <div class="col-3"></div>
         </div>
 
 
-        <div id="materialDiv" class="row" hidden>
-          <div class="col-3"></div>
-          <div class="col-3">
+        <div id="materialDiv" hidden>
           <label for="material">Seleccione el material de los productos a modificar</label>
+          <div>
+            <select id="material" class="form-control-checkout" name="material_id">
+              <option value="">Todos las materiales</option>
+              @foreach ($materials as $material)
+                <option value="{{$material->id}}">{{$material->name}}</option>
+              @endforeach
+            </select>
           </div>
-          <div class="col-3">
-          <select id="material" class="form-control-checkout" name="material_id">
-            <option value="">Todos las materiales</option>
-            @foreach ($materials as $material)
-              <option value="{{$material->id}}">{{$material->name}}</option>
-            @endforeach
-          </select>
-          </div>
-          <div class="col-3"></div>
         </div>
 
 
-        <div id="brandDiv" class="row" hidden>
-          <div class="col-3"></div>
-          <div class="col-3">
+        <div id="brandDiv" hidden>
           <label for="">Seleccione la marca de los productos a modificar</label>
+          <div>
+            <select class="form-control-checkout" name="brand_id">
+              <option value="">Todas las marcas</option>
+              @foreach ($brands as $brand)
+                <option value="{{$brand->id}}">{{$brand->name}}</option>
+              @endforeach
+            </select>
           </div>
-          <div class="col-3">
-          <select class="form-control-checkout" name="brand_id">
-            <option value="">Todas las marcas</option>
-            @foreach ($brands as $brand)
-              <option value="{{$brand->id}}">{{$brand->name}}</option>
-            @endforeach
-          </select>
-          </div>
-          <div class="col-3"></div>
         </div>
 
         <br>

@@ -3,12 +3,13 @@ use App\Size;
 use App\Category;
 use App\Age;
 use App\Material;
+use App\Product;
 use App\Gender;
 use Illuminate\Http\Request; // Por el formulario de contacto
 use App\Mail\ContactMail; // Por el formulario de contacto
 use App\Mail\PurchaseMail; // Por el email de compra realizada que le llega al comprador
 use Illuminate\Support\Facades\Mail; // Por el formulario de contacto
-
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +36,16 @@ Auth::routes();
 
 // Home
 Route::get('/', function() {
+
   $categories = Category::all();
-  return view('index',compact('categories'));
+
+  // Nos tiene que traer X cantidad de productos ordenados por fecha
+  $nuevos = Product::all()->sortByDesc('created_at')->take(10);
+  
+  // Nos tiene que traer X cantidad de productos en oferta aleatoriamente
+  $ofertas = Product::where('OnSale','=',1)->inRandomOrder()->limit(10)->get();
+
+  return view('index',compact('categories','ofertas','nuevos'));
 });
 
 // Contacto

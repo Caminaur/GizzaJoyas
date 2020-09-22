@@ -16,6 +16,12 @@ Nosotros
 			<div class="inner justify-content-center">
 				<div class="image-holder align-self-center">
 					<img src="/img/necklaces/contact.jpg" alt="">
+          <div class="">
+            <p> Somos una empresa familiar especializada en la comercialización de joyería, siempre buscamos otorgarle al cliente productos y diseños de alta calidad.
+            Ofreciendo al cliente un excelente servicio y compromiso de nuestra parte que le da una experiencia única a la hora de elegirnos.
+          </p>
+          <p>No dudes en visitarnos en Av. Boulogne y Juncal, Tapiales.</p>
+          </div>
           <div class="text-center mt-3">
             <i class="social fab fa-instagram"></i>
             <i class="social fab fa-whatsapp"></i>

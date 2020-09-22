@@ -26,9 +26,11 @@ class HomeController extends Controller
     {
       $categories = Category::all();
 
-      // $loNuevo = Product:: Nos tiene que traer X cantidad de productos ordenados por fecha
+      // Nos tiene que traer X cantidad de productos ordenados por fecha
+      $loNuevo = Product::where();
 
-      // $oferta = Product:: Nos tiene que traer X cantidad de productos en oferta aleatoriamente
+      $oferta = Product::where('OnSale','=',1)->take(5);
+      // Nos tiene que traer X cantidad de productos en oferta aleatoriamente
 
       return view('index', compact('categories'));
     }

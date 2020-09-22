@@ -83,6 +83,7 @@ EXTRAS:
 - Loguearse con redes sociales / google
 - Crear la columna precio de la DB con un formato 1.000 (punto cada 3 numeros) asi evitamos usar el number format en el front
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
+- Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 
 Objetivo de la semana/s
 - Navbar
@@ -90,21 +91,20 @@ Objetivo de la semana/s
 - Filtros gender|materials|age|etc
 
 front-end
-- Hacer Email Templates
-- Completar las etiquetas A del footer (whatsapp)
 - Filtros
+- Hacer Email Templates
 - Hacer textos de slider index
+- slider productos nuevos y productos en oferta
+- Completar las etiquetas A del footer (whatsapp)
 
 Back-end
 - Filtros
-- Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
-- Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
-- Buscar la forma de evitar la ruta delete product por get.
-- Traer productos en oferta y lo mas nuevo
-- Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
-- Terminar vista Nosotros -- esperando a que envien la info
+- Calcular envio y procesamiento de pago
 - Generarles las API keys de produccion de Mercado Pago
-
+- Buscar la forma de evitar la ruta delete product por get.
+- Terminar vista Nosotros -- esperando a que envien la info
+- Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
+- Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
 
 
 
