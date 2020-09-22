@@ -219,7 +219,7 @@ class CategoryController extends Controller
       $path = basename($file);
 
       // guardamos la imagen
-      $category->image = '/storage/'. $path;
+      $category->image = $path;
 
       // guardo los cambios en la base de datos
       $category->save();

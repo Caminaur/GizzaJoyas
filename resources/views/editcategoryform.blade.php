@@ -45,7 +45,7 @@ editcategory
         @csrf
         <input type="hidden" name="_method" value="PUT">
         <div class="justify-content-center">
-          <label for="file-upload" class="subir">
+          <label for="file-upload" class="subir" style="cursor:pointer">
             <i class="fas fa-cloud-upload-alt"></i> Cambiar imagen
           </label>
           <br>

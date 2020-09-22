@@ -61,6 +61,6 @@ use Carbon\Carbon;
   }
 
   function isThisNew($created_at){
-    return ($created_at->diffInDays( Carbon::now() ) <= 20);
+    return ($created_at->diffInDays( Carbon::now() ) <= 30);
   }
 ?>

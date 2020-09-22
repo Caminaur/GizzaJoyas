@@ -12064,7 +12064,7 @@ iframe.uk-cover {
 .uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > *,
 .uk-overlay-primary .uk-dotnav > * > *,
 .uk-offcanvas-bar .uk-dotnav > * > * {
-  background-color: transparent;
+  background-color: #A6C2CE;
   border-color: rgba(255, 255, 255, 0.9);
 }
 .uk-light .uk-dotnav > * > :hover,
@@ -12117,7 +12117,7 @@ iframe.uk-cover {
 .uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > .uk-active > *,
 .uk-overlay-primary .uk-dotnav > .uk-active > *,
 .uk-offcanvas-bar .uk-dotnav > .uk-active > * {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #6B799E;
   border-color: transparent;
 }
 .uk-light .uk-accordion-title,

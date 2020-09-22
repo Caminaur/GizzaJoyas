@@ -7,23 +7,23 @@ AddSizeButton.addEventListener('click',function(){
   var input = document.createElement('input');
   input.name = 'sizes[]';
   input.setAttribute('required','true');
-  input.setAttribute('class','ml-3');
+  input.setAttribute('class','form-control-checkout w-25');
   // creamos un div para organizarlos
   var div = document.createElement('div');
   // boton de borrado
-  var button = document.createElement('button');
-  button.setAttribute('type','button');
-  button.setAttribute('class','close');
-  button.setAttribute('aria-label','Close');
+  var button = document.createElement('a');
+  button.setAttribute('class','close position-absolute');
+  button.setAttribute('style','right:30%; bottom:8%; cursor:pointer;');
+  button.innerHTML = "X";
   // span
-  var span = document.createElement('span');
-  span.setAttribute('aria-hidden','true');
-  span.setAttribute('class','botonEliminar');
-  span.innerHTML = '&times;';
+  // var span = document.createElement('span');
+  // span.setAttribute('aria-hidden','true');
+  // span.setAttribute('class','botonEliminar');
+  // span.innerHTML = '&times;';
 
-  button.appendChild(span);
+  // button.appendChild(span);
 
-  div.setAttribute('class','row m-2 p-2');
+  div.setAttribute('class','d-flex flex-column align-items-center position-relative');
   div.appendChild(label);
   div.appendChild(input);
   div.appendChild(button);

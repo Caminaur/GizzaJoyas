@@ -68,16 +68,16 @@ Gizza Joyas Home
 
 	<section id="categories" class="uk-container-extend uk-background-muted p-4">
 
-		<h2 class="regular text-center pb-3">Mirá nuestras <span class="bold blueSlate">Categorías</span></h2>
+		<h2 class="regular uk-text-center pb-3">Mirá nuestras <span class="bold blueSlate">Categorías</span></h2>
 
 
-			<div class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid>
+			<div class="uk-child-width-1-1 uk-child-width-1-3@m uk-text-center" uk-grid>
 
 				@forelse ($categories as $category)
 					<div>
 						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 							<a href="productos/categoria/{{$category->name}}">
-                <img class="brightness uk-transition-scale-up uk-transition-opaque" src="/storage/{{$category->image}}" alt="">
+                <img class="NoBrightness uk-transition-scale-up uk-transition-opaque" src="/storage/{{$category->image}}" alt="" style="height:250px; width:370px; object-fit:cover;">
               </a>
 							<div class="uk-position-center ncursor">
 								<div class="uk-light"><h3 class="medium uk-margin-remove">{{$category->name}}</h3></div>
@@ -86,7 +86,7 @@ Gizza Joyas Home
 					</div>
 
 				@empty
-					<h3 class="regular text-center pb-3">No hay <span class="bold blueSlate">Categorías Existentes</span></h3>
+					<h3 class="regular uk-text-center pb-3">No hay <span class="bold blueSlate">Categorías Existentes</span></h3>
 				@endforelse
 
 			</div>
@@ -95,133 +95,81 @@ Gizza Joyas Home
 
 	<section id="newArrivals" class="p-4">
 
-		<h2 class="regular text-center pb-3">Productos en <span class="bold blueSlate">Oferta</span></h2>
+		<h2 class="regular uk-text-center pb-3">Productos en <span class="bold blueSlate">Oferta</span></h2>
 
 		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
-    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
-			@forelse ($ofertas as $oferta)
-				<li>
-					<a href="/producto/{{$oferta->id}}">
-						<img style="width: 300px; height: 300px; object-fit: cover;" src="{{$oferta->images->first()->path}}" alt="">
-					</a>
-					<div class="uk-position-center uk-panel">
-						<h3 class="product-desc">{{$oferta->discount}} %</h3>
-					</div>
-				</li>
-			@empty
-				<li>
-					<img src="img/aros.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>1</h1></div>
-				</li>
-				<li>
-					<img src="img/accesorios.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>2</h1></div>
-				</li>
-				<li>
-					<img src="img/collares.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>3</h1></div>
-				</li>
-				<li>
-					<img src="img/relojes.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>4</h1></div>
-				</li>
-				<li>
-					<img src="img/pulseras.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>5</h1></div>
-				</li>
-				<li>
-					<img src="img/anillos.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>6</h1></div>
-				</li>
-				<li>
-					<img src="img/aros.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>7</h1></div>
-				</li>
-				<li>
-					<img src="img/aros.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>8</h1></div>
-				</li>
-				<li>
-					<img src="img/accesorios.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>9</h1></div>
-				</li>
-				<li>
-					<img src="img/relojes.jpg" alt="">
-					<div class="uk-position-center uk-panel"><h1>10</h1></div>
-				</li>
-			@endforelse
-    </ul>
+	    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
+				@forelse ($ofertas as $oferta)
+					<li>
+						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+							<a href="/producto/{{$oferta->id}}">
+								<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$oferta->images->first()->path}}" alt="">
+							</a>
+	            <div class="uk-position-center ncursor uk-panel">
+								<div class="uk-visible@m uk-light">
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->category->name}}</h3></div>
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->name}}</h3></div>
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
+								</div>
+								<div class="uk-hidden@m uk-light">
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$oferta->category->name}}</h3></div>
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$oferta->name}}</h3></div>
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
+								</div>
+							</div>
+						</div>
+					</li>
+				@empty
 
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+				@endforelse
+	    </ul>
 
-</div>
+	    <a style="color:white;" class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+	    <a style="color:white;" class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+			<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+		</div>
 
 	</section>
 
 	<section id="newArrivals" class="p-4">
 
-		<h2 class="regular text-center pb-3">Lo más <span class="bold blueSlate">Nuevo</span></h2>
+		<h2 class="regular uk-text-center pb-3">Lo más <span class="bold blueSlate">Nuevo</span></h2>
 
 		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
-    	<ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+    	<ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
 				@forelse ($nuevos as $nuevo)
 					<li>
+						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 							<a href="/producto/{{$nuevo->id}}">
-								<img style="width: 300px; height: 300px; object-fit: cover;" src="{{$nuevo->images->first()->path}}" alt="">
+								<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$nuevo->images->first()->path}}" alt="">
 							</a>
-	            <div class="uk-position-center uk-panel">
-								<h3 class="product-desc">{{$nuevo->name}}</h3>
+	            <div class="uk-position-center ncursor uk-panel">
+								<div class="uk-visible@m uk-light">
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->category->name}}</h3></div>
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->name}}</h3></div>
+									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
+								</div>
+								<div class="uk-hidden@m uk-light">
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$nuevo->category->name}}</h3></div>
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$nuevo->name}}</h3></div>
+									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
+								</div>
 							</div>
+						</div>
 	        </li>
 				@empty
-					<li>
-						<img src="img/aros.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>1</h1></div>
-					</li>
-					<li>
-						<img src="img/accesorios.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>2</h1></div>
-					</li>
-					<li>
-						<img src="img/collares.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>3</h1></div>
-					</li>
-					<li>
-						<img src="img/relojes.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>4</h1></div>
-					</li>
-					<li>
-						<img src="img/pulseras.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>5</h1></div>
-					</li>
-					<li>
-						<img src="img/anillos.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>6</h1></div>
-					</li>
-					<li>
-						<img src="img/aros.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>7</h1></div>
-					</li>
-					<li>
-						<img src="img/aros.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>8</h1></div>
-					</li>
-					<li>
-						<img src="img/accesorios.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>9</h1></div>
-					</li>
-					<li>
-						<img src="img/relojes.jpg" alt="">
-						<div class="uk-position-center uk-panel"><h1>10</h1></div>
-					</li>
+
 				@endforelse
     	</ul>
 
-    	<a style="color:black;"class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    	<a style="color:black;"class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+    	<a style="color:white;"class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    	<a style="color:white;"class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+			<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
 		</div>
 
@@ -233,22 +181,22 @@ Gizza Joyas Home
     	<div class="uk-container">
 
         <div class="uk-grid-match uk-child-width-1-2 uk-child-width-1-4@m align-items-start" uk-grid>
-            <div class="text-center">
+            <div class="uk-text-center">
 								<p class="blueSlate bold">FREE SHIPPING</p>
 								<i class="material-icons md-36 blueSlate">local_shipping</i>
                 <p class="blueSlate regular">Free shipping on all US order or order above $200</p>
             </div>
-            <div class="text-center">
+            <div class="uk-text-center">
 							<p class="blueSlate bold">SUPPORT 24/7</p>
 							<i class="material-icons md-36 blueSlate">face</i>
 							<p class="blueSlate regular">Contact us 24 hours a day, 7 days a week</p>
             </div>
-            <div class="text-center">
+            <div class="uk-text-center">
 							<p class="blueSlate bold">30 DAYS RETURN</p>
 							<i class="material-icons md-36 blueSlate">assignment_return</i>
 							<p class="blueSlate regular">Simply return it within 30 days for an exchange.</p>
             </div>
-						<div class="text-center">
+						<div class="uk-text-center">
 								<p class="blueSlate bold">100% PAYMENT SECURE</p>
 								<i class="material-icons md-36 blueSlate">security</i>
                 <p class="blueSlate regular">We ensure secure payment with PEV</p>

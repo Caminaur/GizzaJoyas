@@ -1092,12 +1092,20 @@ img.checkout-cart-img {
   color: white;
 }
 
-.brightness {
+.NoBrightness {
   filter: brightness(50%);
 }
 
-.brightness:hover {
+.NoBrightness:hover {
   filter: brightness(100%);
+}
+
+.brightness {
+  filter: brightness(100%);
+}
+
+.brightness:hover {
+  filter: brightness(50%);
 }
 
 .ncursor {
