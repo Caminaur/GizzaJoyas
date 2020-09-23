@@ -22,6 +22,7 @@ front-end
 - Hacer Email Templates
 - Hacer textos de slider index
 - Completar las etiquetas A del footer (whatsapp)
+- No me tira payment aprobado!
 
 Back-end
 - Filtros

@@ -30,6 +30,10 @@ Checkout
       @endif
   </div>
 
+  @php
+    $contador = 1;
+  @endphp
+
   <div class="row">
 
     <section id="formulario" class="col-lg-7 p-5">
@@ -46,7 +50,9 @@ Checkout
         {{-- Mercado Pago --}}
         <button href="#toggle-animation" class="uk-button uk-button-default mercadopago-payment-button" type="button" uk-toggle="target: #toggle-animation; animation: uk-animation-fade">Mercado Pago <img src=/img/mpicono.jpeg style="padding-bottom: 2px; width: 30px;"></button>
         {{-- Whatsapp --}}
-        <a class="uk-button uk-button-default whatsapp-payment-button" href="#">Whatsapp <i class="fab fa-whatsapp" target="_blank" style="font-size: 19px; color:#25D366;"></i></a>
+        <a class="uk-button uk-button-default whatsapp-payment-button"
+        href="https://api.whatsapp.com/send?phone=5491158291281&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para ordenarles lo siguiente:@foreach ($carts as $cart) *Producto Nº{{$contador}}*@if(isset($cart->product->brand->name)) _Marca:_ {{$cart->product->brand->name}}@endif, _Nombre:_ {{$cart->product->name}}, _Modelo:_ {{$cart->product->model}}, _Cantidad:_ {{$cart->quantity}}, _Talle:_ {{$cart->size->name}}@php$contador++@endphp @endforeach
+*Total de la compra: ${{$total}}*" target="_blank">Whatsapp <i class="fab fa-whatsapp" target="_blank" style="font-size: 19px; color:#25D366;"></i></a>
       </div>
 
       {{-- Despliegue de mercadopago form --}}
