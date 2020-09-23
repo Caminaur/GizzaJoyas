@@ -216,12 +216,6 @@ Checkout
     </section>
 
   </div>
-  <input type="hidden" id="cardNetwork" name="card_network">
-  {{-- Input oculto que se usa para el JS --}}
-
-  <input type="hidden" id="cardToken" name="card_token">
-  {{-- Input oculto que se usa para el JS --}}
-
 @endsection
 
 
@@ -265,6 +259,7 @@ Checkout
             mercadoPago.getPaymentMethod(
                 { "bin": cardNumber.value.substring(0,6) },
                 function(status, response) {
+                    console.log(status,response);
                     const cardNetwork = document.getElementById("cardNetwork");
                     cardNetwork.value = response[0].id;
                 }
@@ -435,6 +430,7 @@ Checkout
     </script>
 
     <script>
+    window.addEventListener('load',function(){
         // Accedemos al Formulario por el id
         const mercadoPagoForm = document.getElementById("paymentForm");
         // Agregamos un evenoto para realizar operaciones una vez que se haya enviado
@@ -442,7 +438,6 @@ Checkout
             // Solo queremos que esto se ejecute unicamente en el caso de enviar un pago con MercadoPago
             // Consiste en que si el elemento actual de este formulario llamado mercadoPagoForm , en el caso particular del valor de la plataforma
             // de pago coincide exactamente con la que tenemos de MP particularmente.
-            if (mercadoPagoForm.elements.payment_platform.value === "1"){ {{-- $paymentPlatform->id --}}
                 // Utilizamos el evento y prevenimos que se envie el formulario para poder realizar las acciones adicionales
                 e.preventDefault();
                 // Ahora si utilizamos la variable mercadoPago y llamamos al metodo createToken
@@ -468,6 +463,6 @@ Checkout
                         mercadoPagoForm.submit();
                     }
                 });
-            }
         });
+      });
       </script>
