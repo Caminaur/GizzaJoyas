@@ -18,16 +18,13 @@ EXTRAS:
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 
 front-end
-- Ponerle width, height y object-fit cover a todas las imagenes de los productos (produtos, checkout, favoritos, cart)
 - Filtros
-- Hacer Email Templates
-- Completar las etiquetas A del footer (whatsapp)
+- Cambiarle datos a los email templates para cuando esten en el servidor.
+- Completar las etiquetas A del footer (whatsapp) y ponerle el numero correcto en todos lados donde aparezcan
 
 Back-end
 - Filtros
-- Calcular envio y procesamiento de pago
 - Generarles las API keys de produccion de Mercado Pago
 - Buscar la forma de evitar la ruta delete product por get.
-- Terminar vista Nosotros -- esperando a que envien la info
-- Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
 - Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
+- Error en los email cuando compro 2 productos distintos o mas

@@ -28,10 +28,10 @@ Gizza Joyas Home
             <div class="uk-panel">
                 <img src="/img/extras/4.jpg" alt="">
                 <div class="uk-position-center uk-text-center px-2">
-									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
-									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
-									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
-									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Brindando Oportunidades</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Conocé nuestras ofertas de tiempo limitado, hay descuentos imperdibles! </h3>
+									<a class="btn bg-dandelion mx-1" href="/productos/ofertas">Ver ofertas</a>
+									{{-- <a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a> --}}
                 </div>
             </div>
         </li>
@@ -39,10 +39,10 @@ Gizza Joyas Home
             <div class="uk-panel">
                 <img src="/img/extras/hero2.jpg" alt="">
                 <div class="uk-position-center uk-text-center px-2">
-									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
-									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
-									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
-									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Siempre pensando en vos</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Nos gusta mantener nuestros productos actualizados, mirá lo que está en tendencia </h3>
+									{{-- <a class="btn bg-dandelion mx-1" href="#">Dandelion</a> --}}
+									<a class="btn bg-ashBlue mx-1" href="/productos/nuevos">Lo Nuevo</a>
                 </div>
             </div>
         </li>
@@ -50,10 +50,10 @@ Gizza Joyas Home
             <div class="uk-panel">
                 <img src="/img/extras/hero3.jpg" alt="">
                 <div class="uk-position-center uk-text-center px-2">
-									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Background Image</h1>
-									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Descripcion de lo que vamos a poner aca, 50% off Sale</h3>
-									<a class="btn bg-dandelion mx-1" href="#">Dandelion</a>
-									<a class="btn bg-ashBlue mx-1" href="#">Ash Blue</a>
+									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Encontrá lo que estás buscando</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">No te pierdas ninguno de nuestros productos! hecha un vistazo a nuestro catálogo completo</h3>
+									<a class="btn bg-dandelion mx-1" href="/productos">Ver más</a>
+									{{-- <a class="btn bg-ashBlue mx-1" href="#"></a> --}}
                 </div>
             </div>
         </li>
@@ -175,7 +175,7 @@ Gizza Joyas Home
 
 	</section>
 
-	<section id="info" class="p-4">
+	{{-- <section id="info" class="p-4">
 
 		<div class="uk-section uk-section-small">
     	<div class="uk-container">
@@ -205,7 +205,7 @@ Gizza Joyas Home
 
     	</div>
 		</div>
-	</section>
+	</section> --}}
 
 	{{-- <section id="social" class="p-4"> --}}
 

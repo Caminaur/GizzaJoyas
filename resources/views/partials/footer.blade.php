@@ -46,7 +46,7 @@
     <br>
     <span class="footlink"><i class="far fa-clock"></i> Visitanos de 9hs a 17hs</span>
     <br>
-    <a href="tel:+549-11-54126300"><span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span></a>
+    <a href="tel:4622-0117"><span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span></a>
 
     <div class="mt-3">
       <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>

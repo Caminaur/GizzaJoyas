@@ -7,7 +7,7 @@ Carrito de compras
 
     <ul class="uk-breadcrumb  p-3">
       <li><a href="">Inicio</a></li>
-      <li><a href="">Volver</a></li>
+      <li><a href="/productos">Volver</a></li>
       <li><span class="dandelion">Carrito</span></li>
     </ul>
 
@@ -23,6 +23,7 @@ Carrito de compras
 
     <h2 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h2>
     <br>
+    <a href="/productos"><h4 class="px-4 regular blueSlate text-left pb-3">Continuar comprando</h4></a>
     <div class="productos">
       @forelse ($carts as $cart)
 
@@ -78,7 +79,7 @@ Carrito de compras
       <hr class="uk-divider-small">
       {{-- <a class="m-3 blueSlate" href="/deletecarts">Vaciar carrito</a> --}}
 
-      <h2 id="subtotal" class="text-center">Total: ${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h2>
+      <h3 id="subtotal" class="text-center">Total: ${{number_format((getTotalPrice($carts)), 0, '.', '.')}}</h3>
       <br>
       <form class="" action="/checkout" method="post">
         @csrf

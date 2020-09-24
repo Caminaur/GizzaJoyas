@@ -60,6 +60,7 @@ class MercadoPagoService
     {
         // Chequeamos que haya productos en el carrito
         $carts = Cart::where('user_id', '=', Auth::user()->id)->get();
+        
         if (count($carts)<1) {
           return redirect()
               ->route('checkout')
@@ -76,14 +77,12 @@ class MercadoPagoService
           'zipcode' => 'required_if:envio,true'
         ]);
 
-        // Obtenemos el valor real mediante el metodo getRealPrice
+        // Obtenemos el valor real mediante el metodo realPriceWithDelivery
         // Para protegernos en caso de edicion del total
 
-        // $totalSinInteres = $this->realPriceWithDelivery($request);
-        $totalSinInteres = getTotalPrice($carts);
-
-        // $request->amount = MercadoPagoService::realPriceWithDeliveryAndFees();
-        // dd(MercadoPagoService::realPriceWithDeliveryAndFees());
+        // Esta variable nos trae el valor de la compra con el envio incluido (si posee) pero sin el interes (si posee).
+        // Le pasamos los carritos para calcular el total y le pasamos la request para ver si envio es true o false
+        $totalSinInteres = realPriceWithDelivery($carts, $request);
 
         $installments = intval($request->installments);
 
@@ -99,7 +98,6 @@ class MercadoPagoService
 
             $name = Auth::user()->name; // $payment->payer->first_name;
             $amount = number_format($payment->transaction_details->total_paid_amount, 2, ',', '.');
-
             // $currency = strtoupper($payment->currency_id);
             // $originalAmount = $request->value;
             // $originalCurrency = strtoupper($request->currency);
@@ -107,8 +105,8 @@ class MercadoPagoService
               // Enviar los 2 emails
 
 
-                                      // Mail::send(new PurchaseMail($request,$payment));
-                                      // Mail::send(new SoldMail($request,$payment));
+                                      Mail::send(new PurchaseMail($request,$payment));
+                                      Mail::send(new SoldMail($request,$payment));
 
 
 

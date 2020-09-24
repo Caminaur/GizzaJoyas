@@ -22,8 +22,8 @@ Producto
         <br>
 
         {{-- Si hay una imagen --}}
-        <div id="toggle-animation-multiple{{$faq->id}}" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>
           @if ($faq->image_path)
+            <div id="toggle-animation-multiple{{$faq->id}}" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>
             <button class="botontabladetalles" data-toggle="modal" data-target="#exampleModal{{$faq->id}}">
               <img class="imagenfaqs" src="/storage/{{$faq->image_path}}" alt="">
             </button>
@@ -43,8 +43,8 @@ Producto
                 </div>
               </div>
             </div>
+          </div>
           @endif
-        </div>
       @endforeach
 
     </section>

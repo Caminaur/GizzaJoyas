@@ -44,7 +44,7 @@ class PurchaseMail extends Mailable
       return $this->subject('Compra realizada - Gizza Joyas')
                     ->from('info@gizzajoyas.com','Gizza Joyas') // Lo envia Gizza
                     ->to($this->purchases->email) // Lo recibe el comprador direccion $this->purchases->email
-                    ->bcc('taten210@gmail.com')
-                    ->view('email.purchasemail', compact('carts','payment', 'shipment'));
+                    // ->bcc('taten210@gmail.com')
+                    ->view('email.purchasemail', compact('carts', 'payment', 'shipment'));
     }
 }

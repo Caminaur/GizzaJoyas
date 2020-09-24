@@ -177,7 +177,7 @@
 
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
-                                        <a href="https://www.ilnato.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="{{ $message->embed("https://www.ilnato.com/img/ilnato.png") }}" alt="" /></a>
+                                        <a href="https://www.gizzajoyas.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="220" border="0" style="display: block; width: 2200px;" src="http://localhost:8000/images/logoemailgizza.png" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -187,13 +187,13 @@
                                             class="container590 hide">
                                             <tr>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="https://www.ilnato.com/productos" style="color: #312c32; text-decoration: none;">PRODUCTOS</a>
+                                                    <a href="https://www.gizzajoyas.com/productos" style="color: #312c32; text-decoration: none;">PRODUCTOS</a>
                                                 </td>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="https://www.ilnato.com/productos/ofertas" style="color: #312c32; text-decoration: none;">OFERTAS</a>
+                                                    <a href="https://www.gizzajoyas.com/productos/ofertas" style="color: #312c32; text-decoration: none;">OFERTAS</a>
                                                 </td>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="https://www.ilnato.com/nosotros" style="color: #312c32; text-decoration: none;">NOSOTROS</a>
+                                                    <a href="https://www.gizzajoyas.com/productos/nevos" style="color: #312c32; text-decoration: none;">LO NUEVO</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -222,7 +222,7 @@
                     <tr>
 
                         <td align="center" class="section-img">
-                            <img src="https://www.ilnato.com/img/IMG-20200114-WA0026.jpg" style="display: block; width: 590px;" width="590" border="0" alt="" />
+                            <img src="http://localhost:8000/images/gizza0.jpg" style="display: block; width: 590px;" width="590" border="0" alt="" />
                         </td>
                     </tr>
                     <tr>
@@ -235,7 +235,7 @@
 
                             <div style="line-height: 35px">
 
-                                <span style="color: #977d2f9e;">VENTA REALIZADA  </span>
+                                <span style="color: #6B799E;">VENTA REALIZADA  </span>
 
                             </div>
                         </td>
@@ -282,7 +282,7 @@
 
                     <tr>
                         <td align="center">
-                            <table border="0" align="center" width="160" cellpadding="0" cellspacing="0" bgcolor="#A18875" style="">
+                            <table border="0" align="center" width="160" cellpadding="0" cellspacing="0" bgcolor="#6B799E" style="">
 
                                 <tr>
                                     <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
@@ -293,7 +293,7 @@
 
 
                                         <div style="line-height: 26px;">
-                                            <a href="https://www.ilnato.com" style="color: #ffffff; text-decoration: none;">IR A LA TIENDA</a>
+                                            <a href="https://www.gizzajoyas.com" style="color: #ffffff; text-decoration: none;">IR A LA TIENDA</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -342,7 +342,7 @@
 
                                 <tr>
                                     <td align="center">
-                                        <a href="http://ilnato.com/producto/{{$cart->product->id}}" style=" border-style: none !important; border: 0 !important;"><img src="{{ asset('storage/' . $cart->product->images[0]->path) }}" style="display: block; width: 280px;" width="280" border="0" alt="" /></a>
+                                        <a href="http://gizzajoyas.com/producto/{{$cart->product->id}}" style=" border-style: none !important; border: 0 !important;"><img src="{{ asset('storage/' . $cart->product->images[0]->path) }}" style="display: block; width: 280px;" width="280" border="0" alt="" /></a>
                                     </td>
                                 </tr>
                             </table>
@@ -400,7 +400,7 @@
 
                                         <div style="line-height: 24px">
 
-                                            Producto N° {{$productoNumero}}: {{ $cart->product->name }}, {{ $cart->product->brand->name }}, {{ $cart->product->genre->name }}, Modelo: {{ $cart->product->model }}
+                                            Producto N° {{$productoNumero}}: {{ $cart->product->name }}, {{ $cart->product->brand->name }}, Modelo: {{ $cart->product->model }}
 
                                             @if ($cart->product->onSale==true && isset($cart->product->discount))
                                              @php
@@ -440,7 +440,7 @@
                                         <table border="0" align="left" cellpadding="0" cellspacing="0" class="container590">
                                             <tr>
                                                 <td align="center">
-                                                    <table border="0" align="center" width="120" cellpadding="0" cellspacing="0" style="border: 1px solid #eeeeee; ">
+                                                    <table border="0" align="center" width="120" cellpadding="0" cellspacing="0" style="border: 1px solid #6B799E; ">
 
                                                         <tr>
                                                             <td height="5" style="font-size: 5px; line-height: 5px;">&nbsp;</td>
@@ -451,7 +451,7 @@
 
 
                                                                 <div style="line-height: 20px;">
-                                                                    <a href="http://www.ilnato.com/producto/{{$cart->product->id}}" style="color: #977d2f9e; text-decoration: none;">Ver Producto</a>
+                                                                    <a href="http://www.gizzajoyas.com/producto/{{$cart->product->id}}" style="color: #6B799E; text-decoration: none;">Ver Producto</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -515,12 +515,12 @@
           <div style="line-height: 35px">
 
             @if ($payment->installments>1)
-              Total de la compra:  <span style="color: #977d2f9e;">$ {{$total}}</span>
+              Total de la compra:  <span style="color: #6B799E;">$ {{$total}}</span>
               <br>
               {{-- Traemos la cantidad de cuotas y el valor individual de cada cuota a traves del payment de MP --}}
               <p>Abona en {{$payment->installments}} cuotas de ${{$payment->transaction_details->installment_amount}}</p>
             @else
-              Total de la compra:  <span style="color: #977d2f9e;">$ {{$total}}</span>
+              Total de la compra:  <span style="color: #6B799E;">$ {{$total}}</span>
             @endif
 
           </div>
@@ -564,7 +564,7 @@
                                 <tr>
                                     <!-- logo -->
                                     <td align="left">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="80" border="0" style="display: block; width: 125px;" src="http://www.ilnato.com/img/ilnatologo.png" alt="" /></a>
+                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="80" border="0" style="display: block; width: 125px;" src="http://www.gizzajoyas.com/images/logoemailgizza.png" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -671,7 +671,7 @@
                                     <td align="left" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                         <div style="line-height: 24px;">
 
-                                            <span style="color: #333333;">Copyright ® IL Nato © <?php echo date("Y"); ?></span>
+                                            <span style="color: #333333;">Copyright ® Gizza Joyas © <?php echo date("Y"); ?></span>
 
                                         </div>
                                     </td>
@@ -693,7 +693,7 @@
                                         <table align="center" border="0" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td align="center">
-                                                    <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #977d2f9e; text-decoration: none;font-weight:bold;"
+                                                    <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #6B799E; text-decoration: none;font-weight:bold;"
                                                         href="https://www.ilnato.com">SUSCRIBITE A NUESTRO NEWSLETTER</a>
                                                 </td>
                                             </tr>

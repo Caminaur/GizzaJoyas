@@ -790,8 +790,8 @@ section.imagenes-producto {
 
 img.producto {
   height: 230px;
-  width: 100% !important;
-  object-fit: contain;
+  width: 300px !important;
+  object-fit: cover;
 }
 
 .sale {
@@ -850,7 +850,7 @@ img.cart-img {
   align-items: center;
   width: 150px;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 span.sale, span.new {
@@ -896,7 +896,7 @@ img.checkout-cart-img {
   align-items: center;
   width: 100px;
   height: 100px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .calculos {

@@ -1,5 +1,7 @@
 <?php
 use Carbon\Carbon;
+use App\Shipment;
+
   // https://stackoverflow.com/questions/35332784/how-to-call-a-controller-function-inside-a-view-in-laravel-5
   // https://styde.net/como-crear-helpers-personalizados-en-laravel/
   // Encontre esta solucion para el uso de funciones globales
@@ -39,13 +41,33 @@ use Carbon\Carbon;
   }
 
 
-  // Obtiene el valor total de la suma de todos los carritos
+  // Obtiene el valor total de la suma de todos los carritos con descuentos si posee y con envio si posee
   function getTotalPrice($carts){
-    $totalPrice = 0;
+    $total = 0;
     foreach ($carts as $cart) {
-      $totalPrice = $totalPrice + (getRealPrice($cart->product)*$cart->quantity);
+      $total = $total + (getRealPrice($cart->product)*$cart->quantity);
     }
-    return $totalPrice;
+
+    return $total;
+  }
+
+
+  function realPriceWithDelivery($carts, $request){
+    $total = 0;
+    $shipment = Shipment::first()->value;
+    foreach ($carts as $cart) {
+      $total = $total + (getRealPrice($cart->product)*$cart->quantity);
+    }
+
+    if ($request->envio=="true") {
+      // true
+      $amount = $total + $shipment;
+    } else {
+      // false
+      $amount = $total;
+    }
+
+    return $amount;
   }
 
 

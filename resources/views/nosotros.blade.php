@@ -15,17 +15,18 @@ Nosotros
 
 			<div class="inner justify-content-center">
 				<div class="image-holder align-self-center">
-					<img src="/img/necklaces/contact.jpg" alt="">
-          <div class="">
+					<img src="/images/gizza0.jpg" alt="">
+          <div class="py-3">
             <p> Somos una empresa familiar especializada en la comercialización de joyería, siempre buscamos otorgarle al cliente productos y diseños de alta calidad.
             Ofreciendo al cliente un excelente servicio y compromiso de nuestra parte que le da una experiencia única a la hora de elegirnos.
           </p>
           <p>No dudes en visitarnos en Av. Boulogne y Juncal, Tapiales.</p>
           </div>
           <div class="text-center mt-3">
-            <i class="social fab fa-instagram"></i>
+            <a href="tel:+549-11-54126300"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+            <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
             <i class="social fab fa-whatsapp"></i>
-            <i class="social fab fa-facebook-f"></i>
           </div>
 				</div>
 

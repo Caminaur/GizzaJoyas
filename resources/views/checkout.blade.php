@@ -230,14 +230,18 @@ Checkout
       var sinEnvio = document.getElementById("no");
       var deliveryAddress = document.getElementById("deliveryAddress");
       var inputs = document.getElementById("deliveryAddress").getElementsByTagName('input');
+
+
       if (conEnvio.hasAttribute('checked')) {
         deliveryAddress.classList.remove("hidden");
       }
+
       conEnvio.addEventListener('click', function(){
         deliveryAddress.classList.remove("hidden");
         conEnvio.value = "true";
         guessingPaymentMethod('blur');
       })
+      
       sinEnvio.addEventListener('click', function(){
         deliveryAddress.classList.add("hidden");
         conEnvio.value = "false";
