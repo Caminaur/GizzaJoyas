@@ -3,7 +3,7 @@ Pagina en que nos basamos https://gecko4.myshopify.com/?_ab=0&_fd=0&_sc=1
 
 
 EXTRAS:
-- Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back
+- Si escriben una ruta inexistente en nuestra web que les lance una vista de error prolija o lo redirija back (error 404) https://www.youtube.com/watch?v=QmZFNbF-HQQ
 - Opcion de Desloguear en todos los dispositivos ( que al cambiar la password desloguee en todos los dispositivos Ej:ema cambio los datos del admin y no se me deslogueo)
 - cookie consent https://www.youtube.com/watch?v=ht3isi42BS4&list=WL&index=2
 - Que la social bar se pueda volver a mostrar luego de ocultarla
@@ -18,11 +18,10 @@ EXTRAS:
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 
 front-end
+- Ponerle width, height y object-fit cover a todas las imagenes de los productos (produtos, checkout, favoritos, cart)
 - Filtros
 - Hacer Email Templates
-- Hacer textos de slider index
 - Completar las etiquetas A del footer (whatsapp)
-- No me tira payment aprobado!
 
 Back-end
 - Filtros
@@ -31,4 +30,4 @@ Back-end
 - Buscar la forma de evitar la ruta delete product por get.
 - Terminar vista Nosotros -- esperando a que envien la info
 - Preguntar que quieren en el 'Nosotros'. Un texto, presentacion del negocio
-- Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
+- Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.

@@ -11,6 +11,16 @@ Carrito de compras
       <li><span class="dandelion">Carrito</span></li>
     </ul>
 
+    @if (session()->has('success'))
+        <div class="wow animated fadeInDown alert alert-success sticky-notification">
+            <ul>
+                @foreach (session()->get('success') as $message)
+                    <li>{{ $message }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <h2 class="regular text-center pb-3">Carrito de <span class="bold blueSlate">compras</span></h2>
     <br>
     <div class="productos">
@@ -78,7 +88,10 @@ Carrito de compras
         @endforeach
 
         <br>
-        <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+        {{-- Si hay productos en el carrito --}}
+        @if ($carts->count())
+          <button id="boton_comprar" class="d-flex btn bg-dandelion" type="submit" name="button">Comprar</button>
+        @endif
       </form>
       <br>
     </div> {{-- productos --}}

@@ -107,7 +107,6 @@ class MercadoPagoService
               // Enviar los 2 emails
 
 
-
                                       // Mail::send(new PurchaseMail($request,$payment));
                                       // Mail::send(new SoldMail($request,$payment));
 
@@ -119,12 +118,14 @@ class MercadoPagoService
             if ($payment->installments>1) {
               return redirect()
                   ->route('checkout')
-                  ->withSuccess(['payment' => "Gracias {$name}. Tu pago de $ {$amount} fue aprobado. Se abonará en {$payment->installments} cuotas de $ {$payment->transaction_details->installment_amount}. Revisa tu casilla de email {$request->email}"]);
+                  // ->withSuccess(['payment' => "Gracias {$name}. Tu pago de $ {$amount} fue aprobado. Se abonará en {$payment->installments} cuotas de $ {$payment->transaction_details->installment_amount}. Revisa tu casilla de email {$request->email}"]);
+                  ->withSuccess(['payment' => "Gracias por tu compra {$name}. Revisa tu casilla de email {$request->email} para ver los detalles"]);
             }
             else {
               return redirect()
                   ->route('checkout')
-                  ->withSuccess(['payment' => "Gracias {$name}. Recibimos tu pago de $ {$amount} correctamente. Revisa tu casilla de email {$request->email}"]); // dejar espacio entre el signo $ y la variable
+                  // ->withSuccess(['payment' => "Gracias {$name}. Recibimos tu pago de $ {$amount} correctamente. Revisa tu casilla de email {$request->email}"]); // dejar espacio entre el signo $ y la variable
+                  ->withSuccess(['payment' => "Gracias por tu compra {$name}. Revisa tu casilla de email {$request->email} para ver los detalles"]); // dejar espacio entre el signo $ y la variable
             }
 
         }
