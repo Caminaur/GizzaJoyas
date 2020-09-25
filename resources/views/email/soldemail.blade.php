@@ -177,7 +177,7 @@
 
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
-                                        <a href="https://www.gizzajoyas.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="220" border="0" style="display: block; width: 2200px;" src="http://localhost:8000/images/logoemailgizza.png" alt="" /></a>
+                                        <a href="https://www.gizzajoyas.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="220" border="0" style="display: block; width: 220px;" src="http://localhost:8000/images/logoemailgizza.png" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -400,7 +400,7 @@
 
                                         <div style="line-height: 24px">
 
-                                            Producto N° {{$productoNumero}}: {{ $cart->product->name }}, {{ $cart->product->brand->name }}, Modelo: {{ $cart->product->model }}
+                                            Producto N° {{$productoNumero}}: {{ $cart->product->name }} {{ (!empty($cart->product->brand->name)) ? ', '.$cart->product->brand->name :'' }} {{ !empty($cart->product->model) ? ', Modelo: '.$cart->product->model :'' }}
 
                                             @if ($cart->product->onSale==true && isset($cart->product->discount))
                                              @php

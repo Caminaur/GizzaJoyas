@@ -166,6 +166,15 @@ Checkout
           <div class="text-center mt-3">
             <button type="submit" id="payButton" class=" btn bg-dandelion">Comprar</button>
           </div>
+
+          <div class="col-auto" hidden>
+            {{-- <label>Moneda</label> --}}
+            <select class="custom-select" name="currency" required hidden>
+                    <option value="ars">
+                      ARS
+                    </option>
+            </select>
+          </div>
         </form>
 
 
@@ -241,7 +250,7 @@ Checkout
         conEnvio.value = "true";
         guessingPaymentMethod('blur');
       })
-      
+
       sinEnvio.addEventListener('click', function(){
         deliveryAddress.classList.add("hidden");
         conEnvio.value = "false";

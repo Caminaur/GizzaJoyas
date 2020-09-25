@@ -60,7 +60,7 @@ class MercadoPagoService
     {
         // Chequeamos que haya productos en el carrito
         $carts = Cart::where('user_id', '=', Auth::user()->id)->get();
-        
+
         if (count($carts)<1) {
           return redirect()
               ->route('checkout')
@@ -94,6 +94,7 @@ class MercadoPagoService
             $request->email,
             $installments
         );
+        
         if ($payment->status === "approved") {
 
             $name = Auth::user()->name; // $payment->payer->first_name;

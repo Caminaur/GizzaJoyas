@@ -27,4 +27,3 @@ Back-end
 - Generarles las API keys de produccion de Mercado Pago
 - Buscar la forma de evitar la ruta delete product por get.
 - Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
-- Error en los email cuando compro 2 productos distintos o mas
