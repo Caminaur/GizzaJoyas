@@ -1,4 +1,4 @@
-{{-- Aqui comienza la navbar sticky --}}
+ comienza la navbar sticky --}}
 
         {{-- navbar principal --}}
         <nav class="uk-flex uk-flex-column" uk-navbar uk-sticky>
@@ -179,10 +179,10 @@
 
             <hr class="uk-divider-small">
 
-            
-            <li><a href="/preguntas" offset="80" uk-scroll>Preguntas Frecuentes</a></li>
-            <li><a href="/nosotros" offset="80" uk-scroll>Nosotros</a></li>
-            <li><a href="/contacto" offset="80" uk-scroll>Contactanos</a></li>
+
+            <li><a href="/preguntas" offset="80">Preguntas Frecuentes</a></li>
+            <li><a href="/nosotros" offset="80">Nosotros</a></li>
+            <li><a href="/contacto" offset="80">Contactanos</a></li>
 
 
             <hr class="uk-divider-small">

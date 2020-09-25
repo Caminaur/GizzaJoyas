@@ -19,11 +19,12 @@ EXTRAS:
 
 front-end
 - Filtros
-- Cambiarle datos a los email templates para cuando esten en el servidor.
+- Cambiarle datos a los email templates para cuando esten en el servidor. Cambiar los datos del env (mercadopago y smtp)
 - Completar las etiquetas A del footer (whatsapp) y ponerle el numero correcto en todos lados donde aparezcan
 
 Back-end
 - Filtros
+- Calculadora de envios
 - Generarles las API keys de produccion de Mercado Pago
 - Buscar la forma de evitar la ruta delete product por get.
 - Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Free shipping, soporte, 30 days return, 100% payment secure.
