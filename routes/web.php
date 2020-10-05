@@ -41,7 +41,7 @@ Route::get('/', function() {
 
   // Nos tiene que traer X cantidad de productos ordenados por fecha
   $nuevos = Product::all()->sortByDesc('created_at')->take(10);
-  
+
   // Nos tiene que traer X cantidad de productos en oferta aleatoriamente
   $ofertas = Product::where('OnSale','=',1)->inRandomOrder()->limit(10)->get();
 
@@ -145,6 +145,8 @@ Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware
 Route::post('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
 
 Route::get('/exportexcel', 'ProductController@exportExcel')->middleware('admin');
+
+Route::post('/importexcel', 'ProductController@importExcel')->middleware('admin');
 
 Route::post('/updateprices', 'ProductController@updatePrice')->middleware('admin');
 

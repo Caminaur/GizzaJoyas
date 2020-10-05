@@ -1,4 +1,4 @@
- comienza la navbar sticky --}}
+ {{-- comienza la navbar sticky --}}
 
         {{-- navbar principal --}}
         <nav class="uk-flex uk-flex-column" uk-navbar uk-sticky>

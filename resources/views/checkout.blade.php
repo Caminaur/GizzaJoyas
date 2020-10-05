@@ -130,7 +130,7 @@ Checkout
               <input class="form-control-checkout" type="text" placeholder="Dirección" name="address" value="">
             </div>
             <div class="col-12 col-md-2 mb-3">
-              <input class="form-control-checkout" type="text" placeholder="CP" name="zipcode" value="">
+              <input id="codigo_postal" class="form-control-checkout" type="text" placeholder="CP" name="zipcode" value="">
             </div>
             <div class="col-12 col-md-2 mb-3">
               <input class="form-control-checkout" type="text" placeholder="Piso" name="floor" value="">
@@ -163,6 +163,9 @@ Checkout
 
           <input type="hidden" id="cardToken" name="card_token">
           {{-- Input oculto que se usa para el JS --}}
+
+          <input type="hidden" id="costo_envio" name="costo_envio" value="">
+
           <div class="text-center mt-3">
             <button type="submit" id="payButton" class=" btn bg-dandelion">Comprar</button>
           </div>
@@ -224,7 +227,23 @@ Checkout
 @endsection
 
 
-
+  <script type="text/javascript">
+    window.addEventListener('load',function(){
+      var costo;
+      const codigo_postal = document.getElementById('codigo_postal');
+      codigo_postal.addEventListener('change', function(){
+        $.ajax({
+         url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1768&zip_code_to=${this.value}&dimensions=16x16x16,1500`,
+         method:'GET',
+         dataType:'json',
+         success:function(data)
+         {
+          costo = data.options[1].cost;
+         } // success
+       }); // ajax
+      });
+    });
+  </script>
 
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
   @push('scripts')
@@ -360,10 +379,22 @@ Checkout
             // Obtenemos el value de conEnvio, si es true le sumamos el valor del envio a las cuotas.
             var conEnvio = document.getElementById("si").value;
             if (conEnvio=="true") {
-              var envio = document.getElementById("shipment").value;
+              const codigo_postal = document.getElementById('codigo_postal').value;
+              $.ajax({
+                 url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1768&zip_code_to=${codigo_postal}&dimensions=16x16x16,1500`,
+                 method:'GET',
+                 dataType:'json',
+                 success:function(data)
+                 {
+                  var costo = document.getElementById('costo_envio');
+                  costo.setAttribute('value',data.options[1].cost);
+                 } // success
+               }); // ajax
               // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
+              var costo = document.getElementById('costo_envio');
+              console.log(costo);
               var compra = document.querySelector('#total').value;
-              var total = parseInt(envio) + parseInt(compra);
+              var total = parseInt(costo) + parseInt(compra);
               // modificamos el valor total del envio y le agregamos el number format
               var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
               $("#total_h4").html(precio_total);

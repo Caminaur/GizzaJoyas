@@ -19,6 +19,7 @@ use App\Gender;
 use App\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
 use App\Traits\ReusableFunctions;
 use Carbon\Carbon;
 
@@ -576,6 +577,13 @@ class ProductController extends Controller
     // https://docs.laravel-excel.com/3.1/getting-started/
     // https://phpspreadsheet.readthedocs.io/
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
+  }
+
+  public function importExcel(Request $req){
+    $file = $req->excel;
+    Excel::import(new ProductsImport, $file);
+
+    return back();
   }
 
   // Funcion utilizada para aumentar o disminuir con un % el precio de determinada categoria o material.

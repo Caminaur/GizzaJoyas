@@ -71,6 +71,14 @@ Panel de Control
         @include('partials.envio')
       </div>
 
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="#importarexcel"  uk-toggle>Importar Productos</a>
+        </div>
+        <!-- Modal importacion de productos -->
+        @include('partials.importproducts')
+      </div>
+
     </div>
 
   </div>

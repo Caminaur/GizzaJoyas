@@ -30,7 +30,7 @@ class ProductsExport implements FromQuery, WithMapping, WithHeadings, WithColumn
         return [
             AfterSheet::class    => function(AfterSheet $event) {
                 $event->sheet->styleCells(
-                    'A1:I1',
+                    'A1:J1',
                     [
                         'borders' => [
                             'outline' => [
@@ -57,6 +57,7 @@ class ProductsExport implements FromQuery, WithMapping, WithHeadings, WithColumn
     public function map($product): array
     {
         return [
+            $product->id,
             $product->name,
             $product->price,
             $product->category->name,
@@ -73,6 +74,7 @@ class ProductsExport implements FromQuery, WithMapping, WithHeadings, WithColumn
     public function headings(): array
     {
         return [
+            'id',
             'Nombre',
             'Precio',
             'Categoria',
