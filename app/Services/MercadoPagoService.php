@@ -79,11 +79,14 @@ class MercadoPagoService
 
         // Obtenemos el valor real mediante el metodo realPriceWithDelivery
         // Para protegernos en caso de edicion del total
-
-        // Esta variable nos trae el valor de la compra con el envio incluido (si posee) pero sin el interes (si posee).
-        // Le pasamos los carritos para calcular el total y le pasamos la request para ver si envio es true o false
-        $totalSinInteres = realPriceWithDelivery($carts, $request);
-
+        if ($request->envio == "true") {
+          $totalSinInteres = intval($request->amount) + intval($request->shipment);
+        }
+        else {
+          // Esta variable nos trae el valor de la compra con el envio incluido (si posee) pero sin el interes (si posee).
+          // Le pasamos los carritos para calcular el total y le pasamos la request para ver si envio es true o false
+          $totalSinInteres = intval($request->amount);
+        }
         $installments = intval($request->installments);
 
         $payment = $this->createPayment(
@@ -94,7 +97,7 @@ class MercadoPagoService
             $request->email,
             $installments
         );
-        
+
         if ($payment->status === "approved") {
 
             $name = Auth::user()->name; // $payment->payer->first_name;

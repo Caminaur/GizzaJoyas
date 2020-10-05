@@ -145,6 +145,7 @@ Checkout
               <label for="installments">Cuotas:</label>
               <select id="installments" class="form-control-checkout" name="installments"></select>
             </div>
+            <div hidden id="errores_cp" class="col-12"></div>
             <input type="hidden" name="amount" id="total" value={{getTotalPrice($carts)}} />
             <input type="hidden" name="description"/>
             <input type="hidden" name="paymentMethodId"/>
@@ -163,8 +164,6 @@ Checkout
 
           <input type="hidden" id="cardToken" name="card_token">
           {{-- Input oculto que se usa para el JS --}}
-
-          <input type="hidden" id="costo_envio" name="costo_envio" value="">
 
           <div class="text-center mt-3">
             <button type="submit" id="payButton" class=" btn bg-dandelion">Comprar</button>
@@ -214,7 +213,7 @@ Checkout
         </div>
         <div id="shipment_div" hidden class="d-flex justify-content-between">
           <h6>Envío</h6>
-          <h6>${{$shipment}}</h6>
+          <h6 id="costos_de_envio">${{$shipment}}</h6>
         </div>
         <div class="d-flex justify-content-between">
           <h4 class="bold">Total</h4>
@@ -258,17 +257,22 @@ Checkout
       var sinEnvio = document.getElementById("no");
       var deliveryAddress = document.getElementById("deliveryAddress");
       var inputs = document.getElementById("deliveryAddress").getElementsByTagName('input');
-
+      const codigo_postal = document.getElementById('codigo_postal');
 
       if (conEnvio.hasAttribute('checked')) {
         deliveryAddress.classList.remove("hidden");
       }
 
+      codigo_postal.addEventListener('change', function(){
+        conEnvio.value = "true";
+        guessingPaymentMethod('blur');
+      });
+
       conEnvio.addEventListener('click', function(){
         deliveryAddress.classList.remove("hidden");
         conEnvio.value = "true";
         guessingPaymentMethod('blur');
-      })
+      });
 
       sinEnvio.addEventListener('click', function(){
         deliveryAddress.classList.add("hidden");
@@ -386,24 +390,48 @@ Checkout
                  dataType:'json',
                  success:function(data)
                  {
-                  var costo = document.getElementById('costo_envio');
-                  costo.setAttribute('value',data.options[1].cost);
-                 } // success
-               }); // ajax
-              // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
-              var costo = document.getElementById('costo_envio');
-              console.log(costo);
-              var compra = document.querySelector('#total').value;
-              var total = parseInt(costo) + parseInt(compra);
-              // modificamos el valor total del envio y le agregamos el number format
-              var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
-              $("#total_h4").html(precio_total);
-              $("#shipment_div").removeAttr('hidden');
+                   // habilitar boton de compra
+                   document.getElementById('payButton').removeAttribute('disabled');
+                   // ocultamos el mensaje de error si existe
+                   document.getElementById('errores_cp').innerHTML = "";
+                   document.getElementById('errores_cp').setAttribute('hidden','true');
 
-              Mercadopago.getInstallments({
-                "bin": getBin(),
-                "amount": parseFloat(total),
-              }, setInstallmentInfo);
+                   // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
+                   var costo = (data.options[1].cost);
+                   var compra = document.querySelector('#total').value;
+                   var total = parseInt(costo) + parseInt(compra);
+                   // modificamos el valor total del envio y le agregamos el number format
+                   var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
+                   $("#total_h4").html(precio_total);
+                   $("#shipment_div").removeAttr('hidden');
+                   document.getElementById('shipment').value = costo;
+                   document.getElementById('costos_de_envio').innerHTML = "$ " + costo;
+                   Mercadopago.getInstallments({
+                     "bin": getBin(),
+                     "amount": parseFloat(total),
+                   }, setInstallmentInfo);
+                 } // success
+                 , error:function() {
+                   // inhabilitar el boton de compra
+                   document.getElementById('payButton').setAttribute('disabled',true);
+
+                   // mostrar un mensaje de error
+                   let div_errores = document.getElementById('errores_cp');
+                   div_errores.innerHTML = "";
+                   div_errores.removeAttribute('hidden');
+                   let error_cp = document.createElement('p');
+                   error_cp.innerHTML = "Por favor ingrese un código postal válido";
+                   div_errores.appendChild(error_cp);
+
+                   // deshabilitamos las cuotas disponibles
+                   document.getElementById('installments').innerHTML = "";
+
+                   var precio_total = parseInt(document.querySelector('#total').value);
+                   var precio_total = '$' + formatNumber( (precio_total) , 0 , '.' , ',' );
+                   $("#total_h4").html(precio_total);
+                   $("#shipment_div").attr('hidden',true);
+                 }
+               }); // ajax
             }
             else {
               var precio_total = parseInt(document.querySelector('#total').value);
