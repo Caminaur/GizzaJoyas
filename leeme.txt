@@ -24,6 +24,6 @@ front-end
 
 Back-end
 - Filtros
-- Calculadora de envios
+- Controlar que los campos de precio y descuento se envien correctamente en el excel import, en caso contrario que se mantengan los valores previos
 - Buscar la forma de evitar la ruta delete product por get.
 - Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Soporte, 100% payment secure, atencion personalizada.
