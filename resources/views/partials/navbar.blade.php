@@ -10,8 +10,8 @@
             <div class="uk-width-1-3 uk-flex justify-content-start">
 
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
-              <form class="uk-visible@m uk-search uk-search-default uk-margin-left">
-                <span uk-search-icon></span>
+              <form id="form_busqueda" class="uk-visible@m uk-search uk-search-default uk-margin-left">
+                <button type="button" id="search_button" uk-search-icon></button>
                 <input id="search" name="search" class="uk-search-input" type="text" placeholder="Buscar...">
               </form>
 

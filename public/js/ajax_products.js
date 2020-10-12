@@ -1,9 +1,28 @@
 window.addEventListener('load',function(){
 $(document).ready(function(){
-  $('#search').keyup(function(e){
+  // $('#search').keyup(function(e){
+  //   document.getElementById('prueba_ajax').innerHTML = "";
+  //   fetch_customer_data(this.value);
+  // });
+  $('#search_button').click(function(e){
+    e.preventDefault();
+    var query = $('#search').val();
+    if (query==='') {
+      fetch_customer_data();
+    }
     document.getElementById('prueba_ajax').innerHTML = "";
-    fetch_customer_data(this.value);
+    fetch_customer_data(query);
+  })
+  $('#form_busqueda').submit(function(e){
+    e.preventDefault();
+    var query = $('#search').val();
+    if (query==='') {
+      fetch_customer_data();
+    }
+    document.getElementById('prueba_ajax').innerHTML = "";
+    fetch_customer_data(query);
   });
+
   function fetch_customer_data(query = ''){
     $.ajax({
      url:'/live_search/action',
@@ -12,6 +31,7 @@ $(document).ready(function(){
      dataType:'json',
      success:function(data)
      {
+       console.log(data);
       // Traemos los productos buscados
       $('#prueba_ajax').html(data.table_data);
       // Agregamos la funcionalidad de faves a la busqueda realizada
@@ -87,12 +107,17 @@ $(document).ready(function(){
             // Agregamos la funcionalidad de faves a la busqueda realizada
             faves();
           } // success
-
+          , error:function(){
+            $('#paginas').html('<tr><td align="center" colspan="5">No hay productos</td></tr>');
+          }
         }); // Ajax
 
       }); // .paginas-item click
 
    } // success
+   , error:function(){
+     $('#paginas').html('<h3 align="center" style="font-weight: bolder" colspan="5">No se encontraron productos</h3>');
+   }
    }); // ajax
  } // fetch_customer_data
 }); // ready

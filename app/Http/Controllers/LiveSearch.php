@@ -17,8 +17,14 @@ class LiveSearch extends Controller
    if($request->ajax())
    {
     $output = '';
-    $query = $request->get('query');
-    if(!empty($query) || $query!='')
+
+    if ( isset($request->query) ) {
+      $query = $request->get('query');
+    } else {
+      $query = false;
+    }
+
+    if(!empty($query) || $query!='' || $query==false)
     {
      $data = Product::where('name', 'like', "%$query%")
        ->orWhere('description', 'like', "%$query%")
@@ -263,21 +269,31 @@ class LiveSearch extends Controller
                 '<ul class="pagination">
                   '.$paginas.'
                 </ul class="pagination">';
+
+    // lo transformamos en un array
+    $data = array(
+      'table_data'  => $output,
+      'paginas' => $paginas,
+      'pagina_id' => 1,
+    );
+
     }
     else
     {
+
      $output = '
       <tr>
         <td align="center" colspan="5">No hay productos</td>
       </tr>
      ';
+
+     $data = array(
+       'table_data'  => $output,
+       'paginas' => '',
+       'pagina_id' => 1,
+     );
+
     }
-    // lo transformamos en un array
-    $data = array(
-     'table_data'  => $output,
-     'paginas' => $paginas,
-     'pagina_id' => 1,
-    );
     // lo transformamos en json y lo imprimimos
     echo json_encode($data);
     } // if ajax

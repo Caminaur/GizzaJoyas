@@ -18,7 +18,7 @@
         <label for="file-upload" class="subir">
         <i class="fas fa-cloud-upload-alt"></i> Subir excel
         </label>
-        <input type="file" id="file-upload" onchange='change()' style='display: none;' class="sin-archivo"  name="excel" value="">
+        <input type="file" id="file-upload" onchange='change()' style='display: none;' class="sin-archivo"  name="excel" value="" required>
       <div class="">
         <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
         <button class="uk-button uk-button-primary" type="submit">Actualizar</button>

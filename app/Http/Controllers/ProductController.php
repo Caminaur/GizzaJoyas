@@ -48,7 +48,7 @@ class ProductController extends Controller
   }
   // Traemos todos los productos con sus categorias
   public function products(){
-    $products = Product::paginate(4);
+    $products = Product::paginate(6);
     $categories = Category::all();
     $materials = Material::all();
     $vac = compact('products','categories','materials');
@@ -581,9 +581,15 @@ class ProductController extends Controller
 
   public function importExcel(Request $req){
     $file = $req->excel;
-    Excel::import(new ProductsImport, $file);
 
-    return back();
+    try {
+      Excel::import(new ProductsImport, $file);
+    } catch (\Exception $e) {
+      return back()->with('error','Hubo un error al actualizar los productos');
+    }
+
+
+    return back()->with('status', 'Productos actualizados correctamente!');
   }
 
   // Funcion utilizada para aumentar o disminuir con un % el precio de determinada categoria o material.
