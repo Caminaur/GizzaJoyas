@@ -578,7 +578,7 @@
 
                                             Escribinos: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">info@gizzajoyas.com</a>
                                             <br/>Llamanos: <br/> <a href="tel:+549-11-54126300" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;"> 1165966303</a>
-                                            <br/>Visitanos de Lun a Sáb. de 16hs a 20hs <br/> <a href="https://www.google.com.ar/maps/place/Av.+Boulogne+Sur+Mer+1273,+B1768AAJ+Tapiales,+Provincia+de+Buenos+Aires/@-34.6969539,-58.5105969,17z/data=!3m1!4b1!4m5!3m4!1s0x95bcced589206cc1:0xa6cefad497f37091!8m2!3d-34.6969539!4d-58.5084082" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;" target="_blank">A. Rojas 36 1er piso, Monte Grande </a>
+                                            <br/>Visitanos de Lun a Sáb. de 9:30 a 13:00 y de 16:00 a 19:00 hs <br/> <a href="https://www.google.com.ar/maps/place/Av.+Boulogne+Sur+Mer+1273,+B1768AAJ+Tapiales,+Provincia+de+Buenos+Aires/@-34.6969539,-58.5105969,17z/data=!3m1!4b1!4m5!3m4!1s0x95bcced589206cc1:0xa6cefad497f37091!8m2!3d-34.6969539!4d-58.5084082" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;" target="_blank">Av. Boulogne Sur Mer 1273, Tapiales</a>
 
                                         </div>
                                     </td>
