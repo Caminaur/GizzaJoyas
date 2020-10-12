@@ -291,7 +291,6 @@ Checkout
             mercadoPago.getPaymentMethod(
                 { "bin": cardNumber.value.substring(0,6) },
                 function(status, response) {
-                    console.log(status,response);
                     const cardNetwork = document.getElementById("cardNetwork");
                     cardNetwork.value = response[0].id;
                 }

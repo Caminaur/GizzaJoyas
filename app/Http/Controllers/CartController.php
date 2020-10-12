@@ -99,7 +99,7 @@ class CartController extends Controller
 
       // Lo eliminamos de favoritos si estaba likeado
 
-      if (!empty($favourites)) {
+      if (!empty($favourites[0])) {
         $favourites[0]->delete();
       }
 
