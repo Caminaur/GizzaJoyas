@@ -88,7 +88,6 @@ class MercadoPagoService
           // Le pasamos los carritos para calcular el total y le pasamos la request para ver si envio es true o false
           $totalSinInteres = intval($request->amount);
         }
-        
         $installments = intval($request->installments);
 
         $payment = $this->createPayment(
@@ -118,7 +117,6 @@ class MercadoPagoService
 
               // Restar del stock
               $this->restarStock();
-
             if ($payment->installments>1) {
               return redirect()
                   ->route('checkout')

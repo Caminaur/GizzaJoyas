@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Favourite;
 use App\Size;
 use App\Stock;
 use App\Cart;
@@ -54,6 +55,11 @@ class CartController extends Controller
                               ->first()
                               ->quantity;
 
+    // Buscamos si ese producto se encuentra en favoritos, en caso de que lo este, lo borramos
+    $favourites = Favourite::where('product_id','=',$req->product_id)
+                          ->where('user_id','=',Auth::user()->id)
+                          ->get();
+
     // Busca todos los productos en el carrito del usuario que coincidan con el size_id y product_id de la request
     $cart = Cart::where('user_id','=',Auth::user()->id)
                 ->where('product_id','=',$product->id)
@@ -90,6 +96,13 @@ class CartController extends Controller
         return redirect('/cart');
       }
       $cart->save();
+
+      // Lo eliminamos de favoritos si estaba likeado
+
+      if (!empty($favourites)) {
+        $favourites[0]->delete();
+      }
+
       // devolvemos la vista del carrito
       return redirect('/cart');
     }
