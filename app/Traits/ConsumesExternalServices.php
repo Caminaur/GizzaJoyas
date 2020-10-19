@@ -31,10 +31,8 @@ trait ConsumesExternalServices
           if (method_exists($this, 'decodeResponse')) {
             $response = $this->decodeResponse($response);
           }
-
           return $response;
         } catch (\Exception $e) {
-          // dd($e);
           return view("checkout");
         }
 

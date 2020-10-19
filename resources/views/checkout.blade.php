@@ -41,7 +41,7 @@ Checkout
         <button href="#toggle-animation" class="uk-button uk-button-default mercadopago-payment-button" type="button" uk-toggle="target: #toggle-animation; animation: uk-animation-fade">Mercado Pago <img src=/img/mpicono.jpeg style="padding-bottom: 2px; width: 30px;"></button>
         {{-- Whatsapp --}}
         <a class="uk-button uk-button-default whatsapp-payment-button"
-        href="https://api.whatsapp.com/send?phone=5491158291281&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para ordenarles lo siguiente:@foreach ($carts as $cart) *Producto Nº{{$contador}}*@if(isset($cart->product->brand->name)) _Marca:_ {{$cart->product->brand->name}}@endif, _Nombre:_ {{$cart->product->name}}, _Modelo:_ {{$cart->product->model}}, _Cantidad:_ {{$cart->quantity}}, _Talle:_ {{$cart->size->name}} @php $contador++ @endphp @endforeach
+        href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para ordenarles lo siguiente:@foreach ($carts as $cart) *Producto Nº{{$contador}}*@if(isset($cart->product->brand->name)) _Marca:_ {{$cart->product->brand->name}}@endif, _Nombre:_ {{$cart->product->name}}, _Modelo:_ {{$cart->product->model}}, _Cantidad:_ {{$cart->quantity}}, _Talle:_ {{$cart->size->name}} @php $contador++ @endphp @endforeach
 *Total de la compra: ${{$total}}*" target="_blank">Whatsapp <i class="fab fa-whatsapp" target="_blank" style="font-size: 19px; color:#25D366;"></i></a>
       </div>
 
@@ -149,7 +149,7 @@ Checkout
             <input type="hidden" name="amount" id="total" value={{getTotalPrice($carts)}} />
             <input type="hidden" name="description"/>
             <input type="hidden" name="paymentMethodId"/>
-            <input type="hidden" name="shipment" id="shipment" value="{{$shipment}}">
+            <input type="hidden" name="shipment" id="shipment" value="">
           </div>
 
           {{-- Aqui se muestran los error que puedan existir y va a ser establecido desde el JS --}}
@@ -277,6 +277,9 @@ Checkout
       sinEnvio.addEventListener('click', function(){
         deliveryAddress.classList.add("hidden");
         conEnvio.value = "false";
+        // habilitar boton de compra
+        document.getElementById('payButton').removeAttribute('disabled');
+
         guessingPaymentMethod('blur');
         for (input of inputs) {
           input.value="";

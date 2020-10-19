@@ -498,7 +498,7 @@
                 <div style="line-height: 24px">
 
               @if ($purchases->envio=="true")
-                <p>Costo de envío ${{$shipment}}</p>
+                <p>Costo de envío ${{$purchases->shipment}}</p>
               @else
                 <p>El cliente eligió retirar su compra por el showroom</p>
               @endif
@@ -622,15 +622,15 @@
                                       <table border="0" align="right" cellpadding="0" cellspacing="0">
                                           <tr>
                                               <td>
-                                                  <a href="https://www.facebook.com/Il-nato-197855791106400/" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/facebook.png" alt=""></a>
+                                                  <a href="https://www.facebook.com/gizza.joyas" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/facebook.png" alt=""></a>
                                               </td>
                                               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                               <td>
-                                                  <a href="https://www.instagram.com/il_nato_sneakers/" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/instagram.png" alt=""></a>
+                                                  <a href="https://www.instagram.com/gizzajoyas/" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/instagram.png" alt=""></a>
                                               </td>
                                               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                               <td>
-                                                  <a href="https://api.whatsapp.com/send?phone=5491165966303&text=Hola, estoy contactandolos desde IL Nato Tienda Online" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/whatsapp.png" alt=""></a>
+                                                  <a href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde Gizza Joyas y Relojes Tienda Online" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/whatsapp.png" alt=""></a>
                                               </td>
                                           </tr>
                                       </table>
@@ -694,7 +694,7 @@
                                             <tr>
                                                 <td align="center">
                                                     <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #6B799E; text-decoration: none;font-weight:bold;"
-                                                        href="https://www.ilnato.com">SUSCRIBITE A NUESTRO NEWSLETTER</a>
+                                                        href="https://www.gizzajoyas.com">SUSCRIBITE A NUESTRO NEWSLETTER</a>
                                                 </td>
                                             </tr>
                                         </table>

@@ -499,7 +499,7 @@
                 <div style="line-height: 24px">
 
                   @if ($purchases->envio==="true")
-                    <p>Costo de envío ${{$shipment}}</p>
+                    <p>Costo de envío ${{$purchases->shipment}}</p>
                   @else
                     <p>Te esperamos en nuestro showroom para retirar tu compra</p>
                   @endif
@@ -577,7 +577,7 @@
                                         <div style="color: #333333; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 600; mso-line-height-rule: exactly; line-height: 23px;">
 
                                             Escribinos: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">info@gizzajoyas.com</a>
-                                            <br/>Llamanos: <br/> <a href="tel:+549-11-54126300" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;"> 1165966303</a>
+                                            <br/>Llamanos: <br/> <a href="tel:+549-11-54126300" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;"> 1124821816</a>
                                             <br/>Visitanos de Lun a Sáb. de 9:30 a 13:00 y de 16:00 a 19:00 hs <br/> <a href="https://www.google.com.ar/maps/place/Av.+Boulogne+Sur+Mer+1273,+B1768AAJ+Tapiales,+Provincia+de+Buenos+Aires/@-34.6969539,-58.5105969,17z/data=!3m1!4b1!4m5!3m4!1s0x95bcced589206cc1:0xa6cefad497f37091!8m2!3d-34.6969539!4d-58.5084082" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;" target="_blank">Av. Boulogne Sur Mer 1273, Tapiales</a>
 
                                         </div>
@@ -619,7 +619,7 @@
                                                 </td>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                 <td>
-                                                    <a href="https://api.whatsapp.com/send?phone=5491165966303&text=Hola, estoy contactandolos desde Gizza Joyas y Relojes Tienda Online" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/whatsapp.png" alt=""></a>
+                                                    <a href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde Gizza Joyas y Relojes Tienda Online" target="_blank" style="display: block; border-style: none !important; border: 0 !important;"><img width="24" border="0" style="display: block;" src="http://www.ilnato.com/img/redes/whatsapp.png" alt=""></a>
                                                 </td>
                                             </tr>
                                         </table>

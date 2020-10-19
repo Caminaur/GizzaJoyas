@@ -27,3 +27,8 @@ Back-end
 - Buscar la forma de evitar la ruta delete product por get.
 - Hacer textos de slider index y tambien Preguntar whatsapp y pedirles info de las 4 columnas de index : Soporte, 100% payment secure, atencion personalizada.
 - h4 with 100% cuando no hay productos en el carrito
+
+
+Toques finales
+
+- Cambiar los src de ilnato en los mails
