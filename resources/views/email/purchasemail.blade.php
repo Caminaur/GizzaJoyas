@@ -178,7 +178,7 @@
 
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
-                                        <a href="https://www.gizzajoyas.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="220" border="0" style="display: block; width: 220px;" src="http://localhost:8000/images/logoemailgizza.png" alt="" /></a>
+                                        <a href="https://www.gizzajoyas.com" style="display: block; border-style: none !important; border: 0 !important;"><img width="220" border="0" style="display: block; width: 220px;" src="https://gizzajoyas.com/images/logoemailgizza.png" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -223,7 +223,7 @@
                     <tr>
 
                         <td align="center" class="section-img">
-                            <img src="http://localhost:8000/images/gizza0.jpg" style="display: block; width: 590px;" width="590" border="0" alt="" />
+                            <img src="https://gizzajoyas.com/images/gizza0.jpg" style="display: block; width: 590px;" width="590" border="0" alt="" />
                         </td>
                     </tr>
                     <tr>
@@ -563,7 +563,7 @@
                                 <tr>
                                     <!-- logo -->
                                     <td align="left">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="80" border="0" style="display: block; width: 125px;" src="http://localhost:8000/images/logoemailgizza.png" alt="" /></a>
+                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="80" border="0" style="display: block; width: 125px;" src="https://gizzajoyas.com/images/logoemailgizza.png" alt="" /></a>
                                     </td>
                                 </tr>
 
