@@ -10,10 +10,7 @@ EXTRAS:
 - Manejar cookies con laravel (Lograr que la barra de promociones no se muestre al cerrarla y recargar la pagina) setcookie()
 - Podemos lograr que el usuario llegue al checkout sin estar registrado, generando un id y un carrito relacionado con el id?
 - MercadoEnvios
-- Cuotas sin interes?
 - Agregar Contacts a la base de datos para generar un newsletter
-- Loguearse con redes sociales / google
-- Crear la columna precio de la DB con un formato 1.000 (punto cada 3 numeros) asi evitamos usar el number format en el front
 - La tabla de cart seria una tabla que relacionaria UN usuario con UN carrito. Y habria otra tabla intermedia productoEnCarrito que relacionaria varios productos con varios carritos carrito (maybe) con un usuario
 - Producto/nombre , hay que hacer el product->name unique para mejorar el SEO de Google (Para esto deberia ser unique el nombre)
 
