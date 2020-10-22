@@ -71,16 +71,16 @@ Producto
 
               <div class="detalles-compra pt-3">
                 <div class="def-number-input number-input safari_only d-inline-flex">
-                  <button name='cantidad' type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                  <input id="quantity" class="quantity" min="0" name="quantity" value="1" type="number">
-                  <button name='cantidad' type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                  <button name='cantidad' type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus" @if (!hasStock($product)) disabled='true'@endif></button>
+                  <input id="quantity" class="quantity" min="0" name="quantity" type="number" @if (!hasStock($product)) disabled='true' value="0"  @else value="1" @endif>
+                  <button name='cantidad' type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" @if (!hasStock($product)) disabled='true'@endif></button>
                 </div>
                 <select id="select_size" class="size" name="size_id">
                   {{-- En caso de que no haya stock de ningun talle, le agregamos esta opcion
                   ya que se ve afectada la estetica, por esto esta opcion va a ser la unica
                   habilitada en este caso --}}
                   @if (!hasStock($product))
-                    <option value="">--</option>
+                    <option >--</option>
                   @endif
                   {{-- Recorremos todos los stocks del producto --}}
                   @foreach ($product->stocks as $stock)
@@ -116,7 +116,9 @@ Producto
                   <button id="comprar_button" class="btn bg-dandelion" type="submit">Comprar</button>
                 @else
                   {{-- Si no hay stock muestro este mensaje --}}
-                  <a class="btn border-ashBlue mt-4" href="#">Solicitar stock</a>
+                  <a class="btn border-ashBlue"
+                  href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto: @if(isset($product->brand->name)) _Marca:_ {{$product->brand->name}}@endif, _Nombre:_ {{$product->name}}, @if(isset($product->model)) _Modelo:_ {{$product->model}} @endif"
+                  >Solicitar stock</a>
                 @endif
 
               </div>

@@ -109,42 +109,36 @@ class LiveSearch extends Controller
            <a class="rounded-icon ico" href="/editproduct/'.$row->id.'"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span>
            </a>
          </li>
-         <li>
-           <a class="rounded-icon ico" href="/copy">
-             <span class="hvr-pulse-shrink" uk-icon="icon: copy">
-             </span>
-           </a>
-         </li>
-         <li>
-           <!-- This is a anchor toggling the modal -->
-           <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
-             <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
-           </a>
-         </li>
-         <!-- This is the modal -->
-         <div id="confirm'.$row->id.'" uk-modal>
-
-           <div class="uk-modal-dialog">
-             <button class="uk-modal-close-default" type="button" uk-close></button>
-
-             <div class="uk-modal-header">
-                 <h2 class="uk-modal-title">Confirmación</h2>
-             </div>
-
-             <div class="uk-modal-body">
-               <p>"Esta seguro que desea eliminar el producto?"</p>
-             </div>
-
-             <div class="uk-modal-footer uk-text-right">
-               <form action="/deleteproduct/'.$row->id.'" method="get">
-                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                 <input type="hidden" name="product_id" value="'.$row->id.'">
-                 <button class="uk-button uk-button-primary" type="submit">Borrar</button>
-               </form>
-             </div>
-           </div>
-         </div>
          ';
+         // <li>
+         // <!-- This is a anchor toggling the modal -->
+         // <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
+         // <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
+         // </a>
+         // </li>
+         // <!-- This is the modal -->
+         // <div id="confirm'.$row->id.'" uk-modal>
+         //
+         // <div class="uk-modal-dialog">
+         // <button class="uk-modal-close-default" type="button" uk-close></button>
+         //
+         // <div class="uk-modal-header">
+         // <h2 class="uk-modal-title">Confirmación</h2>
+         // </div>
+         //
+         // <div class="uk-modal-body">
+         // <p>"Esta seguro que desea eliminar el producto?"</p>
+         // </div>
+         //
+         // <div class="uk-modal-footer uk-text-right">
+         // <form action="/deleteproduct/'.$row->id.'" method="get">
+         // <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+         // <input type="hidden" name="product_id" value="'.$row->id.'">
+         // <button class="uk-button uk-button-primary" type="submit">Borrar</button>
+         // </form>
+         // </div>
+         // </div>
+         // </div>
        }
        else {
          $texto_usuario_admin = "";
@@ -166,9 +160,13 @@ class LiveSearch extends Controller
 
        // Stock
        if (!hasStock($row)) {
+
          $texto_stock = '
-           <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+           <a class="btn border-ashBlue"
+           href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto: _Marca:_ ' . $row->brand->name . ', _Nombre:_ '.$row->name.', '. $row->model . '_Modelo:_ ' . $row->model . '"
+           >Solicitar stock</a>
          ';
+
        }
        else {
          $texto_stock = '';
@@ -447,42 +445,42 @@ class LiveSearch extends Controller
              <a class="rounded-icon ico" href="/editproduct/'.$row->id.'"><span class="hvr-pulse-shrink" uk-icon="icon: pencil"></span>
              </a>
            </li>
-           <li>
-             <a class="rounded-icon ico" href="/copy">
-               <span class="hvr-pulse-shrink" uk-icon="icon: copy">
-               </span>
-             </a>
-           </li>
-           <li>
-             <!-- This is a anchor toggling the modal -->
-             <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
-               <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
-             </a>
-           </li>
-           <!-- This is the modal -->
-           <div id="confirm'.$row->id.'" uk-modal>
-
-             <div class="uk-modal-dialog">
-               <button class="uk-modal-close-default" type="button" uk-close></button>
-
-               <div class="uk-modal-header">
-                   <h2 class="uk-modal-title">Confirmación</h2>
-               </div>
-
-               <div class="uk-modal-body">
-                 <p>"Esta seguro que desea eliminar el producto?"</p>
-               </div>
-
-               <div class="uk-modal-footer uk-text-right">
-                 <form action="/deleteproduct/'.$row->id.'" method="get">
-                   <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                   <input type="hidden" name="product_id" value="'.$row->id.'">
-                   <button class="uk-button uk-button-primary" type="submit">Borrar</button>
-                 </form>
-               </div>
-             </div>
-           </div>
            ';
+           // <li>
+           // <a class="rounded-icon ico" href="/copy">
+           // <span class="hvr-pulse-shrink" uk-icon="icon: copy">
+           // </span>
+           // </a>
+           // </li>
+           // <li>
+           // <!-- This is a anchor toggling the modal -->
+           // <a class="rounded-icon ico" href="#confirm'.$row->id.'" uk-toggle>
+           // <span class="hvr-pulse-shrink" uk-icon="icon: trash"></span>
+           // </a>
+           // </li>
+           // <!-- This is the modal -->
+           // <div id="confirm'.$row->id.'" uk-modal>
+           //
+           // <div class="uk-modal-dialog">
+           // <button class="uk-modal-close-default" type="button" uk-close></button>
+           //
+           // <div class="uk-modal-header">
+           // <h2 class="uk-modal-title">Confirmación</h2>
+           // </div>
+           //
+           // <div class="uk-modal-body">
+           // <p>"Esta seguro que desea eliminar el producto?"</p>
+           // </div>
+           //
+           // <div class="uk-modal-footer uk-text-right">
+           // <form action="/deleteproduct/'.$row->id.'" method="get">
+           // <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+           // <input type="hidden" name="product_id" value="'.$row->id.'">
+           // <button class="uk-button uk-button-primary" type="submit">Borrar</button>
+           // </form>
+           // </div>
+           // </div>
+           // </div>
          }
          else {
            $texto_usuario_admin = "";
@@ -505,7 +503,9 @@ class LiveSearch extends Controller
          // Stock
          if (!hasStock($row)) {
            $texto_stock = '
-             <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+             <a class="btn border-ashBlue"
+             href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto:'. $product->brand->name . '_Marca:_ ' .$product->brand->name . ', _Nombre:_ '.$product->name.', '. $product->model . '_Modelo:_ ' . $product->model . '"
+             >Solicitar stock</a>
            ';
          }
          else {

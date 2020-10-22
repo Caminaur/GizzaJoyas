@@ -41,7 +41,7 @@ class FaqController extends Controller
     $faq = Faq::find($req->id);
     $faq->title = $req->title;
     $faq->description = $req->description;
-
+    
     if (!empty($req['image'])) {
 
       // Capturo la imagen vieja, si es que tiene una

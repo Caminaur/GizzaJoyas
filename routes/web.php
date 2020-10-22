@@ -140,7 +140,7 @@ Route::put('/editproduct/{id}', 'ProductController@update')->middleware('admin')
 
 Route::post('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin');
 
-Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin'); // este fue agregado porque sino se rompia el modal
+// Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct')->middleware('admin'); // este fue agregado porque sino se rompia el modal
 
 Route::post('/deleteimage/{id}','ProductController@deleteImage')->middleware('admin');
 

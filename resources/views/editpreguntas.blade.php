@@ -91,8 +91,8 @@ Editar Preguntas Frecuentes
           <div class="my-3 row justify-content-center">
             <div class="form-group-checkout">
               <label for="">Agregar imagen:</label><br>
-              <label for="file-upload" class="subir"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</label>
-              <input type="file" id="file-upload" onchange='change()' style='display: none;' class="sin-archivo"  name="image" value="">
+              <label for="file-upload{{$faq->id}}" class="subir"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</label>
+              <input type="file" id="file-upload{{$faq->id}}" onchange='change()' style='display: none;' class="sin-archivo"  name="image" value="">
               <div id="info"></div>
               @error('image')
                 <p class="errorForm">{{ $message }}</p>

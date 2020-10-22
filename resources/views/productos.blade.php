@@ -136,7 +136,9 @@ Productos
               @endif
             {{-- Si no hay stock muestro este mensaje --}}
             @if (!hasStock($product))
-              <a class="btn border-ashBlue" href="#">Solicitar stock</a>
+              <a class="btn border-ashBlue"
+              href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto: @if(isset($product->brand->name)) _Marca:_ {{$product->brand->name}}@endif, _Nombre:_ {{$product->name}}, @if(isset($product->model)) _Modelo:_ {{$product->model}} @endif"
+              >Solicitar stock</a>
             @endif
 
           </div>
