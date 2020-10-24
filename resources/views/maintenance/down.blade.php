@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	{{-- <link rel="icon" type="image/png" href="/mantenimiento/images/icons/favicon.ico"/> --}}
+	<!-- Icono del logo en pestana --><link rel="icon" type="image/png" href="/img/diamante.svg">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/mantenimiento/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
