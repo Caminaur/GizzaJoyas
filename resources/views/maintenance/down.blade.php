@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Coming Soon 12</title>
+	<title>Ya volvemos!</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/mantenimiento/images/icons/favicon.ico"/>
+	{{-- <link rel="icon" type="image/png" href="/mantenimiento/images/icons/favicon.ico"/> --}}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/mantenimiento/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -587,13 +587,13 @@ RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE
 
 
 <!--===============================================================================================-->
-	<script src="/mantenimientovendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/mantenimiento/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/mantenimientovendor/bootstrap/js/popper.js"></script>
+	<script src="/mantenimiento/vendor/bootstrap/js/popper.js"></script>
 <!--===============================================================================================-->
-	<script src="/mantenimientovendor/select2/select2.min.js"></script>
+	<script src="/mantenimiento/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/mantenimientovendor/tilt/tilt.jquery.min.js"></script>
+	<script src="/mantenimiento/vendor/tilt/tilt.jquery.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/mantenimientojs/main.js"></script>
 	<!-- Bootstrap JS -->
