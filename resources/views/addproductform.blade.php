@@ -7,7 +7,7 @@ Agregar Producto
   <!-- Vista de agregar producto -->
 
   <ul class="uk-breadcrumb px-4 pt-2">
-    <li><a href="/controlpanel">Volver</a></li>
+    <li><a href="/adminpanel">Volver</a></li>
     <li><span class="dandelion">Agregar Producto</span></li>
   </ul>
 

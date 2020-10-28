@@ -243,7 +243,7 @@ Route::post('/deletegender','GenderController@delete')->middleware('admin');
 
 // Admin
 
-Route::get('/controlpanel','UserController@cpanel')->middleware('admin');
+Route::get('/adminpanel','UserController@cpanel')->middleware('admin');
 
 Route::get('/favoritos','UserController@favoritos')->middleware('auth');
 

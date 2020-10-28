@@ -63,7 +63,7 @@
 
                 @if (Auth::user())
                   @if (Auth::user()->isAdmin == true)
-                    <li><a class="navlink blueSlate {{ request()->is('controlpanel') ? 'active' : '' }}" href="/controlpanel"><i class="pe-7s-config pe-2x"></i></a></li>
+                    <li><a class="navlink blueSlate {{ request()->is('controlpanel') ? 'active' : '' }}" href="/adminpanel"><i class="pe-7s-config pe-2x"></i></a></li>
                   @endif
                   <li><a class="navlink blueSlate {{ request()->is('profile') ? 'active' : '' }}" href="/profile"><i class="hvr-shrink pe-7s-user-female pe-2x blueSlate"></i></a></li>
                     <div uk-dropdown>
@@ -189,7 +189,7 @@
 
             @if (Auth::user())
               @if (Auth::user()->isAdmin == true)
-              <li><a href="/controlpanel"><i class="pe-7s-config pe-2x"></i></a></li>
+              <li><a href="/adminpanel"><i class="pe-7s-config pe-2x"></i></a></li>
               @endif
               <li class="uk-parent">
                 <a href="#"><i class="hvr-shrink pe-7s-user-female pe-2x"></i></a>

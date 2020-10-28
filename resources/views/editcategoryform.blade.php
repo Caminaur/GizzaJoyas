@@ -10,7 +10,7 @@ editcategory
   <!-- Vista de Editar Categoría-->
 
   <ul class="uk-breadcrumb px-4 pt-2">
-    <li><a href="/controlpanel">Volver</a></li>
+    <li><a href="/adminpanel">Volver</a></li>
     <li><span class="dandelion">Editar Categoría</span></li>
   </ul>
 

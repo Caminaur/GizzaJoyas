@@ -232,7 +232,7 @@ Checkout
       const codigo_postal = document.getElementById('codigo_postal');
       codigo_postal.addEventListener('change', function(){
         $.ajax({
-         url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1768&zip_code_to=${this.value}&dimensions=16x16x16,1500`,
+         url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1770&zip_code_to=${this.value}&dimensions=16x16x16,1500`,
          method:'GET',
          dataType:'json',
          success:function(data)
@@ -387,7 +387,7 @@ Checkout
             if (conEnvio=="true") {
               const codigo_postal = document.getElementById('codigo_postal').value;
               $.ajax({
-                 url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1768&zip_code_to=${codigo_postal}&dimensions=16x16x16,1500`,
+                 url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1770&zip_code_to=${codigo_postal}&dimensions=16x16x16,1500`,
                  method:'GET',
                  dataType:'json',
                  success:function(data)
