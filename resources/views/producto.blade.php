@@ -176,10 +176,8 @@ Producto
           <!-- AddToAny BEGIN -->
           <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
           {{-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> --}}
-          <a class="a2a_button_facebook"></a>
+          <a href="https://www.facebook.com/gizza.joyas"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:royalblue"></a>
           <a class="a2a_button_whatsapp"></a>
-          <a class="a2a_button_telegram"></a>
-          <a class="a2a_button_facebook_messenger"></a>
           </div>
           <script async src="https://static.addtoany.com/menu/page.js"></script>
           <!-- AddToAny END -->
@@ -189,8 +187,8 @@ Producto
 
 
     </section>
-
-    <section class="productos-relacionados py-4">
+    @if (count($array_chunks)>1)
+      <section class="productos-relacionados py-4">
       <h2 class="regular text-center pb-3">Productos <span class="bold blueSlate">Relacionados</span></h2>
 
       <div uk-slider>
@@ -200,6 +198,7 @@ Producto
 
           <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid">
             @foreach ($array_chunks as $related)
+              @if ($related->id!=$product->id)
                 <li>
                   <div class="uk-card uk-card-default">
                     <div style="text-align: center;" class="uk-card-media-top">
@@ -222,6 +221,7 @@ Producto
                     </div>
                   </div>
                 </li>
+              @endif
             @endforeach
           </ul>
 
@@ -234,6 +234,7 @@ Producto
 
       </div>
     </section>
+    @endif
 
 
   </div>

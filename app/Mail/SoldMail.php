@@ -43,7 +43,7 @@ class SoldMail extends Mailable
       return $this->subject('Venta Realizada Gizza Joyas')
                   ->from($this->purchases->email, Auth::user()->name) // Lo envia el comprador
                   ->to('info@gizzajoyas.com') // Lo recibe gizza
-                  // ->bcc('taten210@gmail.com')
+                  ->bcc('jacaminaur@gmail.com')
                   ->view('email.soldemail', compact('carts','payment'));
     }
 }

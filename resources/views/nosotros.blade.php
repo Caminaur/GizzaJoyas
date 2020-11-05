@@ -23,7 +23,7 @@ Nosotros
           <p>No dudes en visitarnos en Av. Boulogne y Juncal, Tapiales.</p>
           </div>
           <div class="text-center mt-3">
-            <a href="tel:+549-11-54126300"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+            <a href="tel:+549-11-24821816"><i class="social fas fa-phone-alt" target="_blank"></i></a>
             <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
             <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
             <i class="social fab fa-whatsapp"></i>

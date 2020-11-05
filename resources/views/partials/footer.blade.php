@@ -49,8 +49,8 @@
     <a href="tel:4622-0117"><span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span></a>
 
     <div class="mt-3">
-      <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>
-      <a href="tel:+549-11-54126300"><i class="social fas fa-phone-alt" target="_blank"></i></a>
+      <a href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online*"><i class="social fab fa-whatsapp" target="_blank"></i></a>
+      <a href="tel:+549-11-24821816"><i class="social fas fa-phone-alt" target="_blank"></i></a>
       <a href="https://www.instagram.com/gizzajoyas" target="_blank"><i class="social fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/gizza.joyas" target="_blank"><i class="social fab fa-facebook-f"></i></a>
     </div>

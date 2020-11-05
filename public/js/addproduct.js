@@ -23,6 +23,8 @@ window.addEventListener('load',function(){
 
       size.name = talle.value;
       size.setAttribute('type','number');
+      size.setAttribute('max',100);
+      size.setAttribute('min',0);
       size.setAttribute('class','form-control-checkout px-1');
       size.setAttribute('value', 0);
       size.value = 0

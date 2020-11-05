@@ -51,7 +51,8 @@
             {{-- logo --}}
             <div class="uk-width-1-3 pt-3">
 
-              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span class="gizza text-center">GIZZA</span></a><span class="joyas text-center mt-2">Joyas - Relojes</span>
+              <a class="uk-navbar-item uk-logo uk-flex-column" href="/"><span style="font-size: 60px;"class="gizza text-center">Gizza</span></a>
+              <span style="padding-top:7px; padding-bottom:0px;" class="joyas text-center mt-2">Joyas - Relojes</span>
 
             </div>
 

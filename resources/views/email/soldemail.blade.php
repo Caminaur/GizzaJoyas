@@ -583,7 +583,7 @@
                                               Email de {{Auth::user()->name}}: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">{{$purchases->email}}</a>
                                               <br>Email alternativo de {{Auth::user()->name}}: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">{{Auth::user()->email}}</a>
                                             @endif
-                                            <br/>Telefono de {{Auth::user()->name}}: <br/> <a href="tel:+549-11-54126300" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">{{$purchases->number}}</a>
+                                            <br/>Telefono de {{Auth::user()->name}}: <br/> <a href="tel:+549-11-24821816" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">{{$purchases->number}}</a>
                                             @if ($purchases->envio=="true")
                                               <br/>Direccion de envío:<br/> <p style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">{{$purchases->address}}, CP {{$purchases->zipcode}}
                                                 @if (isset($purchases->floor)), Piso {{$purchases->floor}}, Departamento {{$purchases->apartment}}

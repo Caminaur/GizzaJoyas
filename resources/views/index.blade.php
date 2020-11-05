@@ -93,87 +93,91 @@ Gizza Joyas Home
 
 	</section>
 
-	<section id="newArrivals" class="p-4">
+	@if (count($ofertas)!=0)
+		<section id="newArrivals" class="p-4">
 
-		<h2 class="regular uk-text-center pb-3">Productos en <span class="bold blueSlate">Oferta</span></h2>
+			<h2 class="regular uk-text-center pb-3">Productos en <span class="bold blueSlate">Oferta</span></h2>
 
-		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+			<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
-	    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
-				@forelse ($ofertas as $oferta)
-					<li>
-						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-							<a href="/producto/{{$oferta->id}}">
-								<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$oferta->images->first()->path}}" alt="">
-							</a>
-	            <div class="uk-position-center ncursor uk-panel">
-								<div class="uk-visible@m uk-light">
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->category->name}}</h3></div>
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->name}}</h3></div>
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
-								</div>
-								<div class="uk-hidden@m uk-light">
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$oferta->category->name}}</h3></div>
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$oferta->name}}</h3></div>
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
-								</div>
-							</div>
-						</div>
-					</li>
-				@empty
-
-				@endforelse
-	    </ul>
-
-	    <a style="color:white;" class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-	    <a style="color:white;" class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
-
-			<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-
-		</div>
-
-	</section>
-
-	<section id="newArrivals" class="p-4">
-
-		<h2 class="regular uk-text-center pb-3">Lo más <span class="bold blueSlate">Nuevo</span></h2>
-
-		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
-
-    	<ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
-				@forelse ($nuevos as $nuevo)
-					<li>
-						<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-							<a href="/producto/{{$nuevo->id}}">
-								<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$nuevo->images->first()->path}}" alt="">
-							</a>
-	            <div class="uk-position-center ncursor uk-panel">
-								<div class="uk-visible@m uk-light">
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->category->name}}</h3></div>
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->name}}</h3></div>
-									<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
-								</div>
-								<div class="uk-hidden@m uk-light">
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$nuevo->category->name}}</h3></div>
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$nuevo->name}}</h3></div>
-									<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
+		    <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
+					@forelse ($ofertas as $oferta)
+						<li>
+							<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+								<a href="/producto/{{$oferta->id}}">
+									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$oferta->images->first()->path}}" alt="">
+								</a>
+		            <div class="uk-position-center ncursor uk-panel">
+									<div class="uk-visible@m uk-light">
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->category->name}}</h3></div>
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$oferta->name}}</h3></div>
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
+									</div>
+									<div class="uk-hidden@m uk-light">
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$oferta->category->name}}</h3></div>
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$oferta->name}}</h3></div>
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($oferta)), 0, '.', '.')}}</h3></div>
+									</div>
 								</div>
 							</div>
-						</div>
-	        </li>
-				@empty
+						</li>
+					@empty
 
-				@endforelse
-    	</ul>
+					@endforelse
+		    </ul>
 
-    	<a style="color:white;"class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    	<a style="color:white;"class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+		    <a style="color:white;" class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+		    <a style="color:white;" class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
-			<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+				<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
-		</div>
+			</div>
 
-	</section>
+		</section>
+	@endif
+
+	@if (count($nuevos)!=0)
+		<section id="newArrivals" class="p-4">
+
+			<h2 class="regular uk-text-center pb-3">Lo más <span class="bold blueSlate">Nuevo</span></h2>
+
+			<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+
+	    	<ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center">
+					@forelse ($nuevos as $nuevo)
+						<li>
+							<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+								<a href="/producto/{{$nuevo->id}}">
+									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$nuevo->images->first()->path}}" alt="">
+								</a>
+		            <div class="uk-position-center ncursor uk-panel">
+									<div class="uk-visible@m uk-light">
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->category->name}}</h3></div>
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">{{$nuevo->name}}</h3></div>
+										<div class="uk-transition-fade uk-light"><h3 class="medium uk-margin-remove uk-text-center">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
+									</div>
+									<div class="uk-hidden@m uk-light">
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 100,-100">{{$nuevo->category->name}}</h3></div>
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 200,-200">{{$nuevo->name}}</h3></div>
+										<div class=""><h3 class="medium uk-margin-remove uk-text-center" uk-slider-parallax="x: 300,-300">${{number_format((getRealPrice($nuevo)), 0, '.', '.')}}</h3></div>
+									</div>
+								</div>
+							</div>
+		        </li>
+					@empty
+
+					@endforelse
+	    	</ul>
+
+	    	<a style="color:white;"class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+	    	<a style="color:white;"class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+				<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+			</div>
+
+		</section>
+	@endif
 
 	{{-- <section id="info" class="p-4">
 
