@@ -35,7 +35,7 @@ Carrito de compras
           <div class="img col-12 col-lg-4">
             <a href="/producto/{{$cart->product->id}}">
               {{-- Como imagen del producto en el carrito utilizo la primera --}}
-              <img class="cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+              <img class="cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
             </a>
           </div>
 
@@ -56,7 +56,7 @@ Carrito de compras
               <input id="size" type="hidden" name="" value="{{$cart->size->id}}">
               <input name="precios" class="cart_value" type="hidden" value="{{ getRealPrice($cart->product) }}">
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-              <input name="quantity" class="quantity" min="1" value="{{$cart->quantity}}" type="number">
+              <input name="quantity" class="quantity" min="1" value="{{$cart->quantity}}" disabled="disabled" type="number">
               <button type="button" name="cantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
               <input name='priceHidden' type="hidden" name="" value="{{getRealPrice($cart->product)*$cart->quantity}}">
             </div>

@@ -30,7 +30,7 @@ window.addEventListener('load',function(){
       if (parseInt(quantity_value)>parseInt(stock_quantity.value)) {
         // mensaje de error
         mensajeDeError.removeAttr('hidden');
-        if (stock_quantity.value==0) {
+        if (parseInt(stock_quantity.value)===0) {
           mensajeDeError.html("Todos los productos disponibles en este talle ya se encuentran en tu carrito");
         }
         else {

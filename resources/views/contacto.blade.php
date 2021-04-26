@@ -8,7 +8,7 @@ Contactanos
 
 			<div class="inner">
 				<div class="image-holder align-self-center">
-					<img src="/img/necklaces/contact.jpg" alt="">
+					<img src="/images/Contactanos.jpeg" alt="">
           <div class="text-center mt-3">
             <a href="#"><i class="social fab fa-whatsapp" target="_blank"></i></a>
             <a href="tel:+549-11-24821816"><i class="social fas fa-phone-alt" target="_blank"></i></a>
@@ -44,7 +44,16 @@ Contactanos
               <p class="errorForm">{{ $message }}</p>
             @enderror
 					</div>
-
+					<div class="form-wrapper">
+    					@if(config('services.recaptcha.key'))
+                            <div class="g-recaptcha"
+                                data-sitekey="{{config('services.recaptcha.key')}}">
+                            </div>
+                        @endif
+                    </div>
+            @error('g-recaptcha-response')
+              <p class="errorForm">{{ $message }}</p>
+            @enderror
 					  <button type="submit" class="btn bg-blueSlate">Enviar
 						  <i class="zmdi zmdi-mail-send"></i>
 					  </button>

@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
       // https://www.youtube.com/watch?v=7QWZxjgvEQc
       // Especificamos las vistas donde queremos compartir estas variables
-      View::composer(['partials.navbar','searchproduct'], function($view){
+      View::composer(['partials.navbar','layouts.plantilla','searchproduct'], function($view){
 
         // Traemos todo lo que queremos imprimir en la navbar
         $categories = Category::all();

@@ -191,7 +191,7 @@ Checkout
         <div class="producto row">
           <div class="img col-12 col-lg-6">
             {{-- Como imagen del producto en el carrito utilizo la primera --}}
-            <img class="checkout-cart-img" src="{{$cart->product->images->first()->path}}" alt="Imagen de producto">
+            <img class="checkout-cart-img" src="/storage/{{$cart->product->images->first()->path}}" alt="Imagen de producto">
             <article class="">
               <h6>{{$cart->product->name}}</h6>
               <h6 class="light">Talle {{$cart->size->name}} / {{$cart->quantity}} uni.</h6>

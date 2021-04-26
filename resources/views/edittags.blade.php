@@ -15,7 +15,7 @@ Edit tag
 
     <h2 class="regular text-center pb-3">Agregar una <span class="bold blueSlate">Etiqueta</span></h2>
 
-    <form action='/addtag' method="post" enctype="multipart/form-data">
+    <form action='/addTag' method="post" enctype="multipart/form-data">
       {{csrf_field()}}
         <div class="uk-card uk-card-default uk-card-body uk-margin-small my-4" style='max-width: 500px; margin: 0 auto;'>
           <input type="text" class="form-control-checkout" name="name" placeholder="Nombre la Etiqueta" value="">
@@ -44,7 +44,7 @@ Edit tag
         </form>
 
         <a class="btn bg-dandelion"  href="#confirm{{$tag->id}}" uk-toggle>Eliminar</a>
-        @include('partials.confirm',['url'=>"/deletematerial", 'message'=>"Seguro quiere eliminar la etiqueta {$tag->name}?", 'name'=>'tag_id', 'id'=>"{$tag->id}"])
+        @include('partials.confirm',['url'=>"/deletetag", 'message'=>"Seguro quiere eliminar la etiqueta {$tag->name}?", 'name'=>'tag_id', 'id'=>"{$tag->id}"])
       </div>
     @endforeach
 

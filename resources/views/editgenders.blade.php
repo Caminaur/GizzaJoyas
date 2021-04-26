@@ -44,7 +44,7 @@ Edit Gender
         </form>
 
         <a class="btn bg-dandelion"  href="#confirm{{$gender->id}}" uk-toggle>Eliminar</a>
-        @include('partials.confirm',['url'=>"/deletematerial", 'message'=>"Seguro quiere eliminar el género {$gender->name}?", 'name'=>'gender_id', 'id'=>"{$gender->id}"])
+        @include('partials.confirm',['url'=>"/deletegender", 'message'=>"Seguro quiere eliminar el género {$gender->name}?", 'name'=>'gender_id', 'id'=>"{$gender->id}"])
       </div>
     @endforeach
 

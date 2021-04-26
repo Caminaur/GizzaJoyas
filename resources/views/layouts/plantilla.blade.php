@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
     @include('partials.links')
-
     <link rel="stylesheet" href="/css/@yield('css').css">
 
     <title>@yield('titulo')</title>
     {{-- <link rel="stylesheet" href="/css/@yield('css').css">  Para agregar un css a una vista en particular --}}
     @yield('scripts') {{-- Para agregar JS a una vista en particular --}}
+
+
+    <!-- Script necesario para el funcionamiento del CAPTCHA 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    -->
   </head>
   <body>
 

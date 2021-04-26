@@ -33,6 +33,11 @@ return [
         'class' => App\Services\MercadoPagoService::class,
     ],
 
+    'recaptcha' => [
+        'key' => env('GOOGLE_RECAPTCHA_KEY'),
+        'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

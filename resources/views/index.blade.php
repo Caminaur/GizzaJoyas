@@ -25,8 +25,8 @@ Gizza Joyas Home
 
     <ul class="uk-slider-items uk-grid uk-height-max-large uk-flex-middle uk-background-cover">
         <li class="uk-width-1-1">
-            <div class="uk-panel">
-                <img src="/img/extras/4.jpg" alt="">
+            <div class="uk-panel" >
+                <img src="/images/gizza1.jpeg" alt="" style="width: -webkit-fill-available;">
                 <div class="uk-position-center uk-text-center px-2">
 									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Brindando Oportunidades</h1>
 									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Conocé nuestras ofertas de tiempo limitado, hay descuentos imperdibles! </h3>
@@ -37,7 +37,7 @@ Gizza Joyas Home
         </li>
         <li class="uk-width-1-1">
             <div class="uk-panel">
-                <img src="/img/extras/hero2.jpg" alt="">
+                <img src="/images/gizza4.jpeg" alt="" style="width: -webkit-fill-available;">
                 <div class="uk-position-center uk-text-center px-2">
 									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Siempre pensando en vos</h1>
 									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">Nos gusta mantener nuestros productos actualizados, mirá lo que está en tendencia </h3>
@@ -48,10 +48,21 @@ Gizza Joyas Home
         </li>
         <li class="uk-width-1-1">
             <div class="uk-panel">
-                <img src="/img/extras/hero3.jpg" alt="">
+                <img src="/images/gizza5.jpeg" alt="" style="width: -webkit-fill-available;">
                 <div class="uk-position-center uk-text-center px-2">
 									<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Encontrá lo que estás buscando</h1>
 									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">No te pierdas ninguno de nuestros productos! hecha un vistazo a nuestro catálogo completo</h3>
+									<a class="btn bg-dandelion mx-1" href="/productos">Ver más</a>
+									{{-- <a class="btn bg-ashBlue mx-1" href="#"></a> --}}
+                </div>
+            </div>
+        </li>
+        <li class="uk-width-1-1">
+            <div class="uk-panel">
+                <img src="/images/Inicio1.jpeg" alt="" style="width: -webkit-fill-available;">
+                <div class="uk-position-center uk-text-center px-2">
+									<!--<h1 class="bold mb-3" uk-slider-parallax="x: 100,-100">Encontrá lo que estás buscando</h1>
+									<h3 class="medium mb-5" uk-slider-parallax="x: 200,-200">No te pierdas ninguno de nuestros productos! hecha un vistazo a nuestro catálogo completo</h3>-->
 									<a class="btn bg-dandelion mx-1" href="/productos">Ver más</a>
 									{{-- <a class="btn bg-ashBlue mx-1" href="#"></a> --}}
                 </div>
@@ -105,7 +116,7 @@ Gizza Joyas Home
 						<li>
 							<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 								<a href="/producto/{{$oferta->id}}">
-									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$oferta->images->first()->path}}" alt="">
+									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="/storage/{{$oferta->images->first()->path}}" alt="">
 								</a>
 		            <div class="uk-position-center ncursor uk-panel">
 									<div class="uk-visible@m uk-light">
@@ -148,7 +159,7 @@ Gizza Joyas Home
 						<li>
 							<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 								<a href="/producto/{{$nuevo->id}}">
-									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="{{$nuevo->images->first()->path}}" alt="">
+									<img class="brightness uk-transition-scale-up uk-transition-opaque" style="width: 300px; height: 300px; object-fit: cover;" src="/storage/{{$nuevo->images->first()->path}}" alt="">
 								</a>
 		            <div class="uk-position-center ncursor uk-panel">
 									<div class="uk-visible@m uk-light">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Size;
+use App\Stock;
+use App\Product;
 use App\Category;
 use App\Category_size;
 
@@ -15,10 +17,10 @@ class SizeController extends Controller
     return back();
   }
   public function add(Request $req){
-
+    
     $reglas = [
       "sizes" => "required|array|min:1",
-      "sizes.*" => 'integer|min:1',
+      "sizes.*" => 'string|min:1',
       ];
 
     $mensajes = [
@@ -28,14 +30,16 @@ class SizeController extends Controller
     ];
 
     $this->validate($req, $reglas, $mensajes);
-
+    
     $category = Category::find($req->categoryId);
     $arraySizes = [];
     // Guardamos los talles relacionados con una categoria en un array
     foreach ($category->sizes as $size) {
       $arraySizes[] = $size->name;
     }
-
+    // productos de esta categoria
+    $products = Product::where('category_id','=',$req->categoryId)->get();
+    
     foreach ($req->sizes as $newSize) {
       // Si el talle a agregar no esta en los talles relacionados con la categoria lo guardamos
         if (!in_array(intval($newSize),$arraySizes)) {
@@ -47,8 +51,37 @@ class SizeController extends Controller
           $category_size->category_id = $category->id;
           $category_size->size_id = $size->id;
           $category_size->save();
+          
+          
+          foreach($products as $product){
+            $stock = new Stock;
+            $stock->product_id = $product->id;
+            $stock->quantity = 0;
+            $stock->size_id = $size->id;
+            $stock->save();
+          }
+        }
+        else if (!in_array($newSize,$arraySizes)){
+            $size = New Size;
+          $size->name = $newSize;
+          $size->save();
+
+          $category_size = New Category_size;
+          $category_size->category_id = $category->id;
+          $category_size->size_id = $size->id;
+          $category_size->save();
+          
+          
+          foreach($products as $product){
+            $stock = new Stock;
+            $stock->product_id = $product->id;
+            $stock->quantity = 0;
+            $stock->size_id = $size->id;
+            $stock->save();
+          }
         }
     }
+    
     return back();
   }
 }

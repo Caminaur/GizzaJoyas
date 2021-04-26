@@ -8,7 +8,7 @@ Inicio de Sesion
 
 			<div class="inner">
 				<div class="image-holder align-self-center">
-					<img src="/img/extras/loginsmall.jpg" alt="">
+					<img src="/img/extras/registersmall.jpg" alt="">
 				</div>
 
 				<form method="POST" action="{{ route('login') }}" enctype="multipart/form-data">

@@ -141,7 +141,7 @@ class ProductController extends Controller
           'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
           'gender_id' => 'required',
           'category_id' => 'required',
-          'description' => 'max:400',
+          'description' => 'max:2500',
           "images" => "required|array|min:1",
           "images.*" => 'image|mimes:jpg,jpeg,png|max:2048',
           ];
@@ -357,7 +357,7 @@ class ProductController extends Controller
       'price' => 'required|integer|min:50|max:150000',
       'model' => 'max:255|required|unique:products,model,' . $id, // https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
       'discount' => 'required_if:onSale,1|integer|max:80|min:10|nullable',
-      'description' => 'string|max:200',
+      'description' => 'string|max:2500',
       "images" => "array|min:1",
       "images.*" => 'image|mimes:jpg,jpeg,png|max:2048',
       ];

@@ -9,18 +9,20 @@ $(document).ready(function(){
     var query = $('#search').val();
     if (query==='') {
       fetch_customer_data();
+    } else {
+     document.getElementById('prueba_ajax').innerHTML = "";
+     fetch_customer_data(query);   
     }
-    document.getElementById('prueba_ajax').innerHTML = "";
-    fetch_customer_data(query);
-  })
+  });
   $('#form_busqueda').submit(function(e){
     e.preventDefault();
     var query = $('#search').val();
     if (query==='') {
       fetch_customer_data();
+    } else {
+     document.getElementById('prueba_ajax').innerHTML = "";
+     fetch_customer_data(query);
     }
-    document.getElementById('prueba_ajax').innerHTML = "";
-    fetch_customer_data(query);
   });
 
   function fetch_customer_data(query = ''){
@@ -31,7 +33,6 @@ $(document).ready(function(){
      dataType:'json',
      success:function(data)
      {
-       console.log(data);
       // Traemos los productos buscados
       $('#prueba_ajax').html(data.table_data);
       // Agregamos la funcionalidad de faves a la busqueda realizada
@@ -56,9 +57,8 @@ $(document).ready(function(){
           // en caso de success
           success:function(data)
           {
-            console.log(data.paginas_cantidad);
             // borramos la clase al objeto anterior y su id
-            if (document.getElementById('active_page') != null) {
+            if (document.getElementById('active_page') !== null) {
               document.getElementById('active_page').setAttribute('class','pages-item');
               document.getElementById('active_page').removeAttribute('id');
             }
@@ -137,7 +137,7 @@ function fave_unfave(url = '', product_id = ''){
      // Usamos la query para traer el div del heart icon
      var div_icon = $(query).siblings('a').children('div').children('span');
      // Editamos la clase dependiendo de la respuesta del servidor
-     if (data.isFave == true) {
+     if (data.isFave === true) {
        // Le agregamos la clase correspondiente
        div_icon.attr('class',data.selected_class);
        UIkit.notification({message: 'Producto agregado a favoritos', pos: 'bottom-right', status:'primary',timeout:1300});
@@ -162,7 +162,6 @@ $('.favourite_icon_ajax').click(function(e){
   var url = $(this).attr('href');
   // traemos el id del producto
   var product_id = $(this).siblings('input').val();
-  console.log();
   if ($('#control_de_registro').val()==="false") {
     UIkit.notification({message: 'Debes estar registrado para poder agregar un producto a favoritos', pos: 'bottom-right', status:'primary',timeout:1300});
   }

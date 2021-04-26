@@ -15,7 +15,7 @@ Nosotros
 
 			<div class="inner justify-content-center">
 				<div class="image-holder align-self-center">
-					<img src="/images/gizza0.jpg" alt="">
+					<img src="/images/Nosotros.jpeg" alt="">
           <div class="py-3">
             <p> Somos una empresa familiar especializada en la comercialización de joyería, siempre buscamos otorgarle al cliente productos y diseños de alta calidad.
             Ofreciendo al cliente un excelente servicio y compromiso de nuestra parte que le da una experiencia única a la hora de elegirnos.

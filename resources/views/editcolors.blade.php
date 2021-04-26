@@ -44,7 +44,7 @@ Edit Color
         </form>
 
         <a class="btn bg-dandelion"  href="#confirm{{$color->id}}" uk-toggle>Eliminar</a>
-        @include('partials.confirm',['url'=>"/deletematerial", 'message'=>"Seguro quiere eliminar el Color {$color->name}?", 'name'=>'color_id', 'id'=>"{$color->id}"])
+        @include('partials.confirm',['url'=>"/deletecolor", 'message'=>"Seguro quiere eliminar el Color {$color->name}?", 'name'=>'color_id', 'id'=>"{$color->id}"])
       </div>
     @endforeach
 

@@ -228,7 +228,7 @@ Edit product
           {{-- Colocamos el form de borrar imagen fuera del form de editar producto ya que no pueden anidarse los forms --}}
           @foreach ($product->images as $image)
             <div class="col-12 col-md-3 form-group">
-              <img class="edit-img" src="{{$image->path}}" alt="Imagen del Producto">
+              <img class="edit-img" src="/storage/{{$image->path}}" alt="Imagen del Producto">
               <!-- This is the modal -->
               @include('partials.confirm',['url'=>"/deleteimage/$image->id", 'message'=>'Seguro quiere eliminar la Imagen seleccionada?', 'id'=>"{$image->id}"])
               <a class="hvr-shrink rounded-icon ico" style="background-color:black ; border: 1px solid white; border-radius: 30px; position: absolute;  z-index: 1;  color: white;" href="#confirm{{$image->id}}" uk-icon="icon: trash;" uk-toggle></a>

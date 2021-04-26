@@ -16,11 +16,12 @@ Producto
 
       @foreach ($faqs as $faq)
         <a class="w-100 text-left hvr-icon-down uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple{{$faq->id}}; animation:  uk-animation-slide-left, uk-animation-slide-bottom">{{$faq->title}} <i class="hvr-icon fas fa-chevron-down"></i></a>
+        @if (!empty($faq->description))
         <div id="toggle-animation-multiple{{$faq->id}}" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>
           {{$faq->description}}
         </div>
         <br>
-
+        @endif
         {{-- Si hay una imagen --}}
           @if ($faq->image_path)
             <div id="toggle-animation-multiple{{$faq->id}}" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>

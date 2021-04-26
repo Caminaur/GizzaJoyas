@@ -27,12 +27,18 @@
               <option value="">--</option>
             @endif
             {{-- Recorremos todos los stocks del producto --}}
+            @php
+                $noHayStockEnNingunTalle = true;
+            @endphp
             @foreach ($product_object->stocks as $stock)
               {{-- En caso de que no haya stock de este talle en particular lo deshabilitamos y le cambiamos
               un poco el estilo --}}
               @if (!sizeHasStock($stock))
                 <option style="color:red;" value="{{ $stock->size->id }}" disabled>{{ $stock->size->name }} Sin stock!</option>
               @else
+                @php
+                    $noHayStockEnNingunTalle = false;
+                @endphp
                 <option value="{{ $stock->size->id }}">{{ $stock->size->name }}</option>
               @endif
             @endforeach
@@ -46,7 +52,11 @@
     </div>
 
     <div class="uk-modal-footer text-sm-right text-center">
-        <button type="submit" class="uk-button uk-button-primary boton_agregar" href="{{$url}}">Comprar</button>
+        @if($noHayStockEnNingunTalle)
+            <button disabled='disabled' type="submit" class="uk-button uk-button-primary boton_agregar" href="{{$url}}">Comprar</button>
+        @else
+            <button type="submit" class="uk-button uk-button-primary boton_agregar" href="{{$url}}">Comprar</button>
+        @endif
       </form>
     </div>
   </div>

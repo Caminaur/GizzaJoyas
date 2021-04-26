@@ -38,7 +38,6 @@ Auth::routes();
 Route::get('/', function() {
 
   $categories = Category::all();
-
   // Nos tiene que traer X cantidad de productos ordenados por fecha
   $nuevos = Product::all()->sortByDesc('created_at')->take(10);
 
@@ -53,11 +52,11 @@ Route::get('/', function() {
 Route::get('/contacto', function() {
   return view('contacto');
 });
-
-Route::post('/contacto', function(Request $request){
+Route::post('/contacto', 'ContactController@contactForm');
+/*Route::post('/contacto', function(Request $request){
   Mail::send(new ContactMail($request));
   return redirect ('/');
-});
+});*/
 
 // Nosotros
 
@@ -173,7 +172,7 @@ Route::post('/deleteCategoryTag','CategoryController@deleteCategoryTag')->middle
 
 Route::post('/createtag','CategoryController@createTag')->middleware('admin');
 
-Route::post('/selecttag','CategoryController@addTag')->middleware('admin');
+Route::post('/selecttag','CategoryController@addtag')->middleware('admin');
 
 Route::put('/changeName','CategoryController@changeName')->middleware('admin');
 

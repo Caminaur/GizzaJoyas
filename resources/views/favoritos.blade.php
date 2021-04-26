@@ -24,7 +24,7 @@ Favoritos
             <div class="img col-12 col-lg-3">
 
               {{-- Como imagen del producto en el carrito utilizo la primera --}}
-              <img class="cart-img " src="{{$product->images->first()->path}}" alt="Imagen de producto">
+              <img class="cart-img " src="/storage/{{$product->images->first()->path}}" alt="Imagen de producto">
 
               {{-- Si el producto se agrego hace 20 dias o antes aparecera como NUEVO --}}
               <span class="new">Nuevo</span>

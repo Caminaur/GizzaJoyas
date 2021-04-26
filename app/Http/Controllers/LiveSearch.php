@@ -17,7 +17,8 @@ class LiveSearch extends Controller
    if($request->ajax())
    {
     $output = '';
-
+    $id = intval($id);
+    $test = $id;
     if ( isset($request->query) ) {
       $query = $request->get('query');
     } else {
@@ -26,19 +27,20 @@ class LiveSearch extends Controller
 
     if(!empty($query) || $query!='' || $query==false)
     {
-     $data = Product::where('name', 'like', "%$query%")
-       ->orWhere('description', 'like', "%$query%")
-       ->orWhere('model', 'like', "%$query%")
+     $data = Product::where('name', 'LIKE', "%$query%")
+       ->orWhere('description', 'LIKE', "%$query%")
+       ->orWhere('model', 'LIKE', "%$query%")
        ->get();
-     $paginas_counter = count($data->chunk(6));
-     $data = $data->chunk(6)[$id];
+     $chunk = $data->chunk(6);
+     $paginas_counter = count($chunk);
+     $data = $chunk[$id];
     }
     else
     {
      $data = Product::all();
      $data = $data->chunk(6)[$id];
     }
-    $total_row = $data->count();
+    $total_row =  $paginas_counter;
     if($total_row > 0)
     {
      $texto1 = '';
@@ -53,7 +55,7 @@ class LiveSearch extends Controller
 
        if (count($row->images)>1) {
          $texto1 = '
-           <img class="uk-transition-scale-up uk-position-cover" src="'.$row->images[1]->path.'" alt="">
+           <img class="uk-transition-scale-up uk-position-cover producto" src="/storage/'.$row->images[1]->path.'" alt="">
          ';
        }
        else {
@@ -158,15 +160,21 @@ class LiveSearch extends Controller
          $texto_carbon = '';
        }
 
-       // Stock
-       if (!hasStock($row)) {
-
-         $texto_stock = '
-           <a class="btn border-ashBlue"
-           href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto: _Marca:_ ' . $row->brand->name . ', _Nombre:_ '.$row->name.', '. $row->model . '_Modelo:_ ' . $row->model . '"
-           >Solicitar stock</a>
-         ';
-
+       if(!empty($row->brand->name)){
+             $brand = '_Marca:_ ' + $row->brand->name;
+         } else{
+             $brand = '';
+         }
+         if(!empty($row->model)){
+             $model =  strval($row->model);
+         } else{
+             $model = '';
+         }
+         // Stock
+         if (!hasStock($row)) {
+           $texto_stock = '
+             <a class="btn border-ashBlue"
+             href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto:'. $brand . ', _Nombre:_ ' . $row->name . ', _Modelo:_ ' . $model . '">Solicitar stock</a>';
        }
        else {
          $texto_stock = '';
@@ -178,7 +186,7 @@ class LiveSearch extends Controller
 
                    <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                      <a href="/producto/'.$row->id.'">
-                       <img class="producto" src="'.$row->images->first()->path.'" alt="">
+                       <img class="producto" src="/storage/'.$row->images->first()->path.'" alt="">
                        '.$texto1.'
 
                      '.$texto_discount.'
@@ -241,8 +249,8 @@ class LiveSearch extends Controller
      // calculamos la paginacion
      $paginas = '';
      $paginas .= $previus;
-     $paginas_counter += 1;
-     for ($i=1; $i < $paginas_counter ; $i++) {
+//   $paginas_counter += 1;
+     for ($i=1; $i < ($paginas_counter+1) ; $i++) {
        if ($i==1) {
          $paginas .= '
          <li class="pages-item active">
@@ -273,6 +281,7 @@ class LiveSearch extends Controller
       'table_data'  => $output,
       'paginas' => $paginas,
       'pagina_id' => 1,
+      'id' => $test,
     );
 
     }
@@ -367,14 +376,16 @@ class LiveSearch extends Controller
          ->orWhere('model', 'like', "%$query%")
          ->get();
        // lo separamos en chunks y traemos el que tiene el id enviado
+       $count_pages = count($data->chunk(6));
        $data = $data->chunk(6)[$id];
       }
       else
       {
        $data = Product::all();
+       $count_pages = count($data->chunk(6));
        $data = $data->chunk(6)[$id];
       }
-      $total_row = $data->count();
+      $total_row = $count_pages;
       if($total_row > 0)
       {
        $texto1 = '';
@@ -389,7 +400,7 @@ class LiveSearch extends Controller
 
          if (count($row->images)>1) {
            $texto1 = '
-             <img class="uk-transition-scale-up uk-position-cover" src="'.$row->images[1]->path.'" alt="">
+             <img class="uk-transition-scale-up uk-position-cover producto" src="/storage/'.$row->images[1]->path.'" alt="">
            ';
          }
          else {
@@ -499,12 +510,21 @@ class LiveSearch extends Controller
          else {
            $texto_carbon = '';
          }
-
+         if(!empty($row->brand->name)){
+             $brand = $row->brand->name;
+         } else{
+             $brand = '';
+         }
+         if(!empty($row->model)){
+             $model = $row->model;
+         } else{
+             $model = '';
+         }
          // Stock
          if (!hasStock($row)) {
            $texto_stock = '
              <a class="btn border-ashBlue"
-             href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto:'. $product->brand->name . '_Marca:_ ' .$product->brand->name . ', _Nombre:_ '.$product->name.', '. $product->model . '_Modelo:_ ' . $product->model . '"
+             href="https://api.whatsapp.com/send?phone=5491124821816&text=Hola, estoy contactandolos desde *Gizza Joyas y Relojes Tienda Online* para pedirles stock del siguiente producto:'. '_Marca:_ ' .$brand . ', _Nombre:_ '.$row->name.', '. '_Modelo:_ ' . $model . '"
              >Solicitar stock</a>
            ';
          }
@@ -518,7 +538,7 @@ class LiveSearch extends Controller
 
                      <div class="uk-inline-clip uk-transition-toggle inside" tabindex="0">
                        <a href="/producto/'.$row->id.'">
-                         <img class="producto" src="'.$row->images->first()->path.'" alt="">
+                         <img class="producto" src="/storage/'.$row->images->first()->path.'" alt="">
                          '.$texto1.'
 
                        '.$texto_discount.'
@@ -616,13 +636,23 @@ class LiveSearch extends Controller
         </tr>
        ';
       }
-      // lo transformamos en un array
-      $data = array(
-       'table_data'  => $output,
-       'paginas' => $paginas,
-       'paginas_cantidad' => count($data->chunk(6)),
-       'pagina_actual' => $id_pagina,
-      );
+      if(isset($paginas)){
+        // lo transformamos en un array
+          $data = array(
+           'table_data'  => $output,
+           'paginas' => $paginas,
+           'paginas_cantidad' => count($data),
+           'pagina_actual' => $id_pagina,
+          );    
+      } else {
+        // lo transformamos en un array
+          $data = array(
+           'table_data'  => $output,
+           'paginas_cantidad' => count($data),
+           'pagina_actual' => $id_pagina,
+          );  
+      }
+      
       // lo transformamos en json y lo imprimimos
       echo json_encode($data);
     } // request ajax

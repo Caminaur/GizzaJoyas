@@ -94,7 +94,6 @@ editcategory
           @csrf
           <label for="">Tags </label>
           <select class="form-control-checkout w-25" name="tagId">
-            <option value="">Seleccione un tag a agregar</option>
             @php
             $tags_db = [];
             // traemos todos los tags relacionados a esta categoría
@@ -102,16 +101,23 @@ editcategory
               // Los almacenamos en un array
               $tags_db[] = $tag_db->name;
             }
-            // Traemos la totalidad de los tags
-            foreach ($tags as $tag) {
-              $tags_todos[] = $tag;
+            if (!empty($tags)){
+              // Traemos la totalidad de los tags
+              foreach ($tags as $tag) {
+                $tags_todos[] = $tag;
+              }
             }
             @endphp
-            @foreach ($tags_todos as $tag)
-              @if (!in_array($tag->name,$tags_db))
-                <option value="{{$tag->id}}">{{$tag->name}}</option>
-              @endif
-            @endforeach
+            @if (!empty($tags[0]))
+              <option value="">Seleccione un tag a agregar</option>
+              @foreach ($tags_todos as $tag)
+                @if (!in_array($tag->name,$tags_db))
+                 <option value="{{$tag->id}}">{{$tag->name}}</option>
+                @endif
+              @endforeach
+            @else
+               <option value="">No hay tags creados</option>
+            @endif
           </select>
           <input type="hidden" name="category_id" value="{{$category->id}}">
           <button class="btn bg-blueSlate" type="submit" name="">Agregar</button>

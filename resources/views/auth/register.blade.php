@@ -43,7 +43,16 @@ Registro
             <p class="errorForm">{{ $message }}</p>
           @enderror
 				</div>
-
+            <div class="form-wrapper">
+				@if(config('services.recaptcha.key'))
+                    <div class="g-recaptcha"
+                        data-sitekey="{{config('services.recaptcha.key')}}">
+                    </div>
+                @endif
+            </div>
+            @error('g-recaptcha-response')
+              <p class="errorForm">{{ $message }}</p>
+            @enderror
 				<button type="submit" class="btn bg-blueSlate">Registrarse
 					<i class="zmdi zmdi-arrow-right"></i>
 				</button>

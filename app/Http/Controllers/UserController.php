@@ -123,7 +123,7 @@ class UserController extends Controller
     $this->validate($req, $reglas,$mensajes);
 
     $user = Auth::user();
-    if ($request['password'])
+    if ($req['password'])
     {
       $user->password = Hash::make($req->password);
     }

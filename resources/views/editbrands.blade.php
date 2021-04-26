@@ -44,7 +44,7 @@ Edit brands
         </form>
 
         <a class="btn bg-dandelion"  href="#confirm{{$brand->id}}" uk-toggle>Eliminar</a>
-        @include('partials.confirm',['url'=>"/deletematerial", 'message'=>"Seguro quiere eliminar la marca {$brand->name}?", 'name'=>'brand_id', 'id'=>"{$brand->id}"])
+        @include('partials.confirm',['url'=>"/deletebrand", 'message'=>"Seguro quiere eliminar la marca {$brand->name}?", 'name'=>'brand_id', 'id'=>"{$brand->id}"])
       </div>
     @endforeach
 

@@ -44,8 +44,8 @@
     <span class="footlink"><i class="fas fa-map-marker-alt"></i> Av Boulogne Sur Mer 1273. </span>
     <span class="footlink">Tapiales, CP 1770, Buenos Aires</span>
     <br>
-    <span class="footlink"><i class="far fa-clock"></i> Visitanos de 9hs a 17hs</span>
-    <br>
+    {{--<span class="footlink"><i class="far fa-clock"></i> Visitanos de 9hs a 17hs</span>
+    <br>--}}
     <a href="tel:4622-0117"><span class="footlink"><i class="fas fa-phone-alt"></i></i> 4622-0117</span></a>
 
     <div class="mt-3">

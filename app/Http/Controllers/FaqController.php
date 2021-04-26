@@ -23,7 +23,7 @@ class FaqController extends Controller
 
     $reglas = [
       'title' => 'required|string|min:1|max:50',
-      'description' => 'nullable|max:1000',
+      'description' => 'nullable|max:1500',
       "image.*" => 'image|mimes:jpg,jpeg,png|max:2048',
     ];
 
@@ -99,7 +99,7 @@ class FaqController extends Controller
   public function createFaq(Request $req){
     $reglas = [
       'title' => 'required|string|min:1|max:50',
-      'description' => 'nullable|max:1000',
+      'description' => 'nullable|max:1500',
       "image" => 'image|mimes:jpg,jpeg,png|max:2048',
     ];
 

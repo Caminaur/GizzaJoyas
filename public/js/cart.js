@@ -4,7 +4,11 @@ window.addEventListener('load',function(){
   var botones = document.querySelectorAll('button[name="cantidad"]');
   // Organizamos las funciones de los botones de suma y resta
   for (var boton of botones) {
-    boton.addEventListener('click',function(){
+    ordenarBoton(boton);
+  }
+  
+  function ordenarBoton(boton){
+      boton.addEventListener('click',function(){
 
       // Esta seccion maneja los precios
 
@@ -24,7 +28,7 @@ window.addEventListener('load',function(){
       precioProductoHidden.value = valorIndividual * productoCantidad;
 
       // Modificamos el subtotal
-      var subtotal = document.getElementById('subtotal')
+      var subtotal = document.getElementById('subtotal');
 
       // buscamos los precios de cada producto agregado al carrito
       var preciosProductos = document.querySelectorAll('input[name=priceHidden]');
@@ -32,7 +36,7 @@ window.addEventListener('load',function(){
       // Cada uno lo sumamos a la variable precio final
       var precioFinal = 0;
       for (var precio of preciosProductos) {
-        var precioFinal = parseInt(precioFinal) + parseInt(precio.value);
+        precioFinal = parseInt(precioFinal) + parseInt(precio.value);
       }
 
       // Modificamos el subtotal para que refleje los cambios realizados
@@ -42,20 +46,20 @@ window.addEventListener('load',function(){
 
       // Esta seccion realiza un control de stock
 
-      var quantity = this.parentNode.querySelector('input[name="quantity"]')
+      var quantity = this.parentNode.querySelector('input[name="quantity"]');
       // traigo el select de talle nos provee el id del talle seleccionado
       var size = document.getElementById('size');
       // Buscamos el input que guarda la cantidad del talle seleccionado
-      var stock_quantity =this.parentNode.querySelector('input[name="cantidad_max"]')
+      var stock_quantity =this.parentNode.querySelector('input[name="cantidad_max"]');
       // Si la cantidad seleccionada supera al stock
-      var mensajeDeError = this.parentNode.parentNode.querySelector('span[name="errorMessage"]')
+      var mensajeDeError = this.parentNode.parentNode.querySelector('span[name="errorMessage"]');
       var botonComprar = document.getElementById('boton_comprar');
 
       // El parseInt nos permite asegurar que los datos comparados sean numero enteros
       if (parseInt(quantity.value)>parseInt(stock_quantity.value)) {
         // mensaje de error
         mensajeDeError.removeAttribute('hidden');
-        mensajeDeError.innerHTML = "Solamente hay " + stock_quantity.value + " productos disponibles en ese talle!"
+        mensajeDeError.innerHTML = "Solamente hay " + stock_quantity.value + " productos disponibles en ese talle!";
         // bloqueamos el boton de comprar
         botonComprar.setAttribute('type','button');
       }
@@ -69,7 +73,7 @@ window.addEventListener('load',function(){
         // Este nos va a proveer el id del cart al que se le sumo la cantidad
         var cart_id = this.parentNode.querySelector('input[name="cart_id"]').value;
         // Con este id armamos un string de busqueda
-        var string = 'cart'+ cart_id;
+        var string = "cart"+ cart_id;
         // buscamos el input en donde vamos a enviar la cantidad pedida
         var inputEnvioCantidad = document.getElementById(string);
         // modificamos el valor con la quantity actual
@@ -77,9 +81,8 @@ window.addEventListener('load',function(){
       }
 
 
-    })
+    });
   }
-
 
 
   // Funcion para darle formato a los precios dinamicos
@@ -103,11 +106,11 @@ window.addEventListener('load',function(){
     return t.join(ts) + (n[1]? dp + n[1] : '');
   }
 
-  console.log(formatNumber(
+  /*console.log(formatNumber(
     5220.567,  // value to format
                  0,  // number of decimal places
                 '.', // thousands separator
                 ','  // decimal separator
   ));
-
-})
+*/
+});
