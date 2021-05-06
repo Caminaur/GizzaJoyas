@@ -213,6 +213,7 @@ Checkout
         </div>
         <div id="shipment_div" hidden class="d-flex justify-content-between">
           <h6>Envío</h6>
+          <input id="costo_de_envio_fijo" type="hidden" value="{{$shipment}}">
           <h6 id="costos_de_envio">${{$shipment}}</h6>
         </div>
         <div class="d-flex justify-content-between">
@@ -247,7 +248,7 @@ Checkout
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
   @push('scripts')
 
-    <script>
+  <script>
     // Cuando clickean Con envio o Sin envio  Muestra o esconde los datos del domicilio
     // en el formulario checkout y a su vez le da value true al input de Con Envio. Si conEnvio value es true
     // se va a ejecutar la funcion de MP guessingPaymentMethod que se encarga de calcular el total.
@@ -258,28 +259,23 @@ Checkout
       var deliveryAddress = document.getElementById("deliveryAddress");
       var inputs = document.getElementById("deliveryAddress").getElementsByTagName('input');
       const codigo_postal = document.getElementById('codigo_postal');
-
       if (conEnvio.hasAttribute('checked')) {
         deliveryAddress.classList.remove("hidden");
       }
-
       codigo_postal.addEventListener('change', function(){
         conEnvio.value = "true";
         guessingPaymentMethod('blur');
       });
-
       conEnvio.addEventListener('click', function(){
         deliveryAddress.classList.remove("hidden");
         conEnvio.value = "true";
         guessingPaymentMethod('blur');
       });
-
       sinEnvio.addEventListener('click', function(){
         deliveryAddress.classList.add("hidden");
         conEnvio.value = "false";
         // habilitar boton de compra
         document.getElementById('payButton').removeAttribute('disabled');
-
         guessingPaymentMethod('blur');
         for (input of inputs) {
           input.value="";
@@ -306,11 +302,13 @@ Checkout
         mercadoPago.setPublishableKey('{{config('services.mercadopago.key')}}');
         // Nos permite obtener los tipos de documentos disponibles
         mercadoPago.getIdentificationTypes();
+        console.log(mercadoPago);
         // agregamos una funcion cuando ingresen un numero para la tarjeta
         window.addEventListener('load',function(){
           var card = document.querySelector('#cardNumber');
           card.addEventListener('blur',function(){
             guessingPaymentMethod('blur');
+            setCardNetwork();
           })
         })
     </script>
@@ -386,58 +384,27 @@ Checkout
             var conEnvio = document.getElementById("si").value;
             if (conEnvio=="true") {
               const codigo_postal = document.getElementById('codigo_postal').value;
-              $.ajax({
-                 url:`https://api.mercadolibre.com/sites/MLA/shipping_options?zip_code_from=1770&zip_code_to=${codigo_postal}&dimensions=16x16x16,1500`,
-                 method:'GET',
-                 dataType:'json',
-                 success:function(data)
-                 {
-                   // habilitar boton de compra
-                   document.getElementById('payButton').removeAttribute('disabled');
-                   // ocultamos el mensaje de error si existe
-                   document.getElementById('errores_cp').innerHTML = "";
-                   document.getElementById('errores_cp').setAttribute('hidden','true');
-
-                   // Toma el valor total de la request que tiene un id=total y le suma el envio en caso de tenerlo
-                   var costo = (data.options[1].cost);
-                   var compra = document.querySelector('#total').value;
-                   var total = parseInt(costo) + parseInt(compra);
-                   // modificamos el valor total del envio y le agregamos el number format
-                   var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
-                   $("#total_h4").html(precio_total);
-                   $("#shipment_div").removeAttr('hidden');
-                   document.getElementById('shipment').value = costo;
-                   document.getElementById('costos_de_envio').innerHTML = "$ " + costo;
-                   Mercadopago.getInstallments({
+              // habilitar boton de compra
+              document.getElementById('payButton').removeAttribute('disabled');
+              var compra = document.querySelector('#total').value;
+              var total = parseInt(document.getElementById('costo_de_envio_fijo').value) + parseInt(compra);
+              var precio_total = '$' + formatNumber( (total) , 0 , '.' , ',' );
+              $("#shipment_div").removeAttr('hidden');
+              console.log(compra,total,precio_total);
+              // seteamos el valor del shipment para que funcione correctamente
+              document.getElementById('shipment').value = document.getElementById('costo_de_envio_fijo').value;
+              $("#total_h4").html(precio_total);
+              // modificamos el valor total del envio y le agregamos el number format
+            Mercadopago.getInstallments({
                      "bin": getBin(),
                      "amount": parseFloat(total),
                    }, setInstallmentInfo);
-                 } // success
-                 , error:function() {
-                   // inhabilitar el boton de compra
-                   document.getElementById('payButton').setAttribute('disabled',true);
-
-                   // mostrar un mensaje de error
-                   let div_errores = document.getElementById('errores_cp');
-                   div_errores.innerHTML = "";
-                   div_errores.removeAttribute('hidden');
-                   let error_cp = document.createElement('p');
-                   error_cp.innerHTML = "Por favor ingrese un código postal válido";
-                   div_errores.appendChild(error_cp);
-
-                   // deshabilitamos las cuotas disponibles
-                   document.getElementById('installments').innerHTML = "";
-
-                   var precio_total = parseInt(document.querySelector('#total').value);
-                   var precio_total = '$' + formatNumber( (precio_total) , 0 , '.' , ',' );
-                   $("#total_h4").html(precio_total);
-                   $("#shipment_div").attr('hidden',true);
-                 }
-               }); // ajax
+                   setCardNetwork();
             }
             else {
               var precio_total = parseInt(document.querySelector('#total').value);
               var precio_total = '$' + formatNumber( (precio_total) , 0 , '.' , ',' );
+              document.getElementById('shipment').value = '';
               $("#total_h4").html(precio_total);
               $("#shipment_div").attr('hidden',true);
               Mercadopago.getInstallments({

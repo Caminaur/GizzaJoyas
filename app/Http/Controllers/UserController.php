@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Favourite;
-use App\Shipment;
-use App\User;
+use App\Models\Favourite;
+use App\Models\Shipment;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -127,7 +127,7 @@ class UserController extends Controller
     {
       $user->password = Hash::make($req->password);
     }
-    
+
     $user->name = $req->name;
     $user->email = $req->email;
 

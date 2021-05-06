@@ -1,16 +1,16 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
-use App\Product;
-use App\Gender;
-use App\Category;
-use App\Stock;
-use App\Color;
-use App\Age;
-use App\Image;
+use App\Models\Product;
+use App\Models\Gender;
+use App\Models\Category;
+use App\Models\Stock;
+use App\Models\Color;
+use App\Models\Age;
+use App\Models\Image;
 
 $factory->define(Product::class, function (Faker $faker) {
 

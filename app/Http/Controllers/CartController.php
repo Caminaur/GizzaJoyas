@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Product;
-use App\Favourite;
-use App\Size;
-use App\Stock;
-use App\Cart;
+use App\Models\Product;
+use App\Models\Favourite;
+use App\Models\Size;
+use App\Models\Stock;
+use App\Models\Cart;
 
 class CartController extends Controller
 {

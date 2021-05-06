@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
           $table->longText('description')->nullable();
           $table->string('model', 50)->nullable();
 
-
           $table->bigInteger('gender_id')->unsigned()->nullable();
           $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null')->onUpdate('cascade');
 

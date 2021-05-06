@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use Redirect;
-use App\Category;
-use App\Size;
-use App\Product;
-use App\Tag;
+use App\Models\Category;
+use App\Models\Size;
+use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-use App\Category_tag;
-use App\Category_size;
-use App\Product_tag;
+use App\Models\Category_tag;
+use App\Models\Category_size;
+use App\Models\Product_tag;
 class CategoryController extends Controller
 {
   public function index(){

@@ -10,8 +10,8 @@
             <div class="uk-width-1-3 uk-flex justify-content-start">
 
               {{-- Search desktop, se muestra en resoluciones M o mayores (959px)--}}
-              <form id="form_busqueda" class="uk-visible@m uk-search uk-search-default uk-margin-left">
-                <button type="button" id="search_button" uk-search-icon></button>
+              <form action="/busqueda/productos" class="uk-visible@m uk-search uk-search-default uk-margin-left" method="get">
+                <button type="submit" id="" uk-search-icon></button>
                 <input id="search" name="search" class="uk-search-input" type="text" placeholder="Buscar...">
               </form>
 
@@ -20,7 +20,7 @@
               <div class="hiddenXS uk-hidden@m">
                 <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
                 <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                  <form class="uk-search uk-search-navbar uk-width-1-1">
+                  <form action="/busqueda/productos" class="uk-search uk-search-navbar uk-width-1-1" method="get">
                     <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
                   </form>
                 </div>

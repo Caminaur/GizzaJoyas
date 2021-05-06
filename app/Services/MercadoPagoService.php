@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ConsumesExternalServices;
 use App\Services\CurrencyConversionService;
-use App\Cart;
-use App\Product;
-use App\Stock;
-use App\Size;
-use App\Shipment;
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\Stock;
+use App\Models\Size;
+use App\Models\Shipment;
 use App\Mail\SoldMail; // Por email con detalle de venta que se le envia al vendedor
 use App\Mail\PurchaseMail; // Por el email de compra realizada que le llega al comprador
 use Illuminate\Support\Facades\Mail; // Por el formulario de contacto
@@ -94,7 +94,6 @@ class MercadoPagoService
             $request->email,
             $installments
         );
-
         if ($payment->status === "approved") {
 
             $name = Auth::user()->name; // $payment->payer->first_name;
@@ -105,11 +104,8 @@ class MercadoPagoService
 
               // Enviar los 2 emails
 
-
-                                      Mail::send(new PurchaseMail($request,$payment));
-                                      Mail::send(new SoldMail($request,$payment));
-
-
+              Mail::send(new PurchaseMail($request,$payment));
+              Mail::send(new SoldMail($request,$payment));
 
               // Restar del stock
               $this->restarStock();
@@ -159,6 +155,7 @@ class MercadoPagoService
             $isJsonRequest = true
         );
     }
+
 
     public function resolveFactor($currency) // currency es la moneda que vamos a pasarle y se va a convertir en la predeterminada de MP
     {

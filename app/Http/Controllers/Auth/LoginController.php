@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Redirect; // Para poder redirigir a la pagina anterior al desloguear https://laracasts.com/discuss/channels/general-discussion/class-apphttpcontrollersredirect-not-found-1
 
 class LoginController extends Controller
 {
@@ -36,9 +35,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-      session(['url.intended' => url()->previous()]); // Agregue estas dos lineas (38 y 39) para que al loguear me redirija a la ruta anterior https://stackoverflow.com/questions/15389833/laravel-redirect-back-to-original-destination-after-login
-      $this->redirectTo = session()->get('url.intended');
-      $this->middleware('guest')->except('logout');
+        session(['url.intended' => url()->previous()]); // Agregue estas dos lineas (38 y 39) para que al loguear me redirija a la ruta anterior https://stackoverflow.com/questions/15389833/laravel-redirect-back-to-original-destination-after-login
+        $this->redirectTo = session()->get('url.intended');
+        $this->middleware('guest')->except('logout');
     }
 
     // Para que nos redirija a la pagina anterior dsp de loguearnos tuve que pisar este metodo https://stackoverflow.com/questions/42326430/how-to-redirect-to-previous-page-after-successful-register-in-laravel
@@ -58,6 +57,4 @@ class LoginController extends Controller
     }
 
     // Una vez logueado si vamos a /login nos llevaba a /home, para cambiar esto hay que ir al middleware redirectIfAuthenticated https://laravel.io/forum/01-02-2017-logincontroller-keeps-redirecting-to-home-on-existing-session
-
-
 }

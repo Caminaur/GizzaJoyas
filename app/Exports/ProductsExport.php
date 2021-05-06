@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Product;
+use App\Models\Product;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -64,8 +64,8 @@ class ProductsExport implements FromQuery, WithMapping, WithHeadings, WithColumn
             $product->discount,
             $product->gender->name,
             $product->ages == null ? " " : $product->ages->name,
-            $product->brand == null ? "No tiene marca asignada" :$product->brand->name,
-            $product->material == null ? "No tiene material asignado" : $product->material->name,
+            $product->brand == null ? " " :$product->brand->name,
+            $product->material == null ? " " : $product->material->name,
             $product->created_at->format('d-m-Y'),
         ];
     }

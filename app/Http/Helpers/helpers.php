@@ -1,6 +1,6 @@
 <?php
 use Carbon\Carbon;
-use App\Shipment;
+use App\Models\Shipment;
 
   // https://stackoverflow.com/questions/35332784/how-to-call-a-controller-function-inside-a-view-in-laravel-5
   // https://styde.net/como-crear-helpers-personalizados-en-laravel/

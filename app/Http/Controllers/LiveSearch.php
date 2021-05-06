@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Product;
-use App\Favourite;
+use App\Models\Product;
+use App\Models\Favourite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -643,16 +643,16 @@ class LiveSearch extends Controller
            'paginas' => $paginas,
            'paginas_cantidad' => count($data),
            'pagina_actual' => $id_pagina,
-          );    
+          );
       } else {
         // lo transformamos en un array
           $data = array(
            'table_data'  => $output,
            'paginas_cantidad' => count($data),
            'pagina_actual' => $id_pagina,
-          );  
+          );
       }
-      
+
       // lo transformamos en json y lo imprimimos
       echo json_encode($data);
     } // request ajax

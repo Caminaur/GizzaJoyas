@@ -3,7 +3,7 @@
 namespace App\Resolvers;
 
 use Exception;
-use App\Payment_platform;
+use App\Models\Payment_platform;
 
 class PaymentPlatformResolver
 {

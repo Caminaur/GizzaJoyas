@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\Color;
-use App\Brand;
-use App\Age;
-use App\Category;
-use App\Category_size;
-use App\Category_tag;
-use App\Product_tag;
-use App\Tag;
-use App\Stock;
-use App\Material;
-use App\Size;
-use App\Gender;
-use App\Image;
+use App\Models\Product;
+use App\Models\Color;
+use App\Models\Brand;
+use App\Models\Age;
+use App\Models\Category;
+use App\Models\Category_size;
+use App\Models\Category_tag;
+use App\Models\Product_tag;
+use App\Models\Tag;
+use App\Models\Stock;
+use App\Models\Material;
+use App\Models\Size;
+use App\Models\Gender;
+use App\Models\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
+use App\Exports\StocksExport;
 use App\Imports\ProductsImport;
+use App\Imports\StocksImport;
 use App\Traits\ReusableFunctions;
 use Carbon\Carbon;
 
@@ -85,6 +87,31 @@ class ProductController extends Controller
                        ->paginate(12);
     $searchType = $material->name;
     $vac = compact('products','material','searchType');
+    return view('productos',$vac);
+  }
+  public function search(Request $req){
+
+    $reglas = [
+        'search' => 'required|string|min:1|max:50',
+        ];
+
+    $mensajes = [
+        "search.required" => "Ingrese lo que quiere buscar",
+    ];
+
+    $this->validate($req, $reglas, $mensajes);
+    $products = Product::where('name','like','%'.$req->search.'%')
+        ->orWhere('description','like','%'.$req->search.'%')
+        ->paginate(6)
+    // Es importante agregar la query para que el paginador se comporte correctamente
+        ->withQueryString();
+    // Le agregamos el Path
+    $products->withPath('/busqueda/productos');
+
+    $categories = Category::all();
+    $materials = Material::all();
+    $vac = compact('products','materials','categories');
+
     return view('productos',$vac);
   }
   public function searchProductByBrandId(Request $req){
@@ -579,12 +606,28 @@ class ProductController extends Controller
     return Excel::download(new ProductsExport, 'Lista-de-productos.xlsx');
   }
 
+  public function exportExcelStock(){
+    return Excel::download(new StocksExport, 'Lista-de-productos.xlsx');
+  }
+
   public function importExcel(Request $req){
     $file = $req->excel;
 
     try {
       Excel::import(new ProductsImport, $file);
     } catch (\Exception $e) {
+      return back()->with('error','Hubo un error al actualizar los productos');
+    }
+
+
+    return back()->with('status', 'Productos actualizados correctamente!');
+  }
+  public function importExcelStock(Request $req){
+    $file = $req->excelupdate;
+    try {
+      Excel::import(new StocksImport, $file);
+    } catch (\Exception $e) {
+        dd($e);
       return back()->with('error','Hubo un error al actualizar los productos');
     }
 

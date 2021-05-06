@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Currency;
-use App\Cart;
-use App\Payment_platform;
-use App\Shipment;
-use App\User;
-use App\Image;
+use App\Models\Currency;
+use App\Models\Cart;
+use App\Models\Payment_platform;
+use App\Models\Shipment;
+use App\Models\User;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Resolvers\PaymentPlatformResolver;

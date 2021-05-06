@@ -5,9 +5,9 @@
 namespace App\Mail;
 
 use Illuminate\Support\Facades\Auth;
-use App\Cart;
-use App\Image;
-use App\Shipment;
+use App\Models\Cart;
+use App\Models\Image;
+use App\Models\Shipment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;

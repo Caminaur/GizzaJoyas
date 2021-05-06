@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Providers;
-use App\Category;
-use App\Material;
-use App\Age;
-use App\Gender;
+use App\Models\Category;
+use App\Models\Material;
+use App\Models\Age;
+use App\Models\Gender;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
+Paginator::useBootstrap();
 
 class AppServiceProvider extends ServiceProvider
 {

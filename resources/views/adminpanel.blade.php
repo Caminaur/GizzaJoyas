@@ -71,6 +71,17 @@ Panel de Control
         @include('partials.importproducts')
       </div>
 
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="/exportexcel-stocks">Exportar Stocks</a>
+        </div>
+        <div class="col-12 col-md-6">
+          <a class="d-block control" href="#importexcelstocks" uk-toggle>Import Stocks</a>
+          <!-- Modal importacion de productos -->
+        @include('partials.importstocks')
+        </div>
+      </div>
+
     </div>
 
   </div>
